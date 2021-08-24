@@ -5,18 +5,24 @@
   
   <entry>
     <title>我的第一篇博客</title>
-    <link href="/2021/08/22/first_post/"/>
-    <url>/2021/08/22/first_post/</url>
+    <link href="/2021/08/24/first_post/"/>
+    <url>/2021/08/24/first_post/</url>
     
-    <content type="html"><![CDATA[<p>我的第一篇博客</p><p>未来希望能经常更新自己的博客</p><p>世界如此美好, 我们需要拥抱一切</p><p>宇宙之美不仅仅存在于大千世界千差万别的同一性, 也存在于同一性中的千差万别</p>]]></content>
+    <content type="html"><![CDATA[<p>努力写博客, 总结经验教训, 学习永远在路上</p><h3 id="待完成的文章"><a href="#待完成的文章" class="headerlink" title="待完成的文章:"></a>待完成的文章:</h3><ul><li><input disabled="" type="checkbox"> 常用指令汇总</li><li><input disabled="" type="checkbox"> 开发环境搭建指南</li><li><input disabled="" type="checkbox"> 牛客网 SQL 刷题总结</li><li><input disabled="" type="checkbox"> 三级联动查询的思路</li><li><input disabled="" type="checkbox"> 拉链表的维护</li><li><input disabled="" type="checkbox"> 分析函数的使用</li><li><input disabled="" type="checkbox"> CAP原理解析</li><li><input disabled="" type="checkbox"> 项目开发当中的数据遗漏和数据倾斜问题</li></ul>]]></content>
     
+    
+    <categories>
+      
+      <category>基础知识</category>
+      
+    </categories>
     
     
     <tags>
       
-      <tag>日记</tag>
+      <tag>开始</tag>
       
-      <tag>Fluid</tag>
+      <tag>计划</tag>
       
     </tags>
     
