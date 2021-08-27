@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.svg">
+  <link rel="icon" href="/img/icon.svg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="惊羽">
+  <meta name="keywords" content="">
+  
+  <title>常用命令汇总 - </title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>惊羽的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/post.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="常用命令汇总">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-24 23:27" pubdate>
+        2020年9月24日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      745 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">常用命令汇总</h1>
+            
+            <div class="markdown-body">
+              <h2 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h2><h3 id="【markdown代码折叠】"><a href="#【markdown代码折叠】" class="headerlink" title="【markdown代码折叠】"></a>【markdown代码折叠】</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span></span>点击查看完整代码<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="免秘钥登录"><a href="#免秘钥登录" class="headerlink" title="免秘钥登录"></a>免秘钥登录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa<br>ssh-copy-id node1<br>scp /root/.ssh/authorized_keys node2:/root/.ssh<br>scp /root/.ssh/authorized_keys node3:/root/.ssh<br></code></pre></td></tr></table></figure>
+
+<h2 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h2><h3 id="【启动hive的metastore、hiveserver2服务】"><a href="#【启动hive的metastore、hiveserver2服务】" class="headerlink" title="【启动hive的metastore、hiveserver2服务】"></a>【启动hive的metastore、hiveserver2服务】</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> HIVE_HOME=/<span class="hljs-built_in">export</span>/server/hive-2.1.0<br>nohup /<span class="hljs-built_in">export</span>/server/hive-2.1.0/bin/hive --service metastore   &amp;<br>nohup /<span class="hljs-built_in">export</span>/server/hive-2.1.0/bin/hiveserver2 start &amp;<br>【hive元数据初始化和更新】<br>schematool -dbType mysql -initSchema<br>schematool -dbType mysql -upgradeSchema<br></code></pre></td></tr></table></figure>
+
+<h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><h3 id="【重新启动zk和kafka】"><a href="#【重新启动zk和kafka】" class="headerlink" title="【重新启动zk和kafka】"></a>【重新启动zk和kafka】</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">zkServer.sh stop <br>kafka-server-stop.sh <br>zkServer.sh start <br>nohup /<span class="hljs-built_in">export</span>/server/kafka/bin/kafka-server-start.sh /<span class="hljs-built_in">export</span>/server/kafka/config/server.properties &amp;<br><br>【启动kafka服务】<br>启动Zookeeper 服务<br>zookeeper-daemon.sh start<br>启动Kafka 服务<br>kafka-daemon.sh start<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="【彻底删除kafka主题】"><a href="#【彻底删除kafka主题】" class="headerlink" title="【彻底删除kafka主题】"></a>【彻底删除kafka主题】</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">kafka-topics.sh --zookeeper node3:2181 --list <br>kafka-topics.sh --zookeeper node3:2181 --delete --topic spark_kafka<br><br>【zkCli.sh】<br>ls /config/topics<br>rmr /config/topics/spark_kafka<br>rmr /brokers/topics/spark_kafka<br>rmr /admin/delete_topics/spark_kafka<br></code></pre></td></tr></table></figure>
+
+<h3 id="【创建主题】"><a href="#【创建主题】" class="headerlink" title="【创建主题】"></a>【创建主题】</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">kafka-topics.sh --zookeeper node3:2181 --create --topic spark_kafka --partitions 3 --replication-factor 1<br>kafka-topics.sh --zookeeper node3:2181 --list<br></code></pre></td></tr></table></figure>
+
+<h3 id="【启动生产者和消费者】"><a href="#【启动生产者和消费者】" class="headerlink" title="【启动生产者和消费者】"></a>【启动生产者和消费者】</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">kafka-console-producer.sh --broker-list node3:9092 --topic spark_kafka<br>kafka-console-consumer.sh --from-beginning --bootstrap-server node3:9092 --topic spark_kafka<br>kafka-console-consumer.sh --from-beginning --bootstrap-server node3:9092 --topic __consumer_offsets<br></code></pre></td></tr></table></figure>
+
+<h2 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h2><h3 id="【启动spark-thriftserver】"><a href="#【启动spark-thriftserver】" class="headerlink" title="【启动spark-thriftserver】"></a>【启动spark-thriftserver】</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">/<span class="hljs-built_in">export</span>/server/spark/sbin/start-thriftserver.sh \<br>  --hiveconf hive.server2.thrift.port=10001 \<br>  --hiveconf hive.server2.thrift.bind.host=node3 \<br>  --master <span class="hljs-built_in">local</span>[*]<br></code></pre></td></tr></table></figure>
+
+<h3 id="【structured-Streaming】"><a href="#【structured-Streaming】" class="headerlink" title="【structured Streaming】"></a>【structured Streaming】</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">--memory sink<br>CREATE TABLE db_spark.tb_word_count (<br>  id int NOT NULL AUTO_INCREMENT,<br>  word varchar(255) NOT NULL,<br>  count int NOT NULL,<br>  PRIMARY KEY (id),<br>  UNIQUE KEY word (word)<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;<br><br>REPLACE INTO  tb_word_count (id, word, count) VALUES (NULL, ?, ?);<br></code></pre></td></tr></table></figure>
+
+<h3 id="【spark-yarn-Pi】"><a href="#【spark-yarn-Pi】" class="headerlink" title="【spark yarn Pi】"></a>【spark yarn Pi】</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">/<span class="hljs-built_in">export</span>/server/spark/bin/spark-submit \<br>--master yarn \<br>--class org.apache.spark.examples.SparkPi \<br><span class="hljs-variable">$&#123;SPARK_HOME&#125;</span>/examples/jars/spark-examples_2.11-2.4.5.jar \<br>10<br></code></pre></td></tr></table></figure>
+
+<h3 id="【WordCount-yarn】"><a href="#【WordCount-yarn】" class="headerlink" title="【WordCount yarn】"></a>【WordCount yarn】</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">/<span class="hljs-built_in">export</span>/server/spark/bin/spark-submit \<br>--master yarn \<br>--driver-memory 512m \<br>--executor-memory 512m \<br>--executor-cores 1 \<br>--num-executors 2 \<br>--queue default \<br>--class cn.itcast.spark._2SparkWordCount \<br>/opt/spark-chapter01-1.0-SNAPSHOT.jar<br></code></pre></td></tr></table></figure>
+
+<h3 id="【Spark-submit】"><a href="#【Spark-submit】" class="headerlink" title="【Spark-submit】"></a>【Spark-submit】</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs bash">【 Run application <span class="hljs-built_in">local</span> on 8 cores】<br>/<span class="hljs-built_in">export</span>/server/spark/bin/spark-submit \<br>  --class org.apache.spark.examples.SparkPi \<br>  --master <span class="hljs-built_in">local</span>[8] \<br><span class="hljs-variable">$&#123;SPARK_HOME&#125;</span>/examples/jars/spark-examples_2.11-2.4.5.jar \<br>  100<br><br><span class="hljs-comment"># Run on a Spark standalone cluster in client deploy mode</span><br>./bin/spark-submit \<br>  --class org.apache.spark.examples.SparkPi \<br>  --master spark://207.184.161.138:7077 \<br>  --executor-memory 20G \<br>  --total-executor-cores 100 \<br><span class="hljs-variable">$&#123;SPARK_HOME&#125;</span>/examples/jars/spark-examples_2.11-2.4.5.jar \<br>  1000<br><br><span class="hljs-comment"># Run on a Spark standalone cluster in cluster deploy mode with supervise</span><br>./bin/spark-submit \<br>  --class org.apache.spark.examples.SparkPi \<br>  --master spark://207.184.161.138:7077 \<br>  --deploy-mode cluster \<br>  --supervise \<br>  --executor-memory 20G \<br>  --total-executor-cores 100 \<br>  /path/to/examples.jar \<br>  1000<br><br><span class="hljs-comment"># Run on a YARN cluster</span><br><span class="hljs-built_in">export</span> HADOOP_CONF_DIR=XXX<br>./bin/spark-submit \<br>  --class org.apache.spark.examples.SparkPi \<br>  --master yarn \<br>  --deploy-mode cluster \  <span class="hljs-comment"># can be client for client mode</span><br>  --executor-memory 20G \<br>  --num-executors 50 \<br>  /path/to/examples.jar \<br>  1000<br><br><span class="hljs-comment"># Run a Python application on a Spark standalone cluster</span><br>./bin/spark-submit \<br>  --master spark://207.184.161.138:7077 \<br>  examples/src/main/python/pi.py \<br>  1000<br><br><span class="hljs-comment"># Run on a Mesos cluster in cluster deploy mode with supervise</span><br>./bin/spark-submit \<br>  --class org.apache.spark.examples.SparkPi \<br>  --master mesos://207.184.161.138:7077 \<br>  --deploy-mode cluster \<br>  --supervise \<br>  --executor-memory 20G \<br>  --total-executor-cores 100 \<br>  http://path/to/examples.jar \<br>  1000<br><br><span class="hljs-comment"># Run on a Kubernetes cluster in cluster deploy mode</span><br>./bin/spark-submit \<br>  --class org.apache.spark.examples.SparkPi \<br>  --master k8s://xx.yy.zz.ww:443 \<br>  --deploy-mode cluster \<br>  --executor-memory 20G \<br>  --num-executors 50 \<br>  http://path/to/examples.jar \<br>  1000<br></code></pre></td></tr></table></figure>
+
+<h2 id="Sqoop"><a href="#Sqoop" class="headerlink" title="Sqoop"></a>Sqoop</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">sqoop import \<br>-D mapred.job.name=sqoop_import_dd_table  \<br>--connect <span class="hljs-string">&quot;jdbc:mysql://192.168.88.163:3306/insurance&quot;</span>  \<br>--username root  \<br>--password <span class="hljs-string">&quot;123456&quot;</span>  \<br>--table dd_table  \<br>--hive-import  \<br>--hive-database insurance  \<br>--hive-table dd_table  \<br>--hive-overwrite  \<br>-m 1  \<br>--fields-terminated-by <span class="hljs-string">&#x27;,&#x27;</span> \<br>--delete-target-dir<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86/">常用知识</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Hive/">Hive</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Kafka/">Kafka</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Spark/">Spark</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Sqoop/">Sqoop</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/24/first_post/">
+                        <span class="hidden-mobile">我的第一篇博客</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
