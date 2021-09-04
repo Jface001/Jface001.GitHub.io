@@ -18,7 +18,7 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-  <title>多表连接过滤条件在 on 和 where 的区别 - </title>
+  <title>Hive自动化建库建表 - </title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="多表连接过滤条件在 on 和 where 的区别">
+            <span class="h2" id="subtitle" title="Hive自动化建库建表">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-05-24 15:27" pubdate>
-        2020年5月24日 下午
+      <time datetime="2020-09-12 19:56" pubdate>
+        2020年9月12日 晚上
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      437 字
+      411 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      7
        分钟
     </span>
   
@@ -225,38 +225,12 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">多表连接过滤条件在 on 和 where 的区别</h1>
+            <h1 style="display: none">Hive自动化建库建表</h1>
             
             <div class="markdown-body">
-              <h3 id="前言介绍"><a href="#前言介绍" class="headerlink" title="前言介绍"></a>前言介绍</h3><p>最近项目中的小坑，记录一下。</p>
-<h3 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> student<br>(<br>    sid   <span class="hljs-type">int</span> <span class="hljs-keyword">primary</span> key  <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> ,<br>    cid   <span class="hljs-type">int</span>         <span class="hljs-keyword">null</span>,<br>    t_sex <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">null</span><br>)<br>    comment <span class="hljs-string">&#x27;学生表&#x27;</span>;<br><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> t_score<br>(<br>    sid    <span class="hljs-type">int</span>         <span class="hljs-keyword">null</span>,<br>    course <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">null</span>,<br>    score  <span class="hljs-type">int</span>         <span class="hljs-keyword">null</span><br>)<br>    comment <span class="hljs-string">&#x27;成绩表&#x27;</span>;<br><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test.student <span class="hljs-keyword">values</span><br>(<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;李白&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>),<br>(<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;杜甫&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>),<br>(<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;白居易&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>),<br>(<span class="hljs-number">4</span>,<span class="hljs-string">&#x27;苏轼&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>),<br>(<span class="hljs-number">5</span>,<span class="hljs-string">&#x27;李清照&#x27;</span>,<span class="hljs-string">&#x27;女&#x27;</span>),<br>(<span class="hljs-number">7</span>,<span class="hljs-string">&#x27;谢道韫&#x27;</span>,<span class="hljs-string">&#x27;女&#x27;</span>),<br>(<span class="hljs-number">8</span>,<span class="hljs-string">&#x27;郭奉孝&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>);<br><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test.t_score <span class="hljs-keyword">values</span><br>(<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-number">90</span>),<br>(<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-number">50</span>),<br>(<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-number">99</span>),<br>(<span class="hljs-number">4</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-keyword">null</span>),<br>(<span class="hljs-number">5</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-keyword">null</span>),<br>(<span class="hljs-number">6</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-keyword">null</span>),<br>(<span class="hljs-number">7</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-keyword">null</span>),<br>(<span class="hljs-number">8</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-keyword">null</span>);<br><br></code></pre></td></tr></table></figure>
-
-<h3 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h3><ul>
-<li>在 on 后面</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 内关联 条件放在 on 和 where 没有区别</span><br><span class="hljs-comment">-- 非空判断放在 on 和 where没有区别，成绩表有只有3个人的成绩，只有3个结果</span><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> student s<br><span class="hljs-keyword">join</span> t_score ts <span class="hljs-keyword">on</span> s.sid <span class="hljs-operator">=</span> ts.sid<br><span class="hljs-keyword">where</span> ts.score <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> ;<br></code></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/09/03/JIUxdHebiaFhlBz.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
-<ul>
-<li>在 where后面</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> student s<br><span class="hljs-keyword">join</span> t_score ts<br><span class="hljs-keyword">where</span> s.sid<span class="hljs-operator">=</span>ts.sid <span class="hljs-keyword">and</span> ts.score <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> ;<br></code></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/09/03/tkaNXALl8FzIiYT.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
-<h3 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h3><ul>
-<li>在 on 后面</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 外连接结果有非常大的区别</span><br><span class="hljs-comment">-- 写在 on 条件上,有7个结果</span><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> student s<br><span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> t_score ts <span class="hljs-keyword">on</span> s.sid <span class="hljs-operator">=</span> ts.sid  <span class="hljs-keyword">and</span>  ts.score <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> ;<br><br></code></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/09/03/AIrX7xsPdEaqUty.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
-<ul>
-<li>在 where 后面</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 写在 where 条件上,只有3个结果</span><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> student s<br><span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> t_score ts <span class="hljs-keyword">on</span> s.sid <span class="hljs-operator">=</span> ts.sid<br><span class="hljs-keyword">where</span> ts.score <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> ;<br></code></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/09/03/u4tXn2UqxcTOp1z.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
-<h3 id="原因解析"><a href="#原因解析" class="headerlink" title="原因解析"></a>原因解析</h3><p>left join 的时候全部保留左边表格的内容，并保留右边表格能匹配上条件的内容<br>on 后面的就是连接条件，无论写什么只会对右边起效，不影响左表内容<br>where 后面的条件是对全局起效，就表关联之后的结果做筛选。</p>
-
+              <h3 id="前言说明"><a href="#前言说明" class="headerlink" title="前言说明"></a>前言说明</h3><p>项目数仓数据源太多，于是自己写了一个工具类，读取数据集元数据，自动建库建表</p>
+<p>以 MySQL 为例，代码如下。</p>
+<h3 id="HiveUtil"><a href="#HiveUtil" class="headerlink" title="HiveUtil"></a>HiveUtil</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><code class="hljs java">object HiveUtil &#123;<br>  <span class="hljs-function">def <span class="hljs-title">main</span><span class="hljs-params">(args: Array[String])</span>: Unit </span>= &#123;<br>    createHiveTable()<br>  &#125;<br><br>  <span class="hljs-function">def <span class="hljs-title">createHiveTable</span><span class="hljs-params">()</span> </span>= &#123;<br>    <span class="hljs-comment">//连接MySQL，读取MySQL表名有哪些字段，字段类型，字段的注释</span><br>    val table_arr = Array(<br>      <span class="hljs-string">&quot;area&quot;</span>,<br>      <span class="hljs-string">&quot;claim_info&quot;</span>,<br>      <span class="hljs-string">&quot;dd_table&quot;</span>,<br>      <span class="hljs-string">&quot;mort_10_13&quot;</span>,<br>      <span class="hljs-string">&quot;policy_acuary&quot;</span>,<br>      <span class="hljs-string">&quot;policy_benefit&quot;</span>,<br>      <span class="hljs-string">&quot;policy_client&quot;</span>,<br>      <span class="hljs-string">&quot;policy_surrender&quot;</span>,<br>      <span class="hljs-string">&quot;pre_add_exp_ratio&quot;</span>,<br>      <span class="hljs-string">&quot;prem_cv_real&quot;</span>,<br>      <span class="hljs-string">&quot;prem_std_real&quot;</span>)<br><br>    val conn = DriverManager.getConnection(<span class="hljs-string">&quot;jdbc:mysql://node3:3306/insurance&quot;</span>, <span class="hljs-string">&quot;root&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>)<br>    val ps: PreparedStatement = conn.prepareStatement(<br>      s<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">         |SELECT</span><br><span class="hljs-string">         |       COLUMN_NAME,</span><br><span class="hljs-string">         |       COLUMN_TYPE,</span><br><span class="hljs-string">         |       COLUMN_COMMENT</span><br><span class="hljs-string">         |FROM information_schema.COLUMNS</span><br><span class="hljs-string">         |WHERE upper(TABLE_NAME)  = upper(?)</span><br><span class="hljs-string">         |  and upper(TABLE_SCHEMA)=upper(?)</span><br><span class="hljs-string">         |order by ORDINAL_POSITION</span><br><span class="hljs-string">         |&quot;</span><span class="hljs-string">&quot;&quot;</span>.stripMargin)<br>    <span class="hljs-keyword">var</span> rs: ResultSet = <span class="hljs-function"><span class="hljs-keyword">null</span></span><br><span class="hljs-function">    <span class="hljs-title">for</span> <span class="hljs-params">(tablename &lt;- table_arr)</span> </span>&#123;<br>      ps.setString(<span class="hljs-number">1</span>,tablename)<br>      ps.setString(<span class="hljs-number">2</span>,<span class="hljs-string">&quot;insurance&quot;</span>)<br>      rs = ps.executeQuery()<br>      <span class="hljs-keyword">var</span> str =<br>        s<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">           |drop table if exists $&#123;tablename&#125;;</span><br><span class="hljs-string">           |create table if not exists $&#123;tablename&#125; (\n&quot;</span><span class="hljs-string">&quot;&quot;</span>.<span class="hljs-function">stripMargin</span><br><span class="hljs-function">      <span class="hljs-title">while</span> <span class="hljs-params">(rs.next()</span>) </span>&#123;<br>        val column_name: String = rs.getString(<span class="hljs-number">1</span>)<br>        val column_type: String = rs.getString(<span class="hljs-number">2</span>)<br>        val column_comment: String = rs.getString(<span class="hljs-number">3</span>)<br>        <span class="hljs-keyword">var</span> temp_type = <span class="hljs-function">column_type</span><br><span class="hljs-function">        <span class="hljs-title">if</span> <span class="hljs-params">(temp_type.contains(<span class="hljs-string">&quot;int&quot;</span>)</span>) </span>&#123;<br>          <span class="hljs-comment">//30000-&gt;int(5)-&gt;smallint</span><br>          <span class="hljs-comment">//300000000-&gt;int(5-16)-&gt;int</span><br>          <span class="hljs-comment">//3000000000000000000-&gt;int(16-32)-&gt;bigint</span><br>          val <span class="hljs-keyword">int</span>: Int = <span class="hljs-string">&quot;int(11)&quot;</span>.split(<span class="hljs-string">&quot;\\(|\\)&quot;</span>)(<span class="hljs-number">1</span>).<span class="hljs-function">toInt</span><br><span class="hljs-function">          <span class="hljs-title">if</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> &gt; <span class="hljs-number">0</span> &amp;&amp; <span class="hljs-keyword">int</span> &lt;= <span class="hljs-number">5</span>)</span> </span>&#123;<br>            temp_type = <span class="hljs-string">&quot;smallint&quot;</span><br>          &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">int</span> &gt; <span class="hljs-number">5</span> &amp;&amp; <span class="hljs-keyword">int</span> &lt;= <span class="hljs-number">16</span>) &#123;<br>            temp_type = <span class="hljs-string">&quot;int&quot;</span><br>          &#125; <span class="hljs-keyword">else</span> &#123;<br>            temp_type = <span class="hljs-string">&quot;bigint&quot;</span><br>          &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(temp_type.contains(<span class="hljs-string">&quot;varchar&quot;</span>) || temp_type.contains(<span class="hljs-string">&quot;text&quot;</span>))&#123;<br>          temp_type=<span class="hljs-string">&quot;string&quot;</span><br>        &#125;<br>        <span class="hljs-comment">//println(column_name,column_type,column_comment)</span><br>        str += s<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;$&#123;column_name&#125;   $&#123;temp_type&#125;  comment &#x27;$&#123;column_comment&#125;&#x27;,\n&quot;</span><span class="hljs-string">&quot;&quot;</span><br>      &#125;<br>      str = str.stripSuffix(<span class="hljs-string">&quot;,\n&quot;</span>)<br>      str += <span class="hljs-string">&quot;) comment &#x27;&#x27; \n row format delimited fields terminated by &#x27;\\t&#x27; ; \n&quot;</span><br>      println(str)<br>    &#125;<br><br>    rs.close()<br>    ps.close()<br>    conn.close()<br>    <span class="hljs-comment">//解析上面的元数据，拼接成hive版的ddl语句</span><br>  &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -265,7 +239,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Debug%E8%AE%B0%E5%BD%95/">Debug记录</a>
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a>
                     
                   </div>
                 
@@ -273,9 +247,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/SQL/">SQL</a>
-                    
-                      <a class="hover-with-bg" href="/tags/MySQL/">MySQL</a>
+                      <a class="hover-with-bg" href="/tags/Hive/">Hive</a>
                     
                   </div>
                 
@@ -292,18 +264,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/12/Sqoop%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%AA%8C%E8%AF%81/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Sqoop自动化抽取数据与验证</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/05/13/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-                        <span class="hidden-mobile">大数据常用命令</span>
+                      <a href="/2020/09/12/Sqoop%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%AA%8C%E8%AF%81/">
+                        <span class="hidden-mobile">Sqoop自动化抽取数据与验证</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

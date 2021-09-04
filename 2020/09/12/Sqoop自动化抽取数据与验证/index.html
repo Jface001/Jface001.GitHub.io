@@ -18,7 +18,7 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-  <title>多表连接过滤条件在 on 和 where 的区别 - </title>
+  <title>Sqoop自动化抽取数据与验证 - </title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="多表连接过滤条件在 on 和 where 的区别">
+            <span class="h2" id="subtitle" title="Sqoop自动化抽取数据与验证">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-05-24 15:27" pubdate>
-        2020年5月24日 下午
+      <time datetime="2020-09-12 17:27" pubdate>
+        2020年9月12日 下午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      437 字
+      623 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      9
        分钟
     </span>
   
@@ -225,38 +225,20 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">多表连接过滤条件在 on 和 where 的区别</h1>
+            <h1 style="display: none">Sqoop自动化抽取数据与验证</h1>
             
             <div class="markdown-body">
-              <h3 id="前言介绍"><a href="#前言介绍" class="headerlink" title="前言介绍"></a>前言介绍</h3><p>最近项目中的小坑，记录一下。</p>
-<h3 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> student<br>(<br>    sid   <span class="hljs-type">int</span> <span class="hljs-keyword">primary</span> key  <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> ,<br>    cid   <span class="hljs-type">int</span>         <span class="hljs-keyword">null</span>,<br>    t_sex <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">null</span><br>)<br>    comment <span class="hljs-string">&#x27;学生表&#x27;</span>;<br><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> t_score<br>(<br>    sid    <span class="hljs-type">int</span>         <span class="hljs-keyword">null</span>,<br>    course <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">null</span>,<br>    score  <span class="hljs-type">int</span>         <span class="hljs-keyword">null</span><br>)<br>    comment <span class="hljs-string">&#x27;成绩表&#x27;</span>;<br><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test.student <span class="hljs-keyword">values</span><br>(<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;李白&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>),<br>(<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;杜甫&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>),<br>(<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;白居易&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>),<br>(<span class="hljs-number">4</span>,<span class="hljs-string">&#x27;苏轼&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>),<br>(<span class="hljs-number">5</span>,<span class="hljs-string">&#x27;李清照&#x27;</span>,<span class="hljs-string">&#x27;女&#x27;</span>),<br>(<span class="hljs-number">7</span>,<span class="hljs-string">&#x27;谢道韫&#x27;</span>,<span class="hljs-string">&#x27;女&#x27;</span>),<br>(<span class="hljs-number">8</span>,<span class="hljs-string">&#x27;郭奉孝&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>);<br><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test.t_score <span class="hljs-keyword">values</span><br>(<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-number">90</span>),<br>(<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-number">50</span>),<br>(<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-number">99</span>),<br>(<span class="hljs-number">4</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-keyword">null</span>),<br>(<span class="hljs-number">5</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-keyword">null</span>),<br>(<span class="hljs-number">6</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-keyword">null</span>),<br>(<span class="hljs-number">7</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-keyword">null</span>),<br>(<span class="hljs-number">8</span>,<span class="hljs-string">&#x27;语文&#x27;</span>,<span class="hljs-keyword">null</span>);<br><br></code></pre></td></tr></table></figure>
+              <h3 id="前言说明"><a href="#前言说明" class="headerlink" title="前言说明"></a>前言说明</h3><p>最近项目业务数据源多种多样，用 Sqoop 抽取数据到数仓是一个体力活，底层又是基于 MapReduce 执行的，速度感人，关键是还得做数据校验</p>
+<p>于是想着自己写个工具类，和自动建表建库类似，自动读取数据源表和字段信息，创建对应脚本，扔到 DolphinScheduler 上自动跑就完事。</p>
+<h3 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h3><p>1. 自定义工具类，读取 MySQL 中 information_schema 库下的 TABLES 表 获取同名的表</p>
+<p>2. 获取到表名的容器，然后按照固定格式以文本形式写到 HDFS上文件夹上</p>
+<p>3. 脚本内容需要做数据校验并将校验结果，并且加上并行执行符号</p>
+<p>4. DolphinScheduler 上新建工作流，定期执行脚本文件</p>
+<h3 id="Sqoop-数据抽取脚本"><a href="#Sqoop-数据抽取脚本" class="headerlink" title="Sqoop 数据抽取脚本"></a>Sqoop 数据抽取脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SQOOP_HOME=/<span class="hljs-built_in">export</span>/server/sqoop-1.4.7.bin_hadoop-2.6.0<br><span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop import \<br>--connect jdbc:mysql://192.168.88.163:3306/insurance \<br>--username root \<br>--password 123456 \<br>--table dd_table \<br>--hive-table insurance_ods.dd_table \<br>--hive-import \<br>--hive-overwrite \<br>--fields-terminated-by <span class="hljs-string">&#x27;\t&#x27;</span> \<br>--delete-target-dir \<br>-m 1<br><br></code></pre></td></tr></table></figure>
 
-<h3 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h3><ul>
-<li>在 on 后面</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 内关联 条件放在 on 和 where 没有区别</span><br><span class="hljs-comment">-- 非空判断放在 on 和 where没有区别，成绩表有只有3个人的成绩，只有3个结果</span><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> student s<br><span class="hljs-keyword">join</span> t_score ts <span class="hljs-keyword">on</span> s.sid <span class="hljs-operator">=</span> ts.sid<br><span class="hljs-keyword">where</span> ts.score <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> ;<br></code></pre></td></tr></table></figure>
+<h3 id="Sqoop-抽取数据-数据验证"><a href="#Sqoop-抽取数据-数据验证" class="headerlink" title="Sqoop 抽取数据+数据验证"></a>Sqoop 抽取数据+数据验证</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SQOOP_HOME=/<span class="hljs-built_in">export</span>/server/sqoop-1.4.7.bin_hadoop-2.6.0<br><span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop import \<br>--connect jdbc:mysql://192.168.88.163:3306/insurance \<br>--username root \<br>--password 123456 \<br>--table dd_table \<br>--hive-table insurance_ods.dd_table \<br>--hive-import \<br>--hive-overwrite \<br>--fields-terminated-by <span class="hljs-string">&#x27;\t&#x27;</span> \<br>--delete-target-dir \<br>-m 1<br><br><span class="hljs-comment">#1、查询MySQL的表dd_table的条数</span><br>mysql_log=`<span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop <span class="hljs-built_in">eval</span> \<br>--connect jdbc:mysql://192.168.88.163:3306/insurance \<br>--username root \<br>--password 123456 \<br>--query <span class="hljs-string">&quot;select count(1) from dd_table&quot;</span><br>`<br>mysql_cnt=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$mysql_log</span> | awk -F<span class="hljs-string">&#x27;|&#x27;</span> &#123;<span class="hljs-string">&#x27;print $4&#x27;</span>&#125; | awk &#123;<span class="hljs-string">&#x27;print $1&#x27;</span>&#125;`<br><span class="hljs-comment">#2、查询hive的表dd_table的条数</span><br>hive_log=`hive -e <span class="hljs-string">&quot;select count(1) from insurance_ods.dd_table&quot;</span>`<br><br><span class="hljs-comment">#3、比较2边的数字是否一样。</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$mysql_cnt</span> -eq <span class="hljs-variable">$hive_log</span> ] ; <span class="hljs-keyword">then</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;mysql表的数据量=<span class="hljs-variable">$mysql_cnt</span>,hive表的数据量=<span class="hljs-variable">$hive_log</span>,是相等的&quot;</span><br><span class="hljs-keyword">else</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;mysql表的数据量=<span class="hljs-variable">$mysql_cnt</span>,hive表的数据量=<span class="hljs-variable">$hive_log</span>,不是相等的&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2021/09/03/JIUxdHebiaFhlBz.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
-<ul>
-<li>在 where后面</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> student s<br><span class="hljs-keyword">join</span> t_score ts<br><span class="hljs-keyword">where</span> s.sid<span class="hljs-operator">=</span>ts.sid <span class="hljs-keyword">and</span> ts.score <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> ;<br></code></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/09/03/tkaNXALl8FzIiYT.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
-<h3 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h3><ul>
-<li>在 on 后面</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 外连接结果有非常大的区别</span><br><span class="hljs-comment">-- 写在 on 条件上,有7个结果</span><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> student s<br><span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> t_score ts <span class="hljs-keyword">on</span> s.sid <span class="hljs-operator">=</span> ts.sid  <span class="hljs-keyword">and</span>  ts.score <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> ;<br><br></code></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/09/03/AIrX7xsPdEaqUty.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
-<ul>
-<li>在 where 后面</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 写在 where 条件上,只有3个结果</span><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> student s<br><span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> t_score ts <span class="hljs-keyword">on</span> s.sid <span class="hljs-operator">=</span> ts.sid<br><span class="hljs-keyword">where</span> ts.score <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> ;<br></code></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/09/03/u4tXn2UqxcTOp1z.png" srcset="/img/loading.gif" lazyload alt="Untitled"></p>
-<h3 id="原因解析"><a href="#原因解析" class="headerlink" title="原因解析"></a>原因解析</h3><p>left join 的时候全部保留左边表格的内容，并保留右边表格能匹配上条件的内容<br>on 后面的就是连接条件，无论写什么只会对右边起效，不影响左表内容<br>where 后面的条件是对全局起效，就表关联之后的结果做筛选。</p>
-
+<h3 id="SqoopUtil"><a href="#SqoopUtil" class="headerlink" title="SqoopUtil"></a>SqoopUtil</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs sql">object SqoopUtil &#123;<br>  def main(args: <span class="hljs-keyword">Array</span>[String]): Unit <span class="hljs-operator">=</span> &#123;<br>    createHiveTable()<br>  &#125;<br><br>  def createHiveTable() <span class="hljs-operator">=</span> &#123;<br>    <span class="hljs-operator">/</span><span class="hljs-operator">/</span>连接MySQL，读取MySQL表名有哪些字段，字段类型，字段的注释<br>    val table_arr <span class="hljs-operator">=</span> <span class="hljs-keyword">Array</span>(<br>      &quot;area&quot;,<br>      &quot;policy_acuary&quot;,<br>      &quot;policy_benefit&quot;,<br>      &quot;policy_client&quot;,<br>      &quot;policy_surrender&quot;,<br>    <span class="hljs-keyword">for</span> (tablename <span class="hljs-operator">&lt;</span><span class="hljs-operator">-</span> table_arr) &#123;<br>      <span class="hljs-operator">/</span><span class="hljs-operator">/</span>var str <span class="hljs-operator">=</span><br>      <span class="hljs-operator">/</span><span class="hljs-operator">/</span>  s&quot;&quot;&quot;/export/server/sqoop/bin/sqoop import  --connect jdbc:mysql://192.168.88.163:3306/insurance  --username root  --password 123456  --table $&#123;tablename&#125;  --hive-table insurance_ods.$&#123;tablename&#125;  --hive-import  --hive-overwrite  --fields-terminated-by &#x27;\\t&#x27;  -m 1 \n&quot;&quot;&quot;.stripMargin<br>      var str1 <span class="hljs-operator">=</span><br>        s&quot;&quot;&quot;/export/server/sqoop/bin/sqoop import  \\<br>           |--connect jdbc:m1ysql://192.168.88.163:3306/insurance  \\<br>           |--username root  \\<br>           |--password 123456  \\<br>           |--table $&#123;tablename&#125;  \\<br>           |--hive-table insurance_ods.$&#123;tablename&#125;  \\<br>           |--hive-import  \\<br>           |--hive-overwrite  \\<br>           |--fields-terminated-by &#x27;\\t&#x27;  \\<br>           |-m 1&quot;&quot;&quot;.stripMargin<br>      println(str1)<br>    &#125;<br><br>  &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -265,7 +247,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Debug%E8%AE%B0%E5%BD%95/">Debug记录</a>
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a>
                     
                   </div>
                 
@@ -273,9 +255,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/SQL/">SQL</a>
+                      <a class="hover-with-bg" href="/tags/Hive/">Hive</a>
                     
-                      <a class="hover-with-bg" href="/tags/MySQL/">MySQL</a>
+                      <a class="hover-with-bg" href="/tags/Sqoop/">Sqoop</a>
                     
                   </div>
                 
@@ -292,9 +274,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/12/Sqoop%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%AA%8C%E8%AF%81/">
+                      <a href="/2020/09/12/Hive%E8%87%AA%E5%8A%A8%E5%8C%96%E5%BB%BA%E5%BA%93%E5%BB%BA%E8%A1%A8/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Sqoop自动化抽取数据与验证</span>
+                        <span class="hidden-mobile">Hive自动化建库建表</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -302,8 +284,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/05/13/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-                        <span class="hidden-mobile">大数据常用命令</span>
+                      <a href="/2020/05/24/%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6%E5%9C%A8%20on%20%E5%92%8C%20where%20%E7%9A%84%E5%8C%BA%E5%88%AB/">
+                        <span class="hidden-mobile">多表连接过滤条件在 on 和 where 的区别</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

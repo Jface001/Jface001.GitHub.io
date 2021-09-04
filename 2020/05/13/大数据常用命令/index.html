@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-03 23:27" pubdate>
-        2020年9月3日 晚上
+      <time datetime="2020-05-13 21:35" pubdate>
+        2020年5月13日 晚上
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      1.3k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20
+      22
        分钟
     </span>
   
@@ -228,7 +228,7 @@
             <h1 style="display: none">大数据常用命令</h1>
             
             <div class="markdown-body">
-              <h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 全局组件启动与停止</span><br>start-all.sh<br>stop-all.sh<br><br><span class="hljs-comment"># HDFS 启动与停止</span><br>start-dfs.sh<br>stop-dfs.sh<br><br><span class="hljs-comment"># Yarn 启动与停止</span><br>start-yarn.sh<br>stop-yarn.sh<br><br><span class="hljs-comment"># MR 历史 job记录，端口号 19888</span><br>mr-jobhistory-daemon.sh start historyserver<br><br></code></pre></td></tr></table></figure>
+              <h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 全局组件启动与停止</span><br>start-all.sh<br>stop-all.sh<br><br><span class="hljs-comment"># HDFS 启动与停止</span><br>start-dfs.sh<br>stop-dfs.sh<br><br><span class="hljs-comment"># Yarn 启动与停止</span><br>start-yarn.sh<br>stop-yarn.sh<br><br><span class="hljs-comment"># HDFS 单个启动</span><br>hadoop-daemon.sh start namenode <br><br><span class="hljs-comment"># HDFS 多个启动</span><br>hadoop-daemons.sh start datanode<br><br><span class="hljs-comment"># Yarn 单个启动</span><br>yarn-daemon.sh start resourcemanager <br><br><span class="hljs-comment"># Yarn 多个启动</span><br>yarn-daemons.sh start nodemanager<br><br><span class="hljs-comment"># MR 历史 job记录，端口号 19888</span><br>mr-jobhistory-daemon.sh start historyserver<br><br></code></pre></td></tr></table></figure>
 
 <h2 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动Hive 的元数据服务</span><br>nohup /<span class="hljs-built_in">export</span>/server/hive-2.1.0/bin/hive --service metastore   &amp;<br><br><span class="hljs-comment"># 启动Hive 客户端服务</span><br>nohup /<span class="hljs-built_in">export</span>/server/hive-2.1.0/bin/hiveserver2 start &amp;<br><br><span class="hljs-comment"># hive元数据初始化和更新</span><br>schematool -dbType mysql -initSchema<br>schematool -dbType mysql -upgradeSchema<br></code></pre></td></tr></table></figure>
 
@@ -260,6 +260,16 @@
 
 <h2 id="Sqoop数据抽取和数据验证"><a href="#Sqoop数据抽取和数据验证" class="headerlink" title="Sqoop数据抽取和数据验证"></a>Sqoop数据抽取和数据验证</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SQOOP_HOME=/<span class="hljs-built_in">export</span>/server/sqoop-1.4.7.bin_hadoop-2.6.0<br><span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop import \<br>--connect jdbc:mysql://192.168.88.163:3306/insurance \<br>--username root \<br>--password 123456 \<br>--table dd_table \<br>--hive-table insurance_ods.dd_table \<br>--hive-import \<br>--hive-overwrite \<br>--fields-terminated-by <span class="hljs-string">&#x27;\t&#x27;</span> \<br>--delete-target-dir \<br>-m 1<br><br><span class="hljs-comment">#1、查询MySQL的表dd_table的条数</span><br>mysql_log=`<span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop <span class="hljs-built_in">eval</span> \<br>--connect jdbc:mysql://192.168.88.163:3306/insurance \<br>--username root \<br>--password 123456 \<br>--query <span class="hljs-string">&quot;select count(1) from dd_table&quot;</span><br>`<br>mysql_cnt=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$mysql_log</span> | awk -F<span class="hljs-string">&#x27;|&#x27;</span> &#123;<span class="hljs-string">&#x27;print $4&#x27;</span>&#125; | awk &#123;<span class="hljs-string">&#x27;print $1&#x27;</span>&#125;`<br><span class="hljs-comment">#2、查询hive的表dd_table的条数</span><br>hive_log=`hive -e <span class="hljs-string">&quot;select count(1) from insurance_ods.dd_table&quot;</span>`<br><br><span class="hljs-comment">#3、比较2边的数字是否一样。</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$mysql_cnt</span> -eq <span class="hljs-variable">$hive_log</span> ] ; <span class="hljs-keyword">then</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;mysql表的数据量=<span class="hljs-variable">$mysql_cnt</span>,hive表的数据量=<span class="hljs-variable">$hive_log</span>,是相等的&quot;</span><br><span class="hljs-keyword">else</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;mysql表的数据量=<span class="hljs-variable">$mysql_cnt</span>,hive表的数据量=<span class="hljs-variable">$hive_log</span>,不是相等的&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
 
+<h2 id="FLink"><a href="#FLink" class="headerlink" title="FLink"></a>FLink</h2><h3 id="Flink-on-Yarn"><a href="#Flink-on-Yarn" class="headerlink" title="Flink on Yarn"></a>Flink on Yarn</h3><ul>
+<li>Session 模式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 先创建 Session 会话， d 表示后台运行，s 表示每个 jm 的 slot 个数</span><br>flink/bin/yarn-session.sh -d -jm 1024 -tm 1024 -s 2<br><br><span class="hljs-comment"># 提交任务</span><br>flink/bin/flink run /<span class="hljs-built_in">export</span>/server/flink/examples/batch/WordCount.jar \<br>--input hdfs://node1.test.cn:8020/wordcount/input<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Job 分离模式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 直接提交任务，m 表示 jm 的地址,环境变量需要提前配置</span><br>/<span class="hljs-built_in">export</span>/server/flink/bin/flink run \<br>-m yarn-cluster -yjm 1024 -ytm 1024 \<br>/<span class="hljs-built_in">export</span>/server/flink/examples/batch/WordCount.jar \<br>--input hdfs://node1.test.cn:8020/wordcount/input<br></code></pre></td></tr></table></figure>
+
 <h2 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h2><h3 id="markdown代码折叠"><a href="#markdown代码折叠" class="headerlink" title="markdown代码折叠"></a>markdown代码折叠</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span></span>点击查看完整代码<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 
 <h3 id="免秘钥登录"><a href="#免秘钥登录" class="headerlink" title="免秘钥登录"></a>免秘钥登录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa<br>ssh-copy-id node1<br>scp /root/.ssh/authorized_keys node2:/root/.ssh<br>scp /root/.ssh/authorized_keys node3:/root/.ssh<br></code></pre></td></tr></table></figure>
@@ -281,11 +291,11 @@
                     
                       <a class="hover-with-bg" href="/tags/Hive/">Hive</a>
                     
+                      <a class="hover-with-bg" href="/tags/Sqoop/">Sqoop</a>
+                    
                       <a class="hover-with-bg" href="/tags/Kafka/">Kafka</a>
                     
                       <a class="hover-with-bg" href="/tags/Spark/">Spark</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Sqoop/">Sqoop</a>
                     
                   </div>
                 
@@ -302,12 +312,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2020/05/24/%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6%E5%9C%A8%20on%20%E5%92%8C%20where%20%E7%9A%84%E5%8C%BA%E5%88%AB/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">多表连接过滤条件在 on 和 where 的区别</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/05/24/%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6%E5%9C%A8%20on%20%E5%92%8C%20where%20%E7%9A%84%E5%8C%BA%E5%88%AB/">
-                        <span class="hidden-mobile">多表连接过滤条件在 on 和 where 的区别</span>
+                      <a href="/2020/04/27/first_post/">
+                        <span class="hidden-mobile">我的第一篇博客</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

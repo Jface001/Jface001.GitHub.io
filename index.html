@@ -182,19 +182,20 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/09/03/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_self">
-          大数据常用命令
+        <a href="/2020/09/12/Hive%E8%87%AA%E5%8A%A8%E5%8C%96%E5%BB%BA%E5%BA%93%E5%BB%BA%E8%A1%A8/" target="_self">
+          Hive自动化建库建表
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/09/03/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_self">
+        <a href="/2020/09/12/Hive%E8%87%AA%E5%8A%A8%E5%8C%96%E5%BB%BA%E5%BA%93%E5%BB%BA%E8%A1%A8/" target="_self">
           
           
             
           
-          Hadoop123456789101112131415# 全局组件启动与停止start-all.shstop-all.sh# HDFS 启动与停止start-dfs.shstop-dfs.sh# Yarn 启动与停止start-yarn.shstop-yarn.sh# MR 历史 job记录，端口号 19888mr-jobhistory-daemon.sh start historyserver
-
+          前言说明项目数仓数据源太多，于是自己写了一个工具类，读取数据集元数据，自动建库建表
+以 MySQL 为例，代码如下。
+HiveUtil1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071
         </a>
       </p>
 
@@ -202,8 +203,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-03 23:27" pubdate>
-              2020-09-03
+            <time datetime="2020-09-12 19:56" pubdate>
+              2020-09-12
             </time>
           </div>
         
@@ -211,7 +212,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%AD%98%E6%A1%A3/">存档</a>
+              <a href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a>
             
           </div>
         
@@ -221,9 +222,57 @@
             
               <a href="/tags/Hive/">Hive</a>
             
-              <a href="/tags/Kafka/">Kafka</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/12/Sqoop%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%AA%8C%E8%AF%81/" target="_self">
+          Sqoop自动化抽取数据与验证
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/12/Sqoop%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%AA%8C%E8%AF%81/" target="_self">
+          
+          
             
-              <a href="/tags/Spark/">Spark</a>
+          
+          前言说明最近项目业务数据源多种多样，用 Sqoop 抽取数据到数仓是一个体力活，底层又是基于 MapReduce 执行的，速度感人，关键是还得做数据校验
+于是想着自己写个工具类，和自动建表建库类似，自动读取数据源表和字段信息，创建对应脚本，扔到 DolphinScheduler 上自动跑就完事。
+基本步骤1. 自定义工具类，读取 MySQL 中 information_schema 库下的 TAB
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-12 17:27" pubdate>
+              2020-09-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hive/">Hive</a>
             
               <a href="/tags/Sqoop/">Sqoop</a>
             
@@ -292,13 +341,69 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/24/first_post/" target="_self">
+        <a href="/2020/05/13/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_self">
+          大数据常用命令
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/05/13/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_self">
+          
+          
+            
+          
+          Hadoop123456789101112131415161718192021222324252627# 全局组件启动与停止start-all.shstop-all.sh# HDFS 启动与停止start-dfs.shstop-dfs.sh# Yarn 启动与停止start-yarn.shstop-yarn.sh# HDFS 单个启动hadoop-daemon.sh start namenode 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-13 21:35" pubdate>
+              2020-05-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%98%E6%A1%A3/">存档</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hive/">Hive</a>
+            
+              <a href="/tags/Sqoop/">Sqoop</a>
+            
+              <a href="/tags/Kafka/">Kafka</a>
+            
+              <a href="/tags/Spark/">Spark</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/04/27/first_post/" target="_self">
           我的第一篇博客
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/24/first_post/" target="_self">
+        <a href="/2020/04/27/first_post/" target="_self">
           
           
             
@@ -312,8 +417,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-01-24 23:27" pubdate>
-              2020-01-24
+            <time datetime="2020-04-27 22:45" pubdate>
+              2020-04-27
             </time>
           </div>
         
