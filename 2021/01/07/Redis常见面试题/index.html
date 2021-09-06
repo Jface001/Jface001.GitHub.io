@@ -18,7 +18,7 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-  <title>Hive自动化建库建表 - </title>
+  <title>Redis常见面试题 - </title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hive自动化建库建表">
+            <span class="h2" id="subtitle" title="Redis常见面试题">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-12 19:56" pubdate>
-        2020年9月12日 晚上
+      <time datetime="2021-01-07 00:16" pubdate>
+        2021年1月7日 凌晨
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      414 字
+      1.1k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      11
        分钟
     </span>
   
@@ -225,12 +225,32 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hive自动化建库建表</h1>
+            <h1 style="display: none">Redis常见面试题</h1>
             
             <div class="markdown-body">
-              <h3 id="前言说明"><a href="#前言说明" class="headerlink" title="前言说明"></a>前言说明</h3><p>项目数仓数据源太多，于是自己写了一个工具类，读取数据源的元数据信息，自动建库建表</p>
-<p>以 MySQL 为例，代码如下。</p>
-<h3 id="HiveUtil"><a href="#HiveUtil" class="headerlink" title="HiveUtil"></a>HiveUtil</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><code class="hljs java">object HiveUtil &#123;<br>  <span class="hljs-function">def <span class="hljs-title">main</span><span class="hljs-params">(args: Array[String])</span>: Unit </span>= &#123;<br>    createHiveTable()<br>  &#125;<br><br>  <span class="hljs-function">def <span class="hljs-title">createHiveTable</span><span class="hljs-params">()</span> </span>= &#123;<br>    <span class="hljs-comment">//连接MySQL，读取MySQL表名有哪些字段，字段类型，字段的注释</span><br>    val table_arr = Array(<br>      <span class="hljs-string">&quot;area&quot;</span>,<br>      <span class="hljs-string">&quot;claim_info&quot;</span>,<br>      <span class="hljs-string">&quot;dd_table&quot;</span>,<br>      <span class="hljs-string">&quot;mort_10_13&quot;</span>,<br>      <span class="hljs-string">&quot;policy_acuary&quot;</span>,<br>      <span class="hljs-string">&quot;policy_benefit&quot;</span>,<br>      <span class="hljs-string">&quot;policy_client&quot;</span>,<br>      <span class="hljs-string">&quot;policy_surrender&quot;</span>,<br>      <span class="hljs-string">&quot;pre_add_exp_ratio&quot;</span>,<br>      <span class="hljs-string">&quot;prem_cv_real&quot;</span>,<br>      <span class="hljs-string">&quot;prem_std_real&quot;</span>)<br><br>    val conn = DriverManager.getConnection(<span class="hljs-string">&quot;jdbc:mysql://node3:3306/insurance&quot;</span>, <span class="hljs-string">&quot;root&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>)<br>    val ps: PreparedStatement = conn.prepareStatement(<br>      s<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">         |SELECT</span><br><span class="hljs-string">         |       COLUMN_NAME,</span><br><span class="hljs-string">         |       COLUMN_TYPE,</span><br><span class="hljs-string">         |       COLUMN_COMMENT</span><br><span class="hljs-string">         |FROM information_schema.COLUMNS</span><br><span class="hljs-string">         |WHERE upper(TABLE_NAME)  = upper(?)</span><br><span class="hljs-string">         |  and upper(TABLE_SCHEMA)=upper(?)</span><br><span class="hljs-string">         |order by ORDINAL_POSITION</span><br><span class="hljs-string">         |&quot;</span><span class="hljs-string">&quot;&quot;</span>.stripMargin)<br>    <span class="hljs-keyword">var</span> rs: ResultSet = <span class="hljs-function"><span class="hljs-keyword">null</span></span><br><span class="hljs-function">    <span class="hljs-title">for</span> <span class="hljs-params">(tablename &lt;- table_arr)</span> </span>&#123;<br>      ps.setString(<span class="hljs-number">1</span>,tablename)<br>      ps.setString(<span class="hljs-number">2</span>,<span class="hljs-string">&quot;insurance&quot;</span>)<br>      rs = ps.executeQuery()<br>      <span class="hljs-keyword">var</span> str =<br>        s<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">           |drop table if exists $&#123;tablename&#125;;</span><br><span class="hljs-string">           |create table if not exists $&#123;tablename&#125; (\n&quot;</span><span class="hljs-string">&quot;&quot;</span>.<span class="hljs-function">stripMargin</span><br><span class="hljs-function">      <span class="hljs-title">while</span> <span class="hljs-params">(rs.next()</span>) </span>&#123;<br>        val column_name: String = rs.getString(<span class="hljs-number">1</span>)<br>        val column_type: String = rs.getString(<span class="hljs-number">2</span>)<br>        val column_comment: String = rs.getString(<span class="hljs-number">3</span>)<br>        <span class="hljs-keyword">var</span> temp_type = <span class="hljs-function">column_type</span><br><span class="hljs-function">        <span class="hljs-title">if</span> <span class="hljs-params">(temp_type.contains(<span class="hljs-string">&quot;int&quot;</span>)</span>) </span>&#123;<br>          <span class="hljs-comment">//30000-&gt;int(5)-&gt;smallint</span><br>          <span class="hljs-comment">//300000000-&gt;int(5-16)-&gt;int</span><br>          <span class="hljs-comment">//3000000000000000000-&gt;int(16-32)-&gt;bigint</span><br>          val <span class="hljs-keyword">int</span>: Int = <span class="hljs-string">&quot;int(11)&quot;</span>.split(<span class="hljs-string">&quot;\\(|\\)&quot;</span>)(<span class="hljs-number">1</span>).<span class="hljs-function">toInt</span><br><span class="hljs-function">          <span class="hljs-title">if</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> &gt; <span class="hljs-number">0</span> &amp;&amp; <span class="hljs-keyword">int</span> &lt;= <span class="hljs-number">5</span>)</span> </span>&#123;<br>            temp_type = <span class="hljs-string">&quot;smallint&quot;</span><br>          &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">int</span> &gt; <span class="hljs-number">5</span> &amp;&amp; <span class="hljs-keyword">int</span> &lt;= <span class="hljs-number">16</span>) &#123;<br>            temp_type = <span class="hljs-string">&quot;int&quot;</span><br>          &#125; <span class="hljs-keyword">else</span> &#123;<br>            temp_type = <span class="hljs-string">&quot;bigint&quot;</span><br>          &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(temp_type.contains(<span class="hljs-string">&quot;varchar&quot;</span>) || temp_type.contains(<span class="hljs-string">&quot;text&quot;</span>))&#123;<br>          temp_type=<span class="hljs-string">&quot;string&quot;</span><br>        &#125;<br>        <span class="hljs-comment">//println(column_name,column_type,column_comment)</span><br>        str += s<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;$&#123;column_name&#125;   $&#123;temp_type&#125;  comment &#x27;$&#123;column_comment&#125;&#x27;,\n&quot;</span><span class="hljs-string">&quot;&quot;</span><br>      &#125;<br>      str = str.stripSuffix(<span class="hljs-string">&quot;,\n&quot;</span>)<br>      str += <span class="hljs-string">&quot;) comment &#x27;&#x27; \n row format delimited fields terminated by &#x27;\\t&#x27; ; \n&quot;</span><br>      println(str)<br>    &#125;<br><br>    rs.close()<br>    ps.close()<br>    conn.close()<br>    <span class="hljs-comment">//解析上面的元数据，拼接成hive版的ddl语句</span><br>  &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+              <h2 id="前言说明"><a href="#前言说明" class="headerlink" title="前言说明"></a>前言说明</h2><p>学习和整理 Redis 相关的知识当中，这里汇总了一下经常被问到的 Redis 面试题</p>
+<p>Redis 的八股无外乎这三个：缓存穿透、缓存击穿、缓存雪崩。</p>
+<h1 id="分片集群问题"><a href="#分片集群问题" class="headerlink" title="分片集群问题"></a>分片集群问题</h1><h3 id="1-Redis的多数据机制了解多少"><a href="#1-Redis的多数据机制了解多少" class="headerlink" title="1.Redis的多数据机制了解多少"></a>1.Redis的多数据机制了解多少</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>Redis支持多个数据库,单机模式下有从db0到db15, 数据库之间不能共享<br><span class="hljs-number">2.</span>分片集群中只有一个数据库空间,不会使用到Redis的多数据库<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-懂Redis的批量操作吗"><a href="#2-懂Redis的批量操作吗" class="headerlink" title="2.懂Redis的批量操作吗"></a>2.懂Redis的批量操作吗</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>有mget,mset,hmget,hmset,hgetall,hvals,<br><span class="hljs-number">2.</span>分片集群中, 不同的key会分到不同的slot中, 不能直接使用mget,mset<br>如何解决: 加上相同的前缀,用大括号&#123;&#125;包裹<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-Redis的集群机制中-你觉得有什么不足的地方吗"><a href="#3-Redis的集群机制中-你觉得有什么不足的地方吗" class="headerlink" title="3.Redis的集群机制中, 你觉得有什么不足的地方吗?"></a>3.Redis的集群机制中, 你觉得有什么不足的地方吗?</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>如果<span class="hljs-keyword">value</span>是hash类型, 对象非常大, 即对应属性非常多, 也只能存入一个集群的节点中<br><span class="hljs-number">2.</span>批量操作也很麻烦, 属性太多写得很长<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-在Redis集群模式下-如何进行批量操作"><a href="#4-在Redis集群模式下-如何进行批量操作" class="headerlink" title="4.在Redis集群模式下, 如何进行批量操作?"></a>4.在Redis集群模式下, 如何进行批量操作?</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>如何执行的key数量很少, 串行<span class="hljs-keyword">get</span>操作<br><span class="hljs-number">2.</span>如果一定要批量操作, 加上相同的前缀,前缀用&#123;&#125;包裹<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-5-什么是Redis的事务"><a href="#4-5-什么是Redis的事务" class="headerlink" title="4.5 什么是Redis的事务"></a>4.5 什么是Redis的事务</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>Redis事务是一些命令的集合, 执行的时候是串行执行<br><span class="hljs-number">2.</span>分片集群中,不同的key可能会被分到不同的slot中, Redis的事务不生效<br><span class="hljs-number">3.</span>Redis的事务不支持回滚操作, 基本用不上.<br></code></pre></td></tr></table></figure>
+
+<h1 id="其它问题"><a href="#其它问题" class="headerlink" title="其它问题"></a>其它问题</h1><h3 id="5-什么是缓存穿透-如何解决"><a href="#5-什么是缓存穿透-如何解决" class="headerlink" title="5.什么是缓存穿透,如何解决"></a>5.什么是缓存穿透,如何解决</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql">现象：<br>客户端高并发不断向Redis请求一个不存在的Key，MySQL中也没有<br>由于Redis没有，导致这个并发全部落在MySQL上<br><br>解决<br><span class="hljs-number">1.</span>对于那些每秒访问频次过高的IP进行限制，拒绝访问<br><span class="hljs-number">2.</span>如果第一次redis中没有，读MYSQL，MySQL也没有，在Redis中设置一个<span class="hljs-operator">=</span><span class="hljs-operator">=</span>临时<span class="hljs-operator">=</span><span class="hljs-operator">=</span>默认值<br><span class="hljs-number">3.</span>利用BitMap类型构建布隆过滤器<span class="hljs-operator">*</span><span class="hljs-operator">*</span>(只保证MySQL数据库没有这个数据, 不保证一定有)<span class="hljs-operator">*</span><span class="hljs-operator">*</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="6-什么是缓存击穿-如何解决"><a href="#6-什么是缓存击穿-如何解决" class="headerlink" title="6.什么是缓存击穿,如何解决"></a>6.什么是缓存击穿,如何解决</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql">现象：<br>有一个Key，经常需要高并发的访问，这个Key有过期时间的，一旦达到过期时间<span class="hljs-operator">=</span><span class="hljs-operator">=</span>，这个Key被删除，所有高并发落到了MySQL中，被击穿了<br><br>解决<br><span class="hljs-number">1.</span>资源充足的情况下，设置永不过期<br><span class="hljs-number">2.</span>对这个Key做一个互斥锁，只允许一个请求去读取，其他的所有请求先阻塞掉<br>	第一个请求redis中没有读取到，读了MySQL，再将这个数据放到Redis中<br>	释放所有阻塞的请求<br></code></pre></td></tr></table></figure>
+
+<h3 id="7-什么是缓存雪崩-如何解决"><a href="#7-什么是缓存雪崩-如何解决" class="headerlink" title="7.什么是缓存雪崩 ,如何解决"></a>7.什么是缓存雪崩 ,如何解决</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql">现象：<br>大量的Key在同一个时间段过期，大量的Key的请求在Redis中都没有，都去请求MySQL，导致MySQL奔溃<br><br>解决<br><span class="hljs-number">1.</span>资源充足允许的情况下，设置大部分的Key不过期<br><span class="hljs-number">2.</span>给所有Key设置过期时间时加上随机值，让Key不再同一时间过期<br></code></pre></td></tr></table></figure>
+
+<h3 id="8-Redis中的Key如何设计"><a href="#8-Redis中的Key如何设计" class="headerlink" title="8.Redis中的Key如何设计?"></a>8.Redis中的Key如何设计?</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>使用统一的命名规范<br><span class="hljs-number">2.</span>一般使用业务名(或数据库名)为前缀，用冒号分隔，例如，业务名:表名:id。<br>例如：shop:usr:msg_code（电商:用户:验证码）<br><span class="hljs-number">4.</span>控制key名称的长度，不要使用过长的key<br><span class="hljs-number">5.</span>在保证语义清晰的情况下，尽量减少Key的长度。有些常用单词可使用缩写，例如，<span class="hljs-keyword">user</span>缩写为u，messages缩写为msg<br><span class="hljs-number">6.</span>名称中不要包含特殊字符、包含空格、单双引号以及其他转义字符<br></code></pre></td></tr></table></figure>
+
+<h3 id="9-为什么Redis是单线程的"><a href="#9-为什么Redis是单线程的" class="headerlink" title="9.为什么Redis是单线程的?"></a>9.为什么Redis是单线程的?</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>因为Redis是基于内存的操作，CPU不是Redis的瓶颈<br><span class="hljs-number">2.</span>Redis的瓶颈最有可能是机器内存的大小或者网络带宽<br><span class="hljs-number">3.</span>单线程容易实现，而且CPU不会成为瓶颈，所以没必要使用多线程增加复杂度<br><span class="hljs-number">4.</span>可以使用多Redis压榨CPU，提高性能<br></code></pre></td></tr></table></figure>
+
+<h3 id="10-为什么Redis的性能很高"><a href="#10-为什么Redis的性能很高" class="headerlink" title="10.为什么Redis的性能很高?"></a>10.为什么Redis的性能很高?</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>基于内存操作, 快<br><span class="hljs-number">2.</span>用C语言编写, 数据结构简单, 对数据操作也简单<br><span class="hljs-number">3.</span>采用单线程, 避免不必要的线程切换和资源抢占<br><span class="hljs-number">4.</span>IO多路复用模型, 非阻塞IO<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -239,7 +259,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a>
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">面试准备</a>
                     
                   </div>
                 
@@ -247,7 +267,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Hive/">Hive</a>
+                      <a class="hover-with-bg" href="/tags/Redis/">Redis</a>
                     
                   </div>
                 
@@ -264,18 +284,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/22/Spark-Review-Day01/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Apache Spark：分布式并行计算框架（一）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/12/Sqoop%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%AA%8C%E8%AF%81/">
-                        <span class="hidden-mobile">Sqoop自动化抽取数据与验证</span>
+                      <a href="/2020/12/06/WordCount%E6%A1%88%E4%BE%8B%E6%B1%87%E6%80%BB%20/">
+                        <span class="hidden-mobile">WordCount案例汇总</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
