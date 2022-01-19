@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Apache Spark：分布式并行计算框架（三）"><meta name="keywords" content="Spark"><meta name="author" content="惊羽"><meta name="copyright" content="惊羽"><title>Apache Spark：分布式并行计算框架（三） | 惊羽的博客</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '5.4.0'
+} </script><meta name="generator" content="Hexo 5.4.0"></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spark-on-Hive"><span class="toc-number">1.</span> <span class="toc-text">Spark on Hive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spark-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">Spark 内存管理</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.jpg"></div><div class="author-info__name text-center">惊羽</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">19</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">15</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">7</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/post/spark.svg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">惊羽的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/about">About</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">Apache Spark：分布式并行计算框架（三）</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-10-03</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Spark/">Spark</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="Spark-on-Hive"><a href="#Spark-on-Hive" class="headerlink" title="Spark on Hive"></a>Spark on Hive</h2><blockquote>
+<p>面试题：<code>spark on hive和hive on spark</code>区别？？？？</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/09/09/ZIij3s9rePu7VOM.png" alt="1630310212506"></p>
+<blockquote>
+<p>典型<strong>基于Spark和Hive离线数仓</strong>架构技术图，简易版本：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1、SparkSQL分析数据</span><br><span class="line">2、Hive 管理元数据</span><br><span class="line">		|</span><br><span class="line">	Spark on Hive 架构，离线数据仓库分析</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/09/09/GYA4PBNx5oZV8aT.png" alt="1630309369960"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SparkSQL与Hive集成，本质就是Spark Application应用程序，读取加载HiveMetaStore元数据。</span><br><span class="line">	database数据库</span><br><span class="line">	table表</span><br><span class="line">	字段</span><br><span class="line">	分区</span><br><span class="line">	.....</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>​        Spark Thrift Server将Spark Applicaiton当做一个服务运行，提供Beeline客户端和JDBC方式访问，与Hive中<strong>HiveServer2</strong>服务一样的</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/09/09/S6XtOoECMzY91Fq.png" alt="1630310389289"></p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line">1、启动MySQL数据库</span><br><span class="line">	存储Hive 元数据MetaStore</span><br><span class="line"></span><br><span class="line">2、启动HiveMetaStore服务</span><br><span class="line">	提供提供元数据服务，读取到Hive中管理元数据信息</span><br><span class="line">	</span><br><span class="line">3、启动HDFS文件系统</span><br><span class="line">	Hive表中数据存储在HDFS服务</span><br><span class="line">	</span><br><span class="line">4、启动Spark Thrift JDBC/ODBC server</span><br><span class="line">	将Spark Application当做服务启动，通过JDBC或ODBC方式连接，也可以beeline 命令行连接</span><br><span class="line">	编写DDL和DML语句，操作管理数据</span><br><span class="line">	与Hive集成，启动服务时，让其连接到HiveMetaStore服务</span><br><span class="line">		在SPARK_HOME/conf创建hive-site.xml文件，添加Hive MetaStore地址信息即可。</span><br><span class="line"></span><br><span class="line">&lt;?xml <span class="attr">version</span>=<span class="string">&quot;1.0&quot;</span>?&gt;</span><br><span class="line">&lt;?xml-stylesheet <span class="attr">type</span>=<span class="string">&quot;text/xsl&quot;</span> href=<span class="string">&quot;configuration.xsl&quot;</span>?&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hive.metastore.uris&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;thrift://node1:9083&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br><span class="line"></span><br><span class="line">	启动服务</span><br><span class="line">/export/server/spark/sbin/start-thriftserver.sh \</span><br><span class="line">--hiveconf <span class="attr">hive.server2.thrift.port</span>=<span class="number">10000</span> \</span><br><span class="line">--hiveconf <span class="attr">hive.server2.thrift.bind.host</span>=node1 \</span><br><span class="line">--master local<span class="section">[2]</span> \</span><br><span class="line">--conf <span class="attr">spark.sql.shuffle.partitions</span>=<span class="number">2</span> \</span><br><span class="line">--conf <span class="attr">spark.serializer</span>=org.apache.spark.serializer.KryoSerializer</span><br><span class="line"></span><br><span class="line">5、beeline客户端连接</span><br><span class="line">/export/server/spark/bin/beeline</span><br><span class="line">beeline&gt; !connect jdbc:hive2://node1:10000</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Spark-内存管理"><a href="#Spark-内存管理" class="headerlink" title="Spark 内存管理"></a>Spark 内存管理</h2><blockquote>
+<p>知识点：Spark Application运行架构</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/09/09/jKbPa9UTdv3VS7r.png" alt="Spark cluster components"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1、Driver Program</span><br><span class="line">	创建SparkContext实例对象</span><br><span class="line">	申请资源运行Executor、调度Job执行</span><br><span class="line"></span><br><span class="line">2、Executors</span><br><span class="line">	相当于线程池，里面执行Task任务（以线程方式运行），每个Task任务运行需要1CoreCPU</span><br><span class="line">	执行Task任务、缓存RDD数据</span><br><span class="line">	</span><br><span class="line">	每个Executor资源：内存Memeory、CPUCore核数 -&gt; 执行Task任务</span><br><span class="line">		内存Memory主要被用于2个部分：</span><br><span class="line">			Task任务执行时，需要内存</span><br><span class="line">			Cache缓存数据，需要内存</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/09/09/FoNEep87UHqLACx.png" alt="1631180184608"></p>
+<blockquote>
+<p>在运行Spark Application时，需要设置如下三个参数：</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/09/09/4BqXng9zNCmsMx1.png" alt="1631180387861"></p>
+<blockquote>
+<p>Executor内存管理，从发展来说，经历2个阶段：</p>
+</blockquote>
+<ul>
+<li>1）、Spark 1.6之前，==内存管理【静态内存管理】==<ul>
+<li>直接将内存划分比例，存储Storage内存占比多少和执行Execution内存占比多少，固定死了</li>
+<li>此种内存管理，存在不合理，比如内存浪费</li>
+</ul>
+</li>
+<li>2）、Spark 1.6开始，提供：==统一内存管理（动态内存管理）==，到Spark 2.0时，仅仅支持此种管理方案<ul>
+<li>约定：Storage存储和Execution执行内存占比，默认各占50%</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/09/eQTLtw7WhAFbiUn.png" alt="1630315362244"></p>
+<ul>
+<li>动态彼此相互借用<ul>
+<li>如果Storage存储内存不足，但是Execution内存多余，可以借用存储数据，反之亦然</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/09/nQbt9yAMRCfdjT4.png" alt="1630315328271"></p>
+<blockquote>
+<p>Executor内存划分，包含四个部分，如下图所示：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1、预留内存：300MB</span><br><span class="line">	JVM进程自己使用，不允许用户使用</span><br><span class="line">	</span><br><span class="line">2、可用内存（UsableMemory）</span><br><span class="line">	UsableMemory =  --executor-memory    -    300MB</span><br><span class="line">	1）、UserMemory 用户内存</span><br><span class="line">		可用内存占比：(1 - spark.memory.fraction) = 0.4</span><br><span class="line">	</span><br><span class="line">	可用内存占比： spark.memory.fraction = 0.6</span><br><span class="line">	2）、存储内存</span><br><span class="line">		spark.memory.storageFraction = 0.5</span><br><span class="line">	3）、执行内存</span><br><span class="line">		1- spark.memory.storageFraction = 0.5</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/09/09/JP8fBFtXqz2srjL.png" alt="1630309139547"></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">惊羽</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/10/03/Spark-Review-Day03/">http://example.com/2020/10/03/Spark-Review-Day03/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com">惊羽的博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Spark/">Spark</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/10/10/%E6%9B%B4%E5%A5%BD%E7%9A%84%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/"><i class="fa fa-chevron-left">  </i><span>更好的日志框架：logback</span></a></div><div class="next-post pull-right"><a href="/2020/09/28/Spark-Review-Day02/"><span>Apache Spark：分布式并行计算框架（二）</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: 'fd4471bb76ba37363dfe',
+  clientSecret: '945ad45c695de45f4f9ee79068049e1f6ccf5f04',
+  repo: 'GitalkRepo',
+  owner: 'Jface001',
+  admin: 'Jface001',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(/img/post/spark.svg)"><div class="layout" id="footer"><div class="copyright">&copy;2020 - 2022 By 惊羽</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
