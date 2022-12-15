@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.svg">
+  <link rel="icon" href="/img/icon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -22,16 +22,18 @@
 <meta property="og:url" content="https://jface001.github.io/2022/02/09/SQLBoy%E6%97%A5%E5%B8%B8%E5%B7%A5%E4%BD%9C%E5%B0%8F%E6%8A%80%E5%B7%A7/index.html">
 <meta property="og:site_name" content="惊羽的博客">
 <meta property="og:description" content="入职新工作三周了，虽然还处理 SQLBoy 阶段，但是学习到了非常多小技巧，有必要记录一下，持续更新，避免遗忘。  规范需求记录，脚本备份，文档归类，代码片段，数字字典 封装公共参数和大数据脚本执行参数到脚本当中，执行脚本只需要引入变量 每一种 SQL 脚本方式封装一个方法，固定脚本执行格式 SQL 中空值和 null 同时过滤：字段 &gt; ‘’ 历史数据回溯，通过封装脚本传参调用执行脚本进行">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-09T15:08:23.000Z">
 <meta property="article:modified_time" content="2022-04-10T06:01:20.926Z">
 <meta property="article:author" content="惊羽">
 <meta property="article:tag" content="Hive">
 <meta property="article:tag" content="Shell">
-<meta property="article:tag" content="Spark">
 <meta property="article:tag" content="SQL">
+<meta property="article:tag" content="Spark">
 <meta name="twitter:card" content="summary_large_image">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>SQLBoy日常工作技巧 - 惊羽的博客</title>
@@ -118,7 +120,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Startseite</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -130,7 +132,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Archiv</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -142,7 +144,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Kategorien</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -154,7 +156,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Schlagwörter</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -166,7 +168,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>Über</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -212,7 +214,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2022-02-09 23:08" pubdate>
-          February 9, 2022 pm
+          2022年2月9日 晚上
         </time>
       </span>
     
@@ -223,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          394 wörter
+          394 字
         
       </span>
     
@@ -234,7 +236,7 @@
         
         
         
-          4 minuten
+          4 分钟
         
       </span>
     
@@ -332,9 +334,9 @@
       
         <a href="/tags/Shell/">#Shell</a>
       
-        <a href="/tags/Spark/">#Spark</a>
-      
         <a href="/tags/SQL/">#SQL</a>
+      
+        <a href="/tags/Spark/">#Spark</a>
       
     </div>
   
@@ -352,26 +354,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Beitragsautor</div>
+          <div>作者</div>
           <div>惊羽</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Veröffentlicht am</div>
-          <div>February 9, 2022</div>
+          <div>发布于</div>
+          <div>2022年2月9日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -394,7 +396,7 @@
                       <a href="/2022/04/10/%E9%AB%98%E6%95%88%E5%B9%B4%E8%BD%BB%E4%BA%BA%E7%9A%847%E4%B8%AA%E5%8A%9E%E5%85%AC%E4%B9%A0%E6%83%AF/" title="高效年轻人的7个办公习惯">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">高效年轻人的7个办公习惯</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -403,7 +405,7 @@
                     
                       <a href="/2022/01/20/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/" title="开发环境准备">
                         <span class="hidden-mobile">开发环境准备</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -424,7 +426,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Inhaltsverzeichnis</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -480,7 +482,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -488,7 +490,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -508,6 +510,30 @@
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -655,6 +681,8 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -667,7 +695,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

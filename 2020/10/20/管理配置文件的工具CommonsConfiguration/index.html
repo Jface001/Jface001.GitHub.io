@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.svg">
+  <link rel="icon" href="/img/icon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -22,14 +22,16 @@
 <meta property="og:url" content="https://jface001.github.io/2020/10/20/%E7%AE%A1%E7%90%86%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%B7%A5%E5%85%B7CommonsConfiguration/index.html">
 <meta property="og:site_name" content="惊羽的博客">
 <meta property="og:description" content="一般读取配置文件，或者说集群环境传参的方式有如下几种： 1、Main 程序留出参数入口，通过 args 接收参数，运行 jar 的时候传入参数 2、将配置文件放入 resources ，通过类加载器获取参数文件，或者创建专门工具类读取resources 中的配置文件信息 这两种方法各有优缺点，第一种虽然修改参数非常方便，但是当需要指定的参数较多时会繁琐； 第二种方式将配置文件一起打成 jar 包，">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-19T17:01:12.000Z">
 <meta property="article:modified_time" content="2022-02-09T15:14:03.816Z">
 <meta property="article:author" content="惊羽">
-<meta property="article:tag" content="Flink">
 <meta property="article:tag" content="Java">
+<meta property="article:tag" content="Flink">
 <meta name="twitter:card" content="summary_large_image">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>管理配置文件的工具：Commons Configuration - 惊羽的博客</title>
@@ -116,7 +118,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Startseite</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -128,7 +130,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Archiv</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -140,7 +142,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Kategorien</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -152,7 +154,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Schlagwörter</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -164,7 +166,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>Über</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -210,7 +212,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2020-10-20 01:01" pubdate>
-          October 20, 2020 am
+          2020年10月20日 凌晨
         </time>
       </span>
     
@@ -221,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k wörter
+          2k 字
         
       </span>
     
@@ -232,7 +234,7 @@
         
         
         
-          18 minuten
+          17 分钟
         
       </span>
     
@@ -295,11 +297,58 @@
 <li>Servlet parameters</li>
 </ul>
 <p>官网：<a target="_blank" rel="noopener" href="https://commons.apache.org/proper/commons-configuration/">https://commons.apache.org/proper/commons-configuration/</a> </p>
-<h3 id="Maven-依赖"><a href="#Maven-依赖" class="headerlink" title="Maven 依赖"></a>Maven 依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.commons<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-configuration2<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>commons-beanutils<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-beanutils<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.9.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="Maven-依赖"><a href="#Maven-依赖" class="headerlink" title="Maven 依赖"></a>Maven 依赖</h3><div class="code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.commons<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-configuration2<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>commons-beanutils<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-beanutils<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.9.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span></code></pre></div>
 
-<h3 id="新建-test-propertis-文件"><a href="#新建-test-propertis-文件" class="headerlink" title="新建 test.propertis 文件"></a>新建 test.propertis 文件</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment">### common configuration start</span><br><span class="hljs-attr">database.host</span> = db.acme.com<br><span class="hljs-attr">database.port</span> = <span class="hljs-number">8199</span><br><span class="hljs-attr">database.user</span> = admin<br><span class="hljs-attr">database.password</span> = ???<br><span class="hljs-attr">database.timeout</span> = <span class="hljs-number">60000</span><br><span class="hljs-comment">###common configuration end</span><br></code></pre></td></tr></table></figure>
+<h3 id="新建-test-propertis-文件"><a href="#新建-test-propertis-文件" class="headerlink" title="新建 test.propertis 文件"></a>新建 test.propertis 文件</h3><div class="code-wrapper"><pre><code class="hljs ini"><span class="hljs-comment">### common configuration start</span>
+<span class="hljs-attr">database.host</span> = db.acme.com
+<span class="hljs-attr">database.port</span> = <span class="hljs-number">8199</span>
+<span class="hljs-attr">database.user</span> = admin
+<span class="hljs-attr">database.password</span> = ???
+<span class="hljs-attr">database.timeout</span> = <span class="hljs-number">60000</span>
+<span class="hljs-comment">###common configuration end</span></code></pre></div>
 
-<h3 id="读取测试"><a href="#读取测试" class="headerlink" title="读取测试"></a>读取测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.test;<br><br><span class="hljs-keyword">import</span> org.apache.commons.configuration2.Configuration;<br><span class="hljs-keyword">import</span> org.apache.commons.configuration2.builder.fluent.Configurations;<br><span class="hljs-keyword">import</span> org.apache.commons.configuration2.ex.ConfigurationException;<br><br><span class="hljs-keyword">import</span> java.io.File;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Author</span>: Jface</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Desc</span>: 测试 Commons Configuration 的使用</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PropertiesFile</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-comment">//1.初始化配置文件</span><br>        Configurations configs = <span class="hljs-keyword">new</span> Configurations();<br>        Configuration config = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-comment">//2.读取配置文件内容</span><br>        <span class="hljs-keyword">try</span> &#123;<br>            config = configs.properties(<span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;commons_configuration/src/main/resources/test.properties&quot;</span>));<br><br>        &#125; <span class="hljs-keyword">catch</span> (ConfigurationException cex) &#123;<br>            cex.printStackTrace();<br>        &#125;<br><br>        <span class="hljs-comment">//2.获取使用配置文件信息,打印测试</span><br>        System.out.println(config.getString(<span class="hljs-string">&quot;database.host&quot;</span>));<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="读取测试"><a href="#读取测试" class="headerlink" title="读取测试"></a>读取测试</h3><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.test;
+
+<span class="hljs-keyword">import</span> org.apache.commons.configuration2.Configuration;
+<span class="hljs-keyword">import</span> org.apache.commons.configuration2.builder.fluent.Configurations;
+<span class="hljs-keyword">import</span> org.apache.commons.configuration2.ex.ConfigurationException;
+
+<span class="hljs-keyword">import</span> java.io.File;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Author</span>: Jface</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Desc</span>: 测试 Commons Configuration 的使用</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PropertiesFile</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        <span class="hljs-comment">//1.初始化配置文件</span>
+        Configurations configs = <span class="hljs-keyword">new</span> Configurations();
+        Configuration config = <span class="hljs-keyword">null</span>;
+        <span class="hljs-comment">//2.读取配置文件内容</span>
+        <span class="hljs-keyword">try</span> &#123;
+            config = configs.properties(<span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;commons_configuration/src/main/resources/test.properties&quot;</span>));
+
+        &#125; <span class="hljs-keyword">catch</span> (ConfigurationException cex) &#123;
+            cex.printStackTrace();
+        &#125;
+
+        <span class="hljs-comment">//2.获取使用配置文件信息,打印测试</span>
+        System.out.println(config.getString(<span class="hljs-string">&quot;database.host&quot;</span>));
+
+    &#125;
+&#125;</code></pre></div>
 
 <p>参考资料</p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/625e833c1a49">https://www.jianshu.com/p/625e833c1a49</a> </p>
@@ -337,9 +386,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Flink/">#Flink</a>
-      
         <a href="/tags/Java/">#Java</a>
+      
+        <a href="/tags/Flink/">#Flink</a>
       
     </div>
   
@@ -357,26 +406,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Beitragsautor</div>
+          <div>作者</div>
           <div>惊羽</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Veröffentlicht am</div>
-          <div>October 20, 2020</div>
+          <div>发布于</div>
+          <div>2020年10月20日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -399,7 +448,7 @@
                       <a href="/2020/11/06/WordCount%E6%A1%88%E4%BE%8B%E6%B1%87%E6%80%BB/" title="WordCount案例汇总">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">WordCount案例汇总</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -408,7 +457,7 @@
                     
                       <a href="/2020/10/10/%E6%9B%B4%E5%A5%BD%E7%9A%84%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/" title="更好的日志框架：logback">
                         <span class="hidden-mobile">更好的日志框架：logback</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -429,7 +478,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Inhaltsverzeichnis</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -485,7 +534,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -493,7 +542,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -513,6 +562,30 @@
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -660,6 +733,8 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -672,7 +747,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

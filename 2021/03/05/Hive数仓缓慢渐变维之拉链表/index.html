@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.svg">
+  <link rel="icon" href="/img/icon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -16,13 +16,13 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-    <meta name="description" content="缓慢渐变维主要是为了解决, 是否需要在数仓中维护历史变化的数据操作 注意：如果不维护一个数据的历史变化信息, 那么在进行数仓分析的时候, 是有可能对未来分析的结果产生影响 实现缓慢维的3种方式 123456789101112131415**SCD1**对于历史变化的数据, 是进行维护操作, 直接进行覆盖即可此种操作仅适合于对于错误数据处理**SCD2(拉链表)--常用**对原有表, 增加两个新的字">
+    <meta name="description" content="缓慢渐变维主要是为了解决, 是否需要在数仓中维护历史变化的数据操作 注意：如果不维护一个数据的历史变化信息, 那么在进行数仓分析的时候, 是有可能对未来分析的结果产生影响 实现缓慢维的3种方式 **SCD1** 对于历史变化的数据, 是进行维护操作, 直接进行覆盖即可 此种操作仅适合于对于错误数据处理  **SCD2(拉链表)--常用** 对原有表, 增加两个新的字段, 一个是起始的时间字段,一个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hive数仓缓慢渐变维之拉链表">
 <meta property="og:url" content="https://jface001.github.io/2021/03/05/Hive%E6%95%B0%E4%BB%93%E7%BC%93%E6%85%A2%E6%B8%90%E5%8F%98%E7%BB%B4%E4%B9%8B%E6%8B%89%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="惊羽的博客">
-<meta property="og:description" content="缓慢渐变维主要是为了解决, 是否需要在数仓中维护历史变化的数据操作 注意：如果不维护一个数据的历史变化信息, 那么在进行数仓分析的时候, 是有可能对未来分析的结果产生影响 实现缓慢维的3种方式 123456789101112131415**SCD1**对于历史变化的数据, 是进行维护操作, 直接进行覆盖即可此种操作仅适合于对于错误数据处理**SCD2(拉链表)--常用**对原有表, 增加两个新的字">
-<meta property="og:locale">
+<meta property="og:description" content="缓慢渐变维主要是为了解决, 是否需要在数仓中维护历史变化的数据操作 注意：如果不维护一个数据的历史变化信息, 那么在进行数仓分析的时候, 是有可能对未来分析的结果产生影响 实现缓慢维的3种方式 **SCD1** 对于历史变化的数据, 是进行维护操作, 直接进行覆盖即可 此种操作仅适合于对于错误数据处理  **SCD2(拉链表)--常用** 对原有表, 增加两个新的字段, 一个是起始的时间字段,一个">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2021/09/18/ptV2hILPlW1uZUB.png">
 <meta property="article:published_time" content="2021-03-05T15:19:21.000Z">
 <meta property="article:modified_time" content="2022-01-19T10:14:36.911Z">
@@ -31,6 +31,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://i.loli.net/2021/09/18/ptV2hILPlW1uZUB.png">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>Hive数仓缓慢渐变维之拉链表 - 惊羽的博客</title>
@@ -117,7 +119,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Startseite</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -129,7 +131,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Archiv</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -141,7 +143,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Kategorien</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -153,7 +155,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Schlagwörter</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -165,7 +167,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>Über</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -211,7 +213,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2021-03-05 23:19" pubdate>
-          March 5, 2021 pm
+          2021年3月5日 晚上
         </time>
       </span>
     
@@ -222,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          637 wörter
+          607 字
         
       </span>
     
@@ -233,7 +235,7 @@
         
         
         
-          6 minuten
+          6 分钟
         
       </span>
     
@@ -279,12 +281,34 @@
                 <h3 id="缓慢渐变维"><a href="#缓慢渐变维" class="headerlink" title="缓慢渐变维"></a>缓慢渐变维</h3><p>主要是为了解决, 是否需要在数仓中维护历史变化的数据操作</p>
 <p>注意：如果不维护一个数据的历史变化信息, 那么在进行数仓分析的时候, 是有可能对未来分析的结果产生影响</p>
 <p><strong>实现缓慢维的3种方式</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-operator">*</span><span class="hljs-operator">*</span>SCD1<span class="hljs-operator">*</span><span class="hljs-operator">*</span><br>对于历史变化的数据, 是进行维护操作, 直接进行覆盖即可<br>此种操作仅适合于对于错误数据处理<br><br><span class="hljs-operator">*</span><span class="hljs-operator">*</span>SCD2(拉链表)<span class="hljs-comment">--常用**</span><br>对原有表, 增加两个新的字段, 一个是起始的时间字段,一个是截止时间字段<br>当有数据发生变更后, 只需要对上一次数据进行标记起止范围, 新增一个新的变更后的数据即可, 由此产生一个拉链数据状态 <br>  好处: 不会修改原有记录数据操作, 利于维护操作, 而且可以对多个历史版本进行数据存储操作<br>  弊端: 造成数据冗余, 占用更大的磁盘空间<br><br><span class="hljs-operator">*</span><span class="hljs-operator">*</span>SCD3<span class="hljs-operator">*</span><span class="hljs-operator">*</span><br>直接对原有表, 进行新增列的方案, 一旦有数据发生变更, 新增一列字段, 标记当前最新数据即可,以此来维护历史变化数据 <br>适合于磁盘空间不足, 而且只需要维护少量历史变化情况<br>  优点: 尽可能减少数据冗余情况, <br>  弊端: 不利于维护, 仅能维护少量的历史变化版本<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-operator">*</span><span class="hljs-operator">*</span>SCD1<span class="hljs-operator">*</span><span class="hljs-operator">*</span>
+对于历史变化的数据, 是进行维护操作, 直接进行覆盖即可
+此种操作仅适合于对于错误数据处理
+
+<span class="hljs-operator">*</span><span class="hljs-operator">*</span>SCD2(拉链表)<span class="hljs-comment">--常用**</span>
+对原有表, 增加两个新的字段, 一个是起始的时间字段,一个是截止时间字段
+当有数据发生变更后, 只需要对上一次数据进行标记起止范围, 新增一个新的变更后的数据即可, 由此产生一个拉链数据状态 
+  好处: 不会修改原有记录数据操作, 利于维护操作, 而且可以对多个历史版本进行数据存储操作
+  弊端: 造成数据冗余, 占用更大的磁盘空间
+
+<span class="hljs-operator">*</span><span class="hljs-operator">*</span>SCD3<span class="hljs-operator">*</span><span class="hljs-operator">*</span>
+直接对原有表, 进行新增列的方案, 一旦有数据发生变更, 新增一列字段, 标记当前最新数据即可,以此来维护历史变化数据 
+适合于磁盘空间不足, 而且只需要维护少量历史变化情况
+  优点: 尽可能减少数据冗余情况, 
+  弊端: 不利于维护, 仅能维护少量的历史变化版本</code></pre></div>
 
 <h3 id="拉链表"><a href="#拉链表" class="headerlink" title="拉链表"></a>拉链表</h3><ul>
 <li>拉链表处理逻辑</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>创建临时表<br><br><span class="hljs-number">2.</span>查询新数据，即抽取数据中 end_time<span class="hljs-operator">=</span>&quot;9999-99-99&quot;<br><br><span class="hljs-number">3.</span>查询旧数据，就原拉链表的数据，如果主键 id 与抽取数据中的重复，且 end_time<span class="hljs-operator">=</span>&quot;9999-99-99&quot;,需要改成 end_time<span class="hljs-operator">=</span>业务日期 <span class="hljs-operator">-</span> <span class="hljs-number">1</span>天<br><br><span class="hljs-number">4.</span>合并新旧数据到临时表<br><br><span class="hljs-number">5.</span>临时表插入原表<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-number">1.</span>创建临时表
+
+<span class="hljs-number">2.</span>查询新数据，即抽取数据中 end_time<span class="hljs-operator">=</span>&quot;9999-99-99&quot;
+
+<span class="hljs-number">3.</span>查询旧数据，就原拉链表的数据，如果主键 id 与抽取数据中的重复，且 end_time<span class="hljs-operator">=</span>&quot;9999-99-99&quot;,需要改成 end_time<span class="hljs-operator">=</span>业务日期 <span class="hljs-operator">-</span> <span class="hljs-number">1</span>天
+
+<span class="hljs-number">4.</span>合并新旧数据到临时表
+
+<span class="hljs-number">5.</span>临时表插入原表</code></pre></div>
 
 <ul>
 <li>基本流程图</li>
@@ -341,26 +365,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Beitragsautor</div>
+          <div>作者</div>
           <div>惊羽</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Veröffentlicht am</div>
-          <div>March 5, 2021</div>
+          <div>发布于</div>
+          <div>2021年3月5日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -383,7 +407,7 @@
                       <a href="/2021/03/20/Hbase%20%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E8%A1%A8%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" title="Hbase 无法删除表问题及解决办法">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Hbase 无法删除表问题及解决办法</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -392,7 +416,7 @@
                     
                       <a href="/2021/02/13/%E7%89%9B%E5%AE%A2%E7%BD%91SQL%E7%BB%83%E4%B9%A0%E6%80%BB%E7%BB%93/" title="牛客网SQL练习总结">
                         <span class="hidden-mobile">牛客网SQL练习总结</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -413,7 +437,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Inhaltsverzeichnis</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -469,7 +493,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -477,7 +501,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -497,6 +521,30 @@
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -644,6 +692,8 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -656,7 +706,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

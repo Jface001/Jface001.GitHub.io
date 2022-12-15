@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.svg">
+  <link rel="icon" href="/img/icon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -16,13 +16,13 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-    <meta name="description" content="0、前言说明整理和汇总一下 Spark 容易混淆的概念和理论。 1、Spark 框架概念 1234567891011Apache Spark™ is a unified analytics engine for large-scale data processing.1、unified 统一	Spark 框架可以对任意业务需求进行数据分析	批处理：SparkCore、交互式分析：SparkSQL、">
+    <meta name="description" content="0、前言说明整理和汇总一下 Spark 容易混淆的概念和理论。 1、Spark 框架概念 Apache Spark™ is a unified analytics engine for large-scale data processing.  1、unified 统一 	Spark 框架可以对任意业务需求进行数据分析 	批处理：SparkCore、交互式分析：SparkSQL、流式计算：Spar">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache Spark：分布式并行计算框架（一）">
 <meta property="og:url" content="https://jface001.github.io/2020/09/22/Spark-Review-Day01/index.html">
 <meta property="og:site_name" content="惊羽的博客">
-<meta property="og:description" content="0、前言说明整理和汇总一下 Spark 容易混淆的概念和理论。 1、Spark 框架概念 1234567891011Apache Spark™ is a unified analytics engine for large-scale data processing.1、unified 统一	Spark 框架可以对任意业务需求进行数据分析	批处理：SparkCore、交互式分析：SparkSQL、">
-<meta property="og:locale">
+<meta property="og:description" content="0、前言说明整理和汇总一下 Spark 容易混淆的概念和理论。 1、Spark 框架概念 Apache Spark™ is a unified analytics engine for large-scale data processing.  1、unified 统一 	Spark 框架可以对任意业务需求进行数据分析 	批处理：SparkCore、交互式分析：SparkSQL、流式计算：Spar">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2021/09/06/LBadXZ5iyTtYvSg.png">
 <meta property="og:image" content="https://i.loli.net/2021/09/06/h8eibz9poSO13Pu.png">
 <meta property="og:image" content="https://i.loli.net/2021/09/06/XtxmcTysVnEBSrR.png">
@@ -46,6 +46,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://i.loli.net/2021/09/06/LBadXZ5iyTtYvSg.png">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>Apache Spark：分布式并行计算框架（一） - 惊羽的博客</title>
@@ -132,7 +134,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Startseite</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -144,7 +146,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Archiv</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -156,7 +158,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Kategorien</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -168,7 +170,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Schlagwörter</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -180,7 +182,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>Über</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -226,7 +228,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2020-09-22 19:53" pubdate>
-          September 22, 2020 pm
+          2020年9月22日 晚上
         </time>
       </span>
     
@@ -237,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.9k wörter
+          3.7k 字
         
       </span>
     
@@ -248,7 +250,7 @@
         
         
         
-          33 minuten
+          31 分钟
         
       </span>
     
@@ -293,10 +295,21 @@
                 
                 <h2 id="0、前言说明"><a href="#0、前言说明" class="headerlink" title="0、前言说明"></a>0、前言说明</h2><p>整理和汇总一下 Spark 容易混淆的概念和理论。</p>
 <h2 id="1、Spark-框架概念"><a href="#1、Spark-框架概念" class="headerlink" title="1、Spark 框架概念"></a>1、Spark 框架概念</h2><p><img src="https://i.loli.net/2021/09/06/LBadXZ5iyTtYvSg.png" srcset="/img/loading.gif" lazyload alt="图1"></p>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs fortran">Apache Spark™ is a unified analytics engine for large-<span class="hljs-built_in">scale</span> <span class="hljs-keyword">data</span> processing.<br><br><span class="hljs-number">1</span>、unified 统一<br>	Spark 框架可以对任意业务需求进行数据分析<br>	批处理：SparkCore、交互式分析：SparkSQL、流式计算：SparkStreaming和StructuredStreaming<br>	图计算：SparkGraphX、机器学习：SparkMLlib<br>	数据科学：PySpark和SparkR<br>	<br><span class="hljs-number">2</span>、 large-<span class="hljs-built_in">scale</span> 大规模<br>	海量数据<br>	类似MapReduce对海量数据处理分析<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs fortran">Apache Spark™ is a unified analytics engine for large-<span class="hljs-built_in">scale</span> <span class="hljs-keyword">data</span> processing.
+
+<span class="hljs-number">1</span>、unified 统一
+	Spark 框架可以对任意业务需求进行数据分析
+	批处理：SparkCore、交互式分析：SparkSQL、流式计算：SparkStreaming和StructuredStreaming
+	图计算：SparkGraphX、机器学习：SparkMLlib
+	数据科学：PySpark和SparkR
+	
+<span class="hljs-number">2</span>、 large-<span class="hljs-built_in">scale</span> 大规模
+	海量数据
+	类似MapReduce对海量数据处理分析</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/06/h8eibz9poSO13Pu.png" srcset="/img/loading.gif" lazyload alt="图2"></p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs applescript">unified 统一不仅仅是分析，也可以指：Spark 分析数据时，可以时任意数据源<br>	SparkSQL提供一套外部数据源接口，任何数据源只要实现接口，可以读写数据<span class="hljs-built_in">read</span>或<span class="hljs-built_in">write</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs applescript">unified 统一不仅仅是分析，也可以指：Spark 分析数据时，可以时任意数据源
+	SparkSQL提供一套外部数据源接口，任何数据源只要实现接口，可以读写数据<span class="hljs-built_in">read</span>或<span class="hljs-built_in">write</span></code></pre></div>
 
 
 
@@ -305,7 +318,8 @@
 <h2 id="2、Spark与MapReduce相比"><a href="#2、Spark与MapReduce相比" class="headerlink" title="2、Spark与MapReduce相比"></a>2、Spark与MapReduce相比</h2><blockquote>
 <p>面试题：Spark 与MapReduce相比为什么快，有什么不同？？？？</p>
 </blockquote>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arduino">其一、Spark处理数据时，可以将中间处理结果数据存储到内存中；<br>第二、Spark Job调度以DAG方式，并且每个任务<span class="hljs-built_in">Task</span>执行以线程（Thread）方式，并不是像MapReduce以进程（<span class="hljs-built_in">Process</span>）方式执行。<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs arduino">其一、Spark处理数据时，可以将中间处理结果数据存储到内存中；
+第二、Spark Job调度以DAG方式，并且每个任务<span class="hljs-built_in">Task</span>执行以线程（Thread）方式，并不是像MapReduce以进程（<span class="hljs-built_in">Process</span>）方式执行。</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/06/XtxmcTysVnEBSrR.png" srcset="/img/loading.gif" lazyload alt="图3"></p>
 <blockquote>
@@ -328,13 +342,27 @@
 <p>3、常见RDD，<a href="">RDD抽象类，泛型，表示具体存储数据类型未知，可以是任何类型。</a></p>
 </blockquote>
 <p><img src="https://i.loli.net/2021/09/06/OKHzQcLeiv2uEfk.png" srcset="/img/loading.gif" lazyload alt="图7"></p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-number">1</span>、HadoopRDD，表示从文件系统加载数据封装的集合<br><span class="hljs-number">2</span>、MapPartitionsRDD，表示经过转换后的，比如fliter、map、flatMap等<br><span class="hljs-number">3</span>、ShuffleRDD，表示对RDD数据进行处理，产生shuffle时RDD<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs arduino"><span class="hljs-number">1</span>、HadoopRDD，表示从文件系统加载数据封装的集合
+<span class="hljs-number">2</span>、MapPartitionsRDD，表示经过转换后的，比如fliter、map、flatMap等
+<span class="hljs-number">3</span>、ShuffleRDD，表示对RDD数据进行处理，产生shuffle时RDD</code></pre></div>
 
 
 
 
 
-<h2 id="4、RDD、DataFrame和DataSet区别"><a href="#4、RDD、DataFrame和DataSet区别" class="headerlink" title="4、RDD、DataFrame和DataSet区别"></a>4、RDD、DataFrame和DataSet区别</h2><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-number">1</span>、<span class="hljs-variable">RDD</span>是啥？？<br>	不可变、分区的、并行计算基本<br><span class="hljs-number">2</span>、<span class="hljs-variable">DataFrame</span><br>	<span class="hljs-variable">DataFrame</span> <span class="hljs-operator">=</span> <span class="hljs-variable">RDD</span><span class="hljs-punctuation">[</span><span class="hljs-built_in">Row</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">+</span> <span class="hljs-variable">Schema</span>（字段名称、字段类型）<br>	知道内部结构<br>	当在处理分析数据，由于知道内部结构，所以可以先进行优化，在计算分析数据<br><span class="hljs-number">3</span>、<span class="hljs-built_in">Dataset</span><br>	<span class="hljs-variable">Spark</span> <span class="hljs-number">1.6</span>诞生<br>	<span class="hljs-built_in">Dataset</span> <span class="hljs-operator">=</span> <span class="hljs-variable">RDD</span> <span class="hljs-operator">+</span> <span class="hljs-variable">Schema</span><br>	知道内部结构，也知道外部结构，编程更加安全和方便，内部数据存储使用特殊编码方式，节省空间<br><span class="hljs-number">4</span>、<span class="hljs-variable">Spark</span> <span class="hljs-number">2.0</span>开始<br>	<span class="hljs-variable">DataFrame</span>和<span class="hljs-built_in">Dataset</span>合并，其中<span class="hljs-variable">DataFrame</span>时<span class="hljs-built_in">Dataset</span>特殊形式，数据类型为<span class="hljs-built_in">Row</span>时数据结构<br>	<span class="hljs-variable">DataFrame</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">Dataset</span><span class="hljs-punctuation">[</span><span class="hljs-built_in">Row</span><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+<h2 id="4、RDD、DataFrame和DataSet区别"><a href="#4、RDD、DataFrame和DataSet区别" class="headerlink" title="4、RDD、DataFrame和DataSet区别"></a>4、RDD、DataFrame和DataSet区别</h2><div class="code-wrapper"><pre><code class="hljs mathematica"><span class="hljs-number">1</span>、<span class="hljs-variable">RDD</span>是啥？？
+	不可变、分区的、并行计算基本
+<span class="hljs-number">2</span>、<span class="hljs-variable">DataFrame</span>
+	<span class="hljs-variable">DataFrame</span> <span class="hljs-operator">=</span> <span class="hljs-variable">RDD</span><span class="hljs-punctuation">[</span><span class="hljs-built_in">Row</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">+</span> <span class="hljs-variable">Schema</span>（字段名称、字段类型）
+	知道内部结构
+	当在处理分析数据，由于知道内部结构，所以可以先进行优化，在计算分析数据
+<span class="hljs-number">3</span>、<span class="hljs-built_in">Dataset</span>
+	<span class="hljs-variable">Spark</span> <span class="hljs-number">1.6</span>诞生
+	<span class="hljs-built_in">Dataset</span> <span class="hljs-operator">=</span> <span class="hljs-variable">RDD</span> <span class="hljs-operator">+</span> <span class="hljs-variable">Schema</span>
+	知道内部结构，也知道外部结构，编程更加安全和方便，内部数据存储使用特殊编码方式，节省空间
+<span class="hljs-number">4</span>、<span class="hljs-variable">Spark</span> <span class="hljs-number">2.0</span>开始
+	<span class="hljs-variable">DataFrame</span>和<span class="hljs-built_in">Dataset</span>合并，其中<span class="hljs-variable">DataFrame</span>时<span class="hljs-built_in">Dataset</span>特殊形式，数据类型为<span class="hljs-built_in">Row</span>时数据结构
+	<span class="hljs-variable">DataFrame</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">Dataset</span><span class="hljs-punctuation">[</span><span class="hljs-built_in">Row</span><span class="hljs-punctuation">]</span></code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/06/iRcO1XegMI4rwN7.png" srcset="/img/loading.gif" lazyload alt="图8"></p>
 <blockquote>
@@ -343,7 +371,17 @@
 <h2 id="5、Spark-on-YARN执行流程"><a href="#5、Spark-on-YARN执行流程" class="headerlink" title="5、Spark on YARN执行流程"></a>5、Spark on YARN执行流程</h2><blockquote>
 <p>将Spark 应用程序（无论批处理还是流计算），提交运行到YARN集群上，提交流程。</p>
 </blockquote>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs haml">Spark Application运行有2种DeployMode：<br>1、client客户端<br>	DriverProgram运行在提交运行客户端主机上<br>	-<span class="ruby"> DriverProgram，调度Job执行</span><br><span class="ruby"></span>	-<span class="ruby"> AppMaster，运行在NM中容器，申请资源运行Executors</span><br><span class="ruby"></span>	-<span class="ruby"> Executors，运行在NM中容器，执行Task任务和缓存数据</span><br><span class="ruby"></span>	<br>2、cluster集群<br>	DriverProgram运行在YARN集群NodeManager容器中<br>	-<span class="ruby"> AppMaster/DriverProgram，运行在NM中容器，申请资源运行Executors和Job调度执行</span><br><span class="ruby"></span>	-<span class="ruby"> Executors，运行在NM中容器，执行Task任务和缓存数据</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs haml">Spark Application运行有2种DeployMode：
+1、client客户端
+	DriverProgram运行在提交运行客户端主机上
+	-<span class="ruby"> DriverProgram，调度Job执行</span>
+<span class="ruby"></span>	-<span class="ruby"> AppMaster，运行在NM中容器，申请资源运行Executors</span>
+<span class="ruby"></span>	-<span class="ruby"> Executors，运行在NM中容器，执行Task任务和缓存数据</span>
+<span class="ruby"></span>	
+2、cluster集群
+	DriverProgram运行在YARN集群NodeManager容器中
+	-<span class="ruby"> AppMaster/DriverProgram，运行在NM中容器，申请资源运行Executors和Job调度执行</span>
+<span class="ruby"></span>	-<span class="ruby"> Executors，运行在NM中容器，执行Task任务和缓存数据</span></code></pre></div>
 
 <blockquote>
 <p><code>yarn-client</code>，测试使用</p>
@@ -358,10 +396,91 @@
 <p>词频统计WordCount程序执行DAG图</p>
 </blockquote>
 <p><img src="https://i.loli.net/2021/09/06/UcAPhtBTkDafM9x.png" srcset="/img/loading.gif" lazyload alt="图12"></p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-number">1</span>、RDD<span class="hljs-comment">#Action函数，触发一个Job执行</span><br>	<span class="hljs-built_in">count</span>、foreach、foreachPartition等等<br>	<br>	<br><span class="hljs-number">2</span>、第一步、构建DAG图<br>	从触发<span class="hljs-keyword">Job开始RDD，采用回溯法（倒推法，从后向前），依据RDD依赖关系，构建Job对应DAG图</span><br><span class="hljs-keyword"></span>	【依赖、回溯法】<br>	<br>	<br><span class="hljs-number">3</span>、第二步、划分DAG图为Stage<br>	从触发<span class="hljs-keyword">Job开始RDD，采用回溯法，如果2个RDD之间依赖为宽依赖，划分后面为一个Stage，依次类推</span><br><span class="hljs-keyword"></span>	DAGScheduler<br>	划分完成以后，此时每个<span class="hljs-keyword">Job由多个Stage组成，各个Stage之间相互依赖关系</span><br><span class="hljs-keyword"></span>		后面的Stage处理前面Stage的数据<br>		相邻<span class="hljs-number">2</span>个Stage之间产生<span class="hljs-keyword">Shuffle</span><br><span class="hljs-keyword"></span>	Stage划分为<span class="hljs-number">2</span>种类型：<br>		第一、ResultStage，产生Result结果，每个<span class="hljs-keyword">Job中最后一个Stage</span><br><span class="hljs-keyword"></span>		第二、<span class="hljs-keyword">ShuffleMapStage，除去Job中最后一个Stage其他Stage都是</span><br><span class="hljs-keyword"></span>	<br>	<br><span class="hljs-number">4</span>、第三步、按照<span class="hljs-keyword">Job中Stage顺序，从前向后执行Stage中Task任务</span><br><span class="hljs-keyword"></span>	每个Stage中有多个Task任务，逻辑相同，处理数据不同而已<br>	将Stage中Task任务打包为TaskSet，发送给Executor执行<br>		TaskScheduler<br>	问题<span class="hljs-number">1</span>：每个Stage中Task数目如何确定？？<br>		由Stage中最后一个RDD分区数目确定<br>		<br>	问题<span class="hljs-number">2</span>：每个Stage中Task任务计算模式是什么？？？？<br>		管道计算模式，Pipeline模式<br>	<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs mipsasm"><span class="hljs-number">1</span>、RDD<span class="hljs-comment">#Action函数，触发一个Job执行</span>
+	<span class="hljs-built_in">count</span>、foreach、foreachPartition等等
+	
+	
+<span class="hljs-number">2</span>、第一步、构建DAG图
+	从触发<span class="hljs-keyword">Job开始RDD，采用回溯法（倒推法，从后向前），依据RDD依赖关系，构建Job对应DAG图</span>
+<span class="hljs-keyword"></span>	【依赖、回溯法】
+	
+	
+<span class="hljs-number">3</span>、第二步、划分DAG图为Stage
+	从触发<span class="hljs-keyword">Job开始RDD，采用回溯法，如果2个RDD之间依赖为宽依赖，划分后面为一个Stage，依次类推</span>
+<span class="hljs-keyword"></span>	DAGScheduler
+	划分完成以后，此时每个<span class="hljs-keyword">Job由多个Stage组成，各个Stage之间相互依赖关系</span>
+<span class="hljs-keyword"></span>		后面的Stage处理前面Stage的数据
+		相邻<span class="hljs-number">2</span>个Stage之间产生<span class="hljs-keyword">Shuffle</span>
+<span class="hljs-keyword"></span>	Stage划分为<span class="hljs-number">2</span>种类型：
+		第一、ResultStage，产生Result结果，每个<span class="hljs-keyword">Job中最后一个Stage</span>
+<span class="hljs-keyword"></span>		第二、<span class="hljs-keyword">ShuffleMapStage，除去Job中最后一个Stage其他Stage都是</span>
+<span class="hljs-keyword"></span>	
+	
+<span class="hljs-number">4</span>、第三步、按照<span class="hljs-keyword">Job中Stage顺序，从前向后执行Stage中Task任务</span>
+<span class="hljs-keyword"></span>	每个Stage中有多个Task任务，逻辑相同，处理数据不同而已
+	将Stage中Task任务打包为TaskSet，发送给Executor执行
+		TaskScheduler
+	问题<span class="hljs-number">1</span>：每个Stage中Task数目如何确定？？
+		由Stage中最后一个RDD分区数目确定
+		
+	问题<span class="hljs-number">2</span>：每个Stage中Task任务计算模式是什么？？？？
+		管道计算模式，Pipeline模式</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/06/sJbErFfSDTlMBGp.png" srcset="/img/loading.gif" lazyload alt="图13"></p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-keyword">package</span> cn.test.spark<br><br><span class="hljs-keyword">import</span> org.apache.spark.rdd.<span class="hljs-type">RDD</span><br><span class="hljs-keyword">import</span> org.apache.spark.&#123;<span class="hljs-type">SparkConf</span>, <span class="hljs-type">SparkContext</span>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">SparkWordCount</span> </span>&#123;<br>	<br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = &#123;<br>		<br>		<span class="hljs-keyword">val</span> sc: <span class="hljs-type">SparkContext</span> = <span class="hljs-type">SparkContext</span>.getOrCreate(<br>			<span class="hljs-keyword">new</span> <span class="hljs-type">SparkConf</span>().setMaster(<span class="hljs-string">&quot;local[1]&quot;</span>).setAppName(<span class="hljs-string">&quot;SparkWordCount&quot;</span>)<br>		)<br>		<br>		<span class="hljs-keyword">val</span> inputRDD: <span class="hljs-type">RDD</span>[<span class="hljs-type">String</span>] = sc.parallelize(<br>			<span class="hljs-type">Seq</span>(<span class="hljs-string">&quot;111111111111111111&quot;</span>, <span class="hljs-string">&quot;222222222222222222&quot;</span>, <span class="hljs-string">&quot;3333333333333333333&quot;</span>), numSlices = <span class="hljs-number">2</span><br>		)<br>		println(<span class="hljs-string">s&quot;RDD 分区数目：<span class="hljs-subst">$&#123;inputRDD.getNumPartitions&#125;</span>&quot;</span>)<br>		<br>		<br>		<span class="hljs-keyword">val</span> resultRDD: <span class="hljs-type">RDD</span>[<span class="hljs-type">String</span>] = inputRDD<br>			.filter(line =&gt; &#123;<br>				println(<span class="hljs-string">&quot;filter........................&quot;</span>)<br>				<span class="hljs-comment">// 直接返回</span><br>				<span class="hljs-literal">true</span><br>			&#125;)<br>			.flatMap(line =&gt; &#123;<br>				println(<span class="hljs-string">&quot;flatMap........................&quot;</span>)<br>				<span class="hljs-type">Seq</span>(line)<br>			&#125;)<br>			.map(line =&gt; &#123;<br>				println(<span class="hljs-string">&quot;map........................&quot;</span>)<br>				line<br>			&#125;)<br>		<span class="hljs-comment">/*</span><br><span class="hljs-comment">			filter........................</span><br><span class="hljs-comment">			flatMap........................</span><br><span class="hljs-comment">			map........................</span><br><span class="hljs-comment">			</span><br><span class="hljs-comment">			filter........................</span><br><span class="hljs-comment">			flatMap........................</span><br><span class="hljs-comment">			map........................</span><br><span class="hljs-comment">			</span><br><span class="hljs-comment">			filter........................</span><br><span class="hljs-comment">			flatMap........................</span><br><span class="hljs-comment">			map........................</span><br><span class="hljs-comment">		 */</span><br>		<br>		<span class="hljs-keyword">val</span> count = resultRDD.count()<br>		println(<span class="hljs-string">s&quot;Count = <span class="hljs-subst">$&#123;count&#125;</span>&quot;</span>)<br>		<br>	&#125;<br>	<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">package</span> cn.test.spark
+
+<span class="hljs-keyword">import</span> org.apache.spark.rdd.<span class="hljs-type">RDD</span>
+<span class="hljs-keyword">import</span> org.apache.spark.&#123;<span class="hljs-type">SparkConf</span>, <span class="hljs-type">SparkContext</span>&#125;
+
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">SparkWordCount</span> </span>&#123;
+	
+	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = &#123;
+		
+		<span class="hljs-keyword">val</span> sc: <span class="hljs-type">SparkContext</span> = <span class="hljs-type">SparkContext</span>.getOrCreate(
+			<span class="hljs-keyword">new</span> <span class="hljs-type">SparkConf</span>().setMaster(<span class="hljs-string">&quot;local[1]&quot;</span>).setAppName(<span class="hljs-string">&quot;SparkWordCount&quot;</span>)
+		)
+		
+		<span class="hljs-keyword">val</span> inputRDD: <span class="hljs-type">RDD</span>[<span class="hljs-type">String</span>] = sc.parallelize(
+			<span class="hljs-type">Seq</span>(<span class="hljs-string">&quot;111111111111111111&quot;</span>, <span class="hljs-string">&quot;222222222222222222&quot;</span>, <span class="hljs-string">&quot;3333333333333333333&quot;</span>), numSlices = <span class="hljs-number">2</span>
+		)
+		println(<span class="hljs-string">s&quot;RDD 分区数目：<span class="hljs-subst">$&#123;inputRDD.getNumPartitions&#125;</span>&quot;</span>)
+		
+		
+		<span class="hljs-keyword">val</span> resultRDD: <span class="hljs-type">RDD</span>[<span class="hljs-type">String</span>] = inputRDD
+			.filter(line =&gt; &#123;
+				println(<span class="hljs-string">&quot;filter........................&quot;</span>)
+				<span class="hljs-comment">// 直接返回</span>
+				<span class="hljs-literal">true</span>
+			&#125;)
+			.flatMap(line =&gt; &#123;
+				println(<span class="hljs-string">&quot;flatMap........................&quot;</span>)
+				<span class="hljs-type">Seq</span>(line)
+			&#125;)
+			.map(line =&gt; &#123;
+				println(<span class="hljs-string">&quot;map........................&quot;</span>)
+				line
+			&#125;)
+		<span class="hljs-comment">/*</span>
+<span class="hljs-comment">			filter........................</span>
+<span class="hljs-comment">			flatMap........................</span>
+<span class="hljs-comment">			map........................</span>
+<span class="hljs-comment">			</span>
+<span class="hljs-comment">			filter........................</span>
+<span class="hljs-comment">			flatMap........................</span>
+<span class="hljs-comment">			map........................</span>
+<span class="hljs-comment">			</span>
+<span class="hljs-comment">			filter........................</span>
+<span class="hljs-comment">			flatMap........................</span>
+<span class="hljs-comment">			map........................</span>
+<span class="hljs-comment">		 */</span>
+		
+		<span class="hljs-keyword">val</span> count = resultRDD.count()
+		println(<span class="hljs-string">s&quot;Count = <span class="hljs-subst">$&#123;count&#125;</span>&quot;</span>)
+		
+	&#125;
+	
+&#125;
+</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/06/pX9NdjS1q7s2yzM.png" srcset="/img/loading.gif" lazyload alt="图14"></p>
 <h2 id="7、Spark中依赖类型"><a href="#7、Spark中依赖类型" class="headerlink" title="7、Spark中依赖类型"></a>7、Spark中依赖类型</h2><blockquote>
@@ -372,7 +491,15 @@
 </ul>
 </blockquote>
 <p><img src="https://i.loli.net/2021/09/06/uPGhXzADYrBcZOw.png" srcset="/img/loading.gif" lazyload alt="图15"></p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">宽依赖：<span class="hljs-keyword">Shuffle依赖</span><br><span class="hljs-keyword"></span>	相邻RDD产生<span class="hljs-keyword">Shuffle</span><br><span class="hljs-keyword"></span>	<br>Spark <span class="hljs-keyword">Shuffle </span>分为<span class="hljs-number">2</span>个部分：<br>	<span class="hljs-number">1</span>、<span class="hljs-keyword">Shuffle </span>Writer（上游Stage产生）<br>		将<span class="hljs-keyword">Shuffle数据写磁盘，有3种方式，具体由底层自动选择</span><br><span class="hljs-keyword"></span>		<br>	<span class="hljs-number">2</span>、<span class="hljs-keyword">ShuffleReader（下游Stage产生）</span><br><span class="hljs-keyword"></span>		读取<span class="hljs-keyword">Shuffle到磁盘中数据，进行处理</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs mipsasm">宽依赖：<span class="hljs-keyword">Shuffle依赖</span>
+<span class="hljs-keyword"></span>	相邻RDD产生<span class="hljs-keyword">Shuffle</span>
+<span class="hljs-keyword"></span>	
+Spark <span class="hljs-keyword">Shuffle </span>分为<span class="hljs-number">2</span>个部分：
+	<span class="hljs-number">1</span>、<span class="hljs-keyword">Shuffle </span>Writer（上游Stage产生）
+		将<span class="hljs-keyword">Shuffle数据写磁盘，有3种方式，具体由底层自动选择</span>
+<span class="hljs-keyword"></span>		
+	<span class="hljs-number">2</span>、<span class="hljs-keyword">ShuffleReader（下游Stage产生）</span>
+<span class="hljs-keyword"></span>		读取<span class="hljs-keyword">Shuffle到磁盘中数据，进行处理</span></code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/06/2Wmqk5Rigp63oVG.png" srcset="/img/loading.gif" lazyload alt="图16"></p>
 
@@ -426,26 +553,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Beitragsautor</div>
+          <div>作者</div>
           <div>惊羽</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Veröffentlicht am</div>
-          <div>September 22, 2020</div>
+          <div>发布于</div>
+          <div>2020年9月22日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -468,7 +595,7 @@
                       <a href="/2020/09/28/Spark-Review-Day02/" title="Apache Spark：分布式并行计算框架（二）">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Apache Spark：分布式并行计算框架（二）</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -477,7 +604,7 @@
                     
                       <a href="/2020/09/12/Hive%E8%87%AA%E5%8A%A8%E5%8C%96%E5%BB%BA%E5%BA%93%E5%BB%BA%E8%A1%A8/" title="Hive自动化建库建表">
                         <span class="hidden-mobile">Hive自动化建库建表</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -498,7 +625,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Inhaltsverzeichnis</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -554,7 +681,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -562,7 +689,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -582,6 +709,30 @@
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -729,6 +880,8 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -741,7 +894,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

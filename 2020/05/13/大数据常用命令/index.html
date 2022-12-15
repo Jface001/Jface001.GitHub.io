@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.svg">
+  <link rel="icon" href="/img/icon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -16,23 +16,25 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-    <meta name="description" content="MySQL1234567# 启动service mysqld startsystemctl start mysql[d]# 关闭service mysqld stop#设置mysql开机启动chkconfig mysqld on  Hadoop123456789101112131415161718192021222324252627282930# 全局组件启动与停止start-all.shstop">
+    <meta name="description" content="MySQL# 启动 service mysqld start systemctl start mysql[d] # 关闭 service mysqld stop #设置mysql开机启动 chkconfig mysqld on  Hadoop# 全局组件启动与停止 start-all.sh stop-all.sh  # HDFS 启动与停止 start-dfs.sh stop-dfs.sh  #">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大数据常用命令">
 <meta property="og:url" content="https://jface001.github.io/2020/05/13/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="惊羽的博客">
-<meta property="og:description" content="MySQL1234567# 启动service mysqld startsystemctl start mysql[d]# 关闭service mysqld stop#设置mysql开机启动chkconfig mysqld on  Hadoop123456789101112131415161718192021222324252627282930# 全局组件启动与停止start-all.shstop">
-<meta property="og:locale">
+<meta property="og:description" content="MySQL# 启动 service mysqld start systemctl start mysql[d] # 关闭 service mysqld stop #设置mysql开机启动 chkconfig mysqld on  Hadoop# 全局组件启动与停止 start-all.sh stop-all.sh  # HDFS 启动与停止 start-dfs.sh stop-dfs.sh  #">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-13T13:35:53.000Z">
 <meta property="article:modified_time" content="2022-12-14T15:28:41.552Z">
 <meta property="article:author" content="惊羽">
 <meta property="article:tag" content="Hive">
 <meta property="article:tag" content="Shell">
 <meta property="article:tag" content="Spark">
-<meta property="article:tag" content="Sqoop">
 <meta property="article:tag" content="Kafka">
+<meta property="article:tag" content="Sqoop">
 <meta name="twitter:card" content="summary_large_image">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>大数据常用命令 - 惊羽的博客</title>
@@ -119,7 +121,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Startseite</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -131,7 +133,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Archiv</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -143,7 +145,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Kategorien</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -155,7 +157,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Schlagwörter</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -167,7 +169,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>Über</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -213,7 +215,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2020-05-13 21:35" pubdate>
-          May 13, 2020 pm
+          2020年5月13日 晚上
         </time>
       </span>
     
@@ -224,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.5k wörter
+          8.1k 字
         
       </span>
     
@@ -235,7 +237,7 @@
         
         
         
-          72 minuten
+          68 分钟
         
       </span>
     
@@ -278,57 +280,341 @@
             
               <div class="markdown-body">
                 
-                <h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"># 启动<br>service mysqld <span class="hljs-keyword">start</span><br>systemctl <span class="hljs-keyword">start</span> mysql[d]<br># 关闭<br>service mysqld stop<br>#设置mysql开机启动<br>chkconfig mysqld <span class="hljs-keyword">on</span><br></code></pre></td></tr></table></figure>
+                <h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><div class="code-wrapper"><pre><code class="hljs sql"># 启动
+service mysqld <span class="hljs-keyword">start</span>
+systemctl <span class="hljs-keyword">start</span> mysql[d]
+# 关闭
+service mysqld stop
+#设置mysql开机启动
+chkconfig mysqld <span class="hljs-keyword">on</span></code></pre></div>
 
-<h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 全局组件启动与停止</span><br>start-all.sh<br>stop-all.sh<br><br><span class="hljs-comment"># HDFS 启动与停止</span><br>start-dfs.sh<br>stop-dfs.sh<br><br><span class="hljs-comment"># Yarn 启动与停止</span><br>start-yarn.sh<br>stop-yarn.sh<br><br><span class="hljs-comment"># HDFS 单个启动</span><br>hadoop-daemon.sh start namenode <br><br><span class="hljs-comment"># HDFS 多个启动</span><br>hadoop-daemons.sh start datanode<br><br><span class="hljs-comment"># Yarn 单个启动</span><br>yarn-daemon.sh start resourcemanager <br><br><span class="hljs-comment"># Yarn 多个启动</span><br>yarn-daemons.sh start nodemanager<br><br><span class="hljs-comment"># MR 历史 job记录，端口号 19888</span><br>mr-jobhistory-daemon.sh start historyserver<br><br><span class="hljs-comment"># 退出安全模式</span><br>hadoop dfsadmin -safemode leave<br><br></code></pre></td></tr></table></figure>
+<h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h2><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 全局组件启动与停止</span>
+start-all.sh
+stop-all.sh
 
-<h2 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动Hive 的元数据服务</span><br>nohup /<span class="hljs-built_in">export</span>/server/hive-2.1.0/bin/hive --service metastore   &amp;<br><br><span class="hljs-comment"># 启动Hive 客户端服务</span><br>nohup /<span class="hljs-built_in">export</span>/server/hive-2.1.0/bin/hiveserver2 start &amp;<br><span class="hljs-comment"># beeline</span><br>!connect jdbc:hive2://node03:10000<br><br><span class="hljs-comment"># hive元数据初始化和更新</span><br>schematool -dbType mysql -initSchema<br>schematool -dbType mysql -upgradeSchema<br><br><span class="hljs-comment"># 使用动态分区</span><br><br><span class="hljs-comment"># 开启动态分区</span><br><span class="hljs-built_in">set</span> hive.exec.dynamic.partition=<span class="hljs-literal">true</span>;<br><span class="hljs-comment"># 开启非严格模式 </span><br><span class="hljs-built_in">set</span> hive.exec.dynamic.partition.mode=nonstrict;<br><span class="hljs-comment"># 每个节点生成动态分区的最大个数</span><br><span class="hljs-built_in">set</span> hive.exec.max.dynamic.partitions.pernode=10000;<br><span class="hljs-comment"># 生成动态分区的最大个数</span><br><span class="hljs-built_in">set</span> hive.exec.max.dynamic.partitions=100000;<br><span class="hljs-comment"># 一个任务最多可以创建的文件数目</span><br><span class="hljs-built_in">set</span> hive.exec.max.created.files=150000;<br><span class="hljs-comment"># 限定一次最多打开的文件数</span><br><span class="hljs-built_in">set</span> dfs.datanode.max.xcievers=8192;<br><br><span class="hljs-comment">## Hive基础优化内容</span><br><span class="hljs-comment"># hive压缩</span><br><span class="hljs-built_in">set</span> hive.exec.compress.intermediate=<span class="hljs-literal">true</span>;<br><span class="hljs-built_in">set</span> hive.exec.compress.output=<span class="hljs-literal">true</span>;<br><br><span class="hljs-comment"># 写入时压缩生效</span><br><span class="hljs-built_in">set</span> hive.exec.orc.compression.strategy=COMPRESSION;<br><br><span class="hljs-comment"># 分桶</span><br><span class="hljs-built_in">set</span> hive.enforce.bucketing=<span class="hljs-literal">true</span>;<br><span class="hljs-built_in">set</span> hive.enforce.sorting=<span class="hljs-literal">true</span>;<br><span class="hljs-built_in">set</span> hive.optimize.bucketmapjoin = <span class="hljs-literal">true</span>;<br><span class="hljs-built_in">set</span> hive.auto.convert.sortmerge.join=<span class="hljs-literal">true</span>;<br><span class="hljs-built_in">set</span> hive.auto.convert.sortmerge.join.noconditionaltask=<span class="hljs-literal">true</span>;<br><br><span class="hljs-comment"># 并行执行</span><br><span class="hljs-built_in">set</span> hive.exec.parallel=<span class="hljs-literal">true</span>;<br><span class="hljs-built_in">set</span> hive.exec.parallel.thread.number=8;<br><br><span class="hljs-comment"># 小文件合并</span><br>-- <span class="hljs-built_in">set</span> mapred.max.split.size=2147483648;<br>-- <span class="hljs-built_in">set</span> mapred.min.split.size.per.node=1000000000;<br>-- <span class="hljs-built_in">set</span> mapred.min.split.size.per.rack=1000000000;<br><br><span class="hljs-comment"># 矢量化查询</span><br><span class="hljs-built_in">set</span> hive.vectorized.execution.enabled=<span class="hljs-literal">true</span>;<br><br><span class="hljs-comment"># 关联优化器</span><br><span class="hljs-built_in">set</span> hive.optimize.correlation=<span class="hljs-literal">true</span>;<br><br><span class="hljs-comment"># 读取零拷贝</span><br><span class="hljs-built_in">set</span> hive.exec.orc.zerocopy=<span class="hljs-literal">true</span>;<br><br><span class="hljs-comment"># join数据倾斜</span><br><span class="hljs-built_in">set</span> hive.optimize.skewjoin=<span class="hljs-literal">true</span>;<br>-- <span class="hljs-built_in">set</span> hive.skewjoin.key=100000;<br><span class="hljs-built_in">set</span> hive.optimize.skewjoin.compiletime=<span class="hljs-literal">true</span>;<br><span class="hljs-built_in">set</span> hive.optimize.union.remove=<span class="hljs-literal">true</span>;<br><br><span class="hljs-comment"># group倾斜</span><br><span class="hljs-built_in">set</span> hive.groupby.skewindata=<span class="hljs-literal">false</span>;<br><br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># HDFS 启动与停止</span>
+start-dfs.sh
+stop-dfs.sh
 
-<h2 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 全局启动</span><br>zkServer.sh start<br><br><span class="hljs-comment"># 标准启动</span><br>zookeeper-daemon.sh start<br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># Yarn 启动与停止</span>
+start-yarn.sh
+stop-yarn.sh
 
-<h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><h3 id="启动与停止"><a href="#启动与停止" class="headerlink" title="启动与停止"></a>启动与停止</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动 Kafka 启动服务，需要先启动 zookeeper</span><br>kafka-server-start.sh config/server.properties &gt;&gt;/dev/null 2&gt;&amp;1 &amp;<br><br><span class="hljs-comment"># 关闭 Kafka 服务</span><br>kafka-server-stop.sh<br><br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># HDFS 单个启动</span>
+hadoop-daemon.sh start namenode 
 
-<h3 id="封装启动脚本-记得给权限"><a href="#封装启动脚本-记得给权限" class="headerlink" title="封装启动脚本, 记得给权限"></a>封装启动脚本, 记得给权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>KAFKA_HOME=/<span class="hljs-built_in">export</span>/server/kafka_2.12-2.4.1<br><br><span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;<br><span class="hljs-keyword">do</span><br>        host=node<span class="hljs-variable">$&#123;number&#125;</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span><br>        /usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>;source /etc/profile;export JMX_PORT=9988;<span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/bin/kafka-server-start.sh <span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/config/server.properties &gt;&gt;/dev/null 2&gt;&amp;1 &amp;&quot;</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;host&#125;</span> started&quot;</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># HDFS 多个启动</span>
+hadoop-daemons.sh start datanode
 
-<h3 id="封装关闭脚本，记得给权限"><a href="#封装关闭脚本，记得给权限" class="headerlink" title="封装关闭脚本，记得给权限"></a>封装关闭脚本，记得给权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>KAFKA_HOME=/<span class="hljs-built_in">export</span>/server/kafka_2.12-2.4.1<br><br><span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;<br><span class="hljs-keyword">do</span><br>  host=node<span class="hljs-variable">$&#123;number&#125;</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span><br>  /usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>;source /etc/profile;<span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/bin/kafka-server-stop.sh&quot;</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;host&#125;</span> stoped&quot;</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># Yarn 单个启动</span>
+yarn-daemon.sh start resourcemanager 
 
-<h3 id="彻底删除-kafka-并初始化"><a href="#彻底删除-kafka-并初始化" class="headerlink" title="彻底删除 kafka 并初始化"></a>彻底删除 kafka 并初始化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1.检查 server.properties 配置文件中的 delete.topic.enable=true，所有节点都需要设置，生效需要重启</span><br><br><span class="hljs-comment"># 2.删除 kafka 中的 topic test_data</span><br>bin/kafka-topics.sh --zookeeper node1:2181,node2:2181,node3:2181 --delete --topic test_data<br><br><span class="hljs-comment">#3.打开 zkCli.sh 删除三组配置</span><br>rm-rf /brokers/topics/test_data<br>rm-rf /config/topics/test_data<br>rm-rf /admin/delete_topics/test_data<br><br><span class="hljs-comment">#4.如果 kafka 集群没有关闭，关闭集群</span><br><br><span class="hljs-comment">#5.清空 log.dirs=/export/data/kafka/kafka-logs 目录，也就是 kafka 集群的数据目录</span><br>rm -rf /<span class="hljs-built_in">export</span>/data/kafka/kafka-logs/*<br><br><span class="hljs-comment">#6.重启 kafka 集群</span><br><br><span class="hljs-comment">#7.重新创建新的 topic</span><br>bin/kafka-topics.sh --zookeeper node1:2181,node2:2181,node3:2181 --create --topic test_data -- partitions 3 --replication-factor 2<br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># Yarn 多个启动</span>
+yarn-daemons.sh start nodemanager
 
-<h3 id="创建主题"><a href="#创建主题" class="headerlink" title="创建主题"></a>创建主题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">kafka-topics.sh --zookeeper node3:2181 --create --topic spark_kafka --partitions 3 --replication-factor 1<br>kafka-topics.sh --zookeeper node3:2181 --list<br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># MR 历史 job记录，端口号 19888</span>
+mr-jobhistory-daemon.sh start historyserver
 
-<h3 id="启动生产者和消费者"><a href="#启动生产者和消费者" class="headerlink" title="启动生产者和消费者"></a>启动生产者和消费者</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">kafka-console-producer.sh --broker-list node3:9092 --topic spark_kafka<br>kafka-console-consumer.sh --from-beginning --bootstrap-server node3:9092 --topic spark_kafka<br>kafka-console-consumer.sh --from-beginning --bootstrap-server node3:9092 --topic __consumer_offsets<br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># 退出安全模式</span>
+hadoop dfsadmin -safemode leave
+</code></pre></div>
 
-<h2 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h2><h3 id="启动spark-thriftserver"><a href="#启动spark-thriftserver" class="headerlink" title="启动spark-thriftserver"></a>启动spark-thriftserver</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">start-thriftserver.sh \<br>  --hiveconf hive.server2.thrift.port=10001 \<br>  --hiveconf hive.server2.thrift.bind.host=node3 \<br>  --master <span class="hljs-built_in">local</span>[*]<br></code></pre></td></tr></table></figure>
+<h2 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h2><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 启动Hive 的元数据服务</span>
+nohup /<span class="hljs-built_in">export</span>/server/hive-2.1.0/bin/hive --service metastore   &amp;
 
-<h3 id="启动-Spark-HistoryServer服务-端口号-18080"><a href="#启动-Spark-HistoryServer服务-端口号-18080" class="headerlink" title="启动 Spark HistoryServer服务, 端口号 18080"></a>启动 Spark HistoryServer服务, 端口号 18080</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sbin/start-history-server.sh<br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># 启动Hive 客户端服务</span>
+nohup /<span class="hljs-built_in">export</span>/server/hive-2.1.0/bin/hiveserver2 start &amp;
+<span class="hljs-comment"># beeline</span>
+!connect jdbc:hive2://node03:10000
 
-<h3 id="structured-Streaming"><a href="#structured-Streaming" class="headerlink" title="structured Streaming"></a>structured Streaming</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">--memory sink<br>CREATE TABLE db_spark.tb_word_count (<br>  id int NOT NULL AUTO_INCREMENT,<br>  word varchar(255) NOT NULL,<br>  count int NOT NULL,<br>  PRIMARY KEY (id),<br>  UNIQUE KEY word (word)<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;<br><br>REPLACE INTO  tb_word_count (id, word, count) VALUES (NULL, ?, ?);<br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># hive元数据初始化和更新</span>
+schematool -dbType mysql -initSchema
+schematool -dbType mysql -upgradeSchema
 
-<h3 id="spark-yarn-Pi-测试"><a href="#spark-yarn-Pi-测试" class="headerlink" title="spark yarn Pi 测试"></a>spark yarn Pi 测试</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">/<span class="hljs-built_in">export</span>/server/spark/bin/spark-submit \<br>--master yarn \<br>--class org.apache.spark.examples.SparkPi \<br><span class="hljs-variable">$&#123;SPARK_HOME&#125;</span>/examples/jars/spark-examples_2.11-2.4.5.jar \<br>10<br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># 使用动态分区</span>
 
-<h3 id="WordCount-yarn"><a href="#WordCount-yarn" class="headerlink" title="WordCount yarn"></a>WordCount yarn</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">/<span class="hljs-built_in">export</span>/server/spark/bin/spark-submit \<br>--master yarn \<br>--driver-memory 512m \<br>--executor-memory 512m \<br>--executor-cores 1 \<br>--num-executors 2 \<br>--queue default \<br>--class cn.test.spark._2SparkWordCount \<br>/opt/spark-chapter01-1.0-SNAPSHOT.jar<br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># 开启动态分区</span>
+<span class="hljs-built_in">set</span> hive.exec.dynamic.partition=<span class="hljs-literal">true</span>;
+<span class="hljs-comment"># 开启非严格模式 </span>
+<span class="hljs-built_in">set</span> hive.exec.dynamic.partition.mode=nonstrict;
+<span class="hljs-comment"># 每个节点生成动态分区的最大个数</span>
+<span class="hljs-built_in">set</span> hive.exec.max.dynamic.partitions.pernode=10000;
+<span class="hljs-comment"># 生成动态分区的最大个数</span>
+<span class="hljs-built_in">set</span> hive.exec.max.dynamic.partitions=100000;
+<span class="hljs-comment"># 一个任务最多可以创建的文件数目</span>
+<span class="hljs-built_in">set</span> hive.exec.max.created.files=150000;
+<span class="hljs-comment"># 限定一次最多打开的文件数</span>
+<span class="hljs-built_in">set</span> dfs.datanode.max.xcievers=8192;
 
-<h3 id="Spark-submit"><a href="#Spark-submit" class="headerlink" title="Spark-submit"></a>Spark-submit</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs bash">【 Run application <span class="hljs-built_in">local</span> on 8 cores】<br>/<span class="hljs-built_in">export</span>/server/spark/bin/spark-submit \<br>  --class org.apache.spark.examples.SparkPi \<br>  --master <span class="hljs-built_in">local</span>[8] \<br><span class="hljs-variable">$&#123;SPARK_HOME&#125;</span>/examples/jars/spark-examples_2.11-2.4.5.jar \<br>  100<br><br><span class="hljs-comment"># Run on a Spark standalone cluster in client deploy mode</span><br>./bin/spark-submit \<br>  --class org.apache.spark.examples.SparkPi \<br>  --master spark://207.184.161.138:7077 \<br>  --executor-memory 20G \<br>  --total-executor-cores 100 \<br><span class="hljs-variable">$&#123;SPARK_HOME&#125;</span>/examples/jars/spark-examples_2.11-2.4.5.jar \<br>  1000<br><br><span class="hljs-comment"># Run on a Spark standalone cluster in cluster deploy mode with supervise</span><br>./bin/spark-submit \<br>  --class org.apache.spark.examples.SparkPi \<br>  --master spark://207.184.161.138:7077 \<br>  --deploy-mode cluster \<br>  --supervise \<br>  --executor-memory 20G \<br>  --total-executor-cores 100 \<br>  /path/to/examples.jar \<br>  1000<br><br><span class="hljs-comment"># Run on a YARN cluster</span><br><span class="hljs-built_in">export</span> HADOOP_CONF_DIR=XXX<br>./bin/spark-submit \<br>  --class org.apache.spark.examples.SparkPi \<br>  --master yarn \<br>  --deploy-mode cluster \  <span class="hljs-comment"># can be client for client mode</span><br>  --executor-memory 20G \<br>  --num-executors 50 \<br>  /path/to/examples.jar \<br>  1000<br><br><span class="hljs-comment"># Run a Python application on a Spark standalone cluster</span><br>./bin/spark-submit \<br>  --master spark://207.184.161.138:7077 \<br>  examples/src/main/python/pi.py \<br>  1000<br><br><span class="hljs-comment"># Run on a Mesos cluster in cluster deploy mode with supervise</span><br>./bin/spark-submit \<br>  --class org.apache.spark.examples.SparkPi \<br>  --master mesos://207.184.161.138:7077 \<br>  --deploy-mode cluster \<br>  --supervise \<br>  --executor-memory 20G \<br>  --total-executor-cores 100 \<br>  http://path/to/examples.jar \<br>  1000<br><br><span class="hljs-comment"># Run on a Kubernetes cluster in cluster deploy mode</span><br>./bin/spark-submit \<br>  --class org.apache.spark.examples.SparkPi \<br>  --master k8s://xx.yy.zz.ww:443 \<br>  --deploy-mode cluster \<br>  --executor-memory 20G \<br>  --num-executors 50 \<br>  http://path/to/examples.jar \<br>  1000<br></code></pre></td></tr></table></figure>
+<span class="hljs-comment">## Hive基础优化内容</span>
+<span class="hljs-comment"># hive压缩</span>
+<span class="hljs-built_in">set</span> hive.exec.compress.intermediate=<span class="hljs-literal">true</span>;
+<span class="hljs-built_in">set</span> hive.exec.compress.output=<span class="hljs-literal">true</span>;
 
-<h2 id="Sqoop数据抽取和数据验证"><a href="#Sqoop数据抽取和数据验证" class="headerlink" title="Sqoop数据抽取和数据验证"></a>Sqoop数据抽取和数据验证</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SQOOP_HOME=/<span class="hljs-built_in">export</span>/server/sqoop-1.4.7.bin_hadoop-2.6.0<br><span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop import \<br>--connect jdbc:mysql://192.168.88.163:3306/insurance \<br>--username root \<br>--password 123456 \<br>--table dd_table \<br>--hive-table insurance_ods.dd_table \<br>--hive-import \<br>--hive-overwrite \<br>--fields-terminated-by <span class="hljs-string">&#x27;\t&#x27;</span> \<br>--delete-target-dir \<br>-m 1<br><br><span class="hljs-comment">#1、查询MySQL的表dd_table的条数</span><br>mysql_log=`<span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop <span class="hljs-built_in">eval</span> \<br>--connect jdbc:mysql://192.168.88.163:3306/insurance \<br>--username root \<br>--password 123456 \<br>--query <span class="hljs-string">&quot;select count(1) from dd_table&quot;</span><br>`<br>mysql_cnt=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$mysql_log</span> | awk -F<span class="hljs-string">&#x27;|&#x27;</span> &#123;<span class="hljs-string">&#x27;print $4&#x27;</span>&#125; | awk &#123;<span class="hljs-string">&#x27;print $1&#x27;</span>&#125;`<br><span class="hljs-comment">#2、查询hive的表dd_table的条数</span><br>hive_log=`hive -e <span class="hljs-string">&quot;select count(1) from insurance_ods.dd_table&quot;</span>`<br><br><span class="hljs-comment">#3、比较2边的数字是否一样。</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$mysql_cnt</span> -eq <span class="hljs-variable">$hive_log</span> ] ; <span class="hljs-keyword">then</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;mysql表的数据量=<span class="hljs-variable">$mysql_cnt</span>,hive表的数据量=<span class="hljs-variable">$hive_log</span>,是相等的&quot;</span><br><span class="hljs-keyword">else</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;mysql表的数据量=<span class="hljs-variable">$mysql_cnt</span>,hive表的数据量=<span class="hljs-variable">$hive_log</span>,不是相等的&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># 写入时压缩生效</span>
+<span class="hljs-built_in">set</span> hive.exec.orc.compression.strategy=COMPRESSION;
+
+<span class="hljs-comment"># 分桶</span>
+<span class="hljs-built_in">set</span> hive.enforce.bucketing=<span class="hljs-literal">true</span>;
+<span class="hljs-built_in">set</span> hive.enforce.sorting=<span class="hljs-literal">true</span>;
+<span class="hljs-built_in">set</span> hive.optimize.bucketmapjoin = <span class="hljs-literal">true</span>;
+<span class="hljs-built_in">set</span> hive.auto.convert.sortmerge.join=<span class="hljs-literal">true</span>;
+<span class="hljs-built_in">set</span> hive.auto.convert.sortmerge.join.noconditionaltask=<span class="hljs-literal">true</span>;
+
+<span class="hljs-comment"># 并行执行</span>
+<span class="hljs-built_in">set</span> hive.exec.parallel=<span class="hljs-literal">true</span>;
+<span class="hljs-built_in">set</span> hive.exec.parallel.thread.number=8;
+
+<span class="hljs-comment"># 小文件合并</span>
+-- <span class="hljs-built_in">set</span> mapred.max.split.size=2147483648;
+-- <span class="hljs-built_in">set</span> mapred.min.split.size.per.node=1000000000;
+-- <span class="hljs-built_in">set</span> mapred.min.split.size.per.rack=1000000000;
+
+<span class="hljs-comment"># 矢量化查询</span>
+<span class="hljs-built_in">set</span> hive.vectorized.execution.enabled=<span class="hljs-literal">true</span>;
+
+<span class="hljs-comment"># 关联优化器</span>
+<span class="hljs-built_in">set</span> hive.optimize.correlation=<span class="hljs-literal">true</span>;
+
+<span class="hljs-comment"># 读取零拷贝</span>
+<span class="hljs-built_in">set</span> hive.exec.orc.zerocopy=<span class="hljs-literal">true</span>;
+
+<span class="hljs-comment"># join数据倾斜</span>
+<span class="hljs-built_in">set</span> hive.optimize.skewjoin=<span class="hljs-literal">true</span>;
+-- <span class="hljs-built_in">set</span> hive.skewjoin.key=100000;
+<span class="hljs-built_in">set</span> hive.optimize.skewjoin.compiletime=<span class="hljs-literal">true</span>;
+<span class="hljs-built_in">set</span> hive.optimize.union.remove=<span class="hljs-literal">true</span>;
+
+<span class="hljs-comment"># group倾斜</span>
+<span class="hljs-built_in">set</span> hive.groupby.skewindata=<span class="hljs-literal">false</span>;
+</code></pre></div>
+
+<h2 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h2><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 全局启动</span>
+zkServer.sh start
+
+<span class="hljs-comment"># 标准启动</span>
+zookeeper-daemon.sh start</code></pre></div>
+
+<h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><h3 id="启动与停止"><a href="#启动与停止" class="headerlink" title="启动与停止"></a>启动与停止</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 启动 Kafka 启动服务，需要先启动 zookeeper</span>
+kafka-server-start.sh config/server.properties &gt;&gt;/dev/null 2&gt;&amp;1 &amp;
+
+<span class="hljs-comment"># 关闭 Kafka 服务</span>
+kafka-server-stop.sh
+</code></pre></div>
+
+<h3 id="封装启动脚本-记得给权限"><a href="#封装启动脚本-记得给权限" class="headerlink" title="封装启动脚本, 记得给权限"></a>封装启动脚本, 记得给权限</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+KAFKA_HOME=/<span class="hljs-built_in">export</span>/server/kafka_2.12-2.4.1
+
+<span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;
+<span class="hljs-keyword">do</span>
+        host=node<span class="hljs-variable">$&#123;number&#125;</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span>
+        /usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>;source /etc/profile;export JMX_PORT=9988;<span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/bin/kafka-server-start.sh <span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/config/server.properties &gt;&gt;/dev/null 2&gt;&amp;1 &amp;&quot;</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;host&#125;</span> started&quot;</span>
+<span class="hljs-keyword">done</span></code></pre></div>
+
+<h3 id="封装关闭脚本，记得给权限"><a href="#封装关闭脚本，记得给权限" class="headerlink" title="封装关闭脚本，记得给权限"></a>封装关闭脚本，记得给权限</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+KAFKA_HOME=/<span class="hljs-built_in">export</span>/server/kafka_2.12-2.4.1
+
+<span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;
+<span class="hljs-keyword">do</span>
+  host=node<span class="hljs-variable">$&#123;number&#125;</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span>
+  /usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>;source /etc/profile;<span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/bin/kafka-server-stop.sh&quot;</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;host&#125;</span> stoped&quot;</span>
+<span class="hljs-keyword">done</span></code></pre></div>
+
+<h3 id="彻底删除-kafka-并初始化"><a href="#彻底删除-kafka-并初始化" class="headerlink" title="彻底删除 kafka 并初始化"></a>彻底删除 kafka 并初始化</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 1.检查 server.properties 配置文件中的 delete.topic.enable=true，所有节点都需要设置，生效需要重启</span>
+
+<span class="hljs-comment"># 2.删除 kafka 中的 topic test_data</span>
+bin/kafka-topics.sh --zookeeper node1:2181,node2:2181,node3:2181 --delete --topic test_data
+
+<span class="hljs-comment">#3.打开 zkCli.sh 删除三组配置</span>
+rm-rf /brokers/topics/test_data
+rm-rf /config/topics/test_data
+rm-rf /admin/delete_topics/test_data
+
+<span class="hljs-comment">#4.如果 kafka 集群没有关闭，关闭集群</span>
+
+<span class="hljs-comment">#5.清空 log.dirs=/export/data/kafka/kafka-logs 目录，也就是 kafka 集群的数据目录</span>
+rm -rf /<span class="hljs-built_in">export</span>/data/kafka/kafka-logs/*
+
+<span class="hljs-comment">#6.重启 kafka 集群</span>
+
+<span class="hljs-comment">#7.重新创建新的 topic</span>
+bin/kafka-topics.sh --zookeeper node1:2181,node2:2181,node3:2181 --create --topic test_data -- partitions 3 --replication-factor 2</code></pre></div>
+
+<h3 id="创建主题"><a href="#创建主题" class="headerlink" title="创建主题"></a>创建主题</h3><div class="code-wrapper"><pre><code class="hljs bash">kafka-topics.sh --zookeeper node3:2181 --create --topic spark_kafka --partitions 3 --replication-factor 1
+kafka-topics.sh --zookeeper node3:2181 --list</code></pre></div>
+
+<h3 id="启动生产者和消费者"><a href="#启动生产者和消费者" class="headerlink" title="启动生产者和消费者"></a>启动生产者和消费者</h3><div class="code-wrapper"><pre><code class="hljs bash">kafka-console-producer.sh --broker-list node3:9092 --topic spark_kafka
+kafka-console-consumer.sh --from-beginning --bootstrap-server node3:9092 --topic spark_kafka
+kafka-console-consumer.sh --from-beginning --bootstrap-server node3:9092 --topic __consumer_offsets</code></pre></div>
+
+<h2 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h2><h3 id="启动spark-thriftserver"><a href="#启动spark-thriftserver" class="headerlink" title="启动spark-thriftserver"></a>启动spark-thriftserver</h3><div class="code-wrapper"><pre><code class="hljs bash">start-thriftserver.sh \
+  --hiveconf hive.server2.thrift.port=10001 \
+  --hiveconf hive.server2.thrift.bind.host=node3 \
+  --master <span class="hljs-built_in">local</span>[*]</code></pre></div>
+
+<h3 id="启动-Spark-HistoryServer服务-端口号-18080"><a href="#启动-Spark-HistoryServer服务-端口号-18080" class="headerlink" title="启动 Spark HistoryServer服务, 端口号 18080"></a>启动 Spark HistoryServer服务, 端口号 18080</h3><div class="code-wrapper"><pre><code class="hljs bash">sbin/start-history-server.sh</code></pre></div>
+
+<h3 id="structured-Streaming"><a href="#structured-Streaming" class="headerlink" title="structured Streaming"></a>structured Streaming</h3><div class="code-wrapper"><pre><code class="hljs bash">--memory sink
+CREATE TABLE db_spark.tb_word_count (
+  id int NOT NULL AUTO_INCREMENT,
+  word varchar(255) NOT NULL,
+  count int NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY word (word)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+REPLACE INTO  tb_word_count (id, word, count) VALUES (NULL, ?, ?);</code></pre></div>
+
+<h3 id="spark-yarn-Pi-测试"><a href="#spark-yarn-Pi-测试" class="headerlink" title="spark yarn Pi 测试"></a>spark yarn Pi 测试</h3><div class="code-wrapper"><pre><code class="hljs bash">/<span class="hljs-built_in">export</span>/server/spark/bin/spark-submit \
+--master yarn \
+--class org.apache.spark.examples.SparkPi \
+<span class="hljs-variable">$&#123;SPARK_HOME&#125;</span>/examples/jars/spark-examples_2.11-2.4.5.jar \
+10</code></pre></div>
+
+<h3 id="WordCount-yarn"><a href="#WordCount-yarn" class="headerlink" title="WordCount yarn"></a>WordCount yarn</h3><div class="code-wrapper"><pre><code class="hljs bash">/<span class="hljs-built_in">export</span>/server/spark/bin/spark-submit \
+--master yarn \
+--driver-memory 512m \
+--executor-memory 512m \
+--executor-cores 1 \
+--num-executors 2 \
+--queue default \
+--class cn.test.spark._2SparkWordCount \
+/opt/spark-chapter01-1.0-SNAPSHOT.jar</code></pre></div>
+
+<h3 id="Spark-submit"><a href="#Spark-submit" class="headerlink" title="Spark-submit"></a>Spark-submit</h3><div class="code-wrapper"><pre><code class="hljs bash">【 Run application <span class="hljs-built_in">local</span> on 8 cores】
+/<span class="hljs-built_in">export</span>/server/spark/bin/spark-submit \
+  --class org.apache.spark.examples.SparkPi \
+  --master <span class="hljs-built_in">local</span>[8] \
+<span class="hljs-variable">$&#123;SPARK_HOME&#125;</span>/examples/jars/spark-examples_2.11-2.4.5.jar \
+  100
+
+<span class="hljs-comment"># Run on a Spark standalone cluster in client deploy mode</span>
+./bin/spark-submit \
+  --class org.apache.spark.examples.SparkPi \
+  --master spark://207.184.161.138:7077 \
+  --executor-memory 20G \
+  --total-executor-cores 100 \
+<span class="hljs-variable">$&#123;SPARK_HOME&#125;</span>/examples/jars/spark-examples_2.11-2.4.5.jar \
+  1000
+
+<span class="hljs-comment"># Run on a Spark standalone cluster in cluster deploy mode with supervise</span>
+./bin/spark-submit \
+  --class org.apache.spark.examples.SparkPi \
+  --master spark://207.184.161.138:7077 \
+  --deploy-mode cluster \
+  --supervise \
+  --executor-memory 20G \
+  --total-executor-cores 100 \
+  /path/to/examples.jar \
+  1000
+
+<span class="hljs-comment"># Run on a YARN cluster</span>
+<span class="hljs-built_in">export</span> HADOOP_CONF_DIR=XXX
+./bin/spark-submit \
+  --class org.apache.spark.examples.SparkPi \
+  --master yarn \
+  --deploy-mode cluster \  <span class="hljs-comment"># can be client for client mode</span>
+  --executor-memory 20G \
+  --num-executors 50 \
+  /path/to/examples.jar \
+  1000
+
+<span class="hljs-comment"># Run a Python application on a Spark standalone cluster</span>
+./bin/spark-submit \
+  --master spark://207.184.161.138:7077 \
+  examples/src/main/python/pi.py \
+  1000
+
+<span class="hljs-comment"># Run on a Mesos cluster in cluster deploy mode with supervise</span>
+./bin/spark-submit \
+  --class org.apache.spark.examples.SparkPi \
+  --master mesos://207.184.161.138:7077 \
+  --deploy-mode cluster \
+  --supervise \
+  --executor-memory 20G \
+  --total-executor-cores 100 \
+  http://path/to/examples.jar \
+  1000
+
+<span class="hljs-comment"># Run on a Kubernetes cluster in cluster deploy mode</span>
+./bin/spark-submit \
+  --class org.apache.spark.examples.SparkPi \
+  --master k8s://xx.yy.zz.ww:443 \
+  --deploy-mode cluster \
+  --executor-memory 20G \
+  --num-executors 50 \
+  http://path/to/examples.jar \
+  1000</code></pre></div>
+
+<h2 id="Sqoop数据抽取和数据验证"><a href="#Sqoop数据抽取和数据验证" class="headerlink" title="Sqoop数据抽取和数据验证"></a>Sqoop数据抽取和数据验证</h2><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SQOOP_HOME=/<span class="hljs-built_in">export</span>/server/sqoop-1.4.7.bin_hadoop-2.6.0
+<span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop import \
+--connect jdbc:mysql://192.168.88.163:3306/insurance \
+--username root \
+--password 123456 \
+--table dd_table \
+--hive-table insurance_ods.dd_table \
+--hive-import \
+--hive-overwrite \
+--fields-terminated-by <span class="hljs-string">&#x27;\t&#x27;</span> \
+--delete-target-dir \
+-m 1
+
+<span class="hljs-comment">#1、查询MySQL的表dd_table的条数</span>
+mysql_log=`<span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop <span class="hljs-built_in">eval</span> \
+--connect jdbc:mysql://192.168.88.163:3306/insurance \
+--username root \
+--password 123456 \
+--query <span class="hljs-string">&quot;select count(1) from dd_table&quot;</span>
+`
+mysql_cnt=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$mysql_log</span> | awk -F<span class="hljs-string">&#x27;|&#x27;</span> &#123;<span class="hljs-string">&#x27;print $4&#x27;</span>&#125; | awk &#123;<span class="hljs-string">&#x27;print $1&#x27;</span>&#125;`
+<span class="hljs-comment">#2、查询hive的表dd_table的条数</span>
+hive_log=`hive -e <span class="hljs-string">&quot;select count(1) from insurance_ods.dd_table&quot;</span>`
+
+<span class="hljs-comment">#3、比较2边的数字是否一样。</span>
+<span class="hljs-keyword">if</span> [ <span class="hljs-variable">$mysql_cnt</span> -eq <span class="hljs-variable">$hive_log</span> ] ; <span class="hljs-keyword">then</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;mysql表的数据量=<span class="hljs-variable">$mysql_cnt</span>,hive表的数据量=<span class="hljs-variable">$hive_log</span>,是相等的&quot;</span>
+<span class="hljs-keyword">else</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;mysql表的数据量=<span class="hljs-variable">$mysql_cnt</span>,hive表的数据量=<span class="hljs-variable">$hive_log</span>,不是相等的&quot;</span>
+<span class="hljs-keyword">fi</span></code></pre></div>
 
 <h2 id="FLink"><a href="#FLink" class="headerlink" title="FLink"></a>FLink</h2><h3 id="Flink-on-Yarn"><a href="#Flink-on-Yarn" class="headerlink" title="Flink on Yarn"></a>Flink on Yarn</h3><ul>
 <li>Session 模式</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 先创建 Session 会话， d 表示后台运行，s 表示每个 jm 的 slot 个数</span><br>flink/bin/yarn-session.sh -d -jm 1024 -tm 1024 -s 2<br><br><span class="hljs-comment"># 提交任务</span><br>flink/bin/flink run /<span class="hljs-built_in">export</span>/server/flink/examples/batch/WordCount.jar \<br>--input hdfs://node1.test.cn:8020/wordcount/input<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 先创建 Session 会话， d 表示后台运行，s 表示每个 jm 的 slot 个数</span>
+flink/bin/yarn-session.sh -d -jm 1024 -tm 1024 -s 2
+
+<span class="hljs-comment"># 提交任务</span>
+flink/bin/flink run /<span class="hljs-built_in">export</span>/server/flink/examples/batch/WordCount.jar \
+--input hdfs://node1.test.cn:8020/wordcount/input</code></pre></div>
 
 <ul>
 <li>Job 分离模式</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 直接提交任务，m 表示 jm 的地址,环境变量需要提前配置</span><br>/<span class="hljs-built_in">export</span>/server/flink/bin/flink run \<br>-m yarn-cluster -yjm 1024 -ytm 1024 \<br>/<span class="hljs-built_in">export</span>/server/flink/examples/batch/WordCount.jar \<br>--input hdfs://node1.test.cn:8020/wordcount/input<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 直接提交任务，m 表示 jm 的地址,环境变量需要提前配置</span>
+/<span class="hljs-built_in">export</span>/server/flink/bin/flink run \
+-m yarn-cluster -yjm 1024 -ytm 1024 \
+/<span class="hljs-built_in">export</span>/server/flink/examples/batch/WordCount.jar \
+--input hdfs://node1.test.cn:8020/wordcount/input</code></pre></div>
 
-<h2 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h2><h3 id="ES-启动"><a href="#ES-启动" class="headerlink" title="ES 启动"></a>ES 启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /<span class="hljs-built_in">export</span>/server/es/elasticsearch-7.6.1/<br>/<span class="hljs-built_in">export</span>/server/es/elasticsearch-7.6.1/bin/elasticsearch &gt;&gt;/dev/null 2&gt;&amp;1 &amp;<br></code></pre></td></tr></table></figure>
+<h2 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h2><h3 id="ES-启动"><a href="#ES-启动" class="headerlink" title="ES 启动"></a>ES 启动</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /<span class="hljs-built_in">export</span>/server/es/elasticsearch-7.6.1/
+/<span class="hljs-built_in">export</span>/server/es/elasticsearch-7.6.1/bin/elasticsearch &gt;&gt;/dev/null 2&gt;&amp;1 &amp;</code></pre></div>
 
 
 
-<h3 id="markdown代码折叠"><a href="#markdown代码折叠" class="headerlink" title="markdown代码折叠"></a>markdown代码折叠</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span></span>点击查看完整代码<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h3 id="markdown代码折叠"><a href="#markdown代码折叠" class="headerlink" title="markdown代码折叠"></a>markdown代码折叠</h3><div class="code-wrapper"><pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span></span>点击查看完整代码<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></span></code></pre></div>
 
-<h3 id="免秘钥登录"><a href="#免秘钥登录" class="headerlink" title="免秘钥登录"></a>免秘钥登录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa<br>ssh-copy-id node1<br>scp /root/.ssh/authorized_keys node2:/root/.ssh<br>scp /root/.ssh/authorized_keys node3:/root/.ssh<br></code></pre></td></tr></table></figure>
+<h3 id="免秘钥登录"><a href="#免秘钥登录" class="headerlink" title="免秘钥登录"></a>免秘钥登录</h3><div class="code-wrapper"><pre><code class="hljs bash">ssh-keygen -t rsa
+ssh-copy-id node1
+scp /root/.ssh/authorized_keys node2:/root/.ssh
+scp /root/.ssh/authorized_keys node3:/root/.ssh</code></pre></div>
                 
               </div>
             
@@ -367,9 +653,9 @@
       
         <a href="/tags/Spark/">#Spark</a>
       
-        <a href="/tags/Sqoop/">#Sqoop</a>
-      
         <a href="/tags/Kafka/">#Kafka</a>
+      
+        <a href="/tags/Sqoop/">#Sqoop</a>
       
     </div>
   
@@ -387,26 +673,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Beitragsautor</div>
+          <div>作者</div>
           <div>惊羽</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Veröffentlicht am</div>
-          <div>May 13, 2020</div>
+          <div>发布于</div>
+          <div>2020年5月13日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -429,7 +715,7 @@
                       <a href="/2020/05/24/%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6%E5%9C%A8%20on%20%E5%92%8C%20where%20%E7%9A%84%E5%8C%BA%E5%88%AB/" title="多表连接过滤条件在 on 和 where 的区别">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">多表连接过滤条件在 on 和 where 的区别</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -438,7 +724,7 @@
                     
                       <a href="/2020/04/27/first_post/" title="我的第一篇博客">
                         <span class="hidden-mobile">我的第一篇博客</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -459,7 +745,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Inhaltsverzeichnis</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -515,7 +801,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -523,7 +809,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -543,6 +829,30 @@
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -690,6 +1000,8 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -702,7 +1014,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

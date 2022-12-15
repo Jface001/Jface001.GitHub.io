@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.svg">
+  <link rel="icon" href="/img/icon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -16,13 +16,13 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1、Spark 有哪些优化第一、公共优化 1、序列化（Serialization）  12345678Spark中默认序列化方式：	Java 序列化（Java serialization）	要求数据类型必须实现序列化接口Serializable，比如HBase数据库读取数据时，封装到Result	设置序列化为：Kryo 序列化	比Java序列化性能提升10倍以上	设置：		conf.set(&amp;qu">
+    <meta name="description" content="1、Spark 有哪些优化第一、公共优化 1、序列化（Serialization）  Spark中默认序列化方式： 	Java 序列化（Java serialization） 	要求数据类型必须实现序列化接口Serializable，比如HBase数据库读取数据时，封装到Result 	 设置序列化为：Kryo 序列化 	比Java序列化性能提升10倍以上 	设置： 		conf.set(&amp;quo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache Spark：分布式并行计算框架（二）">
 <meta property="og:url" content="https://jface001.github.io/2020/09/28/Spark-Review-Day02/index.html">
 <meta property="og:site_name" content="惊羽的博客">
-<meta property="og:description" content="1、Spark 有哪些优化第一、公共优化 1、序列化（Serialization）  12345678Spark中默认序列化方式：	Java 序列化（Java serialization）	要求数据类型必须实现序列化接口Serializable，比如HBase数据库读取数据时，封装到Result	设置序列化为：Kryo 序列化	比Java序列化性能提升10倍以上	设置：		conf.set(&amp;qu">
-<meta property="og:locale">
+<meta property="og:description" content="1、Spark 有哪些优化第一、公共优化 1、序列化（Serialization）  Spark中默认序列化方式： 	Java 序列化（Java serialization） 	要求数据类型必须实现序列化接口Serializable，比如HBase数据库读取数据时，封装到Result 	 设置序列化为：Kryo 序列化 	比Java序列化性能提升10倍以上 	设置： 		conf.set(&amp;quo">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2021/09/07/52ERDKFvjp6qWkb.png">
 <meta property="og:image" content="https://i.loli.net/2021/09/07/lFiBTV2c1WqhYOR.png">
 <meta property="og:image" content="https://i.loli.net/2021/09/07/UAnNqGPmu4cKHtJ.png">
@@ -40,6 +40,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://i.loli.net/2021/09/07/52ERDKFvjp6qWkb.png">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>Apache Spark：分布式并行计算框架（二） - 惊羽的博客</title>
@@ -126,7 +128,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Startseite</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -138,7 +140,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Archiv</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -150,7 +152,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Kategorien</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -162,7 +164,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Schlagwörter</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -174,7 +176,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>Über</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -220,7 +222,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2020-09-28 11:52" pubdate>
-          September 28, 2020 am
+          2020年9月28日 中午
         </time>
       </span>
     
@@ -231,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k wörter
+          2.9k 字
         
       </span>
     
@@ -242,7 +244,7 @@
         
         
         
-          26 minuten
+          25 分钟
         
       </span>
     
@@ -288,7 +290,14 @@
                 <h2 id="1、Spark-有哪些优化"><a href="#1、Spark-有哪些优化" class="headerlink" title="1、Spark 有哪些优化"></a>1、Spark 有哪些优化</h2><h3 id="第一、公共优化"><a href="#第一、公共优化" class="headerlink" title="第一、公共优化"></a>第一、公共优化</h3><blockquote>
 <p>1、序列化（<code>Serialization</code>）</p>
 </blockquote>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">Spark中默认序列化方式：<br>	<span class="hljs-keyword">Java </span>序列化（<span class="hljs-keyword">Java </span>serialization）<br>	要求数据类型必须实现序列化接口Serializable，比如HBase数据库读取数据时，封装到Result<br>	<br>设置序列化为：Kryo 序列化<br>	比<span class="hljs-keyword">Java序列化性能提升10倍以上</span><br><span class="hljs-keyword"></span>	设置：<br>		conf<span class="hljs-meta">.set</span>(<span class="hljs-string">&quot;spark.serializer&quot;</span>, <span class="hljs-string">&quot;org.apache.spark.serializer.KryoSerializer&quot;</span>)<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs mipsasm">Spark中默认序列化方式：
+	<span class="hljs-keyword">Java </span>序列化（<span class="hljs-keyword">Java </span>serialization）
+	要求数据类型必须实现序列化接口Serializable，比如HBase数据库读取数据时，封装到Result
+	
+设置序列化为：Kryo 序列化
+	比<span class="hljs-keyword">Java序列化性能提升10倍以上</span>
+<span class="hljs-keyword"></span>	设置：
+		conf<span class="hljs-meta">.set</span>(<span class="hljs-string">&quot;spark.serializer&quot;</span>, <span class="hljs-string">&quot;org.apache.spark.serializer.KryoSerializer&quot;</span>)</code></pre></div>
 
 
 
@@ -297,7 +306,15 @@
 <blockquote>
 <p>2、数据缓存（<code>Cache</code>）</p>
 </blockquote>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs markdown">可以将RDD数据缓存，设置缓存级别StorageLevel<br><span class="hljs-code">	要么内存、要么磁盘、要么内存和磁盘（是否序列化）、要么系统内存（可以不管）</span><br><span class="hljs-code">	</span><br><span class="hljs-code">DataFrame和DataSet同样可以缓存，底层就是RDD</span><br><span class="hljs-code"></span><br>什么条件下缓存数据集呢？？？<br><span class="hljs-code">	可以提升数据计算效率</span><br><span class="hljs-code">	1. 数据集RDD被使用多次，考虑缓存，依据数据集大小合理设置缓存级别</span><br><span class="hljs-code">	2. 数据集来之不易，并且使用不止一次</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs markdown">可以将RDD数据缓存，设置缓存级别StorageLevel
+<span class="hljs-code">	要么内存、要么磁盘、要么内存和磁盘（是否序列化）、要么系统内存（可以不管）</span>
+<span class="hljs-code">	</span>
+<span class="hljs-code">DataFrame和DataSet同样可以缓存，底层就是RDD</span>
+<span class="hljs-code"></span>
+什么条件下缓存数据集呢？？？
+<span class="hljs-code">	可以提升数据计算效率</span>
+<span class="hljs-code">	1. 数据集RDD被使用多次，考虑缓存，依据数据集大小合理设置缓存级别</span>
+<span class="hljs-code">	2. 数据集来之不易，并且使用不止一次</span></code></pre></div>
 
 
 
@@ -306,7 +323,12 @@
 <blockquote>
 <p>3、分区数目调整（<code>partition</code>）</p>
 </blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs stylus">RDD分布式数据集，不可变的、分区的和并行计算集合，抽象的<br><br>无论批处理还是流计算（微批处理）计算结果，往往数据量很小的，当保存到外部存储系统时，最好降低分区数目<br>		比如某日物流快递公司订单数据<span class="hljs-number">1000</span>W，按照省份统计<span class="hljs-number">34</span>条<br>resultRDD<span class="hljs-selector-class">.coalease</span>(<span class="hljs-number">1</span>)<span class="hljs-selector-class">.forchePartition</span><br>	将数据集保存外部系统时，最好针对每个分区数据操作<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs stylus">RDD分布式数据集，不可变的、分区的和并行计算集合，抽象的
+
+无论批处理还是流计算（微批处理）计算结果，往往数据量很小的，当保存到外部存储系统时，最好降低分区数目
+		比如某日物流快递公司订单数据<span class="hljs-number">1000</span>W，按照省份统计<span class="hljs-number">34</span>条
+resultRDD<span class="hljs-selector-class">.coalease</span>(<span class="hljs-number">1</span>)<span class="hljs-selector-class">.forchePartition</span>
+	将数据集保存外部系统时，最好针对每个分区数据操作</code></pre></div>
 
 
 
@@ -315,45 +337,71 @@
 <h3 id="第二、批处理优化"><a href="#第二、批处理优化" class="headerlink" title="第二、批处理优化"></a>第二、批处理优化</h3><blockquote>
 <p>基本上使用SparkSQL离线数据分析，考虑SparkSQL中哪些优化即可。</p>
 </blockquote>
-<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-number">1</span>、spark.sql.shuffle.partitions <br>	Shuffle时分区数目，默认值为<span class="hljs-number">200</span>，实际项目中可能太大，有可能太小<br>	Spark <span class="hljs-number">1</span>.<span class="hljs-keyword">x</span>和Spark <span class="hljs-number">2</span>.<span class="hljs-keyword">x</span>需要调整<br>	<br>	Spark <span class="hljs-number">3</span>.<span class="hljs-keyword">x</span>开始无需调整，新特性：自适应调整<br>		只能开启功能以后，SparkSQL程序在运行计算时，依据Shuffle数据量自动设置分区数目<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs llvm"><span class="hljs-number">1</span>、spark.sql.shuffle.partitions 
+	Shuffle时分区数目，默认值为<span class="hljs-number">200</span>，实际项目中可能太大，有可能太小
+	Spark <span class="hljs-number">1</span>.<span class="hljs-keyword">x</span>和Spark <span class="hljs-number">2</span>.<span class="hljs-keyword">x</span>需要调整
+	
+	Spark <span class="hljs-number">3</span>.<span class="hljs-keyword">x</span>开始无需调整，新特性：自适应调整
+		只能开启功能以后，SparkSQL程序在运行计算时，依据Shuffle数据量自动设置分区数目</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/07/52ERDKFvjp6qWkb.png" srcset="/img/loading.gif" lazyload alt="图1"></p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-number">2</span>、广播变量大小调整<br>	SparkSQL在执行<span class="hljs-number">2</span>个表的数据<span class="hljs-keyword">Join</span>时，自动判断是否为大表<span class="hljs-keyword">JOIN</span>小表，如果有<span class="hljs-number">1</span>个小表的话，采用广播变量的方式广播数据，进行关联分析处理，避免产生Shuffle，提升性能。<br>	参数：spark.<span class="hljs-keyword">sql</span>.autoBroadcastJoinThreshold = <span class="hljs-number">10</span>M<br>	<br>比如小表数据大小为<span class="hljs-number">12</span>M，完全可以采用广播<span class="hljs-keyword">JOIN</span>方式，此时调整 广播表里大小阈值<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs pgsql"><span class="hljs-number">2</span>、广播变量大小调整
+	SparkSQL在执行<span class="hljs-number">2</span>个表的数据<span class="hljs-keyword">Join</span>时，自动判断是否为大表<span class="hljs-keyword">JOIN</span>小表，如果有<span class="hljs-number">1</span>个小表的话，采用广播变量的方式广播数据，进行关联分析处理，避免产生Shuffle，提升性能。
+	参数：spark.<span class="hljs-keyword">sql</span>.autoBroadcastJoinThreshold = <span class="hljs-number">10</span>M
+	
+比如小表数据大小为<span class="hljs-number">12</span>M，完全可以采用广播<span class="hljs-keyword">JOIN</span>方式，此时调整 广播表里大小阈值</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/07/lFiBTV2c1WqhYOR.png" srcset="/img/loading.gif" lazyload alt="图2"></p>
 <h3 id="第三、流计算优化"><a href="#第三、流计算优化" class="headerlink" title="第三、流计算优化"></a>第三、流计算优化</h3><blockquote>
 <p>要么使用SparkStreaming，要么使用StructuredStreaming分析数据，底层批处理（微批处理）。</p>
 </blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-number">1</span>、限制高峰数据量<br>	限制每批次处理数据量，给定一个阈值，通过压力测试确定的值<br>	<br>	<span class="hljs-number">1</span>）、SparkStreaming参数：<br>		spark<span class="hljs-selector-class">.streaming</span><span class="hljs-selector-class">.kafka</span>.maxRatePerPartition<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs stylus"><span class="hljs-number">1</span>、限制高峰数据量
+	限制每批次处理数据量，给定一个阈值，通过压力测试确定的值
+	
+	<span class="hljs-number">1</span>）、SparkStreaming参数：
+		spark<span class="hljs-selector-class">.streaming</span><span class="hljs-selector-class">.kafka</span>.maxRatePerPartition</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/07/UAnNqGPmu4cKHtJ.png" srcset="/img/loading.gif" lazyload alt="图3"></p>
-<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pf"><span class="hljs-number">2</span>）、StructuredStreaming参数：<br>	<span class="hljs-keyword">max</span>OffsetsPreTrigger，每次触发时，消费最大偏移量<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs pf"><span class="hljs-number">2</span>）、StructuredStreaming参数：
+	<span class="hljs-keyword">max</span>OffsetsPreTrigger，每次触发时，消费最大偏移量</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/07/A2txYP86wpjNGXO.png" srcset="/img/loading.gif" lazyload alt="图4"></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">针对SparkStreaming来说，为了更好处理流式数据，避免数据量太多，导致应用性能下降：反压机制<br>	原理，依据当前处理数据量和处理时间，决定下一批次处理数据量<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs">针对SparkStreaming来说，为了更好处理流式数据，避免数据量太多，导致应用性能下降：反压机制
+	原理，依据当前处理数据量和处理时间，决定下一批次处理数据量</code></pre></div>
 
 
 
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">2</span>、数据本地性等待时间<br>	https:<span class="hljs-regexp">//</span>spark.apache.org<span class="hljs-regexp">/docs/</span><span class="hljs-number">2.4</span>.<span class="hljs-number">5</span>/tuning.html<span class="hljs-comment">#data-locality</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs awk"><span class="hljs-number">2</span>、数据本地性等待时间
+	https:<span class="hljs-regexp">//</span>spark.apache.org<span class="hljs-regexp">/docs/</span><span class="hljs-number">2.4</span>.<span class="hljs-number">5</span>/tuning.html<span class="hljs-comment">#data-locality</span></code></pre></div>
 
 <p>​        <a target="_blank" rel="noopener" href="https://www.cnblogs.com/cc11001100/p/10301716.html">https://www.cnblogs.com/cc11001100/p/10301716.html</a></p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-number">1</span>、PROCESS_LOCAL：进程本地性，<span class="hljs-keyword">Task</span>任务和Data数据在同一个JVM进程中<br>	顾名思义，要处理的数据就在同一个本地进程中，即数据和<span class="hljs-keyword">Task</span>在同一个Executor JVM中，这种情况就是RDD的数据在之前就已经被缓存过了，因为BlockManager是以Executor为单位的，所以只要<span class="hljs-keyword">Task</span>所需要的Block在所属的Executor的BlockManager上已经被缓存，这个数据本地性就是PROCESS_LOCAL，这种是最好的locality，这种情况下数据不需要在网络中传输。<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs ada"><span class="hljs-number">1</span>、PROCESS_LOCAL：进程本地性，<span class="hljs-keyword">Task</span>任务和Data数据在同一个JVM进程中
+	顾名思义，要处理的数据就在同一个本地进程中，即数据和<span class="hljs-keyword">Task</span>在同一个Executor JVM中，这种情况就是RDD的数据在之前就已经被缓存过了，因为BlockManager是以Executor为单位的，所以只要<span class="hljs-keyword">Task</span>所需要的Block在所属的Executor的BlockManager上已经被缓存，这个数据本地性就是PROCESS_LOCAL，这种是最好的locality，这种情况下数据不需要在网络中传输。</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/07/vte8XGdYcxpCraw.png" srcset="/img/loading.gif" lazyload alt="图5"></p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">2、NODE<span class="hljs-emphasis">_LOCAL：</span><br><span class="hljs-emphasis">	数据在同一台节点上，但是并不不在同一个jvm中，比如数据在同一台节点上的另外一个Executor上，速度要比PROCESS_LOCAL略慢。还有一种情况是读取HDFS的块就在当前节点上，数据本地性也是NODE_</span>LOCAL。<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs asciidoc">2、NODE<span class="hljs-emphasis">_LOCAL：</span>
+<span class="hljs-emphasis">	数据在同一台节点上，但是并不不在同一个jvm中，比如数据在同一台节点上的另外一个Executor上，速度要比PROCESS_LOCAL略慢。还有一种情况是读取HDFS的块就在当前节点上，数据本地性也是NODE_</span>LOCAL。</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/07/2T8MwE5Sin6V7UH.png" srcset="/img/loading.gif" lazyload alt="图6"></p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">3、NO_PREF：<br><span class="hljs-code">	数据从哪里访问都一样，表示数据本地性无意义，其实指的是从MySQL、MongoDB之类的数据源读取数据。</span><br><br>4、RACK<span class="hljs-emphasis">_LOCAL：机架本地性</span><br><span class="hljs-emphasis">	数据在同一机架上的其它节点，需要经过网络传输，速度要比NODE_</span>LOCAL慢。<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs asciidoc">3、NO_PREF：
+<span class="hljs-code">	数据从哪里访问都一样，表示数据本地性无意义，其实指的是从MySQL、MongoDB之类的数据源读取数据。</span>
+
+4、RACK<span class="hljs-emphasis">_LOCAL：机架本地性</span>
+<span class="hljs-emphasis">	数据在同一机架上的其它节点，需要经过网络传输，速度要比NODE_</span>LOCAL慢。</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/07/t1VIFcsWBr4ZgPM.png" srcset="/img/loading.gif" lazyload alt="图7"></p>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs fortran"><span class="hljs-number">5</span>、<span class="hljs-built_in">ANY</span>：<br>	数据在其它更远的网络上，甚至都不在同一个机架上，比RACK_LOCAL更慢，一般情况下不会出现这种级别，万一出现了可能是有什么异常需要排查下原因。<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs fortran"><span class="hljs-number">5</span>、<span class="hljs-built_in">ANY</span>：
+	数据在其它更远的网络上，甚至都不在同一个机架上，比RACK_LOCAL更慢，一般情况下不会出现这种级别，万一出现了可能是有什么异常需要排查下原因。</code></pre></div>
 
 
 
 <blockquote>
 <p>​        在流式数据处理计算中，设置数据本地性等待时间越小越好，不需要等待，直接使用某个数据即可，哪怕时最差：ANY都可以。</p>
 </blockquote>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs fortran">参数：spark.locality.<span class="hljs-keyword">wait</span>，默认为值<span class="hljs-number">3</span>s<br><br>可以设置为<br>	spark.locality.<span class="hljs-keyword">wait</span>=<span class="hljs-number">10</span>ms<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs fortran">参数：spark.locality.<span class="hljs-keyword">wait</span>，默认为值<span class="hljs-number">3</span>s
+
+可以设置为
+	spark.locality.<span class="hljs-keyword">wait</span>=<span class="hljs-number">10</span>ms</code></pre></div>
 
 
 
@@ -370,19 +418,32 @@
 <li>3、<strong>Sort Merge Join ： 适合两张较大的表之间进行join</strong></li>
 </ul>
 <p><strong>前两者都基于的是Hash Join，只不过在hash join之前需要先shuffle还是先broadcast。</strong></p>
-<h3 id="第一、Broadcast-Hash-Join"><a href="#第一、Broadcast-Hash-Join" class="headerlink" title="第一、Broadcast Hash Join"></a>第一、Broadcast Hash Join</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gradle">大表和小表进行<span class="hljs-keyword">JOIN</span><br>	将小表数据采用广播变量的方式，把数据广播到大表的每个分区中，进行<span class="hljs-keyword">JOIN</span><br></code></pre></td></tr></table></figure>
+<h3 id="第一、Broadcast-Hash-Join"><a href="#第一、Broadcast-Hash-Join" class="headerlink" title="第一、Broadcast Hash Join"></a>第一、Broadcast Hash Join</h3><div class="code-wrapper"><pre><code class="hljs gradle">大表和小表进行<span class="hljs-keyword">JOIN</span>
+	将小表数据采用广播变量的方式，把数据广播到大表的每个分区中，进行<span class="hljs-keyword">JOIN</span></code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/07/yG1Qb5OcD7U3du8.png" srcset="/img/loading.gif" lazyload alt="图8"></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql">Broadcast <span class="hljs-keyword">Join</span>的条件有以下几个：<br><span class="hljs-number">1</span>、被广播的表需要小于spark.sql.autoBroadcastJoinThreshold所配置的值，默认是<span class="hljs-number">10</span>M （或者加了broadcast <span class="hljs-keyword">join</span>的hint）<br><br><span class="hljs-number">2</span>、基表不能被广播，比如<span class="hljs-keyword">left</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span>时，只能广播右表<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql">Broadcast <span class="hljs-keyword">Join</span>的条件有以下几个：
+<span class="hljs-number">1</span>、被广播的表需要小于spark.sql.autoBroadcastJoinThreshold所配置的值，默认是<span class="hljs-number">10</span>M （或者加了broadcast <span class="hljs-keyword">join</span>的hint）
+
+<span class="hljs-number">2</span>、基表不能被广播，比如<span class="hljs-keyword">left</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span>时，只能广播右表</code></pre></div>
 
 
 
 
 
-<h3 id="第二、Shuffle-Hash-Join"><a href="#第二、Shuffle-Hash-Join" class="headerlink" title="第二、Shuffle Hash Join"></a>第二、Shuffle Hash Join</h3><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs pf">大表与小表（数据量也挺大，相对大表来说，小一点）<br>	对<span class="hljs-number">2</span>个表的数据按照相同的字段进行重分区，并且分区数目相同<br>	Shuffle ：对<span class="hljs-number">2</span>个表的数据进行重分区，字段相同，分区数目相同<br>	<br>	<span class="hljs-built_in">table</span>A表<span class="hljs-number">1</span>个分区  仅仅   <span class="hljs-built_in">table</span>B表<span class="hljs-number">1</span>个分区  数据进行JOIN<br></code></pre></td></tr></table></figure>
+<h3 id="第二、Shuffle-Hash-Join"><a href="#第二、Shuffle-Hash-Join" class="headerlink" title="第二、Shuffle Hash Join"></a>第二、Shuffle Hash Join</h3><div class="code-wrapper"><pre><code class="hljs pf">大表与小表（数据量也挺大，相对大表来说，小一点）
+	对<span class="hljs-number">2</span>个表的数据按照相同的字段进行重分区，并且分区数目相同
+	Shuffle ：对<span class="hljs-number">2</span>个表的数据进行重分区，字段相同，分区数目相同
+	
+	<span class="hljs-built_in">table</span>A表<span class="hljs-number">1</span>个分区  仅仅   <span class="hljs-built_in">table</span>B表<span class="hljs-number">1</span>个分区  数据进行JOIN</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/07/nHlFXP6vsZEiqz1.png" srcset="/img/loading.gif" lazyload alt="图9"></p>
-<h3 id="第三、Sort-Merge-Join"><a href="#第三、Sort-Merge-Join" class="headerlink" title="第三、Sort Merge Join"></a>第三、Sort Merge Join</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vbnet">大表对大表<br>	类似Hive中SMB <span class="hljs-keyword">JOIN</span>，表的数据分区相同、分桶数目相同，并且桶数据排序的<br>	<br>	首先，<span class="hljs-number">2</span>张表进行重分区，分区字段<span class="hljs-keyword">key</span>相同，分区数目相同<br>	然后，对每个分区中数据进行排序<br>	最后，表对表的 分区数据进行<span class="hljs-keyword">JOIN</span>，此时关联时，不会扫描整个分区中数据<br></code></pre></td></tr></table></figure>
+<h3 id="第三、Sort-Merge-Join"><a href="#第三、Sort-Merge-Join" class="headerlink" title="第三、Sort Merge Join"></a>第三、Sort Merge Join</h3><div class="code-wrapper"><pre><code class="hljs vbnet">大表对大表
+	类似Hive中SMB <span class="hljs-keyword">JOIN</span>，表的数据分区相同、分桶数目相同，并且桶数据排序的
+	
+	首先，<span class="hljs-number">2</span>张表进行重分区，分区字段<span class="hljs-keyword">key</span>相同，分区数目相同
+	然后，对每个分区中数据进行排序
+	最后，表对表的 分区数据进行<span class="hljs-keyword">JOIN</span>，此时关联时，不会扫描整个分区中数据</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/09/07/EYsfzkWZe4Hwl5t.png" srcset="/img/loading.gif" lazyload alt="图10"></p>
 
@@ -436,26 +497,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Beitragsautor</div>
+          <div>作者</div>
           <div>惊羽</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Veröffentlicht am</div>
-          <div>September 28, 2020</div>
+          <div>发布于</div>
+          <div>2020年9月28日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -478,7 +539,7 @@
                       <a href="/2020/10/03/Spark-Review-Day03/" title="Apache Spark：分布式并行计算框架（三）">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Apache Spark：分布式并行计算框架（三）</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -487,7 +548,7 @@
                     
                       <a href="/2020/09/22/Spark-Review-Day01/" title="Apache Spark：分布式并行计算框架（一）">
                         <span class="hidden-mobile">Apache Spark：分布式并行计算框架（一）</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -508,7 +569,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Inhaltsverzeichnis</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -564,7 +625,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -572,7 +633,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -592,6 +653,30 @@
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -739,6 +824,8 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -751,7 +838,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

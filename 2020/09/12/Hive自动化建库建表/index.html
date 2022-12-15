@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.svg">
+  <link rel="icon" href="/img/icon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -16,19 +16,21 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言说明项目数仓数据源太多，于是自己写了一个工具类，读取数据源的元数据信息，自动建库建表 以 MySQL 为例，代码如下。 HiveUtil1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697">
+    <meta name="description" content="前言说明项目数仓数据源太多，于是自己写了一个工具类，读取数据源的元数据信息，自动建库建表 以 MySQL 为例，代码如下。 HiveUtilobject HiveUtil &amp;#123;   def main(args: Array[String]): Unit &#x3D; &amp;#123;     createHiveTable()   &amp;#125;    def createHiveTable() &#x3D; &amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hive自动化建库建表">
 <meta property="og:url" content="https://jface001.github.io/2020/09/12/Hive%E8%87%AA%E5%8A%A8%E5%8C%96%E5%BB%BA%E5%BA%93%E5%BB%BA%E8%A1%A8/index.html">
 <meta property="og:site_name" content="惊羽的博客">
-<meta property="og:description" content="前言说明项目数仓数据源太多，于是自己写了一个工具类，读取数据源的元数据信息，自动建库建表 以 MySQL 为例，代码如下。 HiveUtil1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697">
-<meta property="og:locale">
+<meta property="og:description" content="前言说明项目数仓数据源太多，于是自己写了一个工具类，读取数据源的元数据信息，自动建库建表 以 MySQL 为例，代码如下。 HiveUtilobject HiveUtil &amp;#123;   def main(args: Array[String]): Unit &#x3D; &amp;#123;     createHiveTable()   &amp;#125;    def createHiveTable() &#x3D; &amp;#">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-12T11:56:29.000Z">
 <meta property="article:modified_time" content="2022-01-19T10:14:56.096Z">
 <meta property="article:author" content="惊羽">
 <meta property="article:tag" content="Hive">
 <meta name="twitter:card" content="summary_large_image">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>Hive自动化建库建表 - 惊羽的博客</title>
@@ -115,7 +117,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Startseite</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -127,7 +129,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Archiv</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -139,7 +141,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Kategorien</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -151,7 +153,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Schlagwörter</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -163,7 +165,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>Über</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -209,7 +211,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2020-09-12 19:56" pubdate>
-          September 12, 2020 pm
+          2020年9月12日 晚上
         </time>
       </span>
     
@@ -220,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k wörter
+          2.3k 字
         
       </span>
     
@@ -231,7 +233,7 @@
         
         
         
-          21 minuten
+          19 分钟
         
       </span>
     
@@ -276,7 +278,83 @@
                 
                 <h3 id="前言说明"><a href="#前言说明" class="headerlink" title="前言说明"></a>前言说明</h3><p>项目数仓数据源太多，于是自己写了一个工具类，读取数据源的元数据信息，自动建库建表</p>
 <p>以 MySQL 为例，代码如下。</p>
-<h3 id="HiveUtil"><a href="#HiveUtil" class="headerlink" title="HiveUtil"></a>HiveUtil</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><code class="hljs java">object HiveUtil &#123;<br>  <span class="hljs-function">def <span class="hljs-title">main</span><span class="hljs-params">(args: Array[String])</span>: Unit </span>= &#123;<br>    createHiveTable()<br>  &#125;<br><br>  <span class="hljs-function">def <span class="hljs-title">createHiveTable</span><span class="hljs-params">()</span> </span>= &#123;<br>    <span class="hljs-comment">//连接MySQL，读取MySQL表名有哪些字段，字段类型，字段的注释</span><br>    val table_arr = Array(<br>      <span class="hljs-string">&quot;area&quot;</span>,<br>      <span class="hljs-string">&quot;claim_info&quot;</span>,<br>      <span class="hljs-string">&quot;dd_table&quot;</span>,<br>      <span class="hljs-string">&quot;mort_10_13&quot;</span>,<br>      <span class="hljs-string">&quot;policy_acuary&quot;</span>,<br>      <span class="hljs-string">&quot;policy_benefit&quot;</span>,<br>      <span class="hljs-string">&quot;policy_client&quot;</span>,<br>      <span class="hljs-string">&quot;policy_surrender&quot;</span>,<br>      <span class="hljs-string">&quot;pre_add_exp_ratio&quot;</span>,<br>      <span class="hljs-string">&quot;prem_cv_real&quot;</span>,<br>      <span class="hljs-string">&quot;prem_std_real&quot;</span>)<br><br>    val conn = DriverManager.getConnection(<span class="hljs-string">&quot;jdbc:mysql://node3:3306/insurance&quot;</span>, <span class="hljs-string">&quot;root&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>)<br>    val ps: PreparedStatement = conn.prepareStatement(<br>      s<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">         |SELECT</span><br><span class="hljs-string">         |       COLUMN_NAME,</span><br><span class="hljs-string">         |       COLUMN_TYPE,</span><br><span class="hljs-string">         |       COLUMN_COMMENT</span><br><span class="hljs-string">         |FROM information_schema.COLUMNS</span><br><span class="hljs-string">         |WHERE upper(TABLE_NAME)  = upper(?)</span><br><span class="hljs-string">         |  and upper(TABLE_SCHEMA)=upper(?)</span><br><span class="hljs-string">         |order by ORDINAL_POSITION</span><br><span class="hljs-string">         |&quot;</span><span class="hljs-string">&quot;&quot;</span>.stripMargin)<br>    <span class="hljs-keyword">var</span> rs: ResultSet = <span class="hljs-function"><span class="hljs-keyword">null</span></span><br><span class="hljs-function">    <span class="hljs-title">for</span> <span class="hljs-params">(tablename &lt;- table_arr)</span> </span>&#123;<br>      ps.setString(<span class="hljs-number">1</span>,tablename)<br>      ps.setString(<span class="hljs-number">2</span>,<span class="hljs-string">&quot;insurance&quot;</span>)<br>      rs = ps.executeQuery()<br>      <span class="hljs-keyword">var</span> str =<br>        s<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">           |drop table if exists $&#123;tablename&#125;;</span><br><span class="hljs-string">           |create table if not exists $&#123;tablename&#125; (\n&quot;</span><span class="hljs-string">&quot;&quot;</span>.<span class="hljs-function">stripMargin</span><br><span class="hljs-function">      <span class="hljs-title">while</span> <span class="hljs-params">(rs.next()</span>) </span>&#123;<br>        val column_name: String = rs.getString(<span class="hljs-number">1</span>)<br>        val column_type: String = rs.getString(<span class="hljs-number">2</span>)<br>        val column_comment: String = rs.getString(<span class="hljs-number">3</span>)<br>        <span class="hljs-keyword">var</span> temp_type = <span class="hljs-function">column_type</span><br><span class="hljs-function">        <span class="hljs-title">if</span> <span class="hljs-params">(temp_type.contains(<span class="hljs-string">&quot;int&quot;</span>)</span>) </span>&#123;<br>          <span class="hljs-comment">//30000-&gt;int(5)-&gt;smallint</span><br>          <span class="hljs-comment">//300000000-&gt;int(5-16)-&gt;int</span><br>          <span class="hljs-comment">//3000000000000000000-&gt;int(16-32)-&gt;bigint</span><br>          val <span class="hljs-keyword">int</span>: Int = <span class="hljs-string">&quot;int(11)&quot;</span>.split(<span class="hljs-string">&quot;\\(|\\)&quot;</span>)(<span class="hljs-number">1</span>).<span class="hljs-function">toInt</span><br><span class="hljs-function">          <span class="hljs-title">if</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> &gt; <span class="hljs-number">0</span> &amp;&amp; <span class="hljs-keyword">int</span> &lt;= <span class="hljs-number">5</span>)</span> </span>&#123;<br>            temp_type = <span class="hljs-string">&quot;smallint&quot;</span><br>          &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">int</span> &gt; <span class="hljs-number">5</span> &amp;&amp; <span class="hljs-keyword">int</span> &lt;= <span class="hljs-number">16</span>) &#123;<br>            temp_type = <span class="hljs-string">&quot;int&quot;</span><br>          &#125; <span class="hljs-keyword">else</span> &#123;<br>            temp_type = <span class="hljs-string">&quot;bigint&quot;</span><br>          &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(temp_type.contains(<span class="hljs-string">&quot;varchar&quot;</span>) || temp_type.contains(<span class="hljs-string">&quot;text&quot;</span>))&#123;<br>          temp_type=<span class="hljs-string">&quot;string&quot;</span><br>        &#125;<br>        <span class="hljs-comment">//println(column_name,column_type,column_comment)</span><br>        str += s<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;$&#123;column_name&#125;   $&#123;temp_type&#125;  comment &#x27;$&#123;column_comment&#125;&#x27;,\n&quot;</span><span class="hljs-string">&quot;&quot;</span><br>      &#125;<br>      str = str.stripSuffix(<span class="hljs-string">&quot;,\n&quot;</span>)<br>      str += <span class="hljs-string">&quot;) comment &#x27;&#x27; \n row format delimited fields terminated by &#x27;\\t&#x27; ; \n&quot;</span><br>      println(str)<br>    &#125;<br><br>    rs.close()<br>    ps.close()<br>    conn.close()<br>    <span class="hljs-comment">//解析上面的元数据，拼接成hive版的ddl语句</span><br>  &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="HiveUtil"><a href="#HiveUtil" class="headerlink" title="HiveUtil"></a>HiveUtil</h3><div class="code-wrapper"><pre><code class="hljs java">object HiveUtil &#123;
+  <span class="hljs-function">def <span class="hljs-title">main</span><span class="hljs-params">(args: Array[String])</span>: Unit </span>= &#123;
+    createHiveTable()
+  &#125;
+
+  <span class="hljs-function">def <span class="hljs-title">createHiveTable</span><span class="hljs-params">()</span> </span>= &#123;
+    <span class="hljs-comment">//连接MySQL，读取MySQL表名有哪些字段，字段类型，字段的注释</span>
+    val table_arr = Array(
+      <span class="hljs-string">&quot;area&quot;</span>,
+      <span class="hljs-string">&quot;claim_info&quot;</span>,
+      <span class="hljs-string">&quot;dd_table&quot;</span>,
+      <span class="hljs-string">&quot;mort_10_13&quot;</span>,
+      <span class="hljs-string">&quot;policy_acuary&quot;</span>,
+      <span class="hljs-string">&quot;policy_benefit&quot;</span>,
+      <span class="hljs-string">&quot;policy_client&quot;</span>,
+      <span class="hljs-string">&quot;policy_surrender&quot;</span>,
+      <span class="hljs-string">&quot;pre_add_exp_ratio&quot;</span>,
+      <span class="hljs-string">&quot;prem_cv_real&quot;</span>,
+      <span class="hljs-string">&quot;prem_std_real&quot;</span>)
+
+    val conn = DriverManager.getConnection(<span class="hljs-string">&quot;jdbc:mysql://node3:3306/insurance&quot;</span>, <span class="hljs-string">&quot;root&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>)
+    val ps: PreparedStatement = conn.prepareStatement(
+      s<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;</span>
+<span class="hljs-string">         |SELECT</span>
+<span class="hljs-string">         |       COLUMN_NAME,</span>
+<span class="hljs-string">         |       COLUMN_TYPE,</span>
+<span class="hljs-string">         |       COLUMN_COMMENT</span>
+<span class="hljs-string">         |FROM information_schema.COLUMNS</span>
+<span class="hljs-string">         |WHERE upper(TABLE_NAME)  = upper(?)</span>
+<span class="hljs-string">         |  and upper(TABLE_SCHEMA)=upper(?)</span>
+<span class="hljs-string">         |order by ORDINAL_POSITION</span>
+<span class="hljs-string">         |&quot;</span><span class="hljs-string">&quot;&quot;</span>.stripMargin)
+    <span class="hljs-keyword">var</span> rs: ResultSet = <span class="hljs-function"><span class="hljs-keyword">null</span></span>
+<span class="hljs-function">    <span class="hljs-title">for</span> <span class="hljs-params">(tablename &lt;- table_arr)</span> </span>&#123;
+      ps.setString(<span class="hljs-number">1</span>,tablename)
+      ps.setString(<span class="hljs-number">2</span>,<span class="hljs-string">&quot;insurance&quot;</span>)
+      rs = ps.executeQuery()
+      <span class="hljs-keyword">var</span> str =
+        s<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;</span>
+<span class="hljs-string">           |drop table if exists $&#123;tablename&#125;;</span>
+<span class="hljs-string">           |create table if not exists $&#123;tablename&#125; (\n&quot;</span><span class="hljs-string">&quot;&quot;</span>.<span class="hljs-function">stripMargin</span>
+<span class="hljs-function">      <span class="hljs-title">while</span> <span class="hljs-params">(rs.next()</span>) </span>&#123;
+        val column_name: String = rs.getString(<span class="hljs-number">1</span>)
+        val column_type: String = rs.getString(<span class="hljs-number">2</span>)
+        val column_comment: String = rs.getString(<span class="hljs-number">3</span>)
+        <span class="hljs-keyword">var</span> temp_type = <span class="hljs-function">column_type</span>
+<span class="hljs-function">        <span class="hljs-title">if</span> <span class="hljs-params">(temp_type.contains(<span class="hljs-string">&quot;int&quot;</span>)</span>) </span>&#123;
+          <span class="hljs-comment">//30000-&gt;int(5)-&gt;smallint</span>
+          <span class="hljs-comment">//300000000-&gt;int(5-16)-&gt;int</span>
+          <span class="hljs-comment">//3000000000000000000-&gt;int(16-32)-&gt;bigint</span>
+          val <span class="hljs-keyword">int</span>: Int = <span class="hljs-string">&quot;int(11)&quot;</span>.split(<span class="hljs-string">&quot;\\(|\\)&quot;</span>)(<span class="hljs-number">1</span>).<span class="hljs-function">toInt</span>
+<span class="hljs-function">          <span class="hljs-title">if</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> &gt; <span class="hljs-number">0</span> &amp;&amp; <span class="hljs-keyword">int</span> &lt;= <span class="hljs-number">5</span>)</span> </span>&#123;
+            temp_type = <span class="hljs-string">&quot;smallint&quot;</span>
+          &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">int</span> &gt; <span class="hljs-number">5</span> &amp;&amp; <span class="hljs-keyword">int</span> &lt;= <span class="hljs-number">16</span>) &#123;
+            temp_type = <span class="hljs-string">&quot;int&quot;</span>
+          &#125; <span class="hljs-keyword">else</span> &#123;
+            temp_type = <span class="hljs-string">&quot;bigint&quot;</span>
+          &#125;
+        &#125;
+        <span class="hljs-keyword">if</span>(temp_type.contains(<span class="hljs-string">&quot;varchar&quot;</span>) || temp_type.contains(<span class="hljs-string">&quot;text&quot;</span>))&#123;
+          temp_type=<span class="hljs-string">&quot;string&quot;</span>
+        &#125;
+        <span class="hljs-comment">//println(column_name,column_type,column_comment)</span>
+        str += s<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;$&#123;column_name&#125;   $&#123;temp_type&#125;  comment &#x27;$&#123;column_comment&#125;&#x27;,\n&quot;</span><span class="hljs-string">&quot;&quot;</span>
+      &#125;
+      str = str.stripSuffix(<span class="hljs-string">&quot;,\n&quot;</span>)
+      str += <span class="hljs-string">&quot;) comment &#x27;&#x27; \n row format delimited fields terminated by &#x27;\\t&#x27; ; \n&quot;</span>
+      println(str)
+    &#125;
+
+    rs.close()
+    ps.close()
+    conn.close()
+    <span class="hljs-comment">//解析上面的元数据，拼接成hive版的ddl语句</span>
+  &#125;
+
+&#125;</code></pre></div>
                 
               </div>
             
@@ -327,26 +405,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Beitragsautor</div>
+          <div>作者</div>
           <div>惊羽</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Veröffentlicht am</div>
-          <div>September 12, 2020</div>
+          <div>发布于</div>
+          <div>2020年9月12日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -369,7 +447,7 @@
                       <a href="/2020/09/22/Spark-Review-Day01/" title="Apache Spark：分布式并行计算框架（一）">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Apache Spark：分布式并行计算框架（一）</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -378,7 +456,7 @@
                     
                       <a href="/2020/09/12/Sqoop%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%AA%8C%E8%AF%81/" title="Sqoop自动化抽取数据与验证">
                         <span class="hidden-mobile">Sqoop自动化抽取数据与验证</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -399,7 +477,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Inhaltsverzeichnis</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -455,7 +533,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -463,7 +541,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -483,6 +561,30 @@
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -630,6 +732,8 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -642,7 +746,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

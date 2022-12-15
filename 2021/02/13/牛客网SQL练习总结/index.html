@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.svg">
+  <link rel="icon" href="/img/icon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -16,13 +16,13 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-    <meta name="description" content="补充知识补充知识整理123456789101112131.一张表可以多次被引用使用2.筛选条件包含某个值, 这个值可以通过子查询求出, 再通过 where 条件判断3.子查询没有符合要求的条件会直接返回 null4.insert ignore into 相当于 replace5.创建视图格式:  create view actor_name_view as + 字段列表(查询结果等)6.查询强制走">
+    <meta name="description" content="补充知识补充知识整理1.一张表可以多次被引用使用 2.筛选条件包含某个值, 这个值可以通过子查询求出, 再通过 where 条件判断 3.子查询没有符合要求的条件会直接返回 null 4.insert ignore into 相当于 replace 5.创建视图格式:  create view actor_name_view as + 字段列表(查询结果等) 6.查询强制走索引: from 表名">
 <meta property="og:type" content="article">
 <meta property="og:title" content="牛客网SQL练习总结">
 <meta property="og:url" content="https://jface001.github.io/2021/02/13/%E7%89%9B%E5%AE%A2%E7%BD%91SQL%E7%BB%83%E4%B9%A0%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="惊羽的博客">
-<meta property="og:description" content="补充知识补充知识整理123456789101112131.一张表可以多次被引用使用2.筛选条件包含某个值, 这个值可以通过子查询求出, 再通过 where 条件判断3.子查询没有符合要求的条件会直接返回 null4.insert ignore into 相当于 replace5.创建视图格式:  create view actor_name_view as + 字段列表(查询结果等)6.查询强制走">
-<meta property="og:locale">
+<meta property="og:description" content="补充知识补充知识整理1.一张表可以多次被引用使用 2.筛选条件包含某个值, 这个值可以通过子查询求出, 再通过 where 条件判断 3.子查询没有符合要求的条件会直接返回 null 4.insert ignore into 相当于 replace 5.创建视图格式:  create view actor_name_view as + 字段列表(查询结果等) 6.查询强制走索引: from 表名">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-12T17:23:15.000Z">
 <meta property="article:modified_time" content="2022-01-19T10:13:44.441Z">
 <meta property="article:author" content="惊羽">
@@ -30,6 +30,8 @@
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary_large_image">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>牛客网SQL练习总结 - 惊羽的博客</title>
@@ -116,7 +118,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Startseite</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -128,7 +130,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Archiv</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -140,7 +142,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Kategorien</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -152,7 +154,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Schlagwörter</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -164,7 +166,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>Über</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -210,7 +212,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2021-02-13 01:23" pubdate>
-          February 13, 2021 am
+          2021年2月13日 凌晨
         </time>
       </span>
     
@@ -221,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.3k wörter
+          6.9k 字
         
       </span>
     
@@ -232,7 +234,7 @@
         
         
         
-          62 minuten
+          58 分钟
         
       </span>
     
@@ -275,58 +277,326 @@
             
               <div class="markdown-body">
                 
-                <h2 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h2><h3 id="补充知识整理"><a href="#补充知识整理" class="headerlink" title="补充知识整理"></a>补充知识整理</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>一张表可以多次被引用使用<br><span class="hljs-number">2.</span>筛选条件包含某个值, 这个值可以通过子查询求出, 再通过 <span class="hljs-keyword">where</span> 条件判断<br><span class="hljs-number">3.</span>子查询没有符合要求的条件会直接返回 <span class="hljs-keyword">null</span><br><span class="hljs-number">4.</span><span class="hljs-keyword">insert</span> ignore <span class="hljs-keyword">into</span> 相当于 replace<br><span class="hljs-number">5.</span>创建视图格式:  <span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> actor_name_view <span class="hljs-keyword">as</span> <span class="hljs-operator">+</span> 字段列表(查询结果等)<br><span class="hljs-number">6.</span>查询强制走索引: <span class="hljs-keyword">from</span> 表名 <span class="hljs-operator">+</span> force index(索引名)<br><span class="hljs-number">7.</span>创建表字段后<span class="hljs-operator">+</span> <span class="hljs-keyword">default</span> <span class="hljs-string">&#x27;默认值&#x27;</span>, 即赋予默认值<br><span class="hljs-number">8.</span>如果需要对数据进行更新操作, 一定是通过update 或者 replace 进行<br><span class="hljs-number">9.</span>需要排除最大值最小值再进行计算的题目,可以通过子查询排除, 或者通过 first_value last_value 开窗函数进行<br><span class="hljs-number">10.</span>exsits 用来判断是否存在某种条件的记录，存在就返回 <span class="hljs-literal">true</span> ,不存在则返回 <span class="hljs-literal">false</span><br><span class="hljs-number">11.</span>第 <span class="hljs-number">1</span> 的隐含条件是 该字段数值大于 它的数量为 <span class="hljs-number">0</span> , 大于等于它的数量为 <span class="hljs-number">1</span> , 以此类推<br><span class="hljs-number">12.</span>聚合字段的部分值，可以让其它值为<span class="hljs-number">0</span>，为<span class="hljs-keyword">null</span>，聚合的时候不影响结果<br><br></code></pre></td></tr></table></figure>
+                <h2 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h2><h3 id="补充知识整理"><a href="#补充知识整理" class="headerlink" title="补充知识整理"></a>补充知识整理</h3><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-number">1.</span>一张表可以多次被引用使用
+<span class="hljs-number">2.</span>筛选条件包含某个值, 这个值可以通过子查询求出, 再通过 <span class="hljs-keyword">where</span> 条件判断
+<span class="hljs-number">3.</span>子查询没有符合要求的条件会直接返回 <span class="hljs-keyword">null</span>
+<span class="hljs-number">4.</span><span class="hljs-keyword">insert</span> ignore <span class="hljs-keyword">into</span> 相当于 replace
+<span class="hljs-number">5.</span>创建视图格式:  <span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> actor_name_view <span class="hljs-keyword">as</span> <span class="hljs-operator">+</span> 字段列表(查询结果等)
+<span class="hljs-number">6.</span>查询强制走索引: <span class="hljs-keyword">from</span> 表名 <span class="hljs-operator">+</span> force index(索引名)
+<span class="hljs-number">7.</span>创建表字段后<span class="hljs-operator">+</span> <span class="hljs-keyword">default</span> <span class="hljs-string">&#x27;默认值&#x27;</span>, 即赋予默认值
+<span class="hljs-number">8.</span>如果需要对数据进行更新操作, 一定是通过update 或者 replace 进行
+<span class="hljs-number">9.</span>需要排除最大值最小值再进行计算的题目,可以通过子查询排除, 或者通过 first_value last_value 开窗函数进行
+<span class="hljs-number">10.</span>exsits 用来判断是否存在某种条件的记录，存在就返回 <span class="hljs-literal">true</span> ,不存在则返回 <span class="hljs-literal">false</span>
+<span class="hljs-number">11.</span>第 <span class="hljs-number">1</span> 的隐含条件是 该字段数值大于 它的数量为 <span class="hljs-number">0</span> , 大于等于它的数量为 <span class="hljs-number">1</span> , 以此类推
+<span class="hljs-number">12.</span>聚合字段的部分值，可以让其它值为<span class="hljs-number">0</span>，为<span class="hljs-keyword">null</span>，聚合的时候不影响结果
+</code></pre></div>
 
-<h3 id="非空校验方法"><a href="#非空校验方法" class="headerlink" title="非空校验方法"></a>非空校验方法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">--如果x为null，就返回y，否则返回x</span><br>nvl(x,y)<br><span class="hljs-comment">--返回集合中第一个不为null的值，如果全部为null就返回null</span><br>colease(x,y,e,d,f)<br><span class="hljs-comment">--如果x为null，就返回y，否则返回x</span><br>ifnull(x,y)<br></code></pre></td></tr></table></figure>
+<h3 id="非空校验方法"><a href="#非空校验方法" class="headerlink" title="非空校验方法"></a>非空校验方法</h3><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">--如果x为null，就返回y，否则返回x</span>
+nvl(x,y)
+<span class="hljs-comment">--返回集合中第一个不为null的值，如果全部为null就返回null</span>
+colease(x,y,e,d,f)
+<span class="hljs-comment">--如果x为null，就返回y，否则返回x</span>
+ifnull(x,y)</code></pre></div>
 
 <h3 id="创建和删除索引"><a href="#创建和删除索引" class="headerlink" title="创建和删除索引"></a>创建和删除索引</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/e1824daa0c49404aa602cf0cb34bdd75">SQL37 对first_name创建唯一索引uniq_idx_firstname</a></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- MySQL中4种方式给字段添加索引</span><br><br><span class="hljs-comment">-- 创建主键索引,索引值必须是唯一的，且不能为NULL。</span><br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> tbl_name <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">PRIMARY</span> KEY (col_list);<br><br><span class="hljs-comment">-- 创建唯一索引,值唯一</span><br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> tbl_name <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">UNIQUE</span> index_name (col_list);<br><br><span class="hljs-comment">-- 创建普通索引,索引值可以重复出现</span><br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> tbl_name <span class="hljs-keyword">ADD</span> INDEX index_name (col_list);<br><br><span class="hljs-comment">-- 创建全文索引, 指定索引</span><br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> tbl_name <span class="hljs-keyword">ADD</span> FULLTEXT index_name (col_list);<br><br><span class="hljs-comment">-- 删除索引</span><br><span class="hljs-keyword">DROP</span> INDEX index_name <span class="hljs-keyword">ON</span> tbl_name;<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> tbl_name <span class="hljs-keyword">DROP</span> INDEX index_name；<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> tbl_name <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">PRIMARY</span> KEY;<br><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- MySQL中4种方式给字段添加索引</span>
 
-<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sql">在MySQL中，创建触发器语法如下：<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> trigger_name<br>trigger_time trigger_event <span class="hljs-keyword">ON</span> tbl_name<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br>trigger_stmt<br>其中：<br><br>trigger_name：标识触发器名称，用户自行指定；<br>trigger_time：标识触发时机，取值为 BEFORE 或 AFTER；<br>trigger_event：标识触发事件，取值为 <span class="hljs-keyword">INSERT</span>、UPDATE 或 <span class="hljs-keyword">DELETE</span>；<br>tbl_name：标识建立触发器的表名，即在哪张表上建立触发器；<br>trigger_stmt：触发器程序体，可以是一句<span class="hljs-keyword">SQL</span>语句，或者用 <span class="hljs-keyword">BEGIN</span> 和 <span class="hljs-keyword">END</span> 包含的多条语句，每条语句结束要分号结尾。<br></code></pre></td></tr></table></figure>
+<span class="hljs-comment">-- 创建主键索引,索引值必须是唯一的，且不能为NULL。</span>
+<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> tbl_name <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">PRIMARY</span> KEY (col_list);
+
+<span class="hljs-comment">-- 创建唯一索引,值唯一</span>
+<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> tbl_name <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">UNIQUE</span> index_name (col_list);
+
+<span class="hljs-comment">-- 创建普通索引,索引值可以重复出现</span>
+<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> tbl_name <span class="hljs-keyword">ADD</span> INDEX index_name (col_list);
+
+<span class="hljs-comment">-- 创建全文索引, 指定索引</span>
+<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> tbl_name <span class="hljs-keyword">ADD</span> FULLTEXT index_name (col_list);
+
+<span class="hljs-comment">-- 删除索引</span>
+<span class="hljs-keyword">DROP</span> INDEX index_name <span class="hljs-keyword">ON</span> tbl_name;
+<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> tbl_name <span class="hljs-keyword">DROP</span> INDEX index_name；
+<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> tbl_name <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">PRIMARY</span> KEY;
+</code></pre></div>
+
+<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><div class="code-wrapper"><pre><code class="hljs sql">在MySQL中，创建触发器语法如下：
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> trigger_name
+trigger_time trigger_event <span class="hljs-keyword">ON</span> tbl_name
+<span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span>
+trigger_stmt
+其中：
+
+trigger_name：标识触发器名称，用户自行指定；
+trigger_time：标识触发时机，取值为 BEFORE 或 AFTER；
+trigger_event：标识触发事件，取值为 <span class="hljs-keyword">INSERT</span>、UPDATE 或 <span class="hljs-keyword">DELETE</span>；
+tbl_name：标识建立触发器的表名，即在哪张表上建立触发器；
+trigger_stmt：触发器程序体，可以是一句<span class="hljs-keyword">SQL</span>语句，或者用 <span class="hljs-keyword">BEGIN</span> 和 <span class="hljs-keyword">END</span> 包含的多条语句，每条语句结束要分号结尾。</code></pre></div>
 
 <p><a target="_blank" rel="noopener" href="https://www.notion.so/7e920bb2e1e74c4e83750f5c16033e2e">SQL41 构造一个触发器audit_log</a></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">trigger</span> audit_log<br>after <span class="hljs-keyword">insert</span> <span class="hljs-keyword">on</span> employees_test<br><span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-type">row</span><br><span class="hljs-keyword">begin</span><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> audit <span class="hljs-keyword">values</span>(new.id,new.name);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">trigger</span> audit_log
+after <span class="hljs-keyword">insert</span> <span class="hljs-keyword">on</span> employees_test
+<span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-type">row</span>
+<span class="hljs-keyword">begin</span>
+<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> audit <span class="hljs-keyword">values</span>(new.id,new.name);
+<span class="hljs-keyword">end</span></code></pre></div>
 
 <h3 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h3><ul>
 <li>窗口函数完整模式</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 指定字段求和并排序，窗口范围所有行</span><br><span class="hljs-built_in">sum</span>(x) <span class="hljs-keyword">over</span>(<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> a <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> b  <span class="hljs-keyword">rows</span> <span class="hljs-keyword">between</span> unbounded preceding  <span class="hljs-keyword">and</span> unbounded following )<br><span class="hljs-comment">-- 指定字段求和并排序，窗口范围是从改值前面的行到当前行</span><br><span class="hljs-built_in">sum</span>(x) <span class="hljs-keyword">over</span>(<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> a <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> b  <span class="hljs-keyword">rows</span> <span class="hljs-keyword">between</span> unbounded preceding  <span class="hljs-keyword">and</span> <span class="hljs-keyword">current</span> <span class="hljs-type">row</span> )<br><span class="hljs-comment">-- 指定字段求和并做排序，将所有行当前字段数据中，当前行值+2 和 -2范围之内的所有值求和 </span><br><span class="hljs-built_in">sum</span>(x) <span class="hljs-keyword">over</span>(<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> a <span class="hljs-keyword">range</span> <span class="hljs-keyword">between</span> <span class="hljs-number">2</span> preceding  <span class="hljs-keyword">and</span> <span class="hljs-number">2</span> followling )<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- 指定字段求和并排序，窗口范围所有行</span>
+<span class="hljs-built_in">sum</span>(x) <span class="hljs-keyword">over</span>(<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> a <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> b  <span class="hljs-keyword">rows</span> <span class="hljs-keyword">between</span> unbounded preceding  <span class="hljs-keyword">and</span> unbounded following )
+<span class="hljs-comment">-- 指定字段求和并排序，窗口范围是从改值前面的行到当前行</span>
+<span class="hljs-built_in">sum</span>(x) <span class="hljs-keyword">over</span>(<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> a <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> b  <span class="hljs-keyword">rows</span> <span class="hljs-keyword">between</span> unbounded preceding  <span class="hljs-keyword">and</span> <span class="hljs-keyword">current</span> <span class="hljs-type">row</span> )
+<span class="hljs-comment">-- 指定字段求和并做排序，将所有行当前字段数据中，当前行值+2 和 -2范围之内的所有值求和 </span>
+<span class="hljs-built_in">sum</span>(x) <span class="hljs-keyword">over</span>(<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> a <span class="hljs-keyword">range</span> <span class="hljs-keyword">between</span> <span class="hljs-number">2</span> preceding  <span class="hljs-keyword">and</span> <span class="hljs-number">2</span> followling )</code></pre></div>
 
 <ul>
 <li>常用窗口函数</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 排名窗口函数</span><br><span class="hljs-built_in">row_number</span>()<br><span class="hljs-built_in">rank</span>()<br><span class="hljs-built_in">dense_rank</span>()<br><br><span class="hljs-comment">-- 聚合窗口函数</span><br>sum 求和<br>count 总数<br>max 最大值<br>min 最小值<br>avg 平均值<br><br><span class="hljs-comment">--其它窗口函数</span><br>lag 上一行的值<br>lead 下一行的值<br>first_value 该字段第一行的值<br>last_value 该字段最后一行的值<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- 排名窗口函数</span>
+<span class="hljs-built_in">row_number</span>()
+<span class="hljs-built_in">rank</span>()
+<span class="hljs-built_in">dense_rank</span>()
 
-<h3 id="其它常用函数"><a href="#其它常用函数" class="headerlink" title="其它常用函数"></a>其它常用函数</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs sql"><br>concat(字符<span class="hljs-number">1</span>, 连接符,字符<span class="hljs-number">2</span>) 指定连接符连接字符 <span class="hljs-number">1</span> 和字符 <span class="hljs-number">2</span><br><br>group_concat（X，Y）<br>X是要连接的字段，<br>Y是连接时用的符号，可省略，默认为逗号。<br>此函数必须与<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> 配合使用。<br><br>统计字符串长度：<br><span class="hljs-keyword">char_length</span>(<span class="hljs-string">&#x27;string&#x27;</span>) <span class="hljs-operator">/</span> <span class="hljs-keyword">char_length</span>(column_name)<br><span class="hljs-number">1</span>、返回值为字符串string或者对应字段长度，长度的单位为字符，一个多字节字符（例如，汉字）算作一个单字符；<br><span class="hljs-number">2</span>、不管汉字还是数字或者是字母都算是一个字符；<br><span class="hljs-number">3</span>、任何编码下，多字节字符都算是一个字符；<br>参考资料来源：https:<span class="hljs-operator">/</span><span class="hljs-operator">/</span>blog.csdn.net<span class="hljs-operator">/</span>iris_xuting<span class="hljs-operator">/</span>article<span class="hljs-operator">/</span>details<span class="hljs-operator">/</span><span class="hljs-number">53763894</span><br><br>length(<span class="hljs-string">&#x27;string&#x27;</span>)<span class="hljs-operator">/</span>length(column_name)<br><span class="hljs-number">1</span>、utf8字符集编码下,一个汉字是算三个字符,一个数字或字母算一个字符。<br><span class="hljs-number">2</span>、其他编码下,一个汉字算两个字符, 一个数字或字母算一个字符。<br><br>字符串替换：replace(s,s1,s2)，将字符串 s2 替代字符串 s 中的字符串 s1<br>MySQL常用函数：https:<span class="hljs-operator">/</span><span class="hljs-operator">/</span>www.runoob.com<span class="hljs-operator">/</span>mysql<span class="hljs-operator">/</span>mysql<span class="hljs-operator">-</span>functions.html<br><br>截取字符串函数 substr(X,Y,Z) 或 substr(X,Y) <br>X是要截取的字符串 <br>Y是字符串的起始位置<br>Z是要截取字符串的长度<br><br><span class="hljs-keyword">left</span> 和 <span class="hljs-keyword">right</span> 函数切割，后面 <span class="hljs-keyword">left</span>(a,<span class="hljs-number">7</span>) a是要切割的字符串，<span class="hljs-number">7</span>是切割位数<br><br>date_sub(<span class="hljs-type">date</span>,expr) <span class="hljs-type">date</span><span class="hljs-operator">/</span>datetime 减去expr 值后返回对应 <span class="hljs-type">date</span><span class="hljs-operator">/</span>datetime                   <br><br></code></pre></td></tr></table></figure>
+<span class="hljs-comment">-- 聚合窗口函数</span>
+sum 求和
+count 总数
+max 最大值
+min 最小值
+avg 平均值
+
+<span class="hljs-comment">--其它窗口函数</span>
+lag 上一行的值
+lead 下一行的值
+first_value 该字段第一行的值
+last_value 该字段最后一行的值</code></pre></div>
+
+<h3 id="其它常用函数"><a href="#其它常用函数" class="headerlink" title="其它常用函数"></a>其它常用函数</h3><div class="code-wrapper"><pre><code class="hljs sql">
+concat(字符<span class="hljs-number">1</span>, 连接符,字符<span class="hljs-number">2</span>) 指定连接符连接字符 <span class="hljs-number">1</span> 和字符 <span class="hljs-number">2</span>
+
+group_concat（X，Y）
+X是要连接的字段，
+Y是连接时用的符号，可省略，默认为逗号。
+此函数必须与<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> 配合使用。
+
+统计字符串长度：
+<span class="hljs-keyword">char_length</span>(<span class="hljs-string">&#x27;string&#x27;</span>) <span class="hljs-operator">/</span> <span class="hljs-keyword">char_length</span>(column_name)
+<span class="hljs-number">1</span>、返回值为字符串string或者对应字段长度，长度的单位为字符，一个多字节字符（例如，汉字）算作一个单字符；
+<span class="hljs-number">2</span>、不管汉字还是数字或者是字母都算是一个字符；
+<span class="hljs-number">3</span>、任何编码下，多字节字符都算是一个字符；
+参考资料来源：https:<span class="hljs-operator">/</span><span class="hljs-operator">/</span>blog.csdn.net<span class="hljs-operator">/</span>iris_xuting<span class="hljs-operator">/</span>article<span class="hljs-operator">/</span>details<span class="hljs-operator">/</span><span class="hljs-number">53763894</span>
+
+length(<span class="hljs-string">&#x27;string&#x27;</span>)<span class="hljs-operator">/</span>length(column_name)
+<span class="hljs-number">1</span>、utf8字符集编码下,一个汉字是算三个字符,一个数字或字母算一个字符。
+<span class="hljs-number">2</span>、其他编码下,一个汉字算两个字符, 一个数字或字母算一个字符。
+
+字符串替换：replace(s,s1,s2)，将字符串 s2 替代字符串 s 中的字符串 s1
+MySQL常用函数：https:<span class="hljs-operator">/</span><span class="hljs-operator">/</span>www.runoob.com<span class="hljs-operator">/</span>mysql<span class="hljs-operator">/</span>mysql<span class="hljs-operator">-</span>functions.html
+
+截取字符串函数 substr(X,Y,Z) 或 substr(X,Y) 
+X是要截取的字符串 
+Y是字符串的起始位置
+Z是要截取字符串的长度
+
+<span class="hljs-keyword">left</span> 和 <span class="hljs-keyword">right</span> 函数切割，后面 <span class="hljs-keyword">left</span>(a,<span class="hljs-number">7</span>) a是要切割的字符串，<span class="hljs-number">7</span>是切割位数
+
+date_sub(<span class="hljs-type">date</span>,expr) <span class="hljs-type">date</span><span class="hljs-operator">/</span>datetime 减去expr 值后返回对应 <span class="hljs-type">date</span><span class="hljs-operator">/</span>datetime                   
+</code></pre></div>
 
 <h2 id="求排名"><a href="#求排名" class="headerlink" title="求排名"></a>求排名</h2><h3 id="求排名第N个的"><a href="#求排名第N个的" class="headerlink" title="求排名第N个的"></a>求排名第N个的</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/ec1ca44c62c14ceb990c3c40def1ec6c">SQL2 查找入职员工时间排名倒数第三的员工所有信息</a></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 方法1:先求出排名求第N个, 再倒排</span><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> employees<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> hire_date <span class="hljs-keyword">desc</span><br>limit <span class="hljs-number">0</span>,<span class="hljs-number">3</span>) e<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> e.hire_date<br>limit <span class="hljs-number">1</span>;<br><br><span class="hljs-comment">-- 方法2:子查询,排名字段比自己高大于N的即可, 缺点是如果数据少于排名就不能求出</span><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <br><span class="hljs-keyword">from</span> employees e1<br><span class="hljs-keyword">where</span> <span class="hljs-number">2</span><span class="hljs-operator">=</span>(<span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">from</span> employees e2 <span class="hljs-keyword">where</span> e1.hire_date <span class="hljs-operator">&lt;</span> e2.hire_date);<br><br><span class="hljs-comment">-- 方法3:子查询, 比排名N+1中最高的就是第N个</span><br><br><span class="hljs-comment">-- 方法4:开窗函数，不计算重复就用row_number ，统计重复就dense_rank，子查询 &lt;=N 即可。</span><br><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- 方法1:先求出排名求第N个, 再倒排</span>
+<span class="hljs-keyword">select</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> hire_date <span class="hljs-keyword">desc</span>
+limit <span class="hljs-number">0</span>,<span class="hljs-number">3</span>) e
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> e.hire_date
+limit <span class="hljs-number">1</span>;
+
+<span class="hljs-comment">-- 方法2:子查询,排名字段比自己高大于N的即可, 缺点是如果数据少于排名就不能求出</span>
+<span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> 
+<span class="hljs-keyword">from</span> employees e1
+<span class="hljs-keyword">where</span> <span class="hljs-number">2</span><span class="hljs-operator">=</span>(<span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">from</span> employees e2 <span class="hljs-keyword">where</span> e1.hire_date <span class="hljs-operator">&lt;</span> e2.hire_date);
+
+<span class="hljs-comment">-- 方法3:子查询, 比排名N+1中最高的就是第N个</span>
+
+<span class="hljs-comment">-- 方法4:开窗函数，不计算重复就用row_number ，统计重复就dense_rank，子查询 &lt;=N 即可。</span>
+</code></pre></div>
 
 <h3 id="求某个分组里面排名第N个"><a href="#求某个分组里面排名第N个" class="headerlink" title="求某个分组里面排名第N个"></a>求某个分组里面排名第N个</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/4a052e3e1df5435880d4353eb18a91c6">SQL12 获取每个部门中当前员工薪水最高的相关信息</a></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 1.窗口函数求出每个成员在分组里面的排名</span><br><span class="hljs-comment">-- 2.子查询让排名等于N</span><br><span class="hljs-comment">-- 3.可以做个非空校验, 如果没有符合的的rank, 就返回指定值.</span><br><br><span class="hljs-keyword">select</span> <br>dept_no,emp_no,salary <span class="hljs-keyword">as</span> maxSalary<br><span class="hljs-keyword">from</span>(<br><span class="hljs-keyword">select</span> d.dept_no,d.emp_no,s.salary,<span class="hljs-built_in">row_number</span>() <span class="hljs-keyword">over</span>(<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> d.dept_no <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> s.salary <span class="hljs-keyword">desc</span>)  <span class="hljs-keyword">as</span> r1<br><span class="hljs-keyword">from</span> dept_emp d, salaries s<br><span class="hljs-keyword">where</span> d.emp_no <span class="hljs-operator">=</span>s.emp_no) ss<br><span class="hljs-keyword">where</span> r1<span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> dept_no;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- 1.窗口函数求出每个成员在分组里面的排名</span>
+<span class="hljs-comment">-- 2.子查询让排名等于N</span>
+<span class="hljs-comment">-- 3.可以做个非空校验, 如果没有符合的的rank, 就返回指定值.</span>
+
+<span class="hljs-keyword">select</span> 
+dept_no,emp_no,salary <span class="hljs-keyword">as</span> maxSalary
+<span class="hljs-keyword">from</span>(
+<span class="hljs-keyword">select</span> d.dept_no,d.emp_no,s.salary,<span class="hljs-built_in">row_number</span>() <span class="hljs-keyword">over</span>(<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> d.dept_no <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> s.salary <span class="hljs-keyword">desc</span>)  <span class="hljs-keyword">as</span> r1
+<span class="hljs-keyword">from</span> dept_emp d, salaries s
+<span class="hljs-keyword">where</span> d.emp_no <span class="hljs-operator">=</span>s.emp_no) ss
+<span class="hljs-keyword">where</span> r1<span class="hljs-operator">=</span><span class="hljs-number">1</span>
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> dept_no;</code></pre></div>
 
 <h2 id="用户登陆相关"><a href="#用户登陆相关" class="headerlink" title="用户登陆相关"></a>用户登陆相关</h2><h3 id="最近登陆日期"><a href="#最近登陆日期" class="headerlink" title="最近登陆日期"></a>最近登陆日期</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/7cc3c814329546e89e71bb45c805c9ad">SQL67 牛客每个人最近的登录日期(二）</a></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">--基本思路就是求出最近登陆的日期和 user_id 作为字典表，里面对应的user_id 就是最近登陆的用户，查询即可。</span><br><br><span class="hljs-keyword">select</span> u.name,c.name,l.date<br><span class="hljs-keyword">from</span> login l, <span class="hljs-keyword">user</span> u , client c<br><span class="hljs-keyword">where</span> l.user_id<span class="hljs-operator">=</span>u.id <span class="hljs-keyword">and</span> l.client_id<span class="hljs-operator">=</span>c.id<br><span class="hljs-keyword">and</span> (l.user_id,l.date) <span class="hljs-keyword">in</span>(<span class="hljs-keyword">select</span> user_id,<span class="hljs-built_in">max</span>(<span class="hljs-type">date</span>) <span class="hljs-keyword">from</span> login <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id)<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> u.name;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">--基本思路就是求出最近登陆的日期和 user_id 作为字典表，里面对应的user_id 就是最近登陆的用户，查询即可。</span>
+
+<span class="hljs-keyword">select</span> u.name,c.name,l.date
+<span class="hljs-keyword">from</span> login l, <span class="hljs-keyword">user</span> u , client c
+<span class="hljs-keyword">where</span> l.user_id<span class="hljs-operator">=</span>u.id <span class="hljs-keyword">and</span> l.client_id<span class="hljs-operator">=</span>c.id
+<span class="hljs-keyword">and</span> (l.user_id,l.date) <span class="hljs-keyword">in</span>(<span class="hljs-keyword">select</span> user_id,<span class="hljs-built_in">max</span>(<span class="hljs-type">date</span>) <span class="hljs-keyword">from</span> login <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id)
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> u.name;</code></pre></div>
 
 <h3 id="次日留存率"><a href="#次日留存率" class="headerlink" title="次日留存率"></a>次日留存率</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/16d41af206cd4066a06a3a0aa585ad3d">SQL68 牛客每个人最近的登录日期(三)</a></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 1.筛选出初次登陆的新用户</span><br><span class="hljs-keyword">select</span> user_id,<span class="hljs-built_in">min</span>(<span class="hljs-type">date</span>)<br><span class="hljs-keyword">from</span> login <br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id;<br><br><span class="hljs-comment">--2.新用户登陆后, 第二天登陆的情况</span><br><br><span class="hljs-keyword">select</span> round(<span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id) <span class="hljs-operator">/</span> (<span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id) <span class="hljs-keyword">from</span> login) ,<span class="hljs-number">3</span>) <span class="hljs-keyword">as</span> p<br><span class="hljs-keyword">from</span> login<br><span class="hljs-keyword">where</span> (user_id,<span class="hljs-type">date</span>) <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> user_id,date_add(<span class="hljs-built_in">min</span>(<span class="hljs-type">date</span>),<span class="hljs-type">INTERVAL</span> <span class="hljs-number">1</span> <span class="hljs-keyword">day</span>) <span class="hljs-keyword">from</span> login <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id)<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- 1.筛选出初次登陆的新用户</span>
+<span class="hljs-keyword">select</span> user_id,<span class="hljs-built_in">min</span>(<span class="hljs-type">date</span>)
+<span class="hljs-keyword">from</span> login 
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id;
+
+<span class="hljs-comment">--2.新用户登陆后, 第二天登陆的情况</span>
+
+<span class="hljs-keyword">select</span> round(<span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id) <span class="hljs-operator">/</span> (<span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id) <span class="hljs-keyword">from</span> login) ,<span class="hljs-number">3</span>) <span class="hljs-keyword">as</span> p
+<span class="hljs-keyword">from</span> login
+<span class="hljs-keyword">where</span> (user_id,<span class="hljs-type">date</span>) <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> user_id,date_add(<span class="hljs-built_in">min</span>(<span class="hljs-type">date</span>),<span class="hljs-type">INTERVAL</span> <span class="hljs-number">1</span> <span class="hljs-keyword">day</span>) <span class="hljs-keyword">from</span> login <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id)</code></pre></div>
 
 <h3 id="每日新增用户数"><a href="#每日新增用户数" class="headerlink" title="每日新增用户数"></a>每日新增用户数</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/e524dc7450234395aa21c75303a42b0a">SQL69 牛客每个人最近的登录日期(四)</a></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">--1.求出新用户登陆日期</span><br><span class="hljs-keyword">select</span> user_id,<span class="hljs-built_in">min</span>(<span class="hljs-type">date</span>) <span class="hljs-keyword">as</span> <span class="hljs-type">date</span> <br><span class="hljs-keyword">from</span> login <br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id;<br><br><span class="hljs-comment">--2.通过case when 判断, 如果当天登陆用户中和新用户登陆表相同则记为1,否则是0.</span><br><span class="hljs-keyword">select</span> tmp.date,<span class="hljs-built_in">sum</span>(tmp.t) <span class="hljs-keyword">as</span> <span class="hljs-keyword">new</span><br><span class="hljs-keyword">from</span><br>(<span class="hljs-keyword">select</span> <span class="hljs-type">date</span>,<br><span class="hljs-keyword">case</span> <br><span class="hljs-keyword">when</span> (user_id,<span class="hljs-type">date</span>) <span class="hljs-keyword">in</span> <br>(<span class="hljs-keyword">select</span> user_id,<span class="hljs-built_in">min</span>(<span class="hljs-type">date</span>) <span class="hljs-keyword">as</span> <span class="hljs-type">date</span> <br><span class="hljs-keyword">from</span> login <br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id) <br><span class="hljs-keyword">then</span> <span class="hljs-number">1</span><br><span class="hljs-keyword">else</span> <span class="hljs-number">0</span><br><span class="hljs-keyword">end</span> <span class="hljs-keyword">as</span> t<br><span class="hljs-keyword">from</span> login) tmp<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-type">date</span><br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-type">date</span>;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">--1.求出新用户登陆日期</span>
+<span class="hljs-keyword">select</span> user_id,<span class="hljs-built_in">min</span>(<span class="hljs-type">date</span>) <span class="hljs-keyword">as</span> <span class="hljs-type">date</span> 
+<span class="hljs-keyword">from</span> login 
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id;
+
+<span class="hljs-comment">--2.通过case when 判断, 如果当天登陆用户中和新用户登陆表相同则记为1,否则是0.</span>
+<span class="hljs-keyword">select</span> tmp.date,<span class="hljs-built_in">sum</span>(tmp.t) <span class="hljs-keyword">as</span> <span class="hljs-keyword">new</span>
+<span class="hljs-keyword">from</span>
+(<span class="hljs-keyword">select</span> <span class="hljs-type">date</span>,
+<span class="hljs-keyword">case</span> 
+<span class="hljs-keyword">when</span> (user_id,<span class="hljs-type">date</span>) <span class="hljs-keyword">in</span> 
+(<span class="hljs-keyword">select</span> user_id,<span class="hljs-built_in">min</span>(<span class="hljs-type">date</span>) <span class="hljs-keyword">as</span> <span class="hljs-type">date</span> 
+<span class="hljs-keyword">from</span> login 
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id) 
+<span class="hljs-keyword">then</span> <span class="hljs-number">1</span>
+<span class="hljs-keyword">else</span> <span class="hljs-number">0</span>
+<span class="hljs-keyword">end</span> <span class="hljs-keyword">as</span> t
+<span class="hljs-keyword">from</span> login) tmp
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-type">date</span>
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-type">date</span>;</code></pre></div>
 
 <h3 id="新用户次日留存率"><a href="#新用户次日留存率" class="headerlink" title="新用户次日留存率"></a>新用户次日留存率</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/ea0c56cd700344b590182aad03cc61b8">SQL70 牛客每个人最近的登录日期(五)</a></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">--分子:当前日期+ 1day 中是前一天新用户的用户</span><br><span class="hljs-comment">--分母 当前日期中是新用户, 即当前日期是该用户所有登陆日期中最小的</span><br><span class="hljs-comment">--当前日期-1day =date   等于 当前日期= date + 1day</span><br><br><span class="hljs-keyword">select</span> <span class="hljs-type">date</span>,<br>ifnull(round (<br><span class="hljs-built_in">sum</span>(<span class="hljs-keyword">case</span> <span class="hljs-keyword">when</span> (user_id,<span class="hljs-type">date</span>) <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> user_id, <span class="hljs-built_in">min</span>(<span class="hljs-type">date</span>) <span class="hljs-keyword">from</span> login <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id) <br> <span class="hljs-keyword">and</span> (user_id,<span class="hljs-type">date</span>) <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> user_id, date_add(<span class="hljs-type">date</span>,<span class="hljs-type">interval</span> <span class="hljs-number">-1</span> <span class="hljs-keyword">day</span>) <span class="hljs-keyword">from</span> login <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id) <br><span class="hljs-keyword">then</span> <span class="hljs-number">1</span><br><span class="hljs-keyword">else</span> <span class="hljs-number">0</span><br><span class="hljs-keyword">end</span>)<br>  <span class="hljs-operator">/</span><br><span class="hljs-built_in">sum</span>(<span class="hljs-keyword">case</span> <span class="hljs-keyword">when</span> (user_id,<span class="hljs-type">date</span>) <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> user_id, <span class="hljs-built_in">min</span>(<span class="hljs-type">date</span>) <span class="hljs-keyword">from</span> login <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id)<br><span class="hljs-keyword">then</span> <span class="hljs-number">1</span><br><span class="hljs-keyword">else</span> <span class="hljs-number">0</span><br><span class="hljs-keyword">end</span>),<br>  <span class="hljs-number">3</span>),<span class="hljs-number">0</span>)<span class="hljs-keyword">as</span> p<br><span class="hljs-keyword">from</span> login<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-type">date</span><br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-type">date</span>;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">--分子:当前日期+ 1day 中是前一天新用户的用户</span>
+<span class="hljs-comment">--分母 当前日期中是新用户, 即当前日期是该用户所有登陆日期中最小的</span>
+<span class="hljs-comment">--当前日期-1day =date   等于 当前日期= date + 1day</span>
+
+<span class="hljs-keyword">select</span> <span class="hljs-type">date</span>,
+ifnull(round (
+<span class="hljs-built_in">sum</span>(<span class="hljs-keyword">case</span> <span class="hljs-keyword">when</span> (user_id,<span class="hljs-type">date</span>) <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> user_id, <span class="hljs-built_in">min</span>(<span class="hljs-type">date</span>) <span class="hljs-keyword">from</span> login <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id) 
+ <span class="hljs-keyword">and</span> (user_id,<span class="hljs-type">date</span>) <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> user_id, date_add(<span class="hljs-type">date</span>,<span class="hljs-type">interval</span> <span class="hljs-number">-1</span> <span class="hljs-keyword">day</span>) <span class="hljs-keyword">from</span> login <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id) 
+<span class="hljs-keyword">then</span> <span class="hljs-number">1</span>
+<span class="hljs-keyword">else</span> <span class="hljs-number">0</span>
+<span class="hljs-keyword">end</span>)
+  <span class="hljs-operator">/</span>
+<span class="hljs-built_in">sum</span>(<span class="hljs-keyword">case</span> <span class="hljs-keyword">when</span> (user_id,<span class="hljs-type">date</span>) <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> user_id, <span class="hljs-built_in">min</span>(<span class="hljs-type">date</span>) <span class="hljs-keyword">from</span> login <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id)
+<span class="hljs-keyword">then</span> <span class="hljs-number">1</span>
+<span class="hljs-keyword">else</span> <span class="hljs-number">0</span>
+<span class="hljs-keyword">end</span>),
+  <span class="hljs-number">3</span>),<span class="hljs-number">0</span>)<span class="hljs-keyword">as</span> p
+<span class="hljs-keyword">from</span> login
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-type">date</span>
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-type">date</span>;</code></pre></div>
 
 <h3 id="用户登陆并统计核心行为统计"><a href="#用户登陆并统计核心行为统计" class="headerlink" title="用户登陆并统计核心行为统计"></a>用户登陆并统计核心行为统计</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/572a027e52804c058e1f8b0c5e8a65b4">SQL71 牛客每个人最近的登录日期(六)</a></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 1.先求出每个用户登陆时候的刷题信息和姓名</span><br><span class="hljs-comment">-- 2.根据日期排序, 再根据姓名排序</span><br><span class="hljs-comment">-- 3.题目是求到某一天累计刷题多少, 我们可以通过子查询筛选符合的</span><br><span class="hljs-keyword">select</span> p1.user_id,p1.date,<span class="hljs-built_in">sum</span>(p1.number) <span class="hljs-keyword">as</span> number<br><span class="hljs-keyword">from</span> passing_number p1,passing_number p2<br><span class="hljs-keyword">where</span>  p1.user_id<span class="hljs-operator">=</span>p2.user_id <span class="hljs-keyword">and</span> p1.date<span class="hljs-operator">&gt;=</span>p2.date<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> p1.user_id,p1.date;<br><br><span class="hljs-comment">-- 最终SQL</span><br><span class="hljs-keyword">select</span><br>u.name,p.date,p.number<br><span class="hljs-keyword">from</span> login l,(<span class="hljs-keyword">select</span> p1.user_id,p1.date,<span class="hljs-built_in">sum</span>(p2.number) <span class="hljs-keyword">as</span> number<br><span class="hljs-keyword">from</span> passing_number p1 <br><span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> passing_number p2<br><span class="hljs-keyword">on</span>  p1.user_id<span class="hljs-operator">=</span>p2.user_id <span class="hljs-keyword">and</span> p1.date<span class="hljs-operator">&gt;=</span>p2.date<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> p1.user_id,p1.date) p ,<span class="hljs-keyword">user</span> u <br><span class="hljs-keyword">where</span> l.user_id<span class="hljs-operator">=</span>p.user_id <span class="hljs-keyword">and</span> l.date<span class="hljs-operator">=</span>p.date <span class="hljs-keyword">and</span> l.user_id<span class="hljs-operator">=</span>u.id<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> p.date,u.name;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- 1.先求出每个用户登陆时候的刷题信息和姓名</span>
+<span class="hljs-comment">-- 2.根据日期排序, 再根据姓名排序</span>
+<span class="hljs-comment">-- 3.题目是求到某一天累计刷题多少, 我们可以通过子查询筛选符合的</span>
+<span class="hljs-keyword">select</span> p1.user_id,p1.date,<span class="hljs-built_in">sum</span>(p1.number) <span class="hljs-keyword">as</span> number
+<span class="hljs-keyword">from</span> passing_number p1,passing_number p2
+<span class="hljs-keyword">where</span>  p1.user_id<span class="hljs-operator">=</span>p2.user_id <span class="hljs-keyword">and</span> p1.date<span class="hljs-operator">&gt;=</span>p2.date
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> p1.user_id,p1.date;
 
-<h3 id="求连续登陆N天的用户"><a href="#求连续登陆N天的用户" class="headerlink" title="求连续登陆N天的用户"></a>求连续登陆N天的用户</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs sql"><br><span class="hljs-comment">--求连续三天登录的人数的方法</span><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> replace temporary <span class="hljs-keyword">view</span> mytab <span class="hljs-keyword">as</span><br><span class="hljs-keyword">select</span> <span class="hljs-string">&#x27;zs&#x27;</span> name, <span class="hljs-string">&#x27;2021-08-01&#x27;</span> logintime <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br><span class="hljs-keyword">select</span> <span class="hljs-string">&#x27;zs&#x27;</span> name, <span class="hljs-string">&#x27;2021-08-02&#x27;</span> logintime <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br><span class="hljs-keyword">select</span> <span class="hljs-string">&#x27;zs&#x27;</span> name, <span class="hljs-string">&#x27;2021-08-03&#x27;</span> logintime <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br><span class="hljs-keyword">select</span> <span class="hljs-string">&#x27;zs&#x27;</span> name, <span class="hljs-string">&#x27;2021-08-04&#x27;</span> logintime;<br><br><span class="hljs-comment">--思路一，将having count(1)&gt;=n，就是求连续n天登录的人数</span><br><span class="hljs-comment">--连续三天登陆等于登陆日期-登陆的次数排序=第一天登陆</span><br><span class="hljs-keyword">with</span> t1 <span class="hljs-keyword">as</span> ( <span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> name,logintime <span class="hljs-keyword">from</span> mytab),<br>     t2 <span class="hljs-keyword">as</span> ( <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span>,<br>                    date_sub(logintime,<span class="hljs-built_in">row_number</span>() <span class="hljs-keyword">over</span> (<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> name <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> logintime)) <span class="hljs-keyword">as</span> temp_date<br>             <span class="hljs-keyword">from</span> t1 )<br><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> name) cnt<br><span class="hljs-keyword">from</span> t2<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> name, temp_date<br><span class="hljs-keyword">having</span> <span class="hljs-built_in">count</span>(<span class="hljs-number">1</span>)<span class="hljs-operator">&gt;=</span><span class="hljs-number">3</span><br>;<br><span class="hljs-comment">--思路二，将下面的date_add(logintime,n-1)，lead(logintime,n-1) ，就是求连续n天登录的人数</span><br><span class="hljs-keyword">with</span> t1 <span class="hljs-keyword">as</span> ( <span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> name,logintime <span class="hljs-keyword">from</span> mytab),<br>     t2 <span class="hljs-keyword">as</span> ( <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span>,<br>                    date_add(logintime,<span class="hljs-number">2</span>) <span class="hljs-keyword">as</span> expectdate,<br>                    <span class="hljs-built_in">lead</span>(logintime,<span class="hljs-number">2</span>) <span class="hljs-keyword">over</span> (<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> name <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> logintime) realdate<br>             <span class="hljs-keyword">from</span> t1 )<br><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> name) cnt  <span class="hljs-keyword">from</span> t2 <span class="hljs-keyword">where</span> expectdate<span class="hljs-operator">=</span>realdate<br>;<br></code></pre></td></tr></table></figure>
+<span class="hljs-comment">-- 最终SQL</span>
+<span class="hljs-keyword">select</span>
+u.name,p.date,p.number
+<span class="hljs-keyword">from</span> login l,(<span class="hljs-keyword">select</span> p1.user_id,p1.date,<span class="hljs-built_in">sum</span>(p2.number) <span class="hljs-keyword">as</span> number
+<span class="hljs-keyword">from</span> passing_number p1 
+<span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> passing_number p2
+<span class="hljs-keyword">on</span>  p1.user_id<span class="hljs-operator">=</span>p2.user_id <span class="hljs-keyword">and</span> p1.date<span class="hljs-operator">&gt;=</span>p2.date
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> p1.user_id,p1.date) p ,<span class="hljs-keyword">user</span> u 
+<span class="hljs-keyword">where</span> l.user_id<span class="hljs-operator">=</span>p.user_id <span class="hljs-keyword">and</span> l.date<span class="hljs-operator">=</span>p.date <span class="hljs-keyword">and</span> l.user_id<span class="hljs-operator">=</span>u.id
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> p.date,u.name;</code></pre></div>
+
+<h3 id="求连续登陆N天的用户"><a href="#求连续登陆N天的用户" class="headerlink" title="求连续登陆N天的用户"></a>求连续登陆N天的用户</h3><div class="code-wrapper"><pre><code class="hljs sql">
+<span class="hljs-comment">--求连续三天登录的人数的方法</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> replace temporary <span class="hljs-keyword">view</span> mytab <span class="hljs-keyword">as</span>
+<span class="hljs-keyword">select</span> <span class="hljs-string">&#x27;zs&#x27;</span> name, <span class="hljs-string">&#x27;2021-08-01&#x27;</span> logintime <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span>
+<span class="hljs-keyword">select</span> <span class="hljs-string">&#x27;zs&#x27;</span> name, <span class="hljs-string">&#x27;2021-08-02&#x27;</span> logintime <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span>
+<span class="hljs-keyword">select</span> <span class="hljs-string">&#x27;zs&#x27;</span> name, <span class="hljs-string">&#x27;2021-08-03&#x27;</span> logintime <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span>
+<span class="hljs-keyword">select</span> <span class="hljs-string">&#x27;zs&#x27;</span> name, <span class="hljs-string">&#x27;2021-08-04&#x27;</span> logintime;
+
+<span class="hljs-comment">--思路一，将having count(1)&gt;=n，就是求连续n天登录的人数</span>
+<span class="hljs-comment">--连续三天登陆等于登陆日期-登陆的次数排序=第一天登陆</span>
+<span class="hljs-keyword">with</span> t1 <span class="hljs-keyword">as</span> ( <span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> name,logintime <span class="hljs-keyword">from</span> mytab),
+     t2 <span class="hljs-keyword">as</span> ( <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span>,
+                    date_sub(logintime,<span class="hljs-built_in">row_number</span>() <span class="hljs-keyword">over</span> (<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> name <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> logintime)) <span class="hljs-keyword">as</span> temp_date
+             <span class="hljs-keyword">from</span> t1 )
+<span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> name) cnt
+<span class="hljs-keyword">from</span> t2
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> name, temp_date
+<span class="hljs-keyword">having</span> <span class="hljs-built_in">count</span>(<span class="hljs-number">1</span>)<span class="hljs-operator">&gt;=</span><span class="hljs-number">3</span>
+;
+<span class="hljs-comment">--思路二，将下面的date_add(logintime,n-1)，lead(logintime,n-1) ，就是求连续n天登录的人数</span>
+<span class="hljs-keyword">with</span> t1 <span class="hljs-keyword">as</span> ( <span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> name,logintime <span class="hljs-keyword">from</span> mytab),
+     t2 <span class="hljs-keyword">as</span> ( <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span>,
+                    date_add(logintime,<span class="hljs-number">2</span>) <span class="hljs-keyword">as</span> expectdate,
+                    <span class="hljs-built_in">lead</span>(logintime,<span class="hljs-number">2</span>) <span class="hljs-keyword">over</span> (<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> name <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> logintime) realdate
+             <span class="hljs-keyword">from</span> t1 )
+<span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> name) cnt  <span class="hljs-keyword">from</span> t2 <span class="hljs-keyword">where</span> expectdate<span class="hljs-operator">=</span>realdate
+;</code></pre></div>
 
 <h2 id="中位数相关"><a href="#中位数相关" class="headerlink" title="中位数相关"></a>中位数相关</h2><h3 id="求中位数"><a href="#求中位数" class="headerlink" title="求中位数"></a>求中位数</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/502fb6e2b1ad4e56aa2e0dd90c6edf3c">考试分数（四）</a></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">--需求</span><br><span class="hljs-comment">--请你写一个sql语句查询各个岗位分数升序排列之后的中位数位置的范围，并且按job升序排序</span><br><br><span class="hljs-comment">--补充知识</span><br><span class="hljs-comment">--中位数的特征：</span><br><span class="hljs-comment">--当个数为偶数时，中位数的起始位置等于个数/2，结束位置等于个数/2+1</span><br><span class="hljs-comment">--当个数为奇数时，中位数的起始位置等于向上取整（个数/2），结束位置等于向上取整（个数/2）</span><br><span class="hljs-comment">--用除以2的余数是否为0来判断奇偶，%2=0</span><br><span class="hljs-comment">--记得取整数，本题用ceiling函数向上取整（返回不小于该数的最小整数值）或round(数，0)四舍五入取整都可以</span><br><br><span class="hljs-comment">--我的写法</span><br><span class="hljs-keyword">SELECT</span><br>job,<br><span class="hljs-built_in">ceil</span>(<span class="hljs-built_in">count</span>(id)<span class="hljs-operator">/</span><span class="hljs-number">2</span>) <span class="hljs-keyword">as</span> <span class="hljs-keyword">start</span>,<br><span class="hljs-keyword">case</span> <br><span class="hljs-keyword">when</span> <span class="hljs-built_in">count</span>(id)<span class="hljs-operator">%</span><span class="hljs-number">2</span><span class="hljs-operator">=</span><span class="hljs-number">0</span><br><span class="hljs-keyword">then</span> <span class="hljs-built_in">ceil</span>(<span class="hljs-built_in">count</span>(id)<span class="hljs-operator">/</span><span class="hljs-number">2</span><span class="hljs-operator">+</span><span class="hljs-number">1</span>)<br><span class="hljs-keyword">else</span> <span class="hljs-built_in">ceil</span>(<span class="hljs-built_in">count</span>(id)<span class="hljs-operator">/</span><span class="hljs-number">2</span>)<br><span class="hljs-keyword">end</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">end</span><br><span class="hljs-keyword">from</span> grade<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> job<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> job;<br><br># 大神简化版 ,后面的<span class="hljs-operator">+</span><span class="hljs-number">1</span>再除以<span class="hljs-number">2</span>, <br><span class="hljs-keyword">select</span> job, round(<span class="hljs-built_in">count</span>(id)<span class="hljs-operator">/</span><span class="hljs-number">2</span>), round((<span class="hljs-built_in">count</span>(id)<span class="hljs-operator">+</span><span class="hljs-number">1</span>)<span class="hljs-operator">/</span><span class="hljs-number">2</span>)<br><span class="hljs-keyword">from</span> grade <br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> job<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> job;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">--需求</span>
+<span class="hljs-comment">--请你写一个sql语句查询各个岗位分数升序排列之后的中位数位置的范围，并且按job升序排序</span>
+
+<span class="hljs-comment">--补充知识</span>
+<span class="hljs-comment">--中位数的特征：</span>
+<span class="hljs-comment">--当个数为偶数时，中位数的起始位置等于个数/2，结束位置等于个数/2+1</span>
+<span class="hljs-comment">--当个数为奇数时，中位数的起始位置等于向上取整（个数/2），结束位置等于向上取整（个数/2）</span>
+<span class="hljs-comment">--用除以2的余数是否为0来判断奇偶，%2=0</span>
+<span class="hljs-comment">--记得取整数，本题用ceiling函数向上取整（返回不小于该数的最小整数值）或round(数，0)四舍五入取整都可以</span>
+
+<span class="hljs-comment">--我的写法</span>
+<span class="hljs-keyword">SELECT</span>
+job,
+<span class="hljs-built_in">ceil</span>(<span class="hljs-built_in">count</span>(id)<span class="hljs-operator">/</span><span class="hljs-number">2</span>) <span class="hljs-keyword">as</span> <span class="hljs-keyword">start</span>,
+<span class="hljs-keyword">case</span> 
+<span class="hljs-keyword">when</span> <span class="hljs-built_in">count</span>(id)<span class="hljs-operator">%</span><span class="hljs-number">2</span><span class="hljs-operator">=</span><span class="hljs-number">0</span>
+<span class="hljs-keyword">then</span> <span class="hljs-built_in">ceil</span>(<span class="hljs-built_in">count</span>(id)<span class="hljs-operator">/</span><span class="hljs-number">2</span><span class="hljs-operator">+</span><span class="hljs-number">1</span>)
+<span class="hljs-keyword">else</span> <span class="hljs-built_in">ceil</span>(<span class="hljs-built_in">count</span>(id)<span class="hljs-operator">/</span><span class="hljs-number">2</span>)
+<span class="hljs-keyword">end</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">from</span> grade
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> job
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> job;
+
+# 大神简化版 ,后面的<span class="hljs-operator">+</span><span class="hljs-number">1</span>再除以<span class="hljs-number">2</span>, 
+<span class="hljs-keyword">select</span> job, round(<span class="hljs-built_in">count</span>(id)<span class="hljs-operator">/</span><span class="hljs-number">2</span>), round((<span class="hljs-built_in">count</span>(id)<span class="hljs-operator">+</span><span class="hljs-number">1</span>)<span class="hljs-operator">/</span><span class="hljs-number">2</span>)
+<span class="hljs-keyword">from</span> grade 
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> job
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> job;</code></pre></div>
 
 <h3 id="求中位数以上的情况"><a href="#求中位数以上的情况" class="headerlink" title="求中位数以上的情况"></a>求中位数以上的情况</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/b626ff9e2ad04789954c2132c74c0512">考试分数（五）</a></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">--需求</span><br><span class="hljs-comment">--请你写一个sql语句查询各个岗位分数的中位数位置上的所有grade信息，并且按id升序排序</span><br><br><span class="hljs-comment">--1.先求出中位数范围</span><br><span class="hljs-comment">--2.再通过开窗函数求出每个同学分数的自然排名</span><br><span class="hljs-comment">--3.按照id排序</span><br><br><span class="hljs-keyword">SELECT</span><br>tmp.id,tmp.job,tmp.score,tmp.t_rank<br><span class="hljs-keyword">from</span>(<br><span class="hljs-keyword">SELECT</span> id,job,score,<br>  <span class="hljs-built_in">row_number</span>() <span class="hljs-keyword">over</span> (<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> job <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> score <span class="hljs-keyword">desc</span>) t_rank,<br>  <span class="hljs-built_in">count</span>(score) <span class="hljs-keyword">over</span> (<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> job) <span class="hljs-keyword">as</span> cnt<br>  <span class="hljs-keyword">from</span> grade) <span class="hljs-keyword">as</span> tmp<br>  <span class="hljs-keyword">where</span> tmp.t_rank<span class="hljs-operator">=</span><span class="hljs-built_in">floor</span>((tmp.cnt<span class="hljs-operator">+</span><span class="hljs-number">1</span>)<span class="hljs-operator">/</span><span class="hljs-number">2</span>) <span class="hljs-keyword">or</span> tmp.t_rank<span class="hljs-operator">=</span><span class="hljs-built_in">floor</span>((tmp.cnt<span class="hljs-operator">+</span><span class="hljs-number">2</span>)<span class="hljs-operator">/</span><span class="hljs-number">2</span>)<br>  <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> tmp.id;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">--需求</span>
+<span class="hljs-comment">--请你写一个sql语句查询各个岗位分数的中位数位置上的所有grade信息，并且按id升序排序</span>
+
+<span class="hljs-comment">--1.先求出中位数范围</span>
+<span class="hljs-comment">--2.再通过开窗函数求出每个同学分数的自然排名</span>
+<span class="hljs-comment">--3.按照id排序</span>
+
+<span class="hljs-keyword">SELECT</span>
+tmp.id,tmp.job,tmp.score,tmp.t_rank
+<span class="hljs-keyword">from</span>(
+<span class="hljs-keyword">SELECT</span> id,job,score,
+  <span class="hljs-built_in">row_number</span>() <span class="hljs-keyword">over</span> (<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> job <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> score <span class="hljs-keyword">desc</span>) t_rank,
+  <span class="hljs-built_in">count</span>(score) <span class="hljs-keyword">over</span> (<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> job) <span class="hljs-keyword">as</span> cnt
+  <span class="hljs-keyword">from</span> grade) <span class="hljs-keyword">as</span> tmp
+  <span class="hljs-keyword">where</span> tmp.t_rank<span class="hljs-operator">=</span><span class="hljs-built_in">floor</span>((tmp.cnt<span class="hljs-operator">+</span><span class="hljs-number">1</span>)<span class="hljs-operator">/</span><span class="hljs-number">2</span>) <span class="hljs-keyword">or</span> tmp.t_rank<span class="hljs-operator">=</span><span class="hljs-built_in">floor</span>((tmp.cnt<span class="hljs-operator">+</span><span class="hljs-number">2</span>)<span class="hljs-operator">/</span><span class="hljs-number">2</span>)
+  <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> tmp.id;</code></pre></div>
                 
               </div>
             
@@ -379,26 +649,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Beitragsautor</div>
+          <div>作者</div>
           <div>惊羽</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Veröffentlicht am</div>
-          <div>February 13, 2021</div>
+          <div>发布于</div>
+          <div>2021年2月13日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -421,7 +691,7 @@
                       <a href="/2021/03/05/Hive%E6%95%B0%E4%BB%93%E7%BC%93%E6%85%A2%E6%B8%90%E5%8F%98%E7%BB%B4%E4%B9%8B%E6%8B%89%E9%93%BE%E8%A1%A8/" title="Hive数仓缓慢渐变维之拉链表">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Hive数仓缓慢渐变维之拉链表</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -430,7 +700,7 @@
                     
                       <a href="/2021/01/07/Redis%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Redis常见面试题">
                         <span class="hidden-mobile">Redis常见面试题</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -451,7 +721,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Inhaltsverzeichnis</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -507,7 +777,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -515,7 +785,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -535,6 +805,30 @@
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -682,6 +976,8 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -694,7 +990,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

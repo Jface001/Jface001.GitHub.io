@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.svg">
+  <link rel="icon" href="/img/icon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -16,23 +16,25 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一键启动一键启动常用服务1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#!&#x2F;bin&#x2F;bashif [ ! $1 ]then echo &quot;please input [start|stop]&quot;exit 1fi#start hadoopecho &amp;q">
+    <meta name="description" content="一键启动一键启动常用服务#!&#x2F;bin&#x2F;bash if [ ! $1 ] then echo &quot;please input [start|stop]&quot; exit 1 fi #start hadoop echo &quot; ----------- $1 dfs ------------ &quot; ssh root@node01 &quot;source &#x2F;etc&#x2F;profile">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大数据常用脚本">
 <meta property="og:url" content="https://jface001.github.io/2020/06/10/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B8%B8%E7%94%A8%E8%84%9A%E6%9C%AC/index.html">
 <meta property="og:site_name" content="惊羽的博客">
-<meta property="og:description" content="一键启动一键启动常用服务1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#!&#x2F;bin&#x2F;bashif [ ! $1 ]then echo &quot;please input [start|stop]&quot;exit 1fi#start hadoopecho &amp;q">
-<meta property="og:locale">
+<meta property="og:description" content="一键启动一键启动常用服务#!&#x2F;bin&#x2F;bash if [ ! $1 ] then echo &quot;please input [start|stop]&quot; exit 1 fi #start hadoop echo &quot; ----------- $1 dfs ------------ &quot; ssh root@node01 &quot;source &#x2F;etc&#x2F;profile">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-10T15:36:11.000Z">
 <meta property="article:modified_time" content="2022-01-19T10:10:30.422Z">
 <meta property="article:author" content="惊羽">
 <meta property="article:tag" content="Hive">
 <meta property="article:tag" content="Shell">
 <meta property="article:tag" content="Spark">
-<meta property="article:tag" content="Sqoop">
 <meta property="article:tag" content="Kafka">
+<meta property="article:tag" content="Sqoop">
 <meta name="twitter:card" content="summary_large_image">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>大数据常用脚本 - 惊羽的博客</title>
@@ -119,7 +121,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Startseite</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -131,7 +133,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Archiv</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -143,7 +145,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Kategorien</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -155,7 +157,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Schlagwörter</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -167,7 +169,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>Über</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -213,7 +215,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2020-06-10 23:36" pubdate>
-          June 10, 2020 pm
+          2020年6月10日 晚上
         </time>
       </span>
     
@@ -224,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.3k wörter
+          5.1k 字
         
       </span>
     
@@ -235,7 +237,7 @@
         
         
         
-          45 minuten
+          43 分钟
         
       </span>
     
@@ -278,25 +280,174 @@
             
               <div class="markdown-body">
                 
-                <h2 id="一键启动"><a href="#一键启动" class="headerlink" title="一键启动"></a>一键启动</h2><h3 id="一键启动常用服务"><a href="#一键启动常用服务" class="headerlink" title="一键启动常用服务"></a>一键启动常用服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-keyword">if</span> [ ! <span class="hljs-variable">$1</span> ]<br><span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;please input [start|stop]&quot;</span><br><span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br><span class="hljs-comment">#start hadoop</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot; ----------- <span class="hljs-variable">$1</span> dfs ------------ &quot;</span><br>ssh root@node01 <span class="hljs-string">&quot;source /etc/profile;<span class="hljs-variable">$&#123;HADOOP_HOME&#125;</span>/sbin/<span class="hljs-variable">$&#123;1&#125;</span>-dfs.sh&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot; ----------- <span class="hljs-variable">$1</span> yarn ---------- &quot;</span><br>ssh root@node01 <span class="hljs-string">&quot;source /etc/profile;<span class="hljs-variable">$&#123;HADOOP_HOME&#125;</span>/sbin/<span class="hljs-variable">$&#123;1&#125;</span>-yarn.sh&quot;</span><br>sleep 1s<br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot; ----------- <span class="hljs-variable">$1</span> zookeeper ----------&quot;</span><br><span class="hljs-comment">#start zookeeper</span><br><span class="hljs-keyword">for</span> (( i=1; i&lt;=3; i++ ))<br><span class="hljs-keyword">do</span><br><span class="hljs-comment"># &lt;&lt; E0F 只是一个标识，可以换做其他任意字符，多行复杂脚本使用</span><br><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;node0<span class="hljs-variable">$i</span> zk <span class="hljs-variable">$&#123;1&#125;</span> ...&quot;</span><br>  ssh root@node0<span class="hljs-variable">$i</span> <span class="hljs-string">&quot;source /etc/profile; zkServer.sh <span class="hljs-variable">$&#123;1&#125;</span>&quot;</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;node0<span class="hljs-variable">$i</span> <span class="hljs-variable">$&#123;1&#125;</span> 完成.&quot;</span><br><span class="hljs-keyword">done</span><br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot; ----------- <span class="hljs-variable">$1</span> kafka ------------&quot;</span><br><span class="hljs-comment"># start kafka</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$&#123;1&#125;</span> == <span class="hljs-string">&#x27;stop&#x27;</span> ]<br><span class="hljs-keyword">then</span><br><span class="hljs-keyword">for</span> (( i=1; i&lt;=3; i++ ))<br><span class="hljs-keyword">do</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;node0<span class="hljs-variable">$i</span> kafka <span class="hljs-variable">$&#123;1&#125;</span> ...&quot;</span><br>  ssh root@node0<span class="hljs-variable">$i</span> <span class="hljs-string">&quot;source /etc/profile;<span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/bin/kafka-server-stop.sh&quot;</span><br>  <span class="hljs-keyword">if</span> [ `ps -ef|grep Kafka | wc -l` -gt 1 ]; <span class="hljs-keyword">then</span><br>  ssh root@node0<span class="hljs-variable">$i</span> `ps -ef | grep Kafka | grep -v grep | awk <span class="hljs-string">&#x27;&#123;print $2&#125;&#x27;</span> | xargs <span class="hljs-built_in">kill</span> -9`<br>  <span class="hljs-keyword">fi</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;node0<span class="hljs-variable">$i</span> <span class="hljs-variable">$&#123;1&#125;</span> 完成.&quot;</span><br><span class="hljs-keyword">done</span><br><span class="hljs-keyword">else</span><br><span class="hljs-keyword">for</span> (( i=1; i&lt;=3; i++ ))<br><span class="hljs-keyword">do</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;node0<span class="hljs-variable">$i</span> kafka <span class="hljs-variable">$&#123;1&#125;</span> ...&quot;</span><br>  ssh root@node0<span class="hljs-variable">$i</span> <span class="hljs-string">&quot;source /etc/profile;<span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/bin/kafka-server-<span class="hljs-variable">$&#123;1&#125;</span>.sh -daemon /export/servers/kafka/config/server.properties&quot;</span>  <br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;node0<span class="hljs-variable">$i</span> <span class="hljs-variable">$&#123;1&#125;</span> 完成.&quot;</span><br><span class="hljs-keyword">done</span><br>sleep 1s<br><span class="hljs-keyword">fi</span><br><span class="hljs-comment"># start flink</span><br><span class="hljs-comment"># /export/servers/flink/bin/$&#123;1&#125;-cluster.sh</span><br><span class="hljs-comment"># start dolphinscheduler</span><br><span class="hljs-comment"># /opt/soft/dolphinscheduler/bin/start-all.sh</span><br><span class="hljs-comment"># systemctl restart nginx</span><br></code></pre></td></tr></table></figure>
+                <h2 id="一键启动"><a href="#一键启动" class="headerlink" title="一键启动"></a>一键启动</h2><h3 id="一键启动常用服务"><a href="#一键启动常用服务" class="headerlink" title="一键启动常用服务"></a>一键启动常用服务</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-keyword">if</span> [ ! <span class="hljs-variable">$1</span> ]
+<span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;please input [start|stop]&quot;</span>
+<span class="hljs-built_in">exit</span> 1
+<span class="hljs-keyword">fi</span>
+<span class="hljs-comment">#start hadoop</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot; ----------- <span class="hljs-variable">$1</span> dfs ------------ &quot;</span>
+ssh root@node01 <span class="hljs-string">&quot;source /etc/profile;<span class="hljs-variable">$&#123;HADOOP_HOME&#125;</span>/sbin/<span class="hljs-variable">$&#123;1&#125;</span>-dfs.sh&quot;</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot; ----------- <span class="hljs-variable">$1</span> yarn ---------- &quot;</span>
+ssh root@node01 <span class="hljs-string">&quot;source /etc/profile;<span class="hljs-variable">$&#123;HADOOP_HOME&#125;</span>/sbin/<span class="hljs-variable">$&#123;1&#125;</span>-yarn.sh&quot;</span>
+sleep 1s
 
-<h3 id="查看服务启动情况"><a href="#查看服务启动情况" class="headerlink" title="查看服务启动情况"></a>查看服务启动情况</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> node01 node02 node03<br><span class="hljs-keyword">do</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot; &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="hljs-variable">$i</span> <span class="hljs-variable">$1</span> &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&quot;</span><br>	ssh <span class="hljs-variable">$i</span> <span class="hljs-string">&quot;source /etc/profile;$*&quot;</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot; ----------- <span class="hljs-variable">$1</span> zookeeper ----------&quot;</span>
+<span class="hljs-comment">#start zookeeper</span>
+<span class="hljs-keyword">for</span> (( i=1; i&lt;=3; i++ ))
+<span class="hljs-keyword">do</span>
+<span class="hljs-comment"># &lt;&lt; E0F 只是一个标识，可以换做其他任意字符，多行复杂脚本使用</span>
 
-<h2 id="Kafka-启动与关闭"><a href="#Kafka-启动与关闭" class="headerlink" title="Kafka 启动与关闭"></a>Kafka 启动与关闭</h2><h3 id="Kafka-一键启动"><a href="#Kafka-一键启动" class="headerlink" title="Kafka 一键启动"></a>Kafka 一键启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>KAFKA_HOME=/<span class="hljs-built_in">export</span>/server/kafka_2.12-2.4.1<br><br><span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;<br><span class="hljs-keyword">do</span><br>        host=node<span class="hljs-variable">$&#123;number&#125;</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span><br>        /usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>;source /etc/profile;export JMX_PORT=9988;<span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/bin/kafka-server-start.sh <span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/config/server.properties &gt;&gt;/dev/null 2&gt;&amp;1 &amp;&quot;</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;host&#125;</span> started&quot;</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;node0<span class="hljs-variable">$i</span> zk <span class="hljs-variable">$&#123;1&#125;</span> ...&quot;</span>
+  ssh root@node0<span class="hljs-variable">$i</span> <span class="hljs-string">&quot;source /etc/profile; zkServer.sh <span class="hljs-variable">$&#123;1&#125;</span>&quot;</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;node0<span class="hljs-variable">$i</span> <span class="hljs-variable">$&#123;1&#125;</span> 完成.&quot;</span>
+<span class="hljs-keyword">done</span>
 
-<h3 id="Kafka-一键关闭"><a href="#Kafka-一键关闭" class="headerlink" title="Kafka 一键关闭"></a>Kafka 一键关闭</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>KAFKA_HOME=/<span class="hljs-built_in">export</span>/server/kafka_2.12-2.4.1<br><br><span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;<br><span class="hljs-keyword">do</span><br>  host=node<span class="hljs-variable">$&#123;number&#125;</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span><br>  /usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>;source /etc/profile;<span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/bin/kafka-server-stop.sh&quot;</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;host&#125;</span> stoped&quot;</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot; ----------- <span class="hljs-variable">$1</span> kafka ------------&quot;</span>
+<span class="hljs-comment"># start kafka</span>
+<span class="hljs-keyword">if</span> [ <span class="hljs-variable">$&#123;1&#125;</span> == <span class="hljs-string">&#x27;stop&#x27;</span> ]
+<span class="hljs-keyword">then</span>
+<span class="hljs-keyword">for</span> (( i=1; i&lt;=3; i++ ))
+<span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;node0<span class="hljs-variable">$i</span> kafka <span class="hljs-variable">$&#123;1&#125;</span> ...&quot;</span>
+  ssh root@node0<span class="hljs-variable">$i</span> <span class="hljs-string">&quot;source /etc/profile;<span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/bin/kafka-server-stop.sh&quot;</span>
+  <span class="hljs-keyword">if</span> [ `ps -ef|grep Kafka | wc -l` -gt 1 ]; <span class="hljs-keyword">then</span>
+  ssh root@node0<span class="hljs-variable">$i</span> `ps -ef | grep Kafka | grep -v grep | awk <span class="hljs-string">&#x27;&#123;print $2&#125;&#x27;</span> | xargs <span class="hljs-built_in">kill</span> -9`
+  <span class="hljs-keyword">fi</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;node0<span class="hljs-variable">$i</span> <span class="hljs-variable">$&#123;1&#125;</span> 完成.&quot;</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-keyword">else</span>
+<span class="hljs-keyword">for</span> (( i=1; i&lt;=3; i++ ))
+<span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;node0<span class="hljs-variable">$i</span> kafka <span class="hljs-variable">$&#123;1&#125;</span> ...&quot;</span>
+  ssh root@node0<span class="hljs-variable">$i</span> <span class="hljs-string">&quot;source /etc/profile;<span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/bin/kafka-server-<span class="hljs-variable">$&#123;1&#125;</span>.sh -daemon /export/servers/kafka/config/server.properties&quot;</span>  
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;node0<span class="hljs-variable">$i</span> <span class="hljs-variable">$&#123;1&#125;</span> 完成.&quot;</span>
+<span class="hljs-keyword">done</span>
+sleep 1s
+<span class="hljs-keyword">fi</span>
+<span class="hljs-comment"># start flink</span>
+<span class="hljs-comment"># /export/servers/flink/bin/$&#123;1&#125;-cluster.sh</span>
+<span class="hljs-comment"># start dolphinscheduler</span>
+<span class="hljs-comment"># /opt/soft/dolphinscheduler/bin/start-all.sh</span>
+<span class="hljs-comment"># systemctl restart nginx</span></code></pre></div>
 
-<h2 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h2><h3 id="Zookeeper-启动"><a href="#Zookeeper-启动" class="headerlink" title="Zookeeper 启动"></a>Zookeeper 启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>ZK_HOME=/<span class="hljs-built_in">export</span>/server/zookeeper-3.4.6<br><br><span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;<br><span class="hljs-keyword">do</span><br>	host=node<span class="hljs-variable">$&#123;number&#125;</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span><br>	/usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;ZK_HOME&#125;</span>;source /etc/profile;<span class="hljs-variable">$&#123;ZK_HOME&#125;</span>/bin/zkServer.sh start&quot;</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;host&#125;</span> started&quot;</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<h3 id="查看服务启动情况"><a href="#查看服务启动情况" class="headerlink" title="查看服务启动情况"></a>查看服务启动情况</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> node01 node02 node03
+<span class="hljs-keyword">do</span>
+	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot; &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="hljs-variable">$i</span> <span class="hljs-variable">$1</span> &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&quot;</span>
+	ssh <span class="hljs-variable">$i</span> <span class="hljs-string">&quot;source /etc/profile;$*&quot;</span>
+<span class="hljs-keyword">done</span></code></pre></div>
 
-<h3 id="Zookeeper-停止"><a href="#Zookeeper-停止" class="headerlink" title="Zookeeper 停止"></a>Zookeeper 停止</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>ZK_HOME=/<span class="hljs-built_in">export</span>/server/zookeeper-3.4.6<br><br><span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;<br><span class="hljs-keyword">do</span><br>	host=node<span class="hljs-variable">$&#123;number&#125;</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span><br>	/usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;ZK_HOME&#125;</span>;source /etc/profile;<span class="hljs-variable">$&#123;ZK_HOME&#125;</span>/bin/zkServer.sh stop&quot;</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;host&#125;</span> stoped&quot;</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<h2 id="Kafka-启动与关闭"><a href="#Kafka-启动与关闭" class="headerlink" title="Kafka 启动与关闭"></a>Kafka 启动与关闭</h2><h3 id="Kafka-一键启动"><a href="#Kafka-一键启动" class="headerlink" title="Kafka 一键启动"></a>Kafka 一键启动</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+KAFKA_HOME=/<span class="hljs-built_in">export</span>/server/kafka_2.12-2.4.1
 
-<h3 id="Zookeeper-查看状态"><a href="#Zookeeper-查看状态" class="headerlink" title="Zookeeper 查看状态"></a>Zookeeper 查看状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>ZK_HOME=/<span class="hljs-built_in">export</span>/server/zookeeper-3.4.6<br><br><span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;<br><span class="hljs-keyword">do</span><br>	host=node<span class="hljs-variable">$&#123;number&#125;</span><br>	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span><br>	/usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;ZK_HOME&#125;</span>;source /etc/profile;<span class="hljs-variable">$&#123;ZK_HOME&#125;</span>/bin/zkServer.sh status&quot;</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;
+<span class="hljs-keyword">do</span>
+        host=node<span class="hljs-variable">$&#123;number&#125;</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span>
+        /usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>;source /etc/profile;export JMX_PORT=9988;<span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/bin/kafka-server-start.sh <span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/config/server.properties &gt;&gt;/dev/null 2&gt;&amp;1 &amp;&quot;</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;host&#125;</span> started&quot;</span>
+<span class="hljs-keyword">done</span></code></pre></div>
 
-<h2 id="Sqoop数据抽取与验证"><a href="#Sqoop数据抽取与验证" class="headerlink" title="Sqoop数据抽取与验证"></a>Sqoop数据抽取与验证</h2><h3 id="数据抽取"><a href="#数据抽取" class="headerlink" title="数据抽取"></a>数据抽取</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SQOOP_HOME=/<span class="hljs-built_in">export</span>/server/sqoop-1.4.7.bin_hadoop-2.6.0<br><span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop import \<br>--connect jdbc:mysql://192.168.88.163:3306/insurance \<br>--username root \<br>--password 123456 \<br>--table dd_table \<br>--hive-table insurance_ods.dd_table \<br>--hive-import \<br>--hive-overwrite \<br>--fields-terminated-by <span class="hljs-string">&#x27;\t&#x27;</span> \<br>--delete-target-dir \<br>-m 1<br></code></pre></td></tr></table></figure>
+<h3 id="Kafka-一键关闭"><a href="#Kafka-一键关闭" class="headerlink" title="Kafka 一键关闭"></a>Kafka 一键关闭</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+KAFKA_HOME=/<span class="hljs-built_in">export</span>/server/kafka_2.12-2.4.1
 
-<h3 id="抽取与验证"><a href="#抽取与验证" class="headerlink" title="抽取与验证"></a>抽取与验证</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SQOOP_HOME=/<span class="hljs-built_in">export</span>/server/sqoop-1.4.7.bin_hadoop-2.6.0<br><span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop import \<br>--connect jdbc:mysql://192.168.88.163:3306/insurance \<br>--username root \<br>--password 123456 \<br>--table dd_table \<br>--hive-table insurance_ods.dd_table \<br>--hive-import \<br>--hive-overwrite \<br>--fields-terminated-by <span class="hljs-string">&#x27;\t&#x27;</span> \<br>--delete-target-dir \<br>-m 1<br><br><span class="hljs-comment">#1、查询MySQL的表dd_table的条数</span><br>mysql_log=`<span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop <span class="hljs-built_in">eval</span> \<br>--connect jdbc:mysql://192.168.88.163:3306/insurance \<br>--username root \<br>--password 123456 \<br>--query <span class="hljs-string">&quot;select count(1) from dd_table&quot;</span><br>`<br>mysql_cnt=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$mysql_log</span> | awk -F<span class="hljs-string">&#x27;|&#x27;</span> &#123;<span class="hljs-string">&#x27;print $4&#x27;</span>&#125; | awk &#123;<span class="hljs-string">&#x27;print $1&#x27;</span>&#125;`<br><span class="hljs-comment">#2、查询hive的表dd_table的条数</span><br>hive_log=`hive -e <span class="hljs-string">&quot;select count(1) from insurance_ods.dd_table&quot;</span>`<br><br><span class="hljs-comment">#3、比较2边的数字是否一样。</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$mysql_cnt</span> -eq <span class="hljs-variable">$hive_log</span> ] ; <span class="hljs-keyword">then</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;mysql表的数据量=<span class="hljs-variable">$mysql_cnt</span>,hive表的数据量=<span class="hljs-variable">$hive_log</span>,是相等的&quot;</span><br><span class="hljs-keyword">else</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;mysql表的数据量=<span class="hljs-variable">$mysql_cnt</span>,hive表的数据量=<span class="hljs-variable">$hive_log</span>,不是相等的&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+<span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;
+<span class="hljs-keyword">do</span>
+  host=node<span class="hljs-variable">$&#123;number&#125;</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span>
+  /usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>;source /etc/profile;<span class="hljs-variable">$&#123;KAFKA_HOME&#125;</span>/bin/kafka-server-stop.sh&quot;</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;host&#125;</span> stoped&quot;</span>
+<span class="hljs-keyword">done</span></code></pre></div>
 
-<h2 id="Hive-加载分区数据"><a href="#Hive-加载分区数据" class="headerlink" title="Hive 加载分区数据"></a>Hive 加载分区数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><br>dt=`date -d <span class="hljs-string">&#x27;1 days ago&#x27;</span> +<span class="hljs-string">&#x27;%Y%m%d&#x27;</span>`<br>tableName=<span class="hljs-variable">$1</span><br><br>ssh node03 `/<span class="hljs-built_in">export</span>/server/hive/bin/hive -e <span class="hljs-string">&quot;use test_ods;alter table <span class="hljs-variable">$&#123;tableName&#125;</span> add partition(dt=<span class="hljs-variable">$&#123;dt&#125;</span>) location &#x27;hdfs://node1:8020/apps/warehouse/ods.db/<span class="hljs-variable">$&#123;tableName&#125;</span>/<span class="hljs-variable">$&#123;dt&#125;</span>&quot;</span>`<br><br><span class="hljs-keyword">if</span> [ $? -eq 0 ]; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;load <span class="hljs-variable">$tableName</span> partition <span class="hljs-variable">$dt</span> succesful.&quot;</span><br><span class="hljs-keyword">else</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;load <span class="hljs-variable">$tableName</span> partition <span class="hljs-variable">$dt</span> error.&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+<h2 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h2><h3 id="Zookeeper-启动"><a href="#Zookeeper-启动" class="headerlink" title="Zookeeper 启动"></a>Zookeeper 启动</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+ZK_HOME=/<span class="hljs-built_in">export</span>/server/zookeeper-3.4.6
+
+<span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;
+<span class="hljs-keyword">do</span>
+	host=node<span class="hljs-variable">$&#123;number&#125;</span>
+	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span>
+	/usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;ZK_HOME&#125;</span>;source /etc/profile;<span class="hljs-variable">$&#123;ZK_HOME&#125;</span>/bin/zkServer.sh start&quot;</span>
+	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;host&#125;</span> started&quot;</span>
+<span class="hljs-keyword">done</span></code></pre></div>
+
+<h3 id="Zookeeper-停止"><a href="#Zookeeper-停止" class="headerlink" title="Zookeeper 停止"></a>Zookeeper 停止</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+ZK_HOME=/<span class="hljs-built_in">export</span>/server/zookeeper-3.4.6
+
+<span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;
+<span class="hljs-keyword">do</span>
+	host=node<span class="hljs-variable">$&#123;number&#125;</span>
+	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span>
+	/usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;ZK_HOME&#125;</span>;source /etc/profile;<span class="hljs-variable">$&#123;ZK_HOME&#125;</span>/bin/zkServer.sh stop&quot;</span>
+	<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;host&#125;</span> stoped&quot;</span>
+<span class="hljs-keyword">done</span></code></pre></div>
+
+<h3 id="Zookeeper-查看状态"><a href="#Zookeeper-查看状态" class="headerlink" title="Zookeeper 查看状态"></a>Zookeeper 查看状态</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+ZK_HOME=/<span class="hljs-built_in">export</span>/server/zookeeper-3.4.6
+
+<span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> &#123;1..3&#125;
+<span class="hljs-keyword">do</span>
+	host=node<span class="hljs-variable">$&#123;number&#125;</span>
+	<span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;host&#125;</span>
+	/usr/bin/ssh <span class="hljs-variable">$&#123;host&#125;</span> <span class="hljs-string">&quot;cd <span class="hljs-variable">$&#123;ZK_HOME&#125;</span>;source /etc/profile;<span class="hljs-variable">$&#123;ZK_HOME&#125;</span>/bin/zkServer.sh status&quot;</span>
+<span class="hljs-keyword">done</span></code></pre></div>
+
+<h2 id="Sqoop数据抽取与验证"><a href="#Sqoop数据抽取与验证" class="headerlink" title="Sqoop数据抽取与验证"></a>Sqoop数据抽取与验证</h2><h3 id="数据抽取"><a href="#数据抽取" class="headerlink" title="数据抽取"></a>数据抽取</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SQOOP_HOME=/<span class="hljs-built_in">export</span>/server/sqoop-1.4.7.bin_hadoop-2.6.0
+<span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop import \
+--connect jdbc:mysql://192.168.88.163:3306/insurance \
+--username root \
+--password 123456 \
+--table dd_table \
+--hive-table insurance_ods.dd_table \
+--hive-import \
+--hive-overwrite \
+--fields-terminated-by <span class="hljs-string">&#x27;\t&#x27;</span> \
+--delete-target-dir \
+-m 1</code></pre></div>
+
+<h3 id="抽取与验证"><a href="#抽取与验证" class="headerlink" title="抽取与验证"></a>抽取与验证</h3><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> SQOOP_HOME=/<span class="hljs-built_in">export</span>/server/sqoop-1.4.7.bin_hadoop-2.6.0
+<span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop import \
+--connect jdbc:mysql://192.168.88.163:3306/insurance \
+--username root \
+--password 123456 \
+--table dd_table \
+--hive-table insurance_ods.dd_table \
+--hive-import \
+--hive-overwrite \
+--fields-terminated-by <span class="hljs-string">&#x27;\t&#x27;</span> \
+--delete-target-dir \
+-m 1
+
+<span class="hljs-comment">#1、查询MySQL的表dd_table的条数</span>
+mysql_log=`<span class="hljs-variable">$SQOOP_HOME</span>/bin/sqoop <span class="hljs-built_in">eval</span> \
+--connect jdbc:mysql://192.168.88.163:3306/insurance \
+--username root \
+--password 123456 \
+--query <span class="hljs-string">&quot;select count(1) from dd_table&quot;</span>
+`
+mysql_cnt=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$mysql_log</span> | awk -F<span class="hljs-string">&#x27;|&#x27;</span> &#123;<span class="hljs-string">&#x27;print $4&#x27;</span>&#125; | awk &#123;<span class="hljs-string">&#x27;print $1&#x27;</span>&#125;`
+<span class="hljs-comment">#2、查询hive的表dd_table的条数</span>
+hive_log=`hive -e <span class="hljs-string">&quot;select count(1) from insurance_ods.dd_table&quot;</span>`
+
+<span class="hljs-comment">#3、比较2边的数字是否一样。</span>
+<span class="hljs-keyword">if</span> [ <span class="hljs-variable">$mysql_cnt</span> -eq <span class="hljs-variable">$hive_log</span> ] ; <span class="hljs-keyword">then</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;mysql表的数据量=<span class="hljs-variable">$mysql_cnt</span>,hive表的数据量=<span class="hljs-variable">$hive_log</span>,是相等的&quot;</span>
+<span class="hljs-keyword">else</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;mysql表的数据量=<span class="hljs-variable">$mysql_cnt</span>,hive表的数据量=<span class="hljs-variable">$hive_log</span>,不是相等的&quot;</span>
+<span class="hljs-keyword">fi</span></code></pre></div>
+
+<h2 id="Hive-加载分区数据"><a href="#Hive-加载分区数据" class="headerlink" title="Hive 加载分区数据"></a>Hive 加载分区数据</h2><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+
+dt=`date -d <span class="hljs-string">&#x27;1 days ago&#x27;</span> +<span class="hljs-string">&#x27;%Y%m%d&#x27;</span>`
+tableName=<span class="hljs-variable">$1</span>
+
+ssh node03 `/<span class="hljs-built_in">export</span>/server/hive/bin/hive -e <span class="hljs-string">&quot;use test_ods;alter table <span class="hljs-variable">$&#123;tableName&#125;</span> add partition(dt=<span class="hljs-variable">$&#123;dt&#125;</span>) location &#x27;hdfs://node1:8020/apps/warehouse/ods.db/<span class="hljs-variable">$&#123;tableName&#125;</span>/<span class="hljs-variable">$&#123;dt&#125;</span>&quot;</span>`
+
+<span class="hljs-keyword">if</span> [ $? -eq 0 ]; <span class="hljs-keyword">then</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;load <span class="hljs-variable">$tableName</span> partition <span class="hljs-variable">$dt</span> succesful.&quot;</span>
+<span class="hljs-keyword">else</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;load <span class="hljs-variable">$tableName</span> partition <span class="hljs-variable">$dt</span> error.&quot;</span>
+<span class="hljs-keyword">fi</span></code></pre></div>
                 
               </div>
             
@@ -335,9 +486,9 @@
       
         <a href="/tags/Spark/">#Spark</a>
       
-        <a href="/tags/Sqoop/">#Sqoop</a>
-      
         <a href="/tags/Kafka/">#Kafka</a>
+      
+        <a href="/tags/Sqoop/">#Sqoop</a>
       
     </div>
   
@@ -355,26 +506,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Beitragsautor</div>
+          <div>作者</div>
           <div>惊羽</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Veröffentlicht am</div>
-          <div>June 10, 2020</div>
+          <div>发布于</div>
+          <div>2020年6月10日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -397,7 +548,7 @@
                       <a href="/2020/09/12/Sqoop%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%AA%8C%E8%AF%81/" title="Sqoop自动化抽取数据与验证">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Sqoop自动化抽取数据与验证</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -406,7 +557,7 @@
                     
                       <a href="/2020/05/24/%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6%E5%9C%A8%20on%20%E5%92%8C%20where%20%E7%9A%84%E5%8C%BA%E5%88%AB/" title="多表连接过滤条件在 on 和 where 的区别">
                         <span class="hidden-mobile">多表连接过滤条件在 on 和 where 的区别</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -427,7 +578,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Inhaltsverzeichnis</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -483,7 +634,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -491,7 +642,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -511,6 +662,30 @@
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -658,6 +833,8 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -670,7 +847,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>
