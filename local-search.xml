@@ -20,11 +20,11 @@
     
     <tags>
       
+      <tag>Shell</tag>
+      
       <tag>Hive</tag>
       
       <tag>Spark</tag>
-      
-      <tag>Shell</tag>
       
       <tag>Sqoop</tag>
       
@@ -78,13 +78,13 @@
     
     <tags>
       
-      <tag>Hive</tag>
+      <tag>Shell</tag>
       
-      <tag>SQL</tag>
+      <tag>Hive</tag>
       
       <tag>Spark</tag>
       
-      <tag>Shell</tag>
+      <tag>SQL</tag>
       
     </tags>
     
@@ -502,9 +502,9 @@
     
     <tags>
       
-      <tag>Hive</tag>
-      
       <tag>Shell</tag>
+      
+      <tag>Hive</tag>
       
       <tag>Sqoop</tag>
       
@@ -531,11 +531,11 @@
     
     <tags>
       
+      <tag>Shell</tag>
+      
       <tag>Hive</tag>
       
       <tag>Spark</tag>
-      
-      <tag>Shell</tag>
       
       <tag>Sqoop</tag>
       
@@ -591,11 +591,11 @@
     
     <tags>
       
+      <tag>Shell</tag>
+      
       <tag>Hive</tag>
       
       <tag>Spark</tag>
-      
-      <tag>Shell</tag>
       
       <tag>Sqoop</tag>
       
