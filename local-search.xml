@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>W04 | Hive / Spark 如何避免单节点全局排序？</title>
+    <link href="/2023/01/02/W04-Spark%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%8D%95%E8%8A%82%E7%82%B9%E5%85%A8%E5%B1%80%E6%8E%92%E5%BA%8F/"/>
+    <url>/2023/01/02/W04-Spark%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%8D%95%E8%8A%82%E7%82%B9%E5%85%A8%E5%B1%80%E6%8E%92%E5%BA%8F/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://s2.loli.net/2023/01/02/D6hZklc1OntfFdJ.jpg" alt="img"></p><p>最近因为经常对接模型算法，营销模型的一个应用场景是：按照模型打分取 TOPN 用户进行营销投放，由此就会产生一个全局排序的场景：<strong>在用户量过亿的情况下，单点全局排序极其容易出现 OOM。</strong>经历了几次线上事故之后，决心要彻底解决这个问题，跟同事请教了下，可以通过 <strong>“加盐打散”</strong> 来解决这个问题。</p><h3 id="加盐打散"><a href="#加盐打散" class="headerlink" title="加盐打散"></a>加盐打散</h3><p>产生全局排序的原因就是因为所有的 key 都需要互相比较才能产生全局排序序号，加盐打散的思路就是：<strong>通过对 key 加盐之后，拆分成不同的分组，用分组排序代替全局排序，实现分布式全局排序。</strong>就拿我日常接触最多的用户模型打分来说，基本思路如下：</p><div class="code-wrapper"><pre><code class="hljs plain">1、对用户加盐进行分组，并且获取不同组的先后顺序跟用户在组内的排序2、获取每个组的全局初始排序3、每个用户的全局排序 = 分组初始排序 + 在组内的排序</code></pre></div><h3 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h3><p>假设有表 model_score ，字段有 user_id 跟 score ，里面有 10 亿条数据，结构如下，要对表里所有的 user_id 按照 score 大小排序。</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> IF <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> `model_score`(   `user_id` <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,   `score` <span class="hljs-keyword">DOUBLE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>)ENGINE<span class="hljs-operator">=</span>InnoDB <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8;</code></pre></div><ul><li>对用户加盐进行分组，获取用户在组内的排序</li></ul><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">with</span> t1 <span class="hljs-keyword">as</span> (<span class="hljs-keyword">select</span>   user_id  ,score  ,new_score  <span class="hljs-built_in">row_number</span>() <span class="hljs-keyword">over</span>(<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> new_score <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> score <span class="hljs-keyword">desc</span>) <span class="hljs-keyword">as</span> rank1 <span class="hljs-comment">-- 获取用户分组内排序</span>  <span class="hljs-keyword">from</span> (  <span class="hljs-keyword">select</span> user_id,score,<span class="hljs-built_in">ceil</span>(score<span class="hljs-operator">*</span><span class="hljs-number">10000</span>) <span class="hljs-keyword">as</span> new_score  <span class="hljs-keyword">from</span> model_score  ) tmp),</code></pre></div><ul><li>获取每个分组全局初始排序</li></ul><div class="code-wrapper"><pre><code class="hljs sql">t2 <span class="hljs-keyword">as</span> (<span class="hljs-keyword">select</span> new_score,<span class="hljs-built_in">sum</span>(cnt) <span class="hljs-keyword">over</span>(<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> new_score <span class="hljs-keyword">desc</span> <span class="hljs-keyword">rows</span> <span class="hljs-keyword">between</span> unbounded preceding <span class="hljs-keyword">and</span> <span class="hljs-number">1</span> preceding ) <span class="hljs-keyword">as</span> rank2   <span class="hljs-comment">-- 从负无穷行到当前 -1 行的求和，获取到该分组用户最初的全局排序</span><span class="hljs-keyword">from</span> ( <span class="hljs-keyword">select</span> new_score,<span class="hljs-built_in">count</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">as</span> cnt<span class="hljs-keyword">from</span> t1 <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> new_score) tmp   ),</code></pre></div><ul><li>合并获取到用户的全局排序</li></ul><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> t1.user_id,t1.score ,(t1.rank1 <span class="hljs-operator">+</span> t2.rank2) <span class="hljs-keyword">as</span> rank   <span class="hljs-comment">-- 每个用户的全局排序 = 分组初始排序 + 在组内的排序 </span><span class="hljs-keyword">from</span> t1 <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> t2 <span class="hljs-keyword">on</span> t1.new_score <span class="hljs-operator">=</span> t2.new_score</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>日常工作</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hive</tag>
+      
+      <tag>Spark</tag>
+      
+      <tag>周更挑战</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>W03 | 数据开发当中如何验证数据结果准确性</title>
     <link href="/2022/12/25/W03-%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%BD%93%E4%B8%AD%E5%A6%82%E4%BD%95%E9%AA%8C%E8%AF%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%9C%E5%87%86%E7%A1%AE%E6%80%A7/"/>
     <url>/2022/12/25/W03-%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%BD%93%E4%B8%AD%E5%A6%82%E4%BD%95%E9%AA%8C%E8%AF%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%9C%E5%87%86%E7%A1%AE%E6%80%A7/</url>
@@ -47,9 +76,9 @@
     
     <tags>
       
-      <tag>Shell</tag>
-      
       <tag>Linux</tag>
+      
+      <tag>Shell</tag>
       
       <tag>周更挑战</tag>
       
@@ -81,39 +110,6 @@
       <tag>周更挑战</tag>
       
       <tag>读书</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>spark解决全局排序效率问题</title>
-    <link href="/2022/11/06/spark%E8%A7%A3%E5%86%B3%E5%85%A8%E5%B1%80%E6%8E%92%E5%BA%8F%E6%95%88%E7%8E%87%E9%97%AE%E9%A2%98/"/>
-    <url>/2022/11/06/spark%E8%A7%A3%E5%86%B3%E5%85%A8%E5%B1%80%E6%8E%92%E5%BA%8F%E6%95%88%E7%8E%87%E9%97%AE%E9%A2%98/</url>
-    
-    <content type="html"><![CDATA[<h3 id="前言说明"><a href="#前言说明" class="headerlink" title="前言说明"></a>前言说明</h3><p>最近因为经常对接模型算法，营销模型的一个应用场景是：按照模型打分取 TOPN 用户进行营销投放，由此就会产生一个全局排序的场景，在用户量过亿的情况下，单点全局排序极其容易出现 OOM。经历了几次线上事故之后，决心要彻底解决这个问题，跟同事请教了下，可以通过 “打散放盐” 来解决这个问题。</p><h3 id="打散加盐分组"><a href="#打散加盐分组" class="headerlink" title="打散加盐分组"></a>打散加盐分组</h3><h3 id="获取组内排序"><a href="#获取组内排序" class="headerlink" title="获取组内排序"></a>获取组内排序</h3><h3 id="获取全局排序"><a href="#获取全局排序" class="headerlink" title="获取全局排序"></a>获取全局排序</h3>]]></content>
-    
-    
-    <categories>
-      
-      <category>存档</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Shell</tag>
-      
-      <tag>Hive</tag>
-      
-      <tag>Spark</tag>
-      
-      <tag>Sqoop</tag>
-      
-      <tag>Kafka</tag>
       
     </tags>
     
@@ -402,11 +398,11 @@
       
       <tag>Spark</tag>
       
-      <tag>Flink</tag>
-      
       <tag>Hadoop</tag>
       
       <tag>Scala</tag>
+      
+      <tag>Flink</tag>
       
     </tags>
     
@@ -431,9 +427,9 @@
     
     <tags>
       
-      <tag>Java</tag>
-      
       <tag>Flink</tag>
+      
+      <tag>Java</tag>
       
     </tags>
     
@@ -460,9 +456,9 @@
       
       <tag>Spark</tag>
       
-      <tag>Java</tag>
-      
       <tag>Flink</tag>
+      
+      <tag>Java</tag>
       
     </tags>
     

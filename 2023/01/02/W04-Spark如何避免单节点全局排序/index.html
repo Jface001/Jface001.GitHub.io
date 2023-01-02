@@ -16,30 +16,28 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言说明最近因为经常对接模型算法，营销模型的一个应用场景是：按照模型打分取 TOPN 用户进行营销投放，由此就会产生一个全局排序的场景，在用户量过亿的情况下，单点全局排序极其容易出现 OOM。经历了几次线上事故之后，决心要彻底解决这个问题，跟同事请教了下，可以通过 “打散放盐” 来解决这个问题。 打散加盐分组获取组内排序获取全局排序">
+    <meta name="description" content="最近因为经常对接模型算法，营销模型的一个应用场景是：按照模型打分取 TOPN 用户进行营销投放，由此就会产生一个全局排序的场景：在用户量过亿的情况下，单点全局排序极其容易出现 OOM。经历了几次线上事故之后，决心要彻底解决这个问题，跟同事请教了下，可以通过 “加盐打散” 来解决这个问题。 加盐打散产生全局排序的原因就是因为所有的 key 都需要互相比较才能产生全局排序序号，加盐打散的思路就是：通">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spark解决全局排序效率问题">
-<meta property="og:url" content="https://jface001.github.io/2022/11/06/spark%E8%A7%A3%E5%86%B3%E5%85%A8%E5%B1%80%E6%8E%92%E5%BA%8F%E6%95%88%E7%8E%87%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="W04 | Hive &#x2F; Spark 如何避免单节点全局排序？">
+<meta property="og:url" content="https://jface001.github.io/2023/01/02/W04-Spark%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%8D%95%E8%8A%82%E7%82%B9%E5%85%A8%E5%B1%80%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="惊羽的博客">
-<meta property="og:description" content="前言说明最近因为经常对接模型算法，营销模型的一个应用场景是：按照模型打分取 TOPN 用户进行营销投放，由此就会产生一个全局排序的场景，在用户量过亿的情况下，单点全局排序极其容易出现 OOM。经历了几次线上事故之后，决心要彻底解决这个问题，跟同事请教了下，可以通过 “打散放盐” 来解决这个问题。 打散加盐分组获取组内排序获取全局排序">
+<meta property="og:description" content="最近因为经常对接模型算法，营销模型的一个应用场景是：按照模型打分取 TOPN 用户进行营销投放，由此就会产生一个全局排序的场景：在用户量过亿的情况下，单点全局排序极其容易出现 OOM。经历了几次线上事故之后，决心要彻底解决这个问题，跟同事请教了下，可以通过 “加盐打散” 来解决这个问题。 加盐打散产生全局排序的原因就是因为所有的 key 都需要互相比较才能产生全局排序序号，加盐打散的思路就是：通">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jface001.github.io/img/post/shell.jpg">
-<meta property="article:published_time" content="2022-11-06T06:04:11.000Z">
-<meta property="article:modified_time" content="2022-12-15T16:43:00.534Z">
+<meta property="og:image" content="https://s2.loli.net/2023/01/02/D6hZklc1OntfFdJ.jpg">
+<meta property="article:published_time" content="2023-01-02T12:06:39.000Z">
+<meta property="article:modified_time" content="2023-01-02T12:08:45.998Z">
 <meta property="article:author" content="惊羽">
-<meta property="article:tag" content="Shell">
 <meta property="article:tag" content="Hive">
 <meta property="article:tag" content="Spark">
-<meta property="article:tag" content="Sqoop">
-<meta property="article:tag" content="Kafka">
+<meta property="article:tag" content="周更挑战">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jface001.github.io/img/post/shell.jpg">
+<meta name="twitter:image" content="https://s2.loli.net/2023/01/02/D6hZklc1OntfFdJ.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>spark解决全局排序效率问题 - 惊羽的博客</title>
+  <title>W04 | Hive / Spark 如何避免单节点全局排序？ - 惊羽的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,13 +197,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/post/shell.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/index5.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="spark解决全局排序效率问题"></span>
+            <span id="subtitle" data-typed-text="W04 | Hive / Spark 如何避免单节点全局排序？"></span>
           
         </div>
 
@@ -216,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-06 14:04" pubdate>
-          2022年11月6日 下午
+        <time datetime="2023-01-02 20:06" pubdate>
+          2023年1月2日 晚上
         </time>
       </span>
     
@@ -228,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          161 字
+          1.1k 字
         
       </span>
     
@@ -239,7 +237,7 @@
         
         
         
-          2 分钟
+          9 分钟
         
       </span>
     
@@ -277,13 +275,65 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">spark解决全局排序效率问题</h1>
+            <h1 style="display: none">W04 | Hive / Spark 如何避免单节点全局排序？</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="前言说明"><a href="#前言说明" class="headerlink" title="前言说明"></a>前言说明</h3><p>最近因为经常对接模型算法，营销模型的一个应用场景是：按照模型打分取 TOPN 用户进行营销投放，由此就会产生一个全局排序的场景，在用户量过亿的情况下，单点全局排序极其容易出现 OOM。经历了几次线上事故之后，决心要彻底解决这个问题，跟同事请教了下，可以通过 “打散放盐” 来解决这个问题。</p>
-<h3 id="打散加盐分组"><a href="#打散加盐分组" class="headerlink" title="打散加盐分组"></a>打散加盐分组</h3><h3 id="获取组内排序"><a href="#获取组内排序" class="headerlink" title="获取组内排序"></a>获取组内排序</h3><h3 id="获取全局排序"><a href="#获取全局排序" class="headerlink" title="获取全局排序"></a>获取全局排序</h3>
+                <p><img src="https://s2.loli.net/2023/01/02/D6hZklc1OntfFdJ.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>最近因为经常对接模型算法，营销模型的一个应用场景是：按照模型打分取 TOPN 用户进行营销投放，由此就会产生一个全局排序的场景：<strong>在用户量过亿的情况下，单点全局排序极其容易出现 OOM。</strong>经历了几次线上事故之后，决心要彻底解决这个问题，跟同事请教了下，可以通过 <strong>“加盐打散”</strong> 来解决这个问题。</p>
+<h3 id="加盐打散"><a href="#加盐打散" class="headerlink" title="加盐打散"></a>加盐打散</h3><p>产生全局排序的原因就是因为所有的 key 都需要互相比较才能产生全局排序序号，加盐打散的思路就是：<strong>通过对 key 加盐之后，拆分成不同的分组，用分组排序代替全局排序，实现分布式全局排序。</strong>就拿我日常接触最多的用户模型打分来说，基本思路如下：</p>
+<div class="code-wrapper"><pre><code class="hljs plain">1、对用户加盐进行分组，并且获取不同组的先后顺序跟用户在组内的排序
+2、获取每个组的全局初始排序
+3、每个用户的全局排序 = 分组初始排序 + 在组内的排序</code></pre></div>
+
+<h3 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h3><p>假设有表 model_score ，字段有 user_id 跟 score ，里面有 10 亿条数据，结构如下，要对表里所有的 user_id 按照 score 大小排序。</p>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> IF <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> `model_score`(
+   `user_id` <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+   `score` <span class="hljs-keyword">DOUBLE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>
+)ENGINE<span class="hljs-operator">=</span>InnoDB <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8;</code></pre></div>
+
+<ul>
+<li>对用户加盐进行分组，获取用户在组内的排序</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">with</span> t1 <span class="hljs-keyword">as</span> (
+<span class="hljs-keyword">select</span> 
+  user_id
+  ,score
+  ,new_score
+  <span class="hljs-built_in">row_number</span>() <span class="hljs-keyword">over</span>(<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> new_score <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> score <span class="hljs-keyword">desc</span>) <span class="hljs-keyword">as</span> rank1 <span class="hljs-comment">-- 获取用户分组内排序</span>
+  <span class="hljs-keyword">from</span> (
+  <span class="hljs-keyword">select</span> user_id,score,<span class="hljs-built_in">ceil</span>(score<span class="hljs-operator">*</span><span class="hljs-number">10000</span>) <span class="hljs-keyword">as</span> new_score
+  <span class="hljs-keyword">from</span> model_score
+  ) tmp
+),</code></pre></div>
+
+<ul>
+<li>获取每个分组全局初始排序</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql">t2 <span class="hljs-keyword">as</span> (
+<span class="hljs-keyword">select</span> 
+new_score
+,<span class="hljs-built_in">sum</span>(cnt) <span class="hljs-keyword">over</span>(<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> new_score <span class="hljs-keyword">desc</span> <span class="hljs-keyword">rows</span> <span class="hljs-keyword">between</span> unbounded preceding <span class="hljs-keyword">and</span> <span class="hljs-number">1</span> preceding ) <span class="hljs-keyword">as</span> rank2 
+  <span class="hljs-comment">-- 从负无穷行到当前 -1 行的求和，获取到该分组用户最初的全局排序</span>
+<span class="hljs-keyword">from</span> ( 
+<span class="hljs-keyword">select</span> new_score,<span class="hljs-built_in">count</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">as</span> cnt
+<span class="hljs-keyword">from</span> t1 
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> new_score
+) tmp 
+  ),</code></pre></div>
+
+<ul>
+<li>合并获取到用户的全局排序</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> 
+t1.user_id
+,t1.score 
+,(t1.rank1 <span class="hljs-operator">+</span> t2.rank2) <span class="hljs-keyword">as</span> rank   <span class="hljs-comment">-- 每个用户的全局排序 = 分组初始排序 + 在组内的排序 </span>
+<span class="hljs-keyword">from</span> t1 
+<span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> t2 <span class="hljs-keyword">on</span> t1.new_score <span class="hljs-operator">=</span> t2.new_score</code></pre></div>
+
+
                 
               </div>
             
@@ -301,7 +351,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AD%98%E6%A1%A3/" class="category-chain-item">存档</a>
+  <a href="/categories/%E6%97%A5%E5%B8%B8%E5%B7%A5%E4%BD%9C/" class="category-chain-item">日常工作</a>
   
   
 
@@ -316,15 +366,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Shell/">#Shell</a>
-      
         <a href="/tags/Hive/">#Hive</a>
       
         <a href="/tags/Spark/">#Spark</a>
       
-        <a href="/tags/Sqoop/">#Sqoop</a>
-      
-        <a href="/tags/Kafka/">#Kafka</a>
+        <a href="/tags/%E5%91%A8%E6%9B%B4%E6%8C%91%E6%88%98/">#周更挑战</a>
       
     </div>
   
@@ -336,8 +382,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>spark解决全局排序效率问题</div>
-      <div>https://jface001.github.io/2022/11/06/spark解决全局排序效率问题/</div>
+      <div>W04 | Hive / Spark 如何避免单节点全局排序？</div>
+      <div>https://jface001.github.io/2023/01/02/W04-Spark如何避免单节点全局排序/</div>
     </div>
     <div class="license-meta">
       
@@ -349,7 +395,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年11月6日</div>
+          <div>2023年1月2日</div>
         </div>
       
       
@@ -381,18 +427,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/11/W01_%E4%BB%80%E4%B9%88%E6%98%AF%E6%96%B0%E6%80%AA%E8%B0%88%E2%80%94%E4%BB%8E%E3%80%8A%E9%BC%A0%E7%8E%8B%E3%80%8B%E5%BC%80%E5%A7%8B%E8%AF%B4/" title="W01 | 什么是新怪谈—从《鼠王》开始说">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">W01 | 什么是新怪谈—从《鼠王》开始说</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/04/10/%E9%AB%98%E6%95%88%E5%B9%B4%E8%BD%BB%E4%BA%BA%E7%9A%847%E4%B8%AA%E5%8A%9E%E5%85%AC%E4%B9%A0%E6%83%AF/" title="高效年轻人的7个办公习惯">
-                        <span class="hidden-mobile">高效年轻人的7个办公习惯</span>
+                      <a href="/2022/12/25/W03-%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%BD%93%E4%B8%AD%E5%A6%82%E4%BD%95%E9%AA%8C%E8%AF%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%9C%E5%87%86%E7%A1%AE%E6%80%A7/" title="W03 | 数据开发当中如何验证数据结果准确性">
+                        <span class="hidden-mobile">W03 | 数据开发当中如何验证数据结果准确性</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
