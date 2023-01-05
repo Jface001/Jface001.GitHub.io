@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2023/01/02/D6hZklc1OntfFdJ.jpg">
 <meta property="article:published_time" content="2023-01-02T12:06:39.000Z">
-<meta property="article:modified_time" content="2023-01-02T12:08:45.998Z">
+<meta property="article:modified_time" content="2023-01-05T14:22:57.883Z">
 <meta property="article:author" content="惊羽">
 <meta property="article:tag" content="Hive">
 <meta property="article:tag" content="Spark">
@@ -280,7 +280,7 @@
             
               <div class="markdown-body">
                 
-                <p><img src="https://s2.loli.net/2023/01/02/D6hZklc1OntfFdJ.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+                <p><img src="https://s2.loli.net/2023/01/02/D6hZklc1OntfFdJ.jpg" srcset="/img/loading.gif" lazyload></p>
 <p>最近因为经常对接模型算法，营销模型的一个应用场景是：按照模型打分取 TOPN 用户进行营销投放，由此就会产生一个全局排序的场景：<strong>在用户量过亿的情况下，单点全局排序极其容易出现 OOM。</strong>经历了几次线上事故之后，决心要彻底解决这个问题，跟同事请教了下，可以通过 <strong>“加盐打散”</strong> 来解决这个问题。</p>
 <h3 id="加盐打散"><a href="#加盐打散" class="headerlink" title="加盐打散"></a>加盐打散</h3><p>产生全局排序的原因就是因为所有的 key 都需要互相比较才能产生全局排序序号，加盐打散的思路就是：<strong>通过对 key 加盐之后，拆分成不同的分组，用分组排序代替全局排序，实现分布式全局排序。</strong>就拿我日常接触最多的用户模型打分来说，基本思路如下：</p>
 <div class="code-wrapper"><pre><code class="hljs plain">1、对用户加盐进行分组，并且获取不同组的先后顺序跟用户在组内的排序
