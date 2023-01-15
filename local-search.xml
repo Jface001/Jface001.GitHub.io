@@ -126,9 +126,9 @@
     
     <tags>
       
-      <tag>Linux</tag>
-      
       <tag>Shell</tag>
+      
+      <tag>Linux</tag>
       
       <tag>周更挑战</tag>
       
@@ -448,11 +448,11 @@
       
       <tag>Spark</tag>
       
-      <tag>Flink</tag>
-      
       <tag>Hadoop</tag>
       
       <tag>Scala</tag>
+      
+      <tag>Flink</tag>
       
     </tags>
     
@@ -477,9 +477,9 @@
     
     <tags>
       
-      <tag>Java</tag>
-      
       <tag>Flink</tag>
+      
+      <tag>Java</tag>
       
     </tags>
     
@@ -506,9 +506,9 @@
       
       <tag>Spark</tag>
       
-      <tag>Java</tag>
-      
       <tag>Flink</tag>
+      
+      <tag>Java</tag>
       
     </tags>
     
