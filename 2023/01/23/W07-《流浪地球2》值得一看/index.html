@@ -16,26 +16,26 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-    <meta name="description" content="MySQL 是工作当中经常使用到一个开源数据库，我当前工作主要使用 MySQL 作为报表存储数据库，以及承接数据提供给到下游业务使用。使用过程中遇到很多很多坑，都是小问题但是碰到了处理起来也是比较繁琐，特别记录一下。 分区问题MySQL 数据库使用 InnoDB 引擎的时候是支持分区的，MySQL数据库的分区是局部分区索引，一个分区中既存了数据跟索引。聚集索引和非聚集索引都存放在分区当中。MyS">
+    <meta name="description" content="今晚 8 点去电影院看 《流浪地球2》，看到机核电影场大家的评价，充满了期待。我对翻拍充满一种抵触情绪，即使拍得再好，可能都会破坏原著在我心目中的地位，因为文字的魅力在于你可以充分想象，一旦可视化之后可能会破坏心中美好的画面。因此，我喜欢《流浪地球》这样，基于原著背景重新创作的作品，既能有原著的魅力精髓，又能在此之上融入导演编剧自己的想法跟创意，可以相对不受束缚地讲述新的故事。  是我喜欢的中国">
 <meta property="og:type" content="article">
-<meta property="og:title" content="W06 | 工作中使用MySQL遇到的几个小坑">
-<meta property="og:url" content="https://jface001.github.io/2023/01/15/W06-%E5%B7%A5%E4%BD%9C%E4%B8%AD%E4%BD%BF%E7%94%A8MySQL%E9%81%87%E5%88%B0%E7%9A%84%E5%87%A0%E4%B8%AA%E5%B0%8F%E5%9D%91/index.html">
+<meta property="og:title" content="W07 |《流浪地球2》值得一看">
+<meta property="og:url" content="https://jface001.github.io/2023/01/23/W07-%E3%80%8A%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%832%E3%80%8B%E5%80%BC%E5%BE%97%E4%B8%80%E7%9C%8B/index.html">
 <meta property="og:site_name" content="惊羽的博客">
-<meta property="og:description" content="MySQL 是工作当中经常使用到一个开源数据库，我当前工作主要使用 MySQL 作为报表存储数据库，以及承接数据提供给到下游业务使用。使用过程中遇到很多很多坑，都是小问题但是碰到了处理起来也是比较繁琐，特别记录一下。 分区问题MySQL 数据库使用 InnoDB 引擎的时候是支持分区的，MySQL数据库的分区是局部分区索引，一个分区中既存了数据跟索引。聚集索引和非聚集索引都存放在分区当中。MyS">
+<meta property="og:description" content="今晚 8 点去电影院看 《流浪地球2》，看到机核电影场大家的评价，充满了期待。我对翻拍充满一种抵触情绪，即使拍得再好，可能都会破坏原著在我心目中的地位，因为文字的魅力在于你可以充分想象，一旦可视化之后可能会破坏心中美好的画面。因此，我喜欢《流浪地球》这样，基于原著背景重新创作的作品，既能有原著的魅力精髓，又能在此之上融入导演编剧自己的想法跟创意，可以相对不受束缚地讲述新的故事。  是我喜欢的中国">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2023/01/15/FgLoEhyf589UCZN.jpg">
-<meta property="article:published_time" content="2023-01-15T14:03:28.000Z">
-<meta property="article:modified_time" content="2023-01-15T14:17:07.096Z">
+<meta property="og:image" content="https://s2.loli.net/2023/01/23/uK2TIX9rFdbwHsC.webp">
+<meta property="article:published_time" content="2023-01-22T17:24:07.000Z">
+<meta property="article:modified_time" content="2023-01-22T17:28:30.121Z">
 <meta property="article:author" content="惊羽">
 <meta property="article:tag" content="周更挑战">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2023/01/15/FgLoEhyf589UCZN.jpg">
+<meta name="twitter:image" content="https://s2.loli.net/2023/01/23/uK2TIX9rFdbwHsC.webp">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>W06 | 工作中使用MySQL遇到的几个小坑 - 惊羽的博客</title>
+  <title>W07 |《流浪地球2》值得一看 - 惊羽的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="W06 | 工作中使用MySQL遇到的几个小坑"></span>
+            <span id="subtitle" data-typed-text="W07 |《流浪地球2》值得一看"></span>
           
         </div>
 
@@ -212,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-15 22:03" pubdate>
-          2023年1月15日 晚上
+        <time datetime="2023-01-23 01:24" pubdate>
+          2023年1月23日 凌晨
         </time>
       </span>
     
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k 字
+          1.3k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          28 分钟
+          11 分钟
         
       </span>
     
@@ -273,130 +273,20 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">W06 | 工作中使用MySQL遇到的几个小坑</h1>
+            <h1 style="display: none">W07 |《流浪地球2》值得一看</h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="https://s2.loli.net/2023/01/15/FgLoEhyf589UCZN.jpg" srcset="/img/loading.gif" lazyload></p>
-<p>MySQL 是工作当中经常使用到一个开源数据库，我当前工作主要使用 MySQL 作为报表存储数据库，以及承接数据提供给到下游业务使用。使用过程中遇到很多很多坑，都是小问题但是碰到了处理起来也是比较繁琐，特别记录一下。</p>
-<h3 id="分区问题"><a href="#分区问题" class="headerlink" title="分区问题"></a>分区问题</h3><p>MySQL 数据库使用 InnoDB 引擎的时候是支持分区的，MySQL数据库的分区是局部分区索引，一个分区中既存了数据跟索引。聚集索引和非聚集索引都存放在分区当中。MySQL 分区分为 RANGE分区，LIST分区，HASH分区，KEY分区，生产环境一般使用RANGE分区，这个分区通常会跟 hive 数仓里面的分区字段一致，分区字段相当于索引，通常是 YYMMDD 这样的日期数据，</p>
-<ul>
-<li>如果表设置了索引，那么分区字段必须是索引</li>
-<li>RANGE 分区日期字段，分区只能从小到大创建。这个在批量导入分区数据的时候需要特别特别注意，先创建分区再插入数据，其次是分区需要从小到大创建，我被这个坑了许多次。</li>
-</ul>
-<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建分区表，假设分区字段是日期,to_days() 函数作用是返回参数日期跟年份 0 之间差的天数</span>
-<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> table_name (
-user_id      <span class="hljs-type">INT</span>, 
-nick_name    <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">50</span>), 
-dayno        <span class="hljs-type">DATE</span>   
- ) ENGINE<span class="hljs-operator">=</span>InnoDB <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8mb4
- <span class="hljs-keyword">PARTITION</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">RANGE</span>(to_days(dayno)) (
- <span class="hljs-keyword">PARTITION</span> p20230111 <span class="hljs-keyword">VALUES</span> LESS THAN (<span class="hljs-number">738897</span>),
- <span class="hljs-keyword">PARTITION</span> p20230112 <span class="hljs-keyword">VALUES</span> LESS THAN (<span class="hljs-number">738898</span>),
- <span class="hljs-keyword">PARTITION</span> p20230113 <span class="hljs-keyword">VALUES</span> LESS THAN (<span class="hljs-number">738899</span>),
- <span class="hljs-keyword">PARTITION</span> p20230114 <span class="hljs-keyword">VALUES</span> LESS THAN (<span class="hljs-number">738900</span>),
- <span class="hljs-keyword">PARTITION</span> p20230115 <span class="hljs-keyword">VALUES</span> LESS THAN (<span class="hljs-number">738901</span>)
- );
-
-<span class="hljs-comment">-- 新增分区</span>
-<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> table_name <span class="hljs-keyword">add</span> <span class="hljs-keyword">PARTITION</span>(
- <span class="hljs-keyword">PARTITION</span> p20230116 <span class="hljs-keyword">VALUES</span> LESS THAN (<span class="hljs-number">738902</span>) ENGINE <span class="hljs-operator">=</span> InnoDB,
-
-<span class="hljs-comment">-- 删除分区</span>
- <span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> table_name <span class="hljs-keyword">drop</span> <span class="hljs-keyword">PARTITION</span> p20230116 ;
-<span class="hljs-comment">-- 查询当前表分区</span>
-<span class="hljs-keyword">show</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span>_name;
-
-<span class="hljs-comment">-- 或者通过查询元数据</span>
-<span class="hljs-keyword">select</span> partition_name,table_rows
-<span class="hljs-keyword">from</span> information_schema.partitions
-<span class="hljs-keyword">where</span> table_name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;table_name&#x27;</span>;</code></pre></div>
-
-<h3 id="大小写敏感问题"><a href="#大小写敏感问题" class="headerlink" title="大小写敏感问题"></a>大小写敏感问题</h3><p>MySQL 在 Windows 下不区分大小写，但在 Linux 下默认是区分大小写。MySQL 大小写敏感配置相关的两个参数，lower_case_file_system 和 lower_case_table_names。</p>
-<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- 查询当前 MySQL 大小写敏感情况</span>
-<span class="hljs-keyword">show</span> <span class="hljs-keyword">global</span> variables <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;%lower_case%&#x27;</span>;
-<span class="hljs-operator">+</span><span class="hljs-comment">------------------------+-------+</span>
-<span class="hljs-operator">|</span> Variable_name          <span class="hljs-operator">|</span> <span class="hljs-keyword">Value</span> <span class="hljs-operator">|</span>
-<span class="hljs-operator">+</span><span class="hljs-comment">------------------------+-------+</span>
-<span class="hljs-operator">|</span> lower_case_file_system <span class="hljs-operator">|</span> <span class="hljs-keyword">ON</span>    <span class="hljs-operator">|</span>
-<span class="hljs-operator">|</span> lower_case_table_names <span class="hljs-operator">|</span> <span class="hljs-number">2</span>     <span class="hljs-operator">|</span>
-<span class="hljs-operator">+</span><span class="hljs-comment">------------------------+-------+</span>
-<span class="hljs-number">2</span> <span class="hljs-keyword">rows</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.02</span> sec)
-
-<span class="hljs-comment">-- 如何修改</span>
-修改 MySQL 配置文件 my.cnf 当中的参数即可。</code></pre></div>
-
-<ul>
-<li>lower_case_file_system</li>
-</ul>
-<p>代表当前系统文件是否大小写敏感，只读参数，无法修改。ON 大小写不敏感，OFF 大小写敏感。</p>
-<ul>
-<li>lower_case_table_names，</li>
-</ul>
-<p>代表表名是否大小写敏感，可以修改，参数有0、1、2三种。</p>
-<ul>
-<li><ul>
-<li>0 大小写敏感。</li>
-<li>1 大小写不敏感。</li>
-<li>2 大小写不敏感。跟 1 参数的区别是创建的库表名称保持原样保存在磁盘上但是执行 SQL 语句的时候会自动转换成小写。 1 参数创建的库表名称会转换成小写保存在磁盘上</li>
-</ul>
-</li>
-</ul>
-<h3 id="字符集问题"><a href="#字符集问题" class="headerlink" title="字符集问题"></a>字符集问题</h3><p>通常我们创建 MySQL 表的时候都会指定字符集为 utf8，这个通用于各种工具产品，并且对中文兼容性好。但是但是，但是这个字符集不支持 emoji 符号，我在处理爬虫跟日志数据的时候，就被坑了。字符集设置为 utf8mb4，能支持更多格式并且兼容 emoji 符号存储。</p>
-<ul>
-<li>MySQL 中字符集相关变量，设置直接 set 即可</li>
-</ul>
-<div class="code-wrapper"><pre><code class="hljs sql">character_set_client：客户端请求数据的字符集
-character_set_connection：从客户端接收到数据，然后传输的字符集
-character_set_database：默认数据库的字符集，
-character_set_results：结果集的字符集
-character_set_server：数据库服务器的默认字符集
-character_set_system：存储元数据的字符集,默认 utf8，不需要设置</code></pre></div>
-
-<h3 id="数据类型问题"><a href="#数据类型问题" class="headerlink" title="数据类型问题"></a>数据类型问题</h3><p>因为不同的数据库会有不同的数据类型，从 hive 数仓导入到 MySQL 数据库，尤其需要注意设置匹配的字段类型，一方面是基于兼容性考虑保证数据正常导入且没有改变，另一方适合的字段类型也能节约成本。</p>
-<ul>
-<li>小数类型，财务精准数据，建议使用 DECIMAL 类型，指定步长避免精度损失。更建议的做法是在 hive 数仓上游就处理好步长。</li>
-<li>字符串类型，建议使用可变字符串类型 VARCHAR 指定字符串长度，任何情况下都不建议使用其它的字符串类型。</li>
-<li>日期类型，不包含时间使用 DATE ，包含时间使用 DATETIME，MySQL 库不建议将时间数据存储为字符串，会影响查询性能。</li>
-<li>数值类型，注意不同的 INT 类型在只取整数无符号的情况能存储的最大数值范围，这个我同事经常被坑。</li>
-</ul>
-<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- 各种 INT 类型的取值范围，在只取整数的情况下</span>
-TINYINT: (<span class="hljs-number">0</span>，<span class="hljs-number">255</span>)
-<span class="hljs-type">INT</span>: 	(<span class="hljs-number">0</span>，<span class="hljs-number">4294967295</span>)
-<span class="hljs-type">BIGINT</span>: (<span class="hljs-number">0</span>，<span class="hljs-number">18446744073709551615</span>)</code></pre></div>
-
-<h3 id="存储过程跟函数"><a href="#存储过程跟函数" class="headerlink" title="存储过程跟函数"></a>存储过程跟函数</h3><p>MySQL 支持自定义函数跟存储过程，通常来说存储过程会比函数功能更强大，比如有修改全局数据库状态的权限，可以返回参数，能做为独立程序执行，而函数通常作为查询语句的一部分来使用，有严格的限制。日常工作中我使用并没有经常使用到自定义函数，但是经常使用存储过程，主要用于检测 MySQL 分区状态，创建、清空、删除分区等操作，因为自定义程度很高，基本能和脚本语言编写的判断程序达到一样的效果。</p>
-<ul>
-<li>创建一个存储过程的格式</li>
-</ul>
-<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span>
-    [DEFINER <span class="hljs-operator">=</span> &#123; <span class="hljs-keyword">user</span> <span class="hljs-operator">|</span> <span class="hljs-built_in">CURRENT_USER</span> &#125;]
-　<span class="hljs-keyword">PROCEDURE</span> sp_name ([proc_parameter[,...]])
-    [characteristic ...] routine_body
- 
-proc_parameter:
-    [ <span class="hljs-keyword">IN</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">OUT</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">INOUT</span> ] param_name type
- 
-characteristic:
-    COMMENT <span class="hljs-string">&#x27;string&#x27;</span>
-  <span class="hljs-operator">|</span> <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span>
-  <span class="hljs-operator">|</span> [<span class="hljs-keyword">NOT</span>] <span class="hljs-keyword">DETERMINISTIC</span>
-  <span class="hljs-operator">|</span> &#123; <span class="hljs-keyword">CONTAINS</span> <span class="hljs-keyword">SQL</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">NO</span> <span class="hljs-keyword">SQL</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">READS</span> <span class="hljs-keyword">SQL</span> DATA <span class="hljs-operator">|</span> <span class="hljs-keyword">MODIFIES</span> <span class="hljs-keyword">SQL</span> DATA &#125;
-  <span class="hljs-operator">|</span> <span class="hljs-keyword">SQL</span> SECURITY &#123; DEFINER <span class="hljs-operator">|</span> INVOKER &#125;
- 
-routine_body:
-　　Valid <span class="hljs-keyword">SQL</span> routine statement
- 
-[begin_label:] <span class="hljs-keyword">BEGIN</span>
-　　[statement_list]
-　　　　……
-<span class="hljs-keyword">END</span> [end_label]</code></pre></div>
-
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/GrimMjx/p/10526821.html">https://www.cnblogs.com/GrimMjx/p/10526821.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f2eabcef6577">https://www.jianshu.com/p/f2eabcef6577</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43563999/article/details/105820952">https://blog.csdn.net/qq_43563999/article/details/105820952</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/mysql-stored-procedure.html">https://www.runoob.com/w3cnote/mysql-stored-procedure.html</a></p>
+                <p><img src="https://s2.loli.net/2023/01/23/uK2TIX9rFdbwHsC.webp" srcset="/img/loading.gif" lazyload alt="流浪地球2电影海报"></p>
+<p>今晚 8 点去电影院看 《流浪地球2》，看到机核电影场大家的评价，充满了期待。我对翻拍充满一种抵触情绪，即使拍得再好，可能都会破坏原著在我心目中的地位，因为文字的魅力在于你可以充分想象，一旦可视化之后可能会破坏心中美好的画面。因此，我喜欢《流浪地球》这样，基于原著背景重新创作的作品，既能有原著的魅力精髓，又能在此之上融入导演编剧自己的想法跟创意，可以相对不受束缚地讲述新的故事。</p>
+<p><img src="https://s2.loli.net/2023/01/23/EI4zGNuqK9Ao8Te.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="是我喜欢的中国科幻的样子"><a href="#是我喜欢的中国科幻的样子" class="headerlink" title="是我喜欢的中国科幻的样子"></a>是我喜欢的中国科幻的样子</h3><p>看完已经 快 23 点，商场大部分店铺已经打烊，我在寻找出口的时候满脑子想着是最后结局的画面，人类的赞歌就是勇气的赞歌，我们是社会性动物，互助跟劳动是我们繁衍不息的基石，说句俗气的话，之所以我们能幸福地生活，是因为有人替我们负罪前行。</p>
+<p>开头的“太空电梯”深深震撼了我，中国科幻对于未来科技的想法跟欧美完全是两条路子，不像好莱坞科幻电影喜欢打造超级英雄超级武器，我们对未来的科技畅想都基于现实，基于集体主义的努力，比如“太空电梯”，比如说 “星行星发动机”。开头灾难来临的压迫感跟无人机对战，是我目前为止看过的最喜欢的科幻对战画面，激烈震撼又富有美感，可能在巨物下更能体验人类的蝼蚁般的渺小。作为不太相关的从业者，电影里面的量子超级计算机脱离现实太远了，并且电影画面所有的编码解码控制界面，都太假了，我看到中文跟进度条以及打印的日志会有点出戏。</p>
+<p>文戏来说，李雪健老师的扮演的周让我感觉非常非常亲戚，像是我记忆里的周总理，也像刚刚离世的江主席，果断又充满智慧。天下兴亡匹夫有责可能是刻在我们骨子里的文化基因，在人类共同的危难面前，我们更具有集体主义精神，更愿意为之牺牲跟风险，由于来刻画人物，更能让我有同感。最后大家自愿选择的画面，真的让我联系到疫情时期的支援各个地区的医生护士们，我更愿意称呼他们为医生跟护士，我想尊重他们的职业。</p>
+<p>总的来说，画面特效跟情节都在线，压迫感很强，满足了我对中国式科幻的期望。不足之处就是刚刚说的人工智能部分，太让我跳戏了，希望下次能请一个专业的相关从业者来认真编排指导电影里面的各种代码界面。</p>
+<p>通常我看电影会一直看完演员表直至屏幕关闭，我觉得这是对于电影工作者的尊重，不仅仅有台面上的人，更多人是幕后工作者。看到 《流浪地球2》的演员表，两个让我意外跟惊喜的地方：居然有木工、电工、铁匠参与制作，果然电影是一个复杂工程工业项目，需要不同工种职业共同参与；机核是深度内容合作媒体，机核牛逼！期待后续的相关节目内容，期待一波不仅仅杨老师能上节目，郭帆导演是不是也能上个节目！</p>
+<h3 id="对于衍生产品的想法"><a href="#对于衍生产品的想法" class="headerlink" title="对于衍生产品的想法"></a>对于衍生产品的想法</h3><p>开头的空战跟 “太空电梯” 让我特别着迷，刚刚看到机核公众号发文说《流浪地球》将会出同名的 SLG 游戏，希望能做成我想象中那种画面跟玩法。对于 “太空电梯”，我想到是建造相关的游戏跟玩法，通过建造 “太空电梯” 应对危机，可以做成 RPG，也可能做成经营模拟，核心就是建造跟应对各种敌人的干扰，解决机器故障等等。无人机对战，我想的也是 RPG，也可以融入 FPS 作为一种玩法，控制无人机群占领高地，破坏设备，击退敌人，这个跟 《黑客帝国》的章鱼机械有异曲同工之妙，都是小型杀伤性机器人，数量庞大，防不胜防。</p>
 
                 
               </div>
@@ -415,7 +305,7 @@ routine_body:
     
       <span class="category-chain">
         
-  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  <a href="/categories/%E6%99%AE%E9%80%9A%E7%94%9F%E6%B4%BB/" class="category-chain-item">普通生活</a>
   
   
 
@@ -442,8 +332,8 @@ routine_body:
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>W06 | 工作中使用MySQL遇到的几个小坑</div>
-      <div>https://jface001.github.io/2023/01/15/W06-工作中使用MySQL遇到的几个小坑/</div>
+      <div>W07 |《流浪地球2》值得一看</div>
+      <div>https://jface001.github.io/2023/01/23/W07-《流浪地球2》值得一看/</div>
     </div>
     <div class="license-meta">
       
@@ -455,7 +345,7 @@ routine_body:
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月15日</div>
+          <div>2023年1月23日</div>
         </div>
       
       
@@ -487,18 +377,12 @@ routine_body:
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/01/23/W07-%E3%80%8A%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%832%E3%80%8B%E5%80%BC%E5%BE%97%E4%B8%80%E7%9C%8B/" title="W07 |《流浪地球2》值得一看">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">W07 |《流浪地球2》值得一看</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/01/08/W05-%E5%9D%9A%E6%8C%81%E8%BF%90%E5%8A%A8%E4%B8%80%E5%B9%B4%E8%AE%A9%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB%E5%85%85%E6%BB%A1%E5%8A%9B%E9%87%8F/" title="W05 | 坚持运动一年让我的生活充满力量">
-                        <span class="hidden-mobile">W05 | 坚持运动一年让我的生活充满力量</span>
+                      <a href="/2023/01/15/W06-%E5%B7%A5%E4%BD%9C%E4%B8%AD%E4%BD%BF%E7%94%A8MySQL%E9%81%87%E5%88%B0%E7%9A%84%E5%87%A0%E4%B8%AA%E5%B0%8F%E5%9D%91/" title="W06 | 工作中使用MySQL遇到的几个小坑">
+                        <span class="hidden-mobile">W06 | 工作中使用MySQL遇到的几个小坑</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
