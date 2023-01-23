@@ -151,9 +151,9 @@
     
     <tags>
       
-      <tag>Linux</tag>
-      
       <tag>Shell</tag>
+      
+      <tag>Linux</tag>
       
       <tag>周更挑战</tag>
       
@@ -234,9 +234,9 @@
     
     <tags>
       
-      <tag>Hive</tag>
-      
       <tag>Shell</tag>
+      
+      <tag>Hive</tag>
       
       <tag>SQL</tag>
       
@@ -473,11 +473,11 @@
       
       <tag>Spark</tag>
       
-      <tag>Flink</tag>
-      
       <tag>Hadoop</tag>
       
       <tag>Scala</tag>
+      
+      <tag>Flink</tag>
       
     </tags>
     
@@ -502,9 +502,9 @@
     
     <tags>
       
-      <tag>Java</tag>
-      
       <tag>Flink</tag>
+      
+      <tag>Java</tag>
       
     </tags>
     
@@ -531,9 +531,9 @@
       
       <tag>Spark</tag>
       
-      <tag>Java</tag>
-      
       <tag>Flink</tag>
+      
+      <tag>Java</tag>
       
     </tags>
     
@@ -658,9 +658,9 @@
     
     <tags>
       
-      <tag>Hive</tag>
-      
       <tag>Shell</tag>
+      
+      <tag>Hive</tag>
       
       <tag>Sqoop</tag>
       
@@ -687,9 +687,9 @@
     
     <tags>
       
-      <tag>Hive</tag>
-      
       <tag>Shell</tag>
+      
+      <tag>Hive</tag>
       
       <tag>Spark</tag>
       
@@ -747,9 +747,9 @@
     
     <tags>
       
-      <tag>Hive</tag>
-      
       <tag>Shell</tag>
+      
+      <tag>Hive</tag>
       
       <tag>Spark</tag>
       
