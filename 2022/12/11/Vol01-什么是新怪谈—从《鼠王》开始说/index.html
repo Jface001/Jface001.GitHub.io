@@ -16,27 +16,27 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言说明数据开发日常工作经常需要跟业务方核验数据，校验数据源、业务逻辑是否准确。这里的数据准确性跟 ETL 中的“精确一次性语义” 保证数据不丢失不重复不一样，说的是数据报表或者用户标签特征是否符合既定业务逻辑。 以我浅薄的经验来说，验证数据准确性主要从：明细数据逻辑验证、业务逻辑验证、白盒测试这 3 个角度去做。 通过明细数据从逻辑上做数据验证通常一个数据报表逻辑都会相对复杂，多个表关联是一定">
+    <meta name="description" content="频繁在机核的播客里被安利《鼠王》，忘记哪一期节目，介绍了《美国众神》的作者尼尔盖曼作品，就提到通俗奇幻小说的发展史。目前的这类奇幻类小说主要分三类：旧时代民间传说、克苏鲁世界、新怪谈，当然还有史蒂芬金自己独特的体系，不在讨论范围之内。当时就很好奇，为啥新怪谈叫新怪谈，新在哪里。最近机核上了鼠王有声书版本，听音频书容易分神，趁着热度火速去读了鼠王。  “怪”是理所当然感觉新怪谈第一个特点就是“怪谈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="W03 | 数据开发当中如何验证数据结果准确性">
-<meta property="og:url" content="https://jface001.github.io/2022/12/25/W03-%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%BD%93%E4%B8%AD%E5%A6%82%E4%BD%95%E9%AA%8C%E8%AF%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%9C%E5%87%86%E7%A1%AE%E6%80%A7/index.html">
+<meta property="og:title" content="Vol.01 什么是新怪谈—从《鼠王》开始说">
+<meta property="og:url" content="https://jface001.github.io/2022/12/11/Vol01-%E4%BB%80%E4%B9%88%E6%98%AF%E6%96%B0%E6%80%AA%E8%B0%88%E2%80%94%E4%BB%8E%E3%80%8A%E9%BC%A0%E7%8E%8B%E3%80%8B%E5%BC%80%E5%A7%8B%E8%AF%B4/index.html">
 <meta property="og:site_name" content="惊羽的博客">
-<meta property="og:description" content="前言说明数据开发日常工作经常需要跟业务方核验数据，校验数据源、业务逻辑是否准确。这里的数据准确性跟 ETL 中的“精确一次性语义” 保证数据不丢失不重复不一样，说的是数据报表或者用户标签特征是否符合既定业务逻辑。 以我浅薄的经验来说，验证数据准确性主要从：明细数据逻辑验证、业务逻辑验证、白盒测试这 3 个角度去做。 通过明细数据从逻辑上做数据验证通常一个数据报表逻辑都会相对复杂，多个表关联是一定">
+<meta property="og:description" content="频繁在机核的播客里被安利《鼠王》，忘记哪一期节目，介绍了《美国众神》的作者尼尔盖曼作品，就提到通俗奇幻小说的发展史。目前的这类奇幻类小说主要分三类：旧时代民间传说、克苏鲁世界、新怪谈，当然还有史蒂芬金自己独特的体系，不在讨论范围之内。当时就很好奇，为啥新怪谈叫新怪谈，新在哪里。最近机核上了鼠王有声书版本，听音频书容易分神，趁着热度火速去读了鼠王。  “怪”是理所当然感觉新怪谈第一个特点就是“怪谈">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2022/12/25/O7ZVahpqkvtN2Dw.jpg">
-<meta property="article:published_time" content="2022-12-25T11:29:05.000Z">
-<meta property="article:modified_time" content="2022-12-25T11:33:33.097Z">
+<meta property="og:image" content="https://s2.loli.net/2022/12/17/Nsp3iElyHnRMoID.jpg">
+<meta property="article:published_time" content="2022-12-11T12:29:11.000Z">
+<meta property="article:modified_time" content="2023-02-07T13:39:12.732Z">
 <meta property="article:author" content="惊羽">
-<meta property="article:tag" content="Spark">
 <meta property="article:tag" content="周更挑战">
+<meta property="article:tag" content="读书">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/12/25/O7ZVahpqkvtN2Dw.jpg">
+<meta name="twitter:image" content="https://s2.loli.net/2022/12/17/Nsp3iElyHnRMoID.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>W03 | 数据开发当中如何验证数据结果准确性 - 惊羽的博客</title>
+  <title>Vol.01 什么是新怪谈—从《鼠王》开始说 - 惊羽的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="W03 | 数据开发当中如何验证数据结果准确性"></span>
+            <span id="subtitle" data-typed-text="Vol.01 什么是新怪谈—从《鼠王》开始说"></span>
           
         </div>
 
@@ -213,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-25 19:29" pubdate>
-          2022年12月25日 晚上
+        <time datetime="2022-12-11 20:29" pubdate>
+          2022年12月11日 晚上
         </time>
       </span>
     
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          796 字
+          895 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          7 分钟
+          8 分钟
         
       </span>
     
@@ -274,21 +274,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">W03 | 数据开发当中如何验证数据结果准确性</h1>
+            <h1 style="display: none">Vol.01 什么是新怪谈—从《鼠王》开始说</h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="https://s2.loli.net/2022/12/25/O7ZVahpqkvtN2Dw.jpg" srcset="/img/loading.gif" lazyload></p>
-<h3 id="前言说明"><a href="#前言说明" class="headerlink" title="前言说明"></a>前言说明</h3><p>数据开发日常工作经常需要跟业务方核验数据，校验数据源、业务逻辑是否准确。这里的数据准确性跟 ETL 中的“精确一次性语义” 保证数据不丢失不重复不一样，说的是数据报表或者用户标签特征是否符合既定业务逻辑。</p>
-<p>以我浅薄的经验来说，验证数据准确性主要从：明细数据逻辑验证、业务逻辑验证、白盒测试这 3 个角度去做。</p>
-<h3 id="通过明细数据从逻辑上做数据验证"><a href="#通过明细数据从逻辑上做数据验证" class="headerlink" title="通过明细数据从逻辑上做数据验证"></a>通过明细数据从逻辑上做数据验证</h3><p>通常一个数据报表逻辑都会相对复杂，多个表关联是一定会有的，因为各种业务逻辑的原因，指不定还有非常多的 case when 跟字段二次处理，逻辑上也会一层套一层，使用的明细层（DWS）最后结果是报表层（RPT）。自己开发的报表验证是否准确第一个想到的从逻辑明细上去做验证。</p>
-<p>这个意思是，拿几条明细数据验证，看看这些用户是否按照既定的业务逻辑进入对应报表统计分类里面，特别需要验证代表性的用户，验证我们的 case when、二次处理是否生效等。</p>
-<p>使用明细数据验证统计逻辑是否准确是我日常工作当中最常用也是最高效的一种方式。</p>
-<h3 id="通过业务逻辑做数据验证"><a href="#通过业务逻辑做数据验证" class="headerlink" title="通过业务逻辑做数据验证"></a>通过业务逻辑做数据验证</h3><p>本身报表就是根据业务需求创建的，那么是否准确也应该由业务方来验证，我们自行验证的话就是通过判断报表指标是否符合基本的业务逻辑。这里说的业务逻辑主要只的报表指标数值是否符合业务方预计范围之内，是否符合普遍的规律跟比例。</p>
-<p>比如说，营销投放当中触达率不可能超过 100 %、获客成本应该在一个大致范围之内，应该跟投放平台反馈的成本接近，如果我们报表计算结果指标跟这些数值相差较大，那么就应该从头开始验证，可能是哪一个环节计算错误，或者存在脏数据。</p>
-<h3 id="通过白盒测试验证数据"><a href="#通过白盒测试验证数据" class="headerlink" title="通过白盒测试验证数据"></a>通过白盒测试验证数据</h3><p>白盒测试是指边看着程序代码逻辑，一遍操作系统查看数据变化情况。在我们数据开发角度，其实就是亲自验证下用户是否按照我们既定的逻辑被统计到对应的指标当中。</p>
-<p>拿个埋点数据举例，就是看看拿实机测试，看看上报数据是否正常，对应操作是否上报了正确的埋点标识并且正常被报表通缉到对应指标当中。</p>
+                <p><img src="https://s2.loli.net/2022/12/17/Nsp3iElyHnRMoID.jpg" srcset="/img/loading.gif" lazyload alt="鼠王封面"></p>
+<p>频繁在机核的播客里被安利《鼠王》，忘记哪一期节目，介绍了《美国众神》的作者尼尔盖曼作品，就提到通俗奇幻小说的发展史。目前的这类奇幻类小说主要分三类：旧时代民间传说、克苏鲁世界、新怪谈，当然还有史蒂芬金自己独特的体系，不在讨论范围之内。当时就很好奇，为啥新怪谈叫新怪谈，新在哪里。最近机核上了鼠王有声书版本，听音频书容易分神，趁着热度火速去读了鼠王。 </p>
+<h4 id="“怪”是理所当然"><a href="#“怪”是理所当然" class="headerlink" title="“怪”是理所当然"></a><strong>“怪”是理所当然</strong></h4><p>感觉新怪谈第一个特点就是“怪谈”不怪，或者说故事里的人物不会感觉奇怪，理所当然的接受了各种“超自然事物”。就鼠王来说，鼠王登场的一系列操作，惊艳冷酷，但邵尔立刻就接受了这个事实，其它的登场人物同样如此。不会去思考鼠王如何出现，也不会想着上报国家，上报科学研究，大家似乎全都接受了鼠王出现的事实，而且不在于他为何出现，又有何价值，对人类发展有什么影响，只当成一个新事物看待。 </p>
+<h4 id="融入世界"><a href="#融入世界" class="headerlink" title="融入世界"></a><strong>融入世界</strong></h4><p>第二个特殊之处在于，鼠王鸟王蛛王都生活在都市之中，融入世界。他们是都市的部分，他们不是躲在深山老林，他们和都市中其它物种一样，有自己的住宿，有自己的生活，而且是随着时代一起发展的，他们完美融入了“正常人”的世界之中。老鼠鸟蜘蛛都和人类一起生活着。 </p>
+<h4 id="故事不一定是主角"><a href="#故事不一定是主角" class="headerlink" title="故事不一定是主角"></a><strong>故事不一定是主角</strong></h4><p>第三个是我感觉，新怪谈故事情节不一定是第一位的。比说并没有介绍鼠王等人从何而来，也没有说到最后结局会如何，更没有说舞会现场如何收场。很多正常小说应该去解释和说明的地方鼠王都没有解释。其次是承载的文化元素。鼠王这本书融入的伦敦底下音乐文化我是一无所知的，只能依靠文字描写和歌曲名称去想象那是一种什么的的音乐，鼠王融入的是这么一种元素，其它的新怪谈小说比如《遗落南境》又是容易了SCP基金会的元素？尼尔盖曼的《美国众神》又是另一种文化。可以说新怪谈小说都会惨杂着其它元素的内容。从整个作品来说，故事情节不一定是最重要的，故事也不一定完整，但是从故事中渗透出来的文化符号以及表达的想法欲望一定是第一位的。 </p>
+<p>最近的阅读口味很多都是被机核种草的。读完鼠王特别想想玩《极乐迪斯科》，这是一种新的文化体系，曾经被种草克苏鲁，现在又是新怪谈，感谢机核。</p>
+<p><em>（本文首发于豆瓣：</em><a target="_blank" rel="noopener" href="https://book.douban.com/review/13384309/"><em>什么是新怪谈—从《鼠王》开始说</em></a><em>）</em></p>
 
                 
               </div>
@@ -307,7 +304,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%97%A5%E5%B8%B8%E5%B7%A5%E4%BD%9C/" class="category-chain-item">日常工作</a>
+  <a href="/categories/%E9%98%85%E8%AF%BB/" class="category-chain-item">阅读</a>
   
   
 
@@ -322,9 +319,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Spark/">#Spark</a>
-      
         <a href="/tags/%E5%91%A8%E6%9B%B4%E6%8C%91%E6%88%98/">#周更挑战</a>
+      
+        <a href="/tags/%E8%AF%BB%E4%B9%A6/">#读书</a>
       
     </div>
   
@@ -336,8 +333,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>W03 | 数据开发当中如何验证数据结果准确性</div>
-      <div>https://jface001.github.io/2022/12/25/W03-数据开发当中如何验证数据结果准确性/</div>
+      <div>Vol.01 什么是新怪谈—从《鼠王》开始说</div>
+      <div>https://jface001.github.io/2022/12/11/Vol01-什么是新怪谈—从《鼠王》开始说/</div>
     </div>
     <div class="license-meta">
       
@@ -349,7 +346,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年12月25日</div>
+          <div>2022年12月11日</div>
         </div>
       
       
@@ -381,9 +378,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/01/02/W04-Spark%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%8D%95%E8%8A%82%E7%82%B9%E5%85%A8%E5%B1%80%E6%8E%92%E5%BA%8F/" title="W04 | Hive / Spark 如何避免单节点全局排序？">
+                      <a href="/2022/12/18/Vol02-%E6%8E%A8%E8%8D%90%E4%B8%8B%E4%BB%8A%E5%A4%A9%E5%8F%91%E7%8E%B0%E7%9A%84%E5%87%A0%E4%B8%AAcheatsheet/" title="Vol.02 推荐下今天发现的几个cheatsheet">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">W04 | Hive / Spark 如何避免单节点全局排序？</span>
+                        <span class="hidden-mobile">Vol.02 推荐下今天发现的几个cheatsheet</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -391,8 +388,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/18/W02_%E6%8E%A8%E8%8D%90%E4%B8%8B%E4%BB%8A%E5%A4%A9%E5%8F%91%E7%8E%B0%E7%9A%84%E5%87%A0%E4%B8%AAcheatsheet/" title="W02 | 推荐下今天发现的几个cheatsheet">
-                        <span class="hidden-mobile">W02 | 推荐下今天发现的几个cheatsheet</span>
+                      <a href="/2022/04/10/%E9%AB%98%E6%95%88%E5%B9%B4%E8%BD%BB%E4%BA%BA%E7%9A%847%E4%B8%AA%E5%8A%9E%E5%85%AC%E4%B9%A0%E6%83%AF/" title="高效年轻人的7个办公习惯">
+                        <span class="hidden-mobile">高效年轻人的7个办公习惯</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

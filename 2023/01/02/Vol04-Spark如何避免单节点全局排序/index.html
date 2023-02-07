@@ -18,14 +18,14 @@
   
     <meta name="description" content="最近因为经常对接模型算法，营销模型的一个应用场景是：按照模型打分取 TOPN 用户进行营销投放，由此就会产生一个全局排序的场景：在用户量过亿的情况下，单点全局排序极其容易出现 OOM。经历了几次线上事故之后，决心要彻底解决这个问题，跟同事请教了下，可以通过 “加盐打散” 来解决这个问题。 加盐打散产生全局排序的原因就是因为所有的 key 都需要互相比较才能产生全局排序序号，加盐打散的思路就是：通">
 <meta property="og:type" content="article">
-<meta property="og:title" content="W04 | Hive &#x2F; Spark 如何避免单节点全局排序？">
-<meta property="og:url" content="https://jface001.github.io/2023/01/02/W04-Spark%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%8D%95%E8%8A%82%E7%82%B9%E5%85%A8%E5%B1%80%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:title" content="Vol.04 Hive &#x2F; Spark 如何避免单节点全局排序？">
+<meta property="og:url" content="https://jface001.github.io/2023/01/02/Vol04-Spark%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%8D%95%E8%8A%82%E7%82%B9%E5%85%A8%E5%B1%80%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="惊羽的博客">
 <meta property="og:description" content="最近因为经常对接模型算法，营销模型的一个应用场景是：按照模型打分取 TOPN 用户进行营销投放，由此就会产生一个全局排序的场景：在用户量过亿的情况下，单点全局排序极其容易出现 OOM。经历了几次线上事故之后，决心要彻底解决这个问题，跟同事请教了下，可以通过 “加盐打散” 来解决这个问题。 加盐打散产生全局排序的原因就是因为所有的 key 都需要互相比较才能产生全局排序序号，加盐打散的思路就是：通">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2023/01/02/D6hZklc1OntfFdJ.jpg">
 <meta property="article:published_time" content="2023-01-02T12:06:39.000Z">
-<meta property="article:modified_time" content="2023-01-05T14:22:57.883Z">
+<meta property="article:modified_time" content="2023-02-07T13:39:15.161Z">
 <meta property="article:author" content="惊羽">
 <meta property="article:tag" content="Hive">
 <meta property="article:tag" content="Spark">
@@ -37,7 +37,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>W04 | Hive / Spark 如何避免单节点全局排序？ - 惊羽的博客</title>
+  <title>Vol.04 Hive / Spark 如何避免单节点全局排序？ - 惊羽的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="W04 | Hive / Spark 如何避免单节点全局排序？"></span>
+            <span id="subtitle" data-typed-text="Vol.04 Hive / Spark 如何避免单节点全局排序？"></span>
           
         </div>
 
@@ -275,7 +275,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">W04 | Hive / Spark 如何避免单节点全局排序？</h1>
+            <h1 style="display: none">Vol.04 Hive / Spark 如何避免单节点全局排序？</h1>
             
             
               <div class="markdown-body">
@@ -382,8 +382,8 @@ t1.user_id
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>W04 | Hive / Spark 如何避免单节点全局排序？</div>
-      <div>https://jface001.github.io/2023/01/02/W04-Spark如何避免单节点全局排序/</div>
+      <div>Vol.04 Hive / Spark 如何避免单节点全局排序？</div>
+      <div>https://jface001.github.io/2023/01/02/Vol04-Spark如何避免单节点全局排序/</div>
     </div>
     <div class="license-meta">
       
@@ -427,9 +427,9 @@ t1.user_id
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/01/08/W05-%E5%9D%9A%E6%8C%81%E8%BF%90%E5%8A%A8%E4%B8%80%E5%B9%B4%E8%AE%A9%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB%E5%85%85%E6%BB%A1%E5%8A%9B%E9%87%8F/" title="W05 | 坚持运动一年让我的生活充满力量">
+                      <a href="/2023/01/08/Vol05-%E5%9D%9A%E6%8C%81%E8%BF%90%E5%8A%A8%E4%B8%80%E5%B9%B4%E8%AE%A9%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB%E5%85%85%E6%BB%A1%E5%8A%9B%E9%87%8F/" title="Vol.05 坚持运动一年让我的生活充满力量">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">W05 | 坚持运动一年让我的生活充满力量</span>
+                        <span class="hidden-mobile">Vol.05 坚持运动一年让我的生活充满力量</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -437,8 +437,8 @@ t1.user_id
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/25/W03-%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%BD%93%E4%B8%AD%E5%A6%82%E4%BD%95%E9%AA%8C%E8%AF%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%9C%E5%87%86%E7%A1%AE%E6%80%A7/" title="W03 | 数据开发当中如何验证数据结果准确性">
-                        <span class="hidden-mobile">W03 | 数据开发当中如何验证数据结果准确性</span>
+                      <a href="/2022/12/25/Vol03-%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%BD%93%E4%B8%AD%E5%A6%82%E4%BD%95%E9%AA%8C%E8%AF%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%9C%E5%87%86%E7%A1%AE%E6%80%A7/" title="Vol.03 数据开发当中如何验证数据结果准确性">
+                        <span class="hidden-mobile">Vol.03 数据开发当中如何验证数据结果准确性</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
