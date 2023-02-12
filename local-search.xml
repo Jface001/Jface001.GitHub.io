@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>vol.10 Spark核心工作原理小记</title>
+    <link href="/2023/02/12/vol10-Spark%E6%A0%B8%E5%BF%83%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%B0%8F%E8%AE%B0/"/>
+    <url>/2023/02/12/vol10-Spark%E6%A0%B8%E5%BF%83%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%B0%8F%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://s2.loli.net/2023/02/12/JhsFBVYuNkorAix.png"></p><p>整理学习 Spark 相关知识的笔记，查缺补漏。不得不说整理的时候重新捡起了很多遗忘的知识，Scala 我也很久很久没有写了, 现在公司用的是 Pyspark ，后面也整理记录下 Pyspark 的相关笔记。</p><h3 id="Spark-组件的数据抽象和上下文对象"><a href="#Spark-组件的数据抽象和上下文对象" class="headerlink" title="Spark 组件的数据抽象和上下文对象"></a><strong>Spark 组件的数据抽象和上下文对象</strong></h3><p><strong>SparkCore</strong></p><ul><li>数据抽象: RDD</li><li>上下文对象: SparkContext</li></ul><p><strong>SparkSQL</strong></p><ul><li>数据抽象: DataFrame DataSet</li><li>上下文对象 SparkSession</li></ul><p><strong>SparkStreaming</strong></p><ul><li>数据抽象:DStream</li><li>上下文对象: StreamingContext</li></ul><p><strong>StructuredStreaming</strong></p><ul><li>数据抽象 :DataFrame, DataSet</li><li>上下文对象: SparkSession</li></ul><h3 id="RDD、DataFrame和Dataset-三者的共同点跟区别"><a href="#RDD、DataFrame和Dataset-三者的共同点跟区别" class="headerlink" title="RDD、DataFrame和Dataset 三者的共同点跟区别"></a>RDD、DataFrame和Dataset 三者的共同点跟区别</h3><h4 id="三者的共同点"><a href="#三者的共同点" class="headerlink" title="三者的共同点"></a>三者的共同点</h4><ol><li>都是【分布式数据集】</li><li>转换操作都是【懒lazy】执行。</li><li>都支持【持久化】,都支持【12】种缓存策略</li><li>都支持【checkpoint】</li></ol><p><img src="https://s2.loli.net/2023/02/12/c6AzxOq3tQwGBuR.png" alt="img"></p><h4 id="RDD"><a href="#RDD" class="headerlink" title="RDD"></a>RDD</h4><ol><li>弹性分布式数据集</li></ol><ul><li><ul><li>弹性：他的存储和计算的节点可以【扩展】。数据可以存储在内存，如果【内存】不够，可以溢写到【磁盘】。</li><li>分布式：计算和存储都是分布式的</li><li>数据集：我们可以像使用scala本地集合一样使用RDD分布式数据集，可以很方便使用【函数式】编程。</li></ul></li></ul><ol><li>元素【不可】变，【可】分区，分区间【并】行计算。</li><li>元素的【泛型】要支持可序列化。反例如 Connection</li><li>缺点: 集群间的通信效率低，对象的序列化和反序列化开销大，会频繁的创建和销毁对象。</li></ol><h4 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h4><ol><li>在RDD的基础上支持【schema】</li><li>DataFrame=RDD -【泛型】+方便的【SQL】操作+【DSL】操作+【catalyst】优化</li><li>将【数据】和【schema】分离存储，减小了序列化和反序列化的开销</li><li>支持catalyst，【RBO】基于规则的优化（【常量折叠】，【谓词下推】，【列裁剪】）和【CBO】（基于代价模型的优化）</li><li>缺点：DataFrame不能【类型安全检查】：比如dataframe.select(“不存在字段”)这句代码编译【通过】，但是运行时【报错】。</li></ol><p><img src="https://s2.loli.net/2023/02/12/M4QpcG23kdbClsw.png"></p><h4 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h4><ol><li>在DataFrame的基础上支持【泛型】</li><li>Dataset=RDD[泛型]+schema+方便的SQL操作+catalyst优化+Tungsten</li><li>泛型分为【强】类型和【弱】类型，当类型是弱类型时DataFrame=Dataset[ Row].</li><li>自动的将样例类（jvm对象）的【属性】映射成分布式表的【字段】</li><li>Dataset具有【类型安全检查】：比如dataset.map(x=&gt;{x.不存在的属性}) ,编译时就报错。</li><li>直接继承了DataFrame的【catalyst】优化</li><li>独有【Tungsten】优化，支持特殊的编码器，基于内存管理的优化，使对象的存储更节省空间。</li></ol><p><img src="https://s2.loli.net/2023/02/12/lvU9q5Q8gGLScRE.png"></p><h3 id="Spark-跟-Hive-的关系"><a href="#Spark-跟-Hive-的关系" class="headerlink" title="Spark 跟 Hive 的关系"></a>Spark 跟 Hive 的关系</h3><p> <strong>Spark Thriftserver hiveserver2 metastore beeline 的关系</strong></p><p><img src="https://s2.loli.net/2023/02/12/Hwfc3kOP1od5Rel.png"></p><h3 id="Spark-SQL-catalyst-优化器"><a href="#Spark-SQL-catalyst-优化器" class="headerlink" title="Spark SQL catalyst 优化器"></a>Spark SQL catalyst 优化器</h3><p><img src="https://s2.loli.net/2023/02/12/KTw7JjcRzhavEYB.png"></p><ul><li><strong>RBO:基于规则优化</strong></li></ul><p>常量折叠：常量提前计算</p><p>谓词下推：在表关联前做过滤</p><p>列裁剪：只选择需要的列</p><ul><li><strong>CBO: 基于物理消耗的优化</strong></li></ul><h3 id="Spark-的两种运行模式"><a href="#Spark-的两种运行模式" class="headerlink" title="Spark 的两种运行模式"></a>Spark 的两种运行模式</h3><h4 id="Yarn-cluster-方式提交任务"><a href="#Yarn-cluster-方式提交任务" class="headerlink" title="Yarn-cluster 方式提交任务"></a>Yarn-cluster 方式提交任务</h4><p><img src="https://s2.loli.net/2023/02/12/kJHfVuOoAWedmn9.png"></p><h4 id="Yarn-client-方式提交任务"><a href="#Yarn-client-方式提交任务" class="headerlink" title="Yarn-client 方式提交任务"></a>Yarn-client 方式提交任务</h4><p><img src="https://s2.loli.net/2023/02/12/zJvfnq1FCY2MPW5.png"></p><h3 id="Spark-调度任务执行流程"><a href="#Spark-调度任务执行流程" class="headerlink" title="Spark 调度任务执行流程"></a>Spark 调度任务执行流程</h3><p><img src="https://s2.loli.net/2023/02/12/3pSP5QIRweFhbGy.png"></p><h4 id="准备执行"><a href="#准备执行" class="headerlink" title="准备执行"></a>准备执行</h4><ol><li>Yarn集群等等任务提交</li><li>Spark程序执行</li><li>客户端向RS申请启动APP</li><li>在NM启动APP,启动Driver进程,合为一体</li><li>APP申请资源</li><li>RS返回可用NM</li><li>APP连接NM并启动Executor</li><li>按照程序分配资源给Executor</li><li>Executor反向注册给Driver</li><li>Driver确定所有Executor准备完毕</li></ol><h4 id="分配任务"><a href="#分配任务" class="headerlink" title="分配任务"></a>分配任务</h4><ol><li>Spark程序SC创建2个调度器对象</li><li>SC识别Action算子DAG</li><li>DAGScheduler切分Stage,将Stage内的Task打包成TaskSet</li><li>DAGScheduler将一个Stage的TaskSet发给TaskSchuster</li><li>TaskScheduler将TaskSet中Task分发给不同Executor处理</li></ol><h4 id="执行任务返回结果"><a href="#执行任务返回结果" class="headerlink" title="执行任务返回结果"></a>执行任务返回结果</h4><ol><li>Executor将Task放到线程池执行</li><li>Executor将执行结果返回给TaskScheduler</li><li>一个StageTask完成后继续反馈给DAGScheduler</li><li>DAGScheduler继续将剩下的Stage发送给TaskScheduler,重复循环,直至完成</li></ol><h3 id="Spark-Steaming-原理"><a href="#Spark-Steaming-原理" class="headerlink" title="Spark Steaming 原理"></a>Spark Steaming 原理</h3><p><img src="https://s2.loli.net/2023/02/12/T4I6tEy7kNmi1Qg.png"></p><ol><li>StreamingContext对象封装了SparkContext对象</li><li>启动时同时启动Driver Executor</li><li>一个Executor启动Receiver</li><li>每到blockInterval时间间隔，就会生成一个数据块,实时同步备份到其它Executor</li><li>blockInterval默认是200ms，可以手动设置spark.streaming.blockInterval最低支持50ms</li><li>把数据块信息同步给StreamingContext对象, 攒够生成RDD给SparkContext对象</li><li>BatchInterval一般是blockInterval的整数倍，其中每个block是RDD的一个分区</li><li>SparkContext对象分发任务给Executor执行</li></ol><h3 id="Structured-Steaming-原理"><a href="#Structured-Steaming-原理" class="headerlink" title="Structured Steaming 原理"></a>Structured Steaming 原理</h3><h4 id="抽象概念"><a href="#抽象概念" class="headerlink" title="抽象概念"></a>抽象概念</h4><p><img src="https://s2.loli.net/2023/02/12/QH4zl9KWRNaeiT5.png"></p><ol><li>input table unbounded table无边界表,动态的增加数据,用DataFrame表示</li><li>data stream增量数据, 以行形式追加到unbounded table</li><li>query 查询逻辑,有追加更新立即触发查询</li><li>result table查询结果, 是一个DataFrame</li><li>output结果输出, append complete update三种模式</li></ol><h4 id="EventTime-事件时间"><a href="#EventTime-事件时间" class="headerlink" title="EventTime 事件时间"></a>EventTime 事件时间</h4><p><img src="https://s2.loli.net/2023/02/12/nV5TjkyH7BXW3b1.png"></p><p> <strong>时间的分类</strong></p><ul><li>EventTime 事件时间数据产生的时间</li><li>IngestionTime 注入时间数据到达流式系统的时间</li><li>ProcessingTime 处理时间数据被流式系统真正处理的时间</li></ul><p><strong>应用场景：基于事件时间的窗口聚合</strong></p><p><img src="https://s2.loli.net/2023/02/12/J1KU2ngYB45GXSM.png"></p><h4 id="watermark-水位"><a href="#watermark-水位" class="headerlink" title="watermark 水位"></a>watermark 水位</h4><p><strong>公式：Watermark = 【MaxEventTime 】 - 【Threshold】</strong></p><ul><li>MaxEventTime【上】一批次数据中的【最大的eventime值】</li><li>Threshold 预估事件的延迟时间上限</li></ul><p><img src="https://s2.loli.net/2023/02/12/Z18GVxJtjYwRA6C.png"></p><p><img src="https://s2.loli.net/2023/02/12/oJuqfAB3VtzpDmx.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Spark</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Spark</tag>
+      
+      <tag>周更挑战</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Vol.09 M1款 MacBookPro 搭建 JupyterLab 数据分析环境</title>
     <link href="/2023/02/05/Vol09-M1%E6%AC%BEMacBookPro%E6%90%AD%E5%BB%BAJupyterLab%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%8E%AF%E5%A2%83/"/>
     <url>/2023/02/05/Vol09-M1%E6%AC%BEMacBookPro%E6%90%AD%E5%BB%BAJupyterLab%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%8E%AF%E5%A2%83/</url>
@@ -207,9 +234,9 @@
     
     <tags>
       
-      <tag>Shell</tag>
-      
       <tag>Linux</tag>
+      
+      <tag>Shell</tag>
       
       <tag>周更挑战</tag>
       
