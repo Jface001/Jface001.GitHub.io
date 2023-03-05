@@ -313,9 +313,9 @@
     
     <tags>
       
-      <tag>Linux</tag>
-      
       <tag>Shell</tag>
+      
+      <tag>Linux</tag>
       
       <tag>周更挑战</tag>
       
@@ -396,13 +396,13 @@
     
     <tags>
       
+      <tag>Shell</tag>
+      
       <tag>Hive</tag>
       
       <tag>SQL</tag>
       
       <tag>Spark</tag>
-      
-      <tag>Shell</tag>
       
     </tags>
     
@@ -820,9 +820,9 @@
     
     <tags>
       
-      <tag>Hive</tag>
-      
       <tag>Shell</tag>
+      
+      <tag>Hive</tag>
       
       <tag>Sqoop</tag>
       
@@ -849,11 +849,11 @@
     
     <tags>
       
+      <tag>Shell</tag>
+      
       <tag>Hive</tag>
       
       <tag>Spark</tag>
-      
-      <tag>Shell</tag>
       
       <tag>Sqoop</tag>
       
@@ -909,11 +909,11 @@
     
     <tags>
       
+      <tag>Shell</tag>
+      
       <tag>Hive</tag>
       
       <tag>Spark</tag>
-      
-      <tag>Shell</tag>
       
       <tag>Sqoop</tag>
       
