@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Vol.15 来深圳第5次搬家</title>
+    <link href="/2023/03/19/vol15-%E6%9D%A5%E6%B7%B1%E5%9C%B3%E7%AC%AC5%E6%AC%A1%E6%90%AC%E5%AE%B6/"/>
+    <url>/2023/03/19/vol15-%E6%9D%A5%E6%B7%B1%E5%9C%B3%E7%AC%AC5%E6%AC%A1%E6%90%AC%E5%AE%B6/</url>
+    
+    <content type="html"><![CDATA[<p>这周不仅工作很忙，周末搬家也很忙，博客水一期，分享一下我刚刚收拾好的狗窝。这一次我虽然还是合租，但现在是主卧，并且买了自己的冰箱，可以安心地做宅宅，完全没有出门的需求了，甚至连室友都不用再见啦。</p><p><img src="https://s2.loli.net/2023/03/19/h8W7TeYgZpnrBEt.jpg"><img src="https://s2.loli.net/2023/03/19/2COIKuGJ4shqQPz.jpg"><img src="https://s2.loli.net/2023/03/19/GQYgr8FR6q9cyEb.jpg"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>普通生活</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>周更挑战</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Vol.14 说说我的数据仓库建设&quot;最佳实践&quot;</title>
     <link href="/2023/03/12/vol14-%E8%AF%B4%E8%AF%B4%E6%88%91%E5%AF%B9%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BB%BA%E8%AE%BE%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
     <url>/2023/03/12/vol14-%E8%AF%B4%E8%AF%B4%E6%88%91%E5%AF%B9%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BB%BA%E8%AE%BE%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</url>
@@ -340,11 +365,11 @@
       
       <tag>Shell</tag>
       
-      <tag>Linux</tag>
-      
       <tag>周更挑战</tag>
       
       <tag>Python</tag>
+      
+      <tag>Linux</tag>
       
     </tags>
     
@@ -421,13 +446,13 @@
     
     <tags>
       
-      <tag>Shell</tag>
+      <tag>Hive</tag>
       
       <tag>SQL</tag>
       
-      <tag>Hive</tag>
-      
       <tag>Spark</tag>
+      
+      <tag>Shell</tag>
       
     </tags>
     
@@ -554,9 +579,9 @@
     
     <tags>
       
-      <tag>Hbase</tag>
-      
       <tag>Linux</tag>
+      
+      <tag>Hbase</tag>
       
     </tags>
     
@@ -845,11 +870,11 @@
     
     <tags>
       
-      <tag>Shell</tag>
-      
       <tag>Hive</tag>
       
       <tag>Sqoop</tag>
+      
+      <tag>Shell</tag>
       
     </tags>
     
@@ -874,13 +899,13 @@
     
     <tags>
       
-      <tag>Shell</tag>
-      
       <tag>Hive</tag>
       
       <tag>Spark</tag>
       
       <tag>Sqoop</tag>
+      
+      <tag>Shell</tag>
       
       <tag>Kafka</tag>
       
@@ -934,13 +959,13 @@
     
     <tags>
       
-      <tag>Shell</tag>
-      
       <tag>Hive</tag>
       
       <tag>Spark</tag>
       
       <tag>Sqoop</tag>
+      
+      <tag>Shell</tag>
       
       <tag>Kafka</tag>
       
