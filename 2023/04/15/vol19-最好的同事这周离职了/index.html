@@ -16,28 +16,26 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Python 用于数据分析的优势我就不多赘述，虽然当前基本不写 Python，但是我经常需要阅读 Python 代码，看别人写的数据处理逻辑，所以开始进一步学习 Pyspark 相关的知识。Jupyter 应该是学习 Python 数据分析最佳的工具了，趁着刚刚安装完，记录下自己环境配置跟常用的工具。 miniconda 安装提到 Python 数据分析大家一般推荐 Anaconda，minic">
+    <meta name="description" content="这周坐我旁边的最好的同事离职了，工作 5 年，这个同事是我职场生涯当中关系最好的朋友。从我入职开始她就坐我旁边，手把手指导我度过新人期，可以说我在公司的所有知识跟技能都是她传授的。有些同事只是同事，有些是可以成为一生的朋友。刚刚到这家公司的时候，我是一个孤傲内向的钢铁直男，工作上粗心大意经常小错误，但易老师从不嫌弃我，每次有啥问题都细心地指出我的错误并提供解决方案。也许我技术上会比她多懂一些知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vol.09 M1款 MacBookPro 搭建 JupyterLab 数据分析环境">
-<meta property="og:url" content="https://jface001.github.io/2023/02/05/Vol09-M1%E6%AC%BEMacBookPro%E6%90%AD%E5%BB%BAJupyterLab%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:title" content="Vol.19 最好的同事这周离职了">
+<meta property="og:url" content="https://jface001.github.io/2023/04/15/vol19-%E6%9C%80%E5%A5%BD%E7%9A%84%E5%90%8C%E4%BA%8B%E8%BF%99%E5%91%A8%E7%A6%BB%E8%81%8C%E4%BA%86/index.html">
 <meta property="og:site_name" content="惊羽的博客">
-<meta property="og:description" content="Python 用于数据分析的优势我就不多赘述，虽然当前基本不写 Python，但是我经常需要阅读 Python 代码，看别人写的数据处理逻辑，所以开始进一步学习 Pyspark 相关的知识。Jupyter 应该是学习 Python 数据分析最佳的工具了，趁着刚刚安装完，记录下自己环境配置跟常用的工具。 miniconda 安装提到 Python 数据分析大家一般推荐 Anaconda，minic">
+<meta property="og:description" content="这周坐我旁边的最好的同事离职了，工作 5 年，这个同事是我职场生涯当中关系最好的朋友。从我入职开始她就坐我旁边，手把手指导我度过新人期，可以说我在公司的所有知识跟技能都是她传授的。有些同事只是同事，有些是可以成为一生的朋友。刚刚到这家公司的时候，我是一个孤傲内向的钢铁直男，工作上粗心大意经常小错误，但易老师从不嫌弃我，每次有啥问题都细心地指出我的错误并提供解决方案。也许我技术上会比她多懂一些知识">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2023/02/05/YW5l74HBT6skpcf.png">
-<meta property="article:published_time" content="2023-02-05T13:10:28.000Z">
-<meta property="article:modified_time" content="2023-02-07T13:39:17.863Z">
+<meta property="og:image" content="https://s2.loli.net/2023/04/15/iaLvN3ksXheZ4oM.jpg">
+<meta property="article:published_time" content="2023-04-15T11:46:15.000Z">
+<meta property="article:modified_time" content="2023-04-15T11:48:59.474Z">
 <meta property="article:author" content="惊羽">
-<meta property="article:tag" content="Spark">
 <meta property="article:tag" content="周更挑战">
-<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2023/02/05/YW5l74HBT6skpcf.png">
+<meta name="twitter:image" content="https://s2.loli.net/2023/04/15/iaLvN3ksXheZ4oM.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Vol.09 M1款 MacBookPro 搭建 JupyterLab 数据分析环境 - 惊羽的博客</title>
+  <title>Vol.19 最好的同事这周离职了 - 惊羽的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vol.09 M1款 MacBookPro 搭建 JupyterLab 数据分析环境"></span>
+            <span id="subtitle" data-typed-text="Vol.19 最好的同事这周离职了"></span>
           
         </div>
 
@@ -214,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-05 21:10" pubdate>
-          2023年2月5日 晚上
+        <time datetime="2023-04-15 19:46" pubdate>
+          2023年4月15日 晚上
         </time>
       </span>
     
@@ -226,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          452 字
         
       </span>
     
@@ -237,7 +235,7 @@
         
         
         
-          23 分钟
+          4 分钟
         
       </span>
     
@@ -275,114 +273,15 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Vol.09 M1款 MacBookPro 搭建 JupyterLab 数据分析环境</h1>
+            <h1 style="display: none">Vol.19 最好的同事这周离职了</h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="https://s2.loli.net/2023/02/05/YW5l74HBT6skpcf.png" srcset="/img/loading.gif" lazyload></p>
-<p>Python 用于数据分析的优势我就不多赘述，虽然当前基本不写 Python，但是我经常需要阅读 Python 代码，看别人写的数据处理逻辑，所以开始进一步学习 Pyspark 相关的知识。Jupyter 应该是学习 Python 数据分析最佳的工具了，趁着刚刚安装完，记录下自己环境配置跟常用的工具。</p>
-<h3 id="miniconda-安装"><a href="#miniconda-安装" class="headerlink" title="miniconda 安装"></a>miniconda 安装</h3><p>提到 Python 数据分析大家一般推荐 Anaconda，miniconda 属于轻量级的包管理工具，我更推荐使用。在官网现在自己匹配的平台，下载安装即可，也可以选择 homebrew 安装。</p>
-<p><a target="_blank" rel="noopener" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a></p>
-<h3 id="Jupyter-Lab-安装"><a href="#Jupyter-Lab-安装" class="headerlink" title="Jupyter Lab  安装"></a>Jupyter Lab  安装</h3><p>miniconda 安装完成之后，测试 Python 能正常进入，开始 安装 Jupyter 及其拓展插件。</p>
-<div class="code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 本体</span>
-pip install jupyterlab
-<span class="hljs-meta">#</span><span class="bash"> 格式化插件</span>
-pip install jupyterlab_code_formatter
-<span class="hljs-meta">#</span><span class="bash"> 格式化检测插件</span>
-pip install black isort
-<span class="hljs-meta">#</span><span class="bash"> 目录树功能</span>
-pip install jupyterlab-unfold
-<span class="hljs-meta">#</span><span class="bash"> 中文支持</span>
-pip install jupyterlab-language-pack-zh-CN
-<span class="hljs-meta">#</span><span class="bash"> GitHub 仓库支持</span>
-pip install jupyterlab-github</code></pre></div>
-
-
-
-<p>也需要注意下修改登陆密码，跟设置后台启动。</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 进入 Python 交互命令行</span>
-<span class="hljs-keyword">from</span> notebook.auth <span class="hljs-keyword">import</span> passwd
-<span class="hljs-comment"># 设置密码，第二次输入密码之后会有一串秘钥，记下来后面配置文件需要用到</span>
-passwd()</code></pre></div>
-
-<p>修改配置文件</p>
-<div class="code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 终端命令行输入</span>
-jupyter lab --generate-config
-<span class="hljs-meta"></span>
-<span class="hljs-meta">#</span><span class="bash"> Out</span> 
-/Users/jface/.jupyter/jupyter_lab_config.py
-<span class="hljs-meta"></span>
-<span class="hljs-meta">#</span><span class="bash"> 上面文件增加以下 3 行配置，秘钥填入上面设置密码获取到秘钥</span>
-c.ServerApp.allow_root = True
-c.ExtensionApp.open_browser = False
-c.ServerApp.password = &#x27;秘钥&#x27;</code></pre></div>
-
-<p>设置后台启动</p>
-<div class="code-wrapper"><pre><code class="hljs shell">nohup jupyter lab --allow-root &gt; jupyterlab.log 2&gt;&amp;1 &amp;
-<span class="hljs-meta">#</span><span class="bash"> &amp; 让命令后台运行，并把标准输出 写入jupyterlab.log中。</span>
-<span class="hljs-meta">#</span><span class="bash"> nohup 表示no hang up ，就是不挂起，这个命令执行后即使终端退出，jupyter 也不会停止运行。</span></code></pre></div>
-
-<h3 id="Spark-安装"><a href="#Spark-安装" class="headerlink" title="Spark 安装"></a>Spark 安装</h3><p>Spark 直接使用 homebrew 安装。</p>
-<div class="code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 安装 spark</span>
-brew install apache-spark
-<span class="hljs-meta">#</span><span class="bash"> 设置环境变量，如果是 zsh 编辑文件 .zshrc，写入安装路径</span>
-export SPARK_HOME=/opt/homebrew/Cellar/apache-spark/3.3.1
-export PYTHONPATH=$SPARK_HOME/libexec/python:$SPARK_HOME/libexec/python/build:$PYTHONPATH</code></pre></div>
-
-<p>注意如果以下执行文件入口没有权限，需要给他们给到权限</p>
-<div class="code-wrapper"><pre><code class="hljs shell">chmod 755 -R /opt/homebrew/Cellar/apache-spark/3.3.1/bin
-chomd 755 -R /opt/homebrew/Cellar/apache-spark/3.3.1/libexec/bin</code></pre></div>
-
-<h3 id="Pyspark-入门测试"><a href="#Pyspark-入门测试" class="headerlink" title="Pyspark 入门测试"></a>Pyspark 入门测试</h3><p>安装必要的 spark 相关第三方包。</p>
-<div class="code-wrapper"><pre><code class="hljs shell">pip install findspark 
-pip install pyspark</code></pre></div>
-
-<p>实际代码测试</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 载入环境变量，注意 Spark 的执行环境路径，可能不同，下面两个都尝试下</span>
-<span class="hljs-comment">#SPARK_HOME=&quot;/opt/homebrew/Cellar/apache-spark/3.3.1/bin&quot;</span>
-SPARK_HOME=<span class="hljs-string">&quot;/opt/homebrew/Cellar/apache-spark/3.3.1/libexec/&quot;</span>
-<span class="hljs-keyword">import</span> findspark
-findspark.init(SPARK_HOME)
-<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;ok&#x27;</span>)
-
-<span class="hljs-comment">#SparkSQL的许多功能封装在SparkSession的方法接口中</span>
-<span class="hljs-keyword">import</span> pyspark 
-<span class="hljs-keyword">from</span> pyspark.sql <span class="hljs-keyword">import</span> SparkSession
-spark = SparkSession.builder \
-    .master(<span class="hljs-string">&quot;local&quot;</span>) \
-    .appName(<span class="hljs-string">&quot;Word Count&quot;</span>) \
-    .config(<span class="hljs-string">&quot;spark.some.config.option&quot;</span>, <span class="hljs-string">&quot;some-value&quot;</span>) \
-    .getOrCreate()
-sc = spark.sparkContext
-<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;ok&#x27;</span>)
-
-<span class="hljs-comment">#将RDD转换成DataFrame</span>
-rdd = sc.parallelize([(<span class="hljs-string">&quot;LiLei&quot;</span>,<span class="hljs-number">15</span>,<span class="hljs-number">88</span>),(<span class="hljs-string">&quot;HanMeiMei&quot;</span>,<span class="hljs-number">16</span>,<span class="hljs-number">90</span>),(<span class="hljs-string">&quot;DaChui&quot;</span>,<span class="hljs-number">17</span>,<span class="hljs-number">60</span>)])
-df = rdd.toDF([<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;score&quot;</span>])
-df.show()
-df.printSchema()
-
-<span class="hljs-comment">#Out 输出</span>
-+---------+---+-----+
-|     name|age|score|
-+---------+---+-----+
-|    LiLei| <span class="hljs-number">15</span>|   <span class="hljs-number">88</span>|
-|HanMeiMei| <span class="hljs-number">16</span>|   <span class="hljs-number">90</span>|
-|   DaChui| <span class="hljs-number">17</span>|   <span class="hljs-number">60</span>|
-+---------+---+-----+
-
-root
- |-- name: string (nullable = true)
- |-- age: long (nullable = true)
- |-- score: long (nullable = true)</code></pre></div>
-
-<p>最终效果</p>
-<p><img src="https://s2.loli.net/2023/02/05/MtQNHYAJPCFl2rO.png" srcset="/img/loading.gif" lazyload alt="最终效果"></p>
-<h3 id="数据分析推荐资料"><a href="#数据分析推荐资料" class="headerlink" title="数据分析推荐资料"></a>数据分析推荐资料</h3><p><a target="_blank" rel="noopener" href="https://www.howie6879.cn/post/2021/26_jupyterlabv2_tutorial-/">https://www.howie6879.cn/post/2021/26_jupyterlabv2_tutorial-/</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/872648f7cc58">https://www.jianshu.com/p/872648f7cc58</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/wesm/pydata-book">https://github.com/wesm/pydata-book</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/iamseancheney/python_for_data_analysis_2nd_chinese_version">https://github.com/iamseancheney/python_for_data_analysis_2nd_chinese_version</a></p>
+                <p><img src="https://s2.loli.net/2023/04/15/iaLvN3ksXheZ4oM.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>这周坐我旁边的最好的同事离职了，工作 5 年，这个同事是我职场生涯当中关系最好的朋友。从我入职开始她就坐我旁边，手把手指导我度过新人期，可以说我在公司的所有知识跟技能都是她传授的。有些同事只是同事，有些是可以成为一生的朋友。刚刚到这家公司的时候，我是一个孤傲内向的钢铁直男，工作上粗心大意经常小错误，但易老师从不嫌弃我，每次有啥问题都细心地指出我的错误并提供解决方案。也许我技术上会比她多懂一些知识，但实际工作易老师能力绝对比我强，工作细致认真，临危不惧，这是我最缺少的特质。</p>
+<p>我自己其实是性格内向独立的人，身边很少能有交心的朋友，平时都特立独行。现在的公司氛围真的特别特别好，同事们互相之间没有那么多小九九，不仅能做工作上的伙伴，也可以成为生活当中的朋友。易老师给了我这个钢铁直男很多很多有价值的建议跟想法，对比入职时候的我跟现在的我有一个巨大的转变，我更愿意去尝试社交接纳别人，笑容也更灿烂。</p>
+<p>离别是为了更好的相遇，无论什么时候离别我第一反应总是祝福。只是今后再遇到问题，我回头喊 “易老师” 再也没有人回应了。</p>
 
                 
               </div>
@@ -401,7 +300,7 @@ root
     
       <span class="category-chain">
         
-  <a href="/categories/Spark/" class="category-chain-item">Spark</a>
+  <a href="/categories/%E6%99%AE%E9%80%9A%E7%94%9F%E6%B4%BB/" class="category-chain-item">普通生活</a>
   
   
 
@@ -416,11 +315,7 @@ root
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Spark/">#Spark</a>
-      
         <a href="/tags/%E5%91%A8%E6%9B%B4%E6%8C%91%E6%88%98/">#周更挑战</a>
-      
-        <a href="/tags/Python/">#Python</a>
       
     </div>
   
@@ -432,8 +327,8 @@ root
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vol.09 M1款 MacBookPro 搭建 JupyterLab 数据分析环境</div>
-      <div>https://jface001.github.io/2023/02/05/Vol09-M1款MacBookPro搭建JupyterLab数据分析环境/</div>
+      <div>Vol.19 最好的同事这周离职了</div>
+      <div>https://jface001.github.io/2023/04/15/vol19-最好的同事这周离职了/</div>
     </div>
     <div class="license-meta">
       
@@ -445,7 +340,7 @@ root
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月5日</div>
+          <div>2023年4月15日</div>
         </div>
       
       
@@ -477,18 +372,12 @@ root
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/12/vol10-Spark%E6%A0%B8%E5%BF%83%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%B0%8F%E8%AE%B0/" title="Vol.10 Spark核心工作原理小记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vol.10 Spark核心工作原理小记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/01/29/Vol08-%E4%BA%BA%E6%80%A7%E4%B9%8B%E6%81%B6%E5%AE%9E%E9%9A%BE%E6%8F%A3%E6%B5%8B/" title="Vol.08 人性之恶，实难揣测----读《连城诀》">
-                        <span class="hidden-mobile">Vol.08 人性之恶，实难揣测----读《连城诀》</span>
+                      <a href="/2023/04/09/vol18-Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Vol.18 Redis 学习笔记">
+                        <span class="hidden-mobile">Vol.18 Redis 学习笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
