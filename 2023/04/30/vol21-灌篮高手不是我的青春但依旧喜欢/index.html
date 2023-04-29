@@ -16,27 +16,26 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-    <meta name="description" content="spark 任务提交 4 种方式spark 任务提交的方式通常有 4 种：spark-shell、spark-sql 、Thriftserver 服务、spark-submit。 spark-shellspark-shell 是 Spark 自带的交互式 Shell 程序，方便用户进行交互式编程，用户可以在该命令行下用 Scala 编写 spark 程序。只能 client 模式跟 standal">
+    <meta name="description" content="假期第一天没有出门，想着再不做点什么浪费我美好的假期，于是看完《读库2301》之后临时约 22 点场，出门那一刻心情非常愉悦，今天焦虑抑郁愤怒的情绪消失殆尽。 这是我今年看过最喜欢的一部电影，比马里奥大电影还喜欢。看之前我还担心因为没有看过动画难以融入剧情，事实证明是我多虑了。湘北五虎每个人性格特点很明显，短暂的迷糊之后立马就能区分出来。这一部很明显是以宫城良田为主角。虽然我不打篮球，但是非常能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vol.20 企业生产环境当中 spark 任务提交的几种方式">
-<meta property="og:url" content="https://jface001.github.io/2023/04/22/vol20-%E4%BC%81%E4%B8%9A%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%BD%93%E4%B8%ADspark%E4%BB%BB%E5%8A%A1%E6%8F%90%E4%BA%A4%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:title" content="Vol.21 《灌篮高手》不是我的青春但依旧喜欢">
+<meta property="og:url" content="https://jface001.github.io/2023/04/30/vol21-%E7%81%8C%E7%AF%AE%E9%AB%98%E6%89%8B%E4%B8%8D%E6%98%AF%E6%88%91%E7%9A%84%E9%9D%92%E6%98%A5%E4%BD%86%E4%BE%9D%E6%97%A7%E5%96%9C%E6%AC%A2/index.html">
 <meta property="og:site_name" content="惊羽的博客">
-<meta property="og:description" content="spark 任务提交 4 种方式spark 任务提交的方式通常有 4 种：spark-shell、spark-sql 、Thriftserver 服务、spark-submit。 spark-shellspark-shell 是 Spark 自带的交互式 Shell 程序，方便用户进行交互式编程，用户可以在该命令行下用 Scala 编写 spark 程序。只能 client 模式跟 standal">
+<meta property="og:description" content="假期第一天没有出门，想着再不做点什么浪费我美好的假期，于是看完《读库2301》之后临时约 22 点场，出门那一刻心情非常愉悦，今天焦虑抑郁愤怒的情绪消失殆尽。 这是我今年看过最喜欢的一部电影，比马里奥大电影还喜欢。看之前我还担心因为没有看过动画难以融入剧情，事实证明是我多虑了。湘北五虎每个人性格特点很明显，短暂的迷糊之后立马就能区分出来。这一部很明显是以宫城良田为主角。虽然我不打篮球，但是非常能">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2023/02/12/JhsFBVYuNkorAix.png">
-<meta property="article:published_time" content="2023-04-22T13:06:35.000Z">
-<meta property="article:modified_time" content="2023-04-22T13:08:34.965Z">
+<meta property="og:image" content="https://s2.loli.net/2023/04/30/e1L28HsGlKufMXb.png">
+<meta property="article:published_time" content="2023-04-29T17:42:40.000Z">
+<meta property="article:modified_time" content="2023-04-29T17:45:00.727Z">
 <meta property="article:author" content="惊羽">
-<meta property="article:tag" content="Spark">
 <meta property="article:tag" content="周更挑战">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2023/02/12/JhsFBVYuNkorAix.png">
+<meta name="twitter:image" content="https://s2.loli.net/2023/04/30/e1L28HsGlKufMXb.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Vol.20 企业生产环境当中 spark 任务提交的几种方式 - 惊羽的博客</title>
+  <title>Vol.21 《灌篮高手》不是我的青春但依旧喜欢 - 惊羽的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vol.20 企业生产环境当中 spark 任务提交的几种方式"></span>
+            <span id="subtitle" data-typed-text="Vol.21 《灌篮高手》不是我的青春但依旧喜欢"></span>
           
         </div>
 
@@ -213,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-04-22 21:06" pubdate>
-          2023年4月22日 晚上
+        <time datetime="2023-04-30 01:42" pubdate>
+          2023年4月30日 凌晨
         </time>
       </span>
     
@@ -225,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          626 字
         
       </span>
     
@@ -236,7 +235,7 @@
         
         
         
-          13 分钟
+          6 分钟
         
       </span>
     
@@ -274,23 +273,15 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Vol.20 企业生产环境当中 spark 任务提交的几种方式</h1>
+            <h1 style="display: none">Vol.21 《灌篮高手》不是我的青春但依旧喜欢</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="spark-任务提交-4-种方式"><a href="#spark-任务提交-4-种方式" class="headerlink" title="spark 任务提交 4 种方式"></a>spark 任务提交 4 种方式</h3><p>spark 任务提交的方式通常有 4 种：spark-shell、spark-sql 、Thriftserver 服务、spark-submit。</p>
-<h4 id="spark-shell"><a href="#spark-shell" class="headerlink" title="spark-shell"></a>spark-shell</h4><p>spark-shell 是 Spark 自带的交互式 Shell 程序，方便用户进行交互式编程，用户可以在该命令行下用 Scala 编写 spark 程序。只能 client 模式跟 standalone 模式启动，通常是以测试为主,所以一般直接以 ./spark-shell 启动，进入本地模式测试。</p>
-<h4 id="spark-sql"><a href="#spark-sql" class="headerlink" title="spark-sql"></a>spark-sql</h4><p>跟 spark-shell 类似，同样在 spark 自带的一个 CLI，用于执行 spark sql 命令，通常也是用于测试。</p>
-<h4 id="Spark-sql-服务-Thriftserver"><a href="#Spark-sql-服务-Thriftserver" class="headerlink" title="Spark sql 服务 Thriftserver"></a>Spark sql 服务 Thriftserver</h4><p>Spark ThriftServer 是一个 JDBC 接口，用户可以通过 JDBC 连接 ThriftServer 来访问 Spark SQL 的数据。连接后可以直接通过编写SQL语句访问Spark SQL的数据，通常用于即席查询。ThriftServer 是在 Driver 的形式运行在集群的。因此它能使用的集群资源就和单个 Application 直接挂钩。如果 spark 集群没开启动态资源，那么Spark Thriftserver 能得到的资源就始终都是固定的，这时候设置太大也不好，设置太小也不好。即使开启了动态资源，一般集群都会设置 maxExecutor，这时还是无法很好的利用集群的所有资源。</p>
-<h4 id="spark-submit"><a href="#spark-submit" class="headerlink" title="spark-submit"></a>spark-submit</h4><p>park-submit 用于提交一个spark任务，这个脚本 可以设置 spark 类路径（classpath）和应用程序依赖包，并且可以设置不同的 spark 所支持的集群管理和部署模式。 相对于s park-shell 来讲它不具有REPL(交互式的编程环境)的，在运行前需要指定应用的启动类，jar 包路径,参数等内容。spark-submit 通常用于生产环境，用于日常调度任务执行。</p>
-<h3 id="企业生产环境通常的管理方式"><a href="#企业生产环境通常的管理方式" class="headerlink" title="企业生产环境通常的管理方式"></a>企业生产环境通常的管理方式</h3><p>从上面几种执行方式我们就可以得知，企业生产当中最常用提交方式就是 spark_submit ，测试通常会使用 Thriftserver 服务 通过 beeline 客户端交互查询。生产当中为了方便管理，通常会进行封装，简化任务提交流程。</p>
-<h4 id="封装-spark-submit"><a href="#封装-spark-submit" class="headerlink" title="封装 spark-submit"></a>封装 spark-submit</h4><p>spark-submit 提交支持提交 jar 或者 Python 文件，在企业生产当中可以统一封装好执行参数到调度系统，在调度执行文件的时候调用公共文件跟参数，通过自定义传入 jar 包、sql 文件、Python 文件的路径实现任务提交。</p>
-<h4 id="封装-livy-统一通过-JDBC-执行"><a href="#封装-livy-统一通过-JDBC-执行" class="headerlink" title="封装 livy 统一通过 JDBC 执行"></a>封装 livy 统一通过 JDBC 执行</h4><p>Livy 是一个提交 Spark 任务的 REST 服务，可以通过多种途径向 Livy 提交作业，比如我们常用的是 beeline 提交 sql 任务，还有其他的比如网络接口提交；任务提交到 Livy 后，Livy 向 Yarn 集群提交任务，Livy client 生成 Spark Context，拉起 Driver。Livy 可以同时管理多个 Spark Context，支持 batch 和 interactive 两种提交模式，功能基本类似 HiveServer。</p>
-<p>企业生产封装抽象 beeline 执行入口，在 shell 脚本当中自定义参数跟 SQL ,调度系统直接执行 sh 脚本就能实现任务提交。这种方式最为常见自由度也最大，缺点就是 livy 本身存在一定缺陷，比如缺乏高可用服务、负载均衡服务等，需要进行二次开发。</p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45666566/article/details/112724328">Spark之Spark任务的提交方式</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f5b12275d0e8">一文带你弄懂Livy——基于Apache Spark的REST服务</a></p>
-<p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/4a46d20e21fe2abb5275ad903">OPPO 大数据离线计算平台架构演进</a></p>
+                <p><img src="https://s2.loli.net/2023/04/30/e1L28HsGlKufMXb.png" srcset="/img/loading.gif" lazyload></p>
+<p>假期第一天没有出门，想着再不做点什么浪费我美好的假期，于是看完《读库2301》之后临时约 22 点场，出门那一刻心情非常愉悦，今天焦虑抑郁愤怒的情绪消失殆尽。</p>
+<p>这是我今年看过最喜欢的一部电影，比马里奥大电影还喜欢。看之前我还担心因为没有看过动画难以融入剧情，事实证明是我多虑了。湘北五虎每个人性格特点很明显，短暂的迷糊之后立马就能区分出来。这一部很明显是以宫城良田为主角。虽然我不打篮球，但是非常能跟宫城共鸣，同样不完美的原生家庭，同样有一直想在逃避的事情，同样身高矮小在身体特征上没有优势，也同样拥有一个倔强要强的内心。阿良在努力证明自己，我现在也是拼了命证明自己，但阿良勇敢地面对了曾经的创伤，但我没有，我还一直在逃避。其它人物也让我印象深刻，五个人都在努力克服自己的恐惧，在成长跟改变。说实话故事很俗套但是节奏把控非常好，赛场上的紧张激烈的进程穿插人物的故事，导演太懂得一个比赛如何才能抓住观众的心，即使结果我们早就知晓。中二就中二，但我喜欢！特别喜欢樱木花道，我的中二之魂快控制不住了，非常非常想也能在某个运动项目上能这么肆无忌惮放纵自己。从小不打篮球，也不参与其他的运动，我可能就是典型的那种读书人，不爱运动只想读书。现在虽然经常去健身房上团课，但是这些都属于所谓的“白领运动”，我更希望自己能爱上一门大众运动，篮球足球羽毛球骑行游泳爬山，这些能跟大家一起的运动项目。</p>
+<p>五一假期第一天结束了，摆烂的一天，明天开始去锻炼，安排下要去爬山，一个人也要去。</p>
 
                 
               </div>
@@ -309,7 +300,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Spark/" class="category-chain-item">Spark</a>
+  <a href="/categories/%E6%99%AE%E9%80%9A%E7%94%9F%E6%B4%BB/" class="category-chain-item">普通生活</a>
   
   
 
@@ -324,8 +315,6 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Spark/">#Spark</a>
-      
         <a href="/tags/%E5%91%A8%E6%9B%B4%E6%8C%91%E6%88%98/">#周更挑战</a>
       
     </div>
@@ -338,8 +327,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vol.20 企业生产环境当中 spark 任务提交的几种方式</div>
-      <div>https://jface001.github.io/2023/04/22/vol20-企业生产环境当中spark任务提交的几种方式/</div>
+      <div>Vol.21 《灌篮高手》不是我的青春但依旧喜欢</div>
+      <div>https://jface001.github.io/2023/04/30/vol21-灌篮高手不是我的青春但依旧喜欢/</div>
     </div>
     <div class="license-meta">
       
@@ -351,7 +340,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年4月22日</div>
+          <div>2023年4月30日</div>
         </div>
       
       
@@ -383,18 +372,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/30/vol21-%E7%81%8C%E7%AF%AE%E9%AB%98%E6%89%8B%E4%B8%8D%E6%98%AF%E6%88%91%E7%9A%84%E9%9D%92%E6%98%A5%E4%BD%86%E4%BE%9D%E6%97%A7%E5%96%9C%E6%AC%A2/" title="Vol.21 《灌篮高手》不是我的青春但依旧喜欢">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vol.21 《灌篮高手》不是我的青春但依旧喜欢</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/04/15/vol19-%E6%9C%80%E5%A5%BD%E7%9A%84%E5%90%8C%E4%BA%8B%E8%BF%99%E5%91%A8%E7%A6%BB%E8%81%8C%E4%BA%86/" title="Vol.19 最好的同事这周离职了">
-                        <span class="hidden-mobile">Vol.19 最好的同事这周离职了</span>
+                      <a href="/2023/04/22/vol20-%E4%BC%81%E4%B8%9A%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%BD%93%E4%B8%ADspark%E4%BB%BB%E5%8A%A1%E6%8F%90%E4%BA%A4%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="Vol.20 企业生产环境当中 spark 任务提交的几种方式">
+                        <span class="hidden-mobile">Vol.20 企业生产环境当中 spark 任务提交的几种方式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
