@@ -16,29 +16,26 @@
   <meta name="author" content="惊羽">
   <meta name="keywords" content="">
   
-    <meta name="description" content="入职新工作三周了，虽然还处理 SQLBoy 阶段，但是学习到了非常多小技巧，有必要记录一下，持续更新，避免遗忘。  规范需求记录，脚本备份，文档归类，代码片段，数字字典 封装公共参数和大数据脚本执行参数到脚本当中，执行脚本只需要引入变量 每一种 SQL 脚本方式封装一个方法，固定脚本执行格式 SQL 中空值和 null 同时过滤：字段 &gt; ‘’ 历史数据回溯，通过封装脚本传参调用执行脚本进行">
+    <meta name="description" content="本周沉迷《塞尔达传说：王国之泪》，无心顾及其他，博客鸽了。 塞尔达就是天！永远能让我充满好奇心跟探索的欲望，让我重拾最本质的快乐，体验一段属于自己的冒险。能在有生之年玩到塞尔达太幸福了！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQLBoy日常工作技巧">
-<meta property="og:url" content="https://jface001.github.io/2022/02/09/SQLBoy%E6%97%A5%E5%B8%B8%E5%B7%A5%E4%BD%9C%E5%B0%8F%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:title" content="Vol.23 塞尔达就是天!">
+<meta property="og:url" content="https://jface001.github.io/2023/05/14/vol23-%E5%A1%9E%E5%B0%94%E8%BE%BE%E5%B0%B1%E6%98%AF%E5%A4%A9/index.html">
 <meta property="og:site_name" content="惊羽的博客">
-<meta property="og:description" content="入职新工作三周了，虽然还处理 SQLBoy 阶段，但是学习到了非常多小技巧，有必要记录一下，持续更新，避免遗忘。  规范需求记录，脚本备份，文档归类，代码片段，数字字典 封装公共参数和大数据脚本执行参数到脚本当中，执行脚本只需要引入变量 每一种 SQL 脚本方式封装一个方法，固定脚本执行格式 SQL 中空值和 null 同时过滤：字段 &gt; ‘’ 历史数据回溯，通过封装脚本传参调用执行脚本进行">
+<meta property="og:description" content="本周沉迷《塞尔达传说：王国之泪》，无心顾及其他，博客鸽了。 塞尔达就是天！永远能让我充满好奇心跟探索的欲望，让我重拾最本质的快乐，体验一段属于自己的冒险。能在有生之年玩到塞尔达太幸福了！">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jface001.github.io/img/post/coding.jpeg">
-<meta property="article:published_time" content="2022-02-09T15:08:23.000Z">
-<meta property="article:modified_time" content="2022-12-15T16:43:32.311Z">
+<meta property="og:image" content="https://s2.loli.net/2023/05/14/x6keLtsuB7hcWpY.jpg">
+<meta property="article:published_time" content="2023-05-14T14:09:23.000Z">
+<meta property="article:modified_time" content="2023-05-14T14:11:06.974Z">
 <meta property="article:author" content="惊羽">
-<meta property="article:tag" content="Hive">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="SQL">
-<meta property="article:tag" content="Spark">
+<meta property="article:tag" content="周更挑战">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jface001.github.io/img/post/coding.jpeg">
+<meta name="twitter:image" content="https://s2.loli.net/2023/05/14/x6keLtsuB7hcWpY.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>SQLBoy日常工作技巧 - 惊羽的博客</title>
+  <title>Vol.23 塞尔达就是天! - 惊羽的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,13 +195,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/post/coding.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('https://s2.loli.net/2023/02/12/l2mEj9vOqDr7BzH.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="SQLBoy日常工作技巧"></span>
+            <span id="subtitle" data-typed-text="Vol.23 塞尔达就是天!"></span>
           
         </div>
 
@@ -215,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-09 23:08" pubdate>
-          2022年2月9日 晚上
+        <time datetime="2023-05-14 22:09" pubdate>
+          2023年5月14日 晚上
         </time>
       </span>
     
@@ -227,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          394 字
+          92 字
         
       </span>
     
@@ -238,7 +235,7 @@
         
         
         
-          4 分钟
+          1 分钟
         
       </span>
     
@@ -276,29 +273,14 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">SQLBoy日常工作技巧</h1>
+            <h1 style="display: none">Vol.23 塞尔达就是天!</h1>
             
             
               <div class="markdown-body">
                 
-                <p>入职新工作三周了，虽然还处理 SQLBoy 阶段，但是学习到了非常多小技巧，有必要记录一下，持续更新，避免遗忘。</p>
-<ul>
-<li>规范需求记录，脚本备份，文档归类，代码片段，数字字典</li>
-<li>封装公共参数和大数据脚本执行参数到脚本当中，执行脚本只需要引入变量</li>
-<li>每一种 SQL 脚本方式封装一个方法，固定脚本执行格式</li>
-<li>SQL 中空值和 null 同时过滤：字段 &gt; ‘’</li>
-<li>历史数据回溯，通过封装脚本传参调用执行脚本进行</li>
-<li>任务统一规范命令，数据丢失任务失败方便排除定位</li>
-<li>等值判断注意非空校验和异常数据处理</li>
-<li>等值判断先确定数值格式匹配，大小匹配，格式兼容</li>
-<li>需求闭环，全链路自动化分析</li>
-<li>代码自查，逻辑明确，自我溯源</li>
-<li>明确需求，避免重复遗忘丢失误判</li>
-<li>先理清思路，确认细节，规划执行路径和测试路径，再具体操作</li>
-<li>整理小知识，定期存档回顾</li>
-<li>验证数据准确性，包括：字段类型、数量、topN、趋势等</li>
-<li>跨部门沟通，主动提供上下文，把相关人当做小白，从最基础的理念给合作部门介绍</li>
-</ul>
+                <p><img src="https://s2.loli.net/2023/05/14/x6keLtsuB7hcWpY.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>本周沉迷《塞尔达传说：王国之泪》，无心顾及其他，博客鸽了。</p>
+<p>塞尔达就是天！永远能让我充满好奇心跟探索的欲望，让我重拾最本质的快乐，体验一段属于自己的冒险。能在有生之年玩到塞尔达太幸福了！</p>
 
                 
               </div>
@@ -317,7 +299,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/" class="category-chain-item">工作记录</a>
+  <a href="/categories/%E6%99%AE%E9%80%9A%E7%94%9F%E6%B4%BB/" class="category-chain-item">普通生活</a>
   
   
 
@@ -332,13 +314,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Hive/">#Hive</a>
-      
-        <a href="/tags/Shell/">#Shell</a>
-      
-        <a href="/tags/SQL/">#SQL</a>
-      
-        <a href="/tags/Spark/">#Spark</a>
+        <a href="/tags/%E5%91%A8%E6%9B%B4%E6%8C%91%E6%88%98/">#周更挑战</a>
       
     </div>
   
@@ -350,8 +326,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>SQLBoy日常工作技巧</div>
-      <div>https://jface001.github.io/2022/02/09/SQLBoy日常工作小技巧/</div>
+      <div>Vol.23 塞尔达就是天!</div>
+      <div>https://jface001.github.io/2023/05/14/vol23-塞尔达就是天/</div>
     </div>
     <div class="license-meta">
       
@@ -363,7 +339,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年2月9日</div>
+          <div>2023年5月14日</div>
         </div>
       
       
@@ -395,18 +371,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/10/%E9%AB%98%E6%95%88%E5%B9%B4%E8%BD%BB%E4%BA%BA%E7%9A%847%E4%B8%AA%E5%8A%9E%E5%85%AC%E4%B9%A0%E6%83%AF/" title="高效年轻人的7个办公习惯">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">高效年轻人的7个办公习惯</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/01/20/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/" title="开发环境准备">
-                        <span class="hidden-mobile">开发环境准备</span>
+                      <a href="/2023/05/07/vol22-%E3%80%8A%E5%A4%A7%E6%B5%B4%E5%A5%B3%E3%80%8B%E6%98%AF%E5%A4%8D%E6%9D%82%E4%BA%BA%E6%80%A7%E7%9A%84%E7%9C%9F%E5%AE%9E%E8%AE%B0%E5%BD%95/" title="Vol.22 《大浴女》是复杂人性的真实记录">
+                        <span class="hidden-mobile">Vol.22 《大浴女》是复杂人性的真实记录</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
