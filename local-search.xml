@@ -8,7 +8,7 @@
     <link href="/2023/05/21/vol24-hive%E8%B7%9Fclickhouse%E7%9A%84TTL%E6%9C%BA%E5%88%B6/"/>
     <url>/2023/05/21/vol24-hive%E8%B7%9Fclickhouse%E7%9A%84TTL%E6%9C%BA%E5%88%B6/</url>
     
-    <content type="html"><![CDATA[<blockquote><p>本文由 chatGPT 生成，可能存在一定错误，请读者自行甄别。</p></blockquote><p><img src="https://s2.loli.net/2023/05/21/lP8Suqn4pGEzkUT.png"></p><p>Hive和ClickHouse都支持TTL（Time-To-Live）机制，可以帮助用户自动管理表的生命周期，包括数据的删除和归档等操作。下面将分别介绍Hive和ClickHouse的TTL机制。</p><h2 id="Hive的TTL机制"><a href="#Hive的TTL机制" class="headerlink" title="Hive的TTL机制"></a>Hive的TTL机制</h2><p>在Hive中，可以通过设置表的TBLPROPERTIES属性来配置表的TTL。具体步骤如下：</p><ol><li>创建表时，可以通过添加TBLPROPERTIES属性来配置表的TTL，例如：</li></ol><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> test_table (  id <span class="hljs-type">INT</span>,  name STRING) TBLPROPERTIES (&quot;hive.enforce.bucketing&quot;<span class="hljs-operator">=</span>&quot;true&quot;, &quot;hive.exec.dynamic.partition.mode&quot;<span class="hljs-operator">=</span>&quot;nonstrict&quot;, &quot;hive.exec.dynamic.partition&quot;<span class="hljs-operator">=</span>&quot;true&quot;, &quot;hive.enforce.sorting&quot;<span class="hljs-operator">=</span>&quot;true&quot;, &quot;hive.enforce.bucketmapjoin&quot;<span class="hljs-operator">=</span>&quot;true&quot;, &quot;hive.support.concurrency&quot;<span class="hljs-operator">=</span>&quot;true&quot;, &quot;hive.txn.manager&quot;<span class="hljs-operator">=</span>&quot;org.apache.hadoop.hive.ql.lockmgr.DbTxnManager&quot;, &quot;transactional&quot;<span class="hljs-operator">=</span>&quot;true&quot;, &quot;transactional_properties&quot;<span class="hljs-operator">=</span>&quot;default&quot;, &quot;transactional_properties&quot;<span class="hljs-operator">=</span>&quot;insert_only&quot;, &quot;transactional_properties&quot;<span class="hljs-operator">=</span>&quot;delete&quot;, &quot;transactional_properties&quot;<span class="hljs-operator">=</span>&quot;ttl&quot;, &quot;transactional_properties.ttl&quot;<span class="hljs-operator">=</span>&quot;14d&quot;);</code></pre></div><p>其中，”transactional_properties”属性用于开启事务和TTL机制，”transactional_properties.ttl”属性用于设置表的TTL，单位为天。</p><ol><li>当数据的TTL到期时，Hive将自动删除数据。如果需要保留数据并将其移动到归档表中，可以使用表的移动操作。例如，可以创建一个归档分区，并将过期的数据移动到该分区中，例如：</li></ol><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> test_table <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">PARTITION</span> (dt<span class="hljs-operator">=</span><span class="hljs-string">&#x27;202201&#x27;</span>) LOCATION <span class="hljs-string">&#x27;/user/hive/archive/test_table/dt=202201&#x27;</span>;</code></pre></div><p>其中，LOCATION属性用于指定归档分区的存储路径。</p><p>需要注意的是，Hive的TTL机制是基于时间的，只能执行预定义的操作，不能根据实际情况进行灵活调整。因此，在使用TTL机制时，需要根据实际情况进行配置，并在必要时手动执行相应的操作。</p><h2 id="ClickHouse的TTL机制"><a href="#ClickHouse的TTL机制" class="headerlink" title="ClickHouse的TTL机制"></a>ClickHouse的TTL机制</h2><p>在ClickHouse中，可以通过设置表的ENGINE属性来配置表的TTL。具体步骤如下：</p><ol><li>创建表时，可以通过添加ENGINE属性来配置表的TTL，例如：</li></ol><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> test_table (  id <span class="hljs-type">INT</span>,  name STRING) ENGINE <span class="hljs-operator">=</span>MergeTree()TTL toDate(addMonths(toDate(now()), <span class="hljs-number">-1</span>));</code></pre></div><p>其中，TTL属性用于设置表的TTL，可以基于时间或基于事件进行配置。在上述示例中，TTL属性设置为一个月，表示当数据超过一个月时，ClickHouse将自动删除数据。</p><ol><li>当数据的TTL到期时，ClickHouse将自动删除数据。如果需要保留数据并将其移动到归档表中，可以使用表的移动操作。例如，可以创建一个归档表，并将过期的数据移动到该表中，例如：</li></ol><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> archive_table (id <span class="hljs-type">INT</span>,name STRING) ENGINE <span class="hljs-operator">=</span> MergeTree()<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> id;<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> test_table MOVE <span class="hljs-keyword">TO</span> archive_table<span class="hljs-keyword">WHERE</span> toDate(create_time) <span class="hljs-operator">&lt;</span> toDate(addMonths(toDate(now()), <span class="hljs-number">-1</span>));</code></pre></div><p>其中，MOVE TO操作用于将符合条件的数据移动到归档表中，该操作只会移动数据，不会删除原始表中的数据。需要注意的是，MOVE TO操作会锁定原始表和归档表，因此需要在合适的时间执行。</p><p>需要注意的是，ClickHouse的TTL机制支持更多的声明周期选项，并且可以基于事件进行配置，具有更高的灵活性。但是，需要谨慎配置声明周期选项，以避免误删或误移数据。另外，ClickHouse的TTL机制可以与分区一起使用，更加灵活地管理数据的生命周期。</p>]]></content>
+    <content type="html"><![CDATA[<p><img src="https://s2.loli.net/2023/05/21/lP8Suqn4pGEzkUT.png"></p><blockquote><p>本文由 chatGPT 生成，可能存在一定错误，请读者自行甄别。</p></blockquote><p>Hive和ClickHouse都支持TTL（Time-To-Live）机制，可以帮助用户自动管理表的生命周期，包括数据的删除和归档等操作。下面将分别介绍Hive和ClickHouse的TTL机制。</p><h2 id="Hive的TTL机制"><a href="#Hive的TTL机制" class="headerlink" title="Hive的TTL机制"></a>Hive的TTL机制</h2><p>在Hive中，可以通过设置表的TBLPROPERTIES属性来配置表的TTL。具体步骤如下：</p><ol><li>创建表时，可以通过添加TBLPROPERTIES属性来配置表的TTL，例如：</li></ol><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> test_table (  id <span class="hljs-type">INT</span>,  name STRING) TBLPROPERTIES (&quot;hive.enforce.bucketing&quot;<span class="hljs-operator">=</span>&quot;true&quot;, &quot;hive.exec.dynamic.partition.mode&quot;<span class="hljs-operator">=</span>&quot;nonstrict&quot;, &quot;hive.exec.dynamic.partition&quot;<span class="hljs-operator">=</span>&quot;true&quot;, &quot;hive.enforce.sorting&quot;<span class="hljs-operator">=</span>&quot;true&quot;, &quot;hive.enforce.bucketmapjoin&quot;<span class="hljs-operator">=</span>&quot;true&quot;, &quot;hive.support.concurrency&quot;<span class="hljs-operator">=</span>&quot;true&quot;, &quot;hive.txn.manager&quot;<span class="hljs-operator">=</span>&quot;org.apache.hadoop.hive.ql.lockmgr.DbTxnManager&quot;, &quot;transactional&quot;<span class="hljs-operator">=</span>&quot;true&quot;, &quot;transactional_properties&quot;<span class="hljs-operator">=</span>&quot;default&quot;, &quot;transactional_properties&quot;<span class="hljs-operator">=</span>&quot;insert_only&quot;, &quot;transactional_properties&quot;<span class="hljs-operator">=</span>&quot;delete&quot;, &quot;transactional_properties&quot;<span class="hljs-operator">=</span>&quot;ttl&quot;, &quot;transactional_properties.ttl&quot;<span class="hljs-operator">=</span>&quot;14d&quot;);</code></pre></div><p>其中，”transactional_properties”属性用于开启事务和TTL机制，”transactional_properties.ttl”属性用于设置表的TTL，单位为天。</p><ol><li>当数据的TTL到期时，Hive将自动删除数据。如果需要保留数据并将其移动到归档表中，可以使用表的移动操作。例如，可以创建一个归档分区，并将过期的数据移动到该分区中，例如：</li></ol><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> test_table <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">PARTITION</span> (dt<span class="hljs-operator">=</span><span class="hljs-string">&#x27;202201&#x27;</span>) LOCATION <span class="hljs-string">&#x27;/user/hive/archive/test_table/dt=202201&#x27;</span>;</code></pre></div><p>其中，LOCATION属性用于指定归档分区的存储路径。</p><p>需要注意的是，Hive的TTL机制是基于时间的，只能执行预定义的操作，不能根据实际情况进行灵活调整。因此，在使用TTL机制时，需要根据实际情况进行配置，并在必要时手动执行相应的操作。</p><h2 id="ClickHouse的TTL机制"><a href="#ClickHouse的TTL机制" class="headerlink" title="ClickHouse的TTL机制"></a>ClickHouse的TTL机制</h2><p>在ClickHouse中，可以通过设置表的ENGINE属性来配置表的TTL。具体步骤如下：</p><ol><li>创建表时，可以通过添加ENGINE属性来配置表的TTL，例如：</li></ol><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> test_table (  id <span class="hljs-type">INT</span>,  name STRING) ENGINE <span class="hljs-operator">=</span>MergeTree()TTL toDate(addMonths(toDate(now()), <span class="hljs-number">-1</span>));</code></pre></div><p>其中，TTL属性用于设置表的TTL，可以基于时间或基于事件进行配置。在上述示例中，TTL属性设置为一个月，表示当数据超过一个月时，ClickHouse将自动删除数据。</p><ol><li>当数据的TTL到期时，ClickHouse将自动删除数据。如果需要保留数据并将其移动到归档表中，可以使用表的移动操作。例如，可以创建一个归档表，并将过期的数据移动到该表中，例如：</li></ol><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> archive_table (id <span class="hljs-type">INT</span>,name STRING) ENGINE <span class="hljs-operator">=</span> MergeTree()<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> id;<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> test_table MOVE <span class="hljs-keyword">TO</span> archive_table<span class="hljs-keyword">WHERE</span> toDate(create_time) <span class="hljs-operator">&lt;</span> toDate(addMonths(toDate(now()), <span class="hljs-number">-1</span>));</code></pre></div><p>其中，MOVE TO操作用于将符合条件的数据移动到归档表中，该操作只会移动数据，不会删除原始表中的数据。需要注意的是，MOVE TO操作会锁定原始表和归档表，因此需要在合适的时间执行。</p><p>需要注意的是，ClickHouse的TTL机制支持更多的声明周期选项，并且可以基于事件进行配置，具有更高的灵活性。但是，需要谨慎配置声明周期选项，以避免误删或误移数据。另外，ClickHouse的TTL机制可以与分区一起使用，更加灵活地管理数据的生命周期。</p>]]></content>
     
     
     <categories>
@@ -679,9 +679,9 @@
     
     <tags>
       
-      <tag>Shell</tag>
-      
       <tag>Hive</tag>
+      
+      <tag>Shell</tag>
       
       <tag>SQL</tag>
       
@@ -1103,9 +1103,9 @@
     
     <tags>
       
-      <tag>Shell</tag>
-      
       <tag>Hive</tag>
+      
+      <tag>Shell</tag>
       
       <tag>Sqoop</tag>
       
@@ -1132,9 +1132,9 @@
     
     <tags>
       
-      <tag>Shell</tag>
-      
       <tag>Hive</tag>
+      
+      <tag>Shell</tag>
       
       <tag>Spark</tag>
       
@@ -1192,9 +1192,9 @@
     
     <tags>
       
-      <tag>Shell</tag>
-      
       <tag>Hive</tag>
+      
+      <tag>Shell</tag>
       
       <tag>Spark</tag>
       
